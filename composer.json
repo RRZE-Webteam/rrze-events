@@ -1,0 +1,26 @@
+{
+    "require": {
+        "php": "^8.2.0",
+        "rrze/wp": "^2.0",
+        "cmb2/cmb2": "^2.11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "RRZE\\Events\\": "includes/"
+        },
+        "files": [
+            "vendor/cmb2/cmb2/init.php",
+            "vendor/cmb2/cmb2-attached-posts/cmb2-attached-posts-field.php"
+        ]
+    },
+    "extra": {
+        "installer-paths": {
+            "vendor/cmb2/cmb2": [
+                "cmb2/cmb2"
+            ],
+            "vendor/cmb2/cmb2-attached-posts": [
+                "cmb2/cmb2-attached-posts"
+            ]
+        }
+    }
+}

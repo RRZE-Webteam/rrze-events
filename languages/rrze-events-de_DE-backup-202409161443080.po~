@@ -1,0 +1,304 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: RRZE Events\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-16 14:22+0000\n"
+"PO-Revision-Date: 2024-09-16 14:38+0000\n"
+"Last-Translator: Barbara Bothe\n"
+"Language-Team: Deutsch\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.11; wp-6.6.2\n"
+"X-Domain: rrze-events"
+
+#: includes/CPT/Speaker.php:28
+msgid "All Speakers"
+msgstr "Alle Referenten"
+
+#: includes/CPT/Talk.php:28
+msgid "All Talks"
+msgstr "Alle Vorträge"
+
+#: includes/CPT/Talk.php:104
+msgid "Code"
+msgstr "Kurzbezeichnung"
+
+#: includes/CPT/Talk.php:110
+msgid "Date"
+msgstr "Datum"
+
+#: includes/CPT/Talk.php:179
+msgid ""
+"Drag speakers from the left column to the right column to attach them to "
+"this talk.<br />You may rearrange the order of the speakers in the right "
+"column by dragging and dropping."
+msgstr ""
+"Ziehe Referenten von der linken in die rechte Spalte, um sie mit diesem "
+"Vortrag zu verknüpfen.<br />Die Reihenfolge der Referenten kann später durch "
+"ziehen verändert werden."
+
+#: includes/CPT/Talk.php:32 includes/CPT/Speaker.php:32
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: includes/CPT/Speaker.php:110
+msgid "Email"
+msgstr "E-Mail"
+
+#: includes/CPT/Talk.php:122
+msgid "End Time"
+msgstr "Ende"
+
+#: includes/CPT/Talk.php:167
+msgid "Enter URL for video (FAU Video portal): &quot;https://...&quot;"
+msgstr "Video-URL eingeben (z.B. FAU-Video-Portal): \"https://...\":"
+
+#: includes/CPT/Talk.php:173
+msgid "Enter URL to talk presentation slides: &quot;https://...&quot;"
+msgstr "URL der Präsentationsfolien eingeben: \"https://...\":"
+
+#: includes/CPT/Speaker.php:128
+msgid "Enter URL..."
+msgstr "URL eingeben..."
+
+#: includes/Settings.php:22
+msgid "Events Settings"
+msgstr "Events Einstellungen"
+
+#: includes/CPT/Speaker.php:104
+msgid "Firma / Organisation"
+msgstr "Firma / Organisation"
+
+#. Author URI of the plugin
+msgid "https://blogs.fau.de/webworking/"
+msgstr "https://blogs.fau.de/webworking/"
+
+#. URI of the plugin
+msgid "https://github.com/RRZE-Webteam/rrze-events"
+msgstr "https://github.com/RRZE-Webteam/rrze-events"
+
+#: includes/CPT/Talk.php:128
+msgid "Location"
+msgstr "Ort/Raum"
+
+#: includes/CPT/Talk.php:134
+msgid "Location URL"
+msgstr "Link zum Ort/Raum"
+
+#. Description of the plugin
+msgid "Manage and display talks and speakers"
+msgstr "Vorträge und Referenten verwalten und anzeigen"
+
+#: includes/CPT/Talk.php:140
+msgid "Max. number of participants"
+msgstr "Maximale Teilnehmerzahl"
+
+#: includes/CPT/Talk.php:31 includes/CPT/Speaker.php:31
+msgid "New"
+msgstr "Neu"
+
+#: includes/CPT/Speaker.php:30
+msgid "New Speaker"
+msgstr "Neuer Referent"
+
+#: includes/CPT/Talk.php:30
+msgid "New Talk"
+msgstr "Neuer Vortrag"
+
+#: includes/CPT/Talk.php:161
+msgid "Offer waiting list for fully booked talks"
+msgstr "Warteliste für ausgebuchte Vorträge anbieten"
+
+#: includes/CPT/Talk.php:27 includes/CPT/Speaker.php:27
+msgid "Parent Item:"
+msgstr "Übergeordneter Eintrag:"
+
+#: includes/CPT/Talk.php:150
+msgid "Places available"
+msgstr "Verfügbare Plätze"
+
+#. 1: The plugin name, 2: The error string.
+#: rrze-events.php:88 rrze-events.php:159
+#, php-format
+msgid "Plugins: %1$s: %2$s"
+msgstr "Plugins: %1$s: %2$s"
+
+#: includes/CPT/Speaker.php:24
+msgctxt "Post Type General Name"
+msgid "Speakers"
+msgstr "Referenten"
+
+#: includes/CPT/Talk.php:24
+msgctxt "Post Type General Name"
+msgid "Talks"
+msgstr ""
+
+#: includes/CPT/Speaker.php:25
+msgctxt "Post Type Singular Name"
+msgid "Speaker"
+msgstr "Referent"
+
+#: includes/CPT/Talk.php:25
+msgctxt "Post Type Singular Name"
+msgid "Talk"
+msgstr ""
+
+#: includes/CPT/Talk.php:172
+msgid "Presentation URL"
+msgstr "URL der Präsentationsfolien"
+
+#. Name of the plugin
+msgid "RRZE Events"
+msgstr "RRZE Events"
+
+#. Author of the plugin
+msgid "RRZE Webteam"
+msgstr "RRZE Webteam"
+
+#: includes/CPT/Speaker.php:34
+msgid "Search Speaker"
+msgstr "Nach Referenten suchen"
+
+#: includes/CPT/Talk.php:34
+msgid "Search Talk"
+msgstr "Nach Vorträgen suchen"
+
+#: includes/Main.php:41
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: includes/CPT/Speaker.php:122
+msgid "Social Media"
+msgstr "Soziale Medien"
+
+#: includes/CPT/Speaker.php:39
+msgid "Speaker"
+msgstr "Referent"
+
+#: includes/CPT/Speaker.php:97
+msgid "Speaker Information"
+msgstr "Informationen"
+
+#: includes/CPT/Speaker.php:35
+msgid "Speaker not found"
+msgstr "Kein Referent gefunden"
+
+#: includes/CPT/Speaker.php:36
+msgid "Speaker not found in recycle bin"
+msgstr "Kein Referent im Papierkorb gefunden"
+
+#: includes/CPT/Talk.php:178
+msgid "Speaker(s)"
+msgstr "Referent(en)"
+
+#: includes/CPT/Speaker.php:26
+msgid "Speakers"
+msgstr "Referenten"
+
+#: includes/CPT/Talk.php:116
+msgid "Start Time"
+msgstr "Start"
+
+#: includes/CPT/Talk.php:39
+msgid "talk"
+msgstr ""
+
+#: includes/CPT/Talk.php:97
+msgid "Talk Information"
+msgstr ""
+
+#: includes/CPT/Talk.php:35
+msgid "Talk not found"
+msgstr ""
+
+#: includes/CPT/Talk.php:36
+msgid "Talk not found in recycle bin"
+msgstr ""
+
+#: includes/CPT/Talk.php:26
+msgid "Talks"
+msgstr ""
+
+#: includes/CPT/Speaker.php:64
+msgctxt "Taxonomy general name"
+msgid "Speaker Categories"
+msgstr "Kategorien"
+
+#: includes/CPT/Speaker.php:80
+msgctxt "Taxonomy general name"
+msgid "Speaker Tags"
+msgstr "Schlagwörter"
+
+#: includes/CPT/Talk.php:64
+msgctxt "Taxonomy general name"
+msgid "Talk Categories"
+msgstr ""
+
+#: includes/CPT/Talk.php:80
+msgctxt "Taxonomy general name"
+msgid "Talk Tags"
+msgstr ""
+
+#: includes/CPT/Speaker.php:65
+msgctxt "Taxonomy singular name"
+msgid "Speaker Category"
+msgstr "Kategorie"
+
+#: includes/CPT/Speaker.php:81
+msgctxt "Taxonomy singular name"
+msgid "Speaker Tag"
+msgstr "Schlagwort"
+
+#: includes/CPT/Talk.php:65
+msgctxt "Taxonomy singular name"
+msgid "Talk Category"
+msgstr ""
+
+#: includes/CPT/Talk.php:81
+msgctxt "Taxonomy singular name"
+msgid "Talk Tag"
+msgstr ""
+
+#. 1: Server PHP version number, 2: Required PHP version number.
+#: rrze-events.php:62
+#, php-format
+msgid ""
+"The server is running PHP version %1$s. The Plugin requires at least PHP "
+"version %2$s."
+msgstr ""
+
+#. 1: Server WordPress version number, 2: Required WordPress version number.
+#: rrze-events.php:69
+#, php-format
+msgid ""
+"The server is running WordPress version %1$s. The Plugin requires at least "
+"WordPress version %2$s."
+msgstr ""
+
+#: includes/CPT/Talk.php:33 includes/CPT/Speaker.php:33
+msgid "Update"
+msgstr ""
+
+#: includes/CPT/Talk.php:166
+msgid "Video URL"
+msgstr ""
+
+#: includes/CPT/Speaker.php:29
+msgid "View Speaker"
+msgstr ""
+
+#: includes/CPT/Talk.php:29
+msgid "View Talk"
+msgstr ""
+
+#: includes/CPT/Talk.php:160
+msgid "Waiting List"
+msgstr ""
+
+#: includes/CPT/Speaker.php:116
+msgid "Website"
+msgstr ""
