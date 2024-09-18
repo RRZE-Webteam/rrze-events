@@ -1,5 +1,11 @@
 .single-speaker {
-    h1 {
-        color: red;
+
+    .speaker-details {
+        width: 30%;
+        float: right;
+        .post-image { //FAU-Theme-Fix
+            float: none;
+            margin: 0 0 1em;
+        }
     }
 }
