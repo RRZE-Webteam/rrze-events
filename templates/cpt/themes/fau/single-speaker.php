@@ -23,7 +23,14 @@ while (have_posts()) : the_post(); ?>
             <div class="content-row">
                 <main>
                     <article class="rrze-speaker" itemscope itemtype="https://schema.org/Person">
-                        <h1 id="maintop" class="mobiletitle" itemprop="name"><?php the_title(); ?></h1>
+                        <h1 id="maintop" class="mobiletitle" itemprop="name">
+                            <?php the_title();
+                            $organisation = get_post_meta($id, 'speaker_organisation', true);
+                            if ($organisation != '') {
+                                echo '<br /><span class="speaker-organisation">' . $organisation . '</span>';
+                            }
+                            ?>
+                        </h1>
 
                         <div class="speaker-details">
 
@@ -57,18 +64,18 @@ while (have_posts()) : the_post(); ?>
                                         echo fau_get_image_htmlcode($post_thumbnail_id, 'rwd-480-3-2', $altattr);
                                         echo '</a>';
 
-                                        $bildunterschrift = get_post_meta($post->ID, 'fauval_overwrite_thumbdesc', true);
+                                        /*$bildunterschrift = get_post_meta($post->ID, 'fauval_overwrite_thumbdesc', true);
                                         if (isset($bildunterschrift) && strlen($bildunterschrift) > 1) {
                                             $imgdata['fauval_overwrite_thumbdesc'] = $bildunterschrift;
                                         }
-                                        echo fau_get_image_figcaption($imgdata);
+                                        echo fau_get_image_figcaption($imgdata);*/
                                         echo '</figure>';
                                         echo '</div>';
                                     }
                                 }
                             } ?>
 
-                            <?php the_title(); ?>
+                            <?php echo '<div class="speaker-name">' . get_the_title() . '</div>'; ?>
 
                             <?php
                             $organisation = get_post_meta($id, 'speaker_organisation', true);
@@ -84,18 +91,26 @@ while (have_posts()) : the_post(); ?>
                             }
                             ?>
 
+                            <?php if (/*get_my_theme_mod('show_speaker_categories') == true && */false !== get_the_terms($post->ID, 'speaker_category')) : ?>
+                                <div class="speaker-categories">
+                                    <?php print get_the_term_list( $post->ID, 'speaker_category', '<ul><li>','</li><li>', '</li></ul>'); ?>
+                                </div><!-- end .entry-cats -->
+                            <?php endif; ?>
+
+
                         </div>
 
-                        <div class="speaker-description">
-                            <?php the_content(); ?>
+                        <div class="speaker-main">
+                            <div class="speaker-description">
+                                <?php the_content(); ?>
+                            </div>
+                            <?php
+                            $talks = Utils::talksBySpeaker($id);
+                            if ($talks != '') {
+                                echo '<div class="speaker-talks">' . $talks . '</div>';
+                            }
+                            ?>
                         </div>
-
-                        <?php
-                        $talks = Utils::talksBySpeaker($id);
-                        if ($talks != '') {
-                            echo '<div class="speaker-talks">' . $talks . '</div>';
-                        }
-                        ?>
 
                     </article>
 
