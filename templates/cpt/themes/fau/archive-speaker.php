@@ -7,15 +7,13 @@
  * @since FAU 1.0
  */
 
-use RRZE\Calendar\Shortcodes\Events;
+use RRZE\Events\Shortcodes\Speaker;
 
 if (isset($_GET['format']) && $_GET['format'] == 'embedded') {
     get_template_part('template-parts/index', 'embedded');
     return;
 }
-if ( is_active_sidebar( 'news-sidebar' ) ) {
-    fau_use_sidebar(true);
-}
+
 get_header();
 global $wp_query;
 
@@ -38,7 +36,7 @@ global $wp_query;
                         $atts['abonnement_link'] = '1';
                         $atts['number'] = '99';
                     }
-                    echo Events::shortcode($atts);
+                    echo Speaker::shortcodeOutput($atts);
                     ?>
 
                 </main>

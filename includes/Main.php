@@ -4,6 +4,8 @@ namespace RRZE\Events;
 
 use RRZE\Events\CPT\Speaker;
 use RRZE\Events\CPT\Talk;
+use RRZE\Events\Shortcodes\Speaker as SC_Speaker;
+use RRZE\Events\Shortcodes\Talk as SC_Talk;
 
 defined('ABSPATH') || exit;
 
@@ -25,6 +27,9 @@ class Main
 
         Speaker::init();
         Talk::init();
+
+        new SC_Speaker;
+        new SC_Talk;
     }
 
     /**

@@ -1,3 +1,5 @@
+// Single Speaker
+
 .single-speaker {
 
     .rrze-speaker {
@@ -147,6 +149,15 @@
                     margin-left: .5em;
                 }
             }
+        }
+    }
+}
+
+// Archive Speaker
+.post-type-archive-speaker {
+    #content {
+        @media (min-width: 768px) {
+            padding-top: 10px;
         }
     }
 }
