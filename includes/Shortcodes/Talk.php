@@ -13,31 +13,14 @@ class Talk {
 
     public static function shortcodeOutput($atts, $content = "") {
         global $post;
-        extract(shortcode_atts(array(
-            'cat' => '',
-            'category' => '',
-            'tag' => '',
-            'num' => -1,
-            'number' => -1,
-            'id' => '',
-            'format' => '',
-            'showimage' => 0,
-            'showorganisation' => 1,
-            'date' => '',
-            'columns' => 'date, duration, title, speaker',
-            'orderby' => 'date,ASC,duration,ASC',//,title,ASC
-        ), $atts));
-        $single = 0;
-        $category = ('' != $category) ? sanitize_text_field($category) : sanitize_text_field($cat);
-        $tag = sanitize_text_field($tag);
-        $number = ('-1' != $num) ? sanitize_text_field($num) : sanitize_text_field($number);
-        $id = sanitize_text_field($id);
-        $format = sanitize_text_field($format);
+        $atts = self::sanitizeAtts($atts);
 
-        $sorting = explode(',', $orderby);
+        $single = 0;
+
+        $sorting = explode(',', $atts['orderby']);
         $sort = array();
         $sort[1]['key'] = trim($sorting[0]);
-        $sort[1]['order'] = $sorting[1] == 'DESC' ? SORT_DESC : SORT_ASC;
+        $sort[1]['order'] = (isset($sorting[1]) && $sorting[1] == 'DESC') ? SORT_DESC : SORT_ASC;
         $sort[2]['key'] = (isset($sorting[2])) ? trim($sorting[2]) : NULL;
         $sort[2]['order'] = (isset($sorting[3]) && $sorting[3] == 'DESC') ? SORT_DESC : SORT_ASC;
         $sort[3]['key'] = (isset($sorting[4])) ? trim($sorting[4]) : NULL;
@@ -49,14 +32,11 @@ class Talk {
             'posts_per_page' => '-1',
         ];
 
-        if (is_numeric($number)) {
-            $args['posts_per_page'] = $number;
-        }
-        if ((isset($id)) && ( strlen(trim($id)) > 0)) {
-            $args ['p'] = $id;
+        if ((isset($atts['id'])) && ( strlen(trim($atts['id'])) > 0)) {
+            $args ['p'] = $atts['id'];
             $single = 1;
-        } elseif ((isset($category)) && ( strlen(trim($category)) > 0)) {
-            $cats = explode(',', $category);
+        } elseif ((isset($atts['category'])) && ( strlen(trim($atts['category'])) > 0)) {
+            $cats = explode(',', $atts['category']);
             $cats = array_map('trim',$cats);
             $args = array(
                 'post_type' => 'talk',
@@ -71,114 +51,81 @@ class Talk {
             }
         }
 
-        if (strpos($date, '.')) {
-            $dateparts = explode('.', $date);
+        if (strpos($atts['date'], '.')) {
+            $dateparts = explode('.', $atts['date']);
             $dateparts['year'] = $dateparts[2];
             $dateparts['month'] = $dateparts[1];
             $dateparts['day'] = $dateparts[0];
-        } else if (strpos($date, '-')) {
-            $dateparts = explode('-', $date);
+        } else if (strpos($atts['date'], '-')) {
+            $dateparts = explode('-', $atts['date']);
             $dateparts['year'] = $dateparts[0];
             $dateparts['month'] = $dateparts[1];
             $dateparts['day'] = $dateparts[2];
         } else {
-            $date = '';
+            $atts['date'] = '';
         }
-        if ($date !== '') {
+        if ($atts['date'] !== '') {
             $args['meta_key'] = 'talk_date';
             $args['meta_value'] = $dateparts['year'] . '-' . $dateparts['month']  . '-' . $dateparts['day'];
         }
 
-        $headers = array(
-            'date' => __('Date', 'fau-events'),
-            'title' => get_theme_mod('label-talk'),
-            'talk' => get_theme_mod('label-talk'),
-            'start' => __('Start', 'fau-events'),
-            'end' => __('End', 'fau-events'),
-            'duration' => __('Time', 'fau-events'),
-            'location' => __('Location', 'fau-events'),
-            'speaker' => get_theme_mod('label-speaker'),
-            'participants' => __('Participants', 'fau-events'),
-            'available' => __('Available', 'fau-events'),
-            'short' => get_theme_mod('label-short')
-        );
-
         $talks = new \WP_Query($args);
+
         if ($talks->have_posts()) {
-            $i = 0;
-            $out = '';
 
-            if (isset($format) && ($format == 'table') && ($single == 0)) {
-                $columns = explode(',', $columns);
-                $columns = array_map('trim',$columns);
+            $talkData = array();
 
-                $out .= '<table class="talk-table">
-			<thead>
-                            <tr>';
-                foreach ($columns as $column) {
-                    $out .= '<th scope="col" class="'.$column.'">' . $headers[$column] . '</th>';
-                }
-                $out .= '</tr>
-                </thead>
-            <tbody>';
-            }
-
-            $posts = array();
-
-            $max = ($number == '-1' ? 999999 : $number);
-            while ($talks->have_posts() && ($i < $max)) {
+            while ($talks->have_posts()) {
                 $talks->the_post();
-                $i++;
+
                 $post_id = $post->ID;
-                $posts[$post_id]['ID'] = $post_id;
-                $posts[$post_id]['title'] = get_the_title();
-                $posts[$post_id]['talk'] = get_the_title();
-                $posts[$post_id]['excerpt'] = get_the_excerpt();
-                $posts[$post_id]['content'] = get_the_content();
-                $posts[$post_id]['link'] = get_permalink();
+                $talkData[$post_id]['ID'] = $post_id;
+                $talkData[$post_id]['title'] = get_the_title();
+                $talkData[$post_id]['talk'] = get_the_title();
+                $talkData[$post_id]['excerpt'] = get_the_excerpt();
+                $talkData[$post_id]['content'] = get_the_content();
+                $talkData[$post_id]['link'] = get_permalink();
                 $meta = get_post_meta($post_id);
 
                 $talk_speaker_ids = (array) Utils::getMeta($meta, 'talk_speakers');
-                $posts[$post_id]['speaker_links'] = array();
+                $talkData[$post_id]['speaker_links'] = array();
                 foreach ($talk_speaker_ids as $talk_speaker_id) {
                     if (get_post_type($talk_speaker_id) == 'speaker') {
                         $talk_speaker = get_post($talk_speaker_id);
                         $name = $talk_speaker->post_title;
-                        $image = $showimage ? get_the_post_thumbnail($talk_speaker->ID) . "<br />" : '';
+                        $image = $atts['showimage'] ? get_the_post_thumbnail($talk_speaker->ID) . "<br />" : '';
                         $link = get_post_permalink($talk_speaker->ID);
                         $speaker_organisation = get_post_meta($talk_speaker->ID, 'speaker_organisation', true);
-                        $orga = ($showorganisation == 1 && !empty($speaker_organisation)) ? ' (' . get_post_meta($talk_speaker->ID, 'speaker_organisation', true). ')' : '';
-                        $posts[$post_id]['speaker_links'][] = '<a href="' . $link . '" title="' . $name . '">' . $image . $name . '</a>' . $orga;
-                        $posts[$post_id]['speaker_names'][] = $image . $name;
+                        $orga = ($atts['showorganisation'] == 1 && !empty($speaker_organisation)) ? ' (' . get_post_meta($talk_speaker->ID, 'speaker_organisation', true). ')' : '';
+                        $talkData[$post_id]['speaker_links'][] = '<a href="' . $link . '" title="' . $name . '">' . $image . $name . '</a>' . $orga;
+                        $talkData[$post_id]['speaker_names'][] = $image . $name;
                     } else {
-                        $posts[$post_id]['speaker_links'] = array();
-                        $posts[$post_id]['speaker_names'] = array();
+                        $talkData[$post_id]['speaker_links'] = array();
+                        $talkData[$post_id]['speaker_names'] = array();
                     }
                 }
-                $posts[$post_id]['shortname'] = Utils::getMeta($meta, 'talk_shortname');
+                $talkData[$post_id]['shortname'] = Utils::getMeta($meta, 'talk_shortname');
                 $talk_meta = strtotime(Utils::getMeta($meta, 'talk_date'));
                 if ($talk_meta !== FALSE) {
                     $talk_date = date_i18n( get_option('date_format'), strtotime(Utils::getMeta($meta, 'talk_date')));
                 } else {
                     $talk_date = '';
                 }
-                $posts[$post_id]['printdate'] = $talk_date;
-                $posts[$post_id]['date'] = $talk_meta;
+                $talkData[$post_id]['printdate'] = $talk_date;
+                $talkData[$post_id]['date'] = $talk_meta;
                 $talk_start = Utils::getMeta($meta, 'talk_start');
-                $posts[$post_id]['start'] = $talk_start;
-                $posts[$post_id]['dtstamp_start'] = date('Ymd', strtotime($talk_date)) . "T" . date('Hi', strtotime($talk_start));
+                $talkData[$post_id]['start'] = $talk_start;
+                $talkData[$post_id]['dtstamp_start'] = date('Ymd', strtotime($talk_date)) . "T" . date('Hi', strtotime($talk_start));
                 $talk_end = Utils::getMeta($meta, 'talk_end');
-                $posts[$post_id]['end'] = $talk_end;
-                $posts[$post_id]['dtstamp_end'] = date('Ymd', strtotime($talk_date)) . "T" . date('Hi', strtotime($posts[$post_id]['end']));
-                $posts[$post_id]['duration'] = $talk_end != '' ? $talk_start . ' - ' . $talk_end : $talk_start;
-                $posts[$post_id]['room'] = Utils::getMeta($meta, 'talk_room');
-                $posts[$post_id]['max_participants'] = Utils::getMeta($meta, 'talk_max_participants');
-                $posts[$post_id]['available'] = Utils::getMeta($meta, 'talk_available');
-                $posts[$post_id]['video'] = Utils::getMeta($meta, 'talk_video');
-                $posts[$post_id]['slides'] = Utils::getMeta($meta, 'talk_slides');
+                $talkData[$post_id]['end'] = $talk_end;
+                $talkData[$post_id]['dtstamp_end'] = date('Ymd', strtotime($talk_date)) . "T" . date('Hi', strtotime($talkData[$post_id]['end']));
+                $talkData[$post_id]['duration'] = $talk_end != '' ? $talk_start . ' - ' . $talk_end : $talk_start;
+                $talkData[$post_id]['room'] = Utils::getMeta($meta, 'talk_room');
+                $talkData[$post_id]['max_participants'] = Utils::getMeta($meta, 'talk_max_participants');
+                $talkData[$post_id]['available'] = Utils::getMeta($meta, 'talk_available');
             }
 
-            foreach ($posts as $key => $row) {
+            foreach ($talkData as $key => $row) {
                 $sort1[$key] = $row[$sort[1]['key']];
                 if ($sort[2]['key']) {
                     $sort2[$key] = $row[$sort[2]['key']] ?? '';
@@ -189,138 +136,40 @@ class Talk {
             }
 
             if ($sort[3]['key']) {
-                array_multisort($sort1, $sort[1]['order'], $sort2, $sort[2]['order'], $sort3, $sort[3]['order'], $posts);
+                array_multisort($sort1, $sort[1]['order'], $sort2, $sort[2]['order'], $sort3, $sort[3]['order'], $talkData);
             } elseif ($sort[2]['key']) {
-                array_multisort($sort1, $sort[1]['order'], $sort2, $sort[2]['order'], $posts);
+                array_multisort($sort1, $sort[1]['order'], $sort2, $sort[2]['order'], $talkData);
             } else {
-                array_multisort($sort1, $sort[1]['order'], $posts);
+                array_multisort($sort1, $sort[1]['order'], $talkData);
             }
 
-            foreach ($posts as $post) {
-                if (isset($id) && isset($format) && ($format == 'short')) {
-                    // format short
-                    $out .= '<p>'
-                        . '<a href="' . $post['link'] . '">' . '<span class="titel">'
-                        . $post['title']
-                        . '</span></a>';
-                    if (!empty($post['speaker_links'])) {
-                        $out .= ' &ndash; '
-                            . '<span class="speaker">'
-                            . implode('</span>, <span class="speaker">', $post['speaker_links'])
-                            . '</span>';
-                    }
-                    $out .= '</p>';
-                } elseif (isset($format) && ($format == 'table') && ($single == 0)) {
-                    // format table
-                    // Datum
-                    $out .= "<tr class=\"talk\">\n";
-                    foreach ($columns as $column) {
-                        $out .= '<td>';
-                        switch ($column) {
-                            case 'date':
-                                $out .= $post['printdate'];
-                                break;
-                            case 'title':
-                            case 'talk':
-                                $out .= '<a href="' . $post['link'] . '" title="' . $post['title'] . '">' . $post['title'] . '</a>';
-                                break;
-                            case 'start':
-                                $out .= $post['start'];
-                                break;
-                            case 'end':
-                                $out .= $post['end'];
-                                break;
-                            case 'duration':
-                                $out .= $post['duration'];
-                                break;
-                            case 'location':
-                                $out .= $post['room'];
-                                break;
-                            case 'speaker':
-                                $out .= '<span class="speaker">' . implode('</span><br /><span class="speaker">', $post['speaker_links']) . '</span>';
-                                break;
-                            case 'participants':
-                                $out .= $post['max_participants'];
-                                break;
-                            case 'available':
-                                $out .= $post['available'];
-                                break;
-                            case 'short':
-                                $out .= $post['shortname'];
-                                break;
-                        }
-                        $out .= '</td>';
-                    }
-                } else {
-                    // format other
-                    $out .= '<article class="shortcode talk" id="post-' . $post['ID'] . '" >';
-                    $out .= "\n";
-                    $out .= '<header class="titel">';
-                    // Titel
-                    $out .= '<h3 class="summary"><a href="' . $post['link'] . '">'
-                        . $post['title']
-                        . '</a></h3>';
-                    // Referent
-                    $hide = ['media'];
-                    if ($showorganisation == 0)
-                        $hide[] = 'organisation';
-                    //var_dump($hide);
-                    //$out .= fau_events_talk_fields($post['ID'], $hide);
-
-                    $out .= '</header>';
-                    $out .= "\n";
-                    $out .= '<div class="talk_daten">';
-                    $out .= "\n";
-                    $out .= '<article class="post-entry">';
-                    $out .= "\n";
-
-                    if (isset($format) && ($format == 'medium')) {
-                        $out .= '<p class="short-description">';
-                        $out .= $post['excerpt'];
-                        $out .= '</p>';
-                    } else {
-                        $out .= '<p class="long-description">';
-                        $out .= $post['content'];
-                        $out .= '</p>';
-                    }
-
-                    $out .= "</article>\n";
-
-                    if (isset($format) && ($format != 'medium')) {
-                        if ((strlen(trim($post['video'])) > 0) || (strlen(trim($post['slides'])) > 0)) {
-                            $out .= '<footer>';
-                            $out .= '<ul class="medien">';
-                            if (isset($post['video']) && (strlen(trim($post['video'])) > 0)) {
-                                $out .= '<li class="video"><a href="' . $post['video'] . '">Videoaufzeichnung</a></li>';
-                            }
-                            if (isset($post['slides']) && (strlen(trim($post['slides'])) > 0)) {
-                                $out .= '<li class="folien"><a href="' . $post['slides'] . '">Vortragsfolien</a></li>';
-                            }
-                            $out .= '</ul>';
-                            $out .= '</footer>';
-                        }
-                    }
-                    $out .= "</div>\n";
-                    $out .= "</article>\n";
-                }
+            if (isset($atts['format']) && ($atts['format'] == 'short')) {
+                $output = self::talkList($talkData, $atts);
+            } elseif (isset($atts['format']) && ($atts['format'] == 'table')) {
+                $output = self::talkTable($talkData, $atts);
+            } else {
+                $output = self::talkGrid($talkData, $atts);
             }
-            if (isset($format) && ($format == 'table') && ($single == 0)) {
-                $out .= '</table>';
-            }
+
         } else {
-            $out = '<section class="shortcode talk"><p>';
-            $out .= __('No talk information found.', 'fau-events');
-            $out .= "</p></section>\n";
+            $output = '<section class="shortcode talk"><p>';
+            $output .= __('No talk information found.', 'rrze-events');
+            $output .= "</p></section>\n";
         }
         wp_reset_postdata();
-        return $out;
+        wp_enqueue_style('rrze-events');
+        return $output;
     }
 
-    protected function talkList($talks) {
+    protected static function talkList($talks, $atts) {
+
+        $max = ($atts['number'] == '-1' ? 999999 : $atts['number']);
+        $i = 0;
+
         $output = '<ul class="rrze-events talk-list">';
         foreach ($talks as $talk) {
             $output .= '<li>'
-                . '<a href="' . $talk['link'] . '">' . '<span class="titel">'
+                . '<a href="' . $talk['link'] . '">' . '<span class="title">'
                 . $talk['title']
                 . '</span></a>';
             if ( ! empty($talk['speaker_links'])) {
@@ -330,8 +179,176 @@ class Talk {
                     . '</span>';
             }
             $output .= '</li>';
+
+            $i ++;
+            if ($i >= $max)
+                break;
         }
         $output .= '</ul>';
         return $output;
+    }
+
+    protected static function talkTable ($talkData, $atts) {
+        $headers = array(
+            'date' => __('Date', 'rrze-events'),
+            'title' => get_theme_mod('label-talk'),
+            'talk' => get_theme_mod('label-talk'),
+            'start' => __('Start', 'rrze-events'),
+            'end' => __('End', 'rrze-events'),
+            'duration' => __('Time', 'rrze-events'),
+            'location' => __('Location', 'rrze-events'),
+            'speaker' => get_theme_mod('label-speaker'),
+            'participants' => __('Participants', 'rrze-events'),
+            'available' => __('Available', 'rrze-events'),
+            'short' => get_theme_mod('label-short'),
+        );
+
+        $columns = explode(',', $atts['columns']);
+        $columns = array_map('trim',$columns);
+
+        $max = ($atts['number'] == '-1' ? 999999 : $atts['number']);
+        $i = 0;
+
+        $output = '<table class="talk-table">
+			<thead>
+                <tr>';
+        foreach ($columns as $column) {
+            $output .= '<th scope="col" class="'.$column.'">' . $headers[$column] . '</th>';
+        }
+        $output .= '</tr>
+                </thead>
+            <tbody>';
+        foreach ($talkData as $talk) {
+            $output .= "<tr class=\"talk\">\n";
+            foreach ($columns as $column) {
+                $output .= '<td>';
+                switch ($column) {
+                    case 'date':
+                        $output .= $talk['printdate'];
+                        break;
+                    case 'title':
+                    case 'talk':
+                        $output .= '<a href="' . $talk['link'] . '" title="' . $talk['title'] . '">' . $talk['title'] . '</a>';
+                        break;
+                    case 'start':
+                        $output .= $talk['start'];
+                        break;
+                    case 'end':
+                        $output .= $talk['end'];
+                        break;
+                    case 'duration':
+                        $output .= $talk['duration'];
+                        break;
+                    case 'location':
+                        $output .= $talk['room'];
+                        break;
+                    case 'speaker':
+                        $output .= '<span class="speaker">' . implode('</span><br /><span class="speaker">', $talk['speaker_links']) . '</span>';
+                        break;
+                    case 'participants':
+                        $output .= $talk['max_participants'];
+                        break;
+                    case 'available':
+                        $output .= $talk['available'];
+                        break;
+                    case 'short':
+                        $output .= $talk['shortname'];
+                        break;
+                }
+                $output .= '</td>';
+            }
+            $output .= '</tr>';
+
+            $i ++;
+            if ($i >= $max)
+                break;
+        }
+
+        $output .= '</tbody>
+                </table>';
+
+        return $output;
+    }
+
+    private static function talkGrid($talkData, $atts) {
+        $output = '';
+        foreach ($talkData as $talk) {
+            $talk['video'] = get_post_meta($talk['ID'], 'talk_video', true);
+            $talk['slides'] = get_post_meta($talk['ID'], 'talk_slides', true);
+            $output .= '<article class="shortcode talk" id="post-' . $talk['ID'] . '" >';
+            $output .= "\n";
+            $output .= '<header class="titel">';
+            // Titel
+            $output .= '<h3 class="summary"><a href="' . $talk['link'] . '">'
+                . $talk['title']
+                . '</a></h3>';
+            // Referent
+            $hide = ['media'];
+            if ($atts['showorganisation'] == 0) {
+                $hide[] = 'organisation';
+            }
+            //var_dump($hide);
+            //$out .= fau_events_talk_fields($post['ID'], $hide);
+
+            $output .= '</header>';
+            $output .= "\n";
+            $output .= '<div class="talk_daten">';
+            $output .= "\n";
+            $output .= '<article class="post-entry">';
+            $output .= "\n";
+
+            if (isset($atts['format']) && ($atts['format'] == 'medium')) {
+                $output .= '<p class="short-description">';
+                $output .= $talk['excerpt'];
+                $output .= '</p>';
+            } else {
+                $output .= '<p class="long-description">';
+                $output .= $talk['content'];
+                $output .= '</p>';
+            }
+
+            $output .= "</article>\n";
+
+            if (isset($atts['format']) && ($atts['format'] != 'medium')) {
+                if ((strlen(trim($talk['video'])) > 0) || (strlen(trim($talk['slides'])) > 0)) {
+                    $output .= '<footer>';
+                    $output .= '<ul class="medien">';
+                    if (isset($talk['video']) && (strlen(trim($talk['video'])) > 0)) {
+                        $output .= '<li class="video"><a href="' . $talk['video'] . '">' . __('Video', 'rrze-events') . '</a></li>';
+                    }
+                    if (isset($talk['slides']) && (strlen(trim($talk['slides'])) > 0)) {
+                        $output .= '<li class="folien"><a href="' . $talk['slides'] . '">' . __('Slides', 'rrze-events') . '</a></li>';
+                    }
+                    $output .= '</ul>';
+                    $output .= '</footer>';
+                }
+            }
+            $output .= "</div>\n";
+            $output .= "</article>\n";
+        }
+        return $output;
+    }
+
+    private static function sanitizeAtts($atts) {
+        $defaults = [
+            'cat' => '',
+            'category' => '',
+            'tag' => '',
+            'num' => -1,
+            'number' => -1,
+            'id' => '',
+            'format' => '',
+            'showimage' => 0,
+            'showorganisation' => 1,
+            'date' => '',
+            'columns' => 'date, duration, title, speaker',
+            'orderby' => 'date,ASC,duration,ASC',//,title,ASC
+        ];
+        $args = shortcode_atts($defaults, $atts);
+        $args['number'] = ($args['num'] != '-1') ? $args['num'] : $args['number'];
+        $args['category'] = ($args['cat'] != '-1') ? $args['cat'] : $args['category'];
+        array_walk($args, 'sanitize_text_field');
+
+        return $args;
     }
 }

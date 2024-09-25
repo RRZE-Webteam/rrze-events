@@ -2,6 +2,8 @@
 
 namespace RRZE\Events\CPT;
 
+use RRZE\Events\Utils;
+
 class Talk {
     const POST_TYPE = 'talk';
 
@@ -117,12 +119,28 @@ class Talk {
             //'desc' => esc_html__( '', 'rrze-events' ),
             'id'   => 'talk_start',
             'type' => 'text_time',
+            'time_format' => 'H:i',
+            'attributes' => array(
+                'data-timepicker' => json_encode( array(
+                    //'timeOnlyTitle' => __( 'Choose your Time', 'rrze-events' ),
+                    'timeFormat' => 'HH:mm',
+                    'stepMinute' => 1, // 1 minute increments instead of the default 5
+                ) ),
+            ),
         ));
         $cmb_info->add_field(array(
             'name' => esc_html__('End Time', 'rrze-events'),
             //'desc' => esc_html__( '', 'rrze-events' ),
             'id'   => 'talk_end',
             'type' => 'text_time',
+            'time_format' => 'H:i',
+            'attributes' => array(
+                'data-timepicker' => json_encode( array(
+                    //'timeOnlyTitle' => __( 'Choose your Time', 'rrze-events' ),
+                    'timeFormat' => 'HH:mm',
+                    'stepMinute' => 1, // 1 minute increments instead of the default 5
+                ) ),
+            ),
         ));
         $cmb_info->add_field(array(
             'name' => esc_html__('Location', 'rrze-events'),
