@@ -271,17 +271,16 @@ class Talk {
     }
 
     private static function talkGrid($talkData, $atts) {
-        $output = '';
+        $output = '<div class="rrze-events talk-' . $atts['format'] . '">';
         foreach ($talkData as $talk) {
             $talk['video'] = get_post_meta($talk['ID'], 'talk_video', true);
             $talk['slides'] = get_post_meta($talk['ID'], 'talk_slides', true);
-            $output .= '<article class="shortcode talk" id="post-' . $talk['ID'] . '" >';
+            $output .= '<article class="shortcode talk" id="post-' . $talk['ID'] . '" class="' . implode(' ', get_post_class('', $talk['ID'])) . '">'
+                . '<a href="' . $talk['link'] . '" rel="bookmark" class="entry-main">';
             $output .= "\n";
             $output .= '<header class="titel">';
             // Titel
-            $output .= '<h3 class="summary"><a href="' . $talk['link'] . '">'
-                . $talk['title']
-                . '</a></h3>';
+            $output .= '<h3 class="summary">' . $talk['title'] . '</h3>';
             // Referent
             $hide = ['media'];
             if ($atts['showorganisation'] == 0) {
@@ -294,38 +293,19 @@ class Talk {
             $output .= "\n";
             $output .= '<div class="talk_daten">';
             $output .= "\n";
-            $output .= '<article class="post-entry">';
+            $output .= '<div class="post-entry">';
             $output .= "\n";
 
-            if (isset($atts['format']) && ($atts['format'] == 'medium')) {
-                $output .= '<p class="short-description">';
-                $output .= $talk['excerpt'];
-                $output .= '</p>';
-            } else {
-                $output .= '<p class="long-description">';
-                $output .= $talk['content'];
-                $output .= '</p>';
-            }
+            $output .= '<p class="short-description">';
+            $output .= strip_tags($talk['excerpt']) . do_shortcode('[icon icon="solid angles-right"]');
+            $output .= '</p>';
 
-            $output .= "</article>\n";
-
-            if (isset($atts['format']) && ($atts['format'] != 'medium')) {
-                if ((strlen(trim($talk['video'])) > 0) || (strlen(trim($talk['slides'])) > 0)) {
-                    $output .= '<footer>';
-                    $output .= '<ul class="medien">';
-                    if (isset($talk['video']) && (strlen(trim($talk['video'])) > 0)) {
-                        $output .= '<li class="video"><a href="' . $talk['video'] . '">' . __('Video', 'rrze-events') . '</a></li>';
-                    }
-                    if (isset($talk['slides']) && (strlen(trim($talk['slides'])) > 0)) {
-                        $output .= '<li class="folien"><a href="' . $talk['slides'] . '">' . __('Slides', 'rrze-events') . '</a></li>';
-                    }
-                    $output .= '</ul>';
-                    $output .= '</footer>';
-                }
-            }
             $output .= "</div>\n";
-            $output .= "</article>\n";
+
+            $output .= "</div>\n";
+            $output .= "</a></article>\n";
         }
+        $output .= '</div>';
         return $output;
     }
 

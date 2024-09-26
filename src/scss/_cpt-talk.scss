@@ -1,0 +1,72 @@
+.single-talk {
+
+    .rrze-talk {
+        @media (min-width: 768px) {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        @media (min-width: 768px) {
+            gap: 30px;
+        }
+
+        .mobiletitle {
+            margin-bottom: 0;
+            padding-left: 15px;
+            padding-right: 15px;
+
+            .talk-organisation {
+                font-weight: normal;
+                color: var(--color-TextLight, #797676);
+            }
+        }
+
+        .talk-details {
+            background-color: var(--color-ContentRegions, #f5f7f9);
+            padding: 15px;
+            @media (min-width: 768px) {
+                order: 2;
+                flex: 30% 0 0;
+            }
+
+            .post-image { //FAU-Theme-Fix
+                float: none;
+                max-width: 446px;
+                background: #fff;
+                margin: -15px -15px 15px;
+                @media (min-width: 768px) {
+                    padding-bottom: 0;
+                }
+            }
+
+            .talk-title {
+                padding-left: 15px;
+                padding-right: 15px;
+                font-weight: bold;
+                font-size: 1.2em;
+                padding-top: 15px;
+            }
+
+            .talk-speaker {
+                margin-bottom: 1em;
+            }
+
+            .talk-datetime {
+                margin-bottom: 1em;
+                .date {
+                    margin-right: 2em;
+                }
+            }
+        }
+        .talk-main {
+            padding: 15px;
+            @media (min-width: 768px) {
+                order: 1;
+                flex: 60% 1 0;
+                padding: 0;
+            }
+        }
+    }
+}

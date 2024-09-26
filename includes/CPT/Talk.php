@@ -19,6 +19,10 @@ class Talk {
         add_action('init', [__CLASS__, 'registerTag']);
         // CMB2 Fields
         add_action('cmb2_admin_init', [__CLASS__, 'addFields']);
+        // Templates
+        add_filter('single_template', [__CLASS__, 'includeSingleTemplate']);
+        add_filter('archive_template', [__CLASS__, 'includeArchiveTemplate']);
+
     }
 
     public static function registerPostType() {
@@ -113,6 +117,14 @@ class Talk {
             //'desc' => esc_html__( '', 'rrze-events' ),
             'id'   => 'talk_date',
             'type' => 'text_date',
+            'date_format' => 'd.m.Y',
+            'attributes' => array(
+                'data-datepicker' => json_encode( array(
+                    'dayNames' => Utils::getDaysOfWeek(),
+                    'monthNamesShort' => Utils::getMonthNames('short'),
+                    'dateFormat' => 'dd.mm.yy',
+                ) ),
+            ),
         ));
         $cmb_info->add_field(array(
             'name' => esc_html__('Start Time', 'rrze-events'),
@@ -171,7 +183,7 @@ class Talk {
             'type' => 'text_small',
             'attributes' => [
                 'type' => 'number',
-                'min' => '1',
+                'min' => '0',
             ]
         ));
         $cmb_info->add_field(array(
@@ -207,7 +219,25 @@ class Talk {
                 ), // override the get_posts args
             ),
         ) );
-
-
     }
+
+    public static function includeSingleTemplate($singleTemplate)
+    {
+        global $post;
+        if (!$post || $post->post_type != 'talk')
+            return $singleTemplate;
+
+        wp_enqueue_style('rrze-events');
+        return Utils::getTemplatePath('cpt') . 'single-talk.php';
+    }
+
+    public static function includeArchiveTemplate($archiveTemplate)
+    {
+        global $post;
+        if (!$post || $post->post_type != 'talk')
+            return $archiveTemplate;
+
+        return Utils::getTemplatePath('cpt') . 'archive-talk.php';
+    }
+
 }

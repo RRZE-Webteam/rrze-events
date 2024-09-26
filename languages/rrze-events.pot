@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RRZE Events\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-25 14:33+0000\n"
+"POT-Creation-Date: 2024-09-26 13:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "All Speakers"
 msgstr ""
 
-#: includes/CPT/Talk.php:30
+#: includes/CPT/Talk.php:34
 msgid "All Talks"
 msgstr ""
 
@@ -36,7 +36,7 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: includes/CPT/Talk.php:106
+#: includes/CPT/Talk.php:110
 msgid "Code"
 msgstr ""
 
@@ -44,18 +44,18 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: includes/CPT/Talk.php:112 includes/Shortcodes/Talk.php:193
+#: includes/CPT/Talk.php:116 includes/Shortcodes/Talk.php:193
 msgid "Date"
 msgstr ""
 
-#: includes/CPT/Talk.php:197
+#: includes/CPT/Talk.php:201
 msgid ""
 "Drag speakers from the left column to the right column to attach them to "
 "this talk.<br />You may rearrange the order of the speakers in the right "
 "column by dragging and dropping."
 msgstr ""
 
-#: includes/CPT/Talk.php:34 includes/CPT/Speaker.php:38
+#: includes/CPT/Talk.php:38 includes/CPT/Speaker.php:38
 msgid "Edit"
 msgstr ""
 
@@ -67,15 +67,15 @@ msgstr ""
 msgid "End"
 msgstr ""
 
-#: includes/CPT/Talk.php:132
+#: includes/CPT/Talk.php:136
 msgid "End Time"
 msgstr ""
 
-#: includes/CPT/Talk.php:185
+#: includes/CPT/Talk.php:189
 msgid "Enter URL for video (FAU Video portal): &quot;https://...&quot;"
 msgstr ""
 
-#: includes/CPT/Talk.php:191
+#: includes/CPT/Talk.php:195
 msgid "Enter URL to talk presentation slides: &quot;https://...&quot;"
 msgstr ""
 
@@ -99,11 +99,11 @@ msgstr ""
 msgid "https://github.com/RRZE-Webteam/rrze-events"
 msgstr ""
 
-#: includes/CPT/Talk.php:146 includes/Shortcodes/Talk.php:199
+#: includes/CPT/Talk.php:150 includes/Shortcodes/Talk.php:199
 msgid "Location"
 msgstr ""
 
-#: includes/CPT/Talk.php:152
+#: includes/CPT/Talk.php:156
 msgid "Location URL"
 msgstr ""
 
@@ -111,11 +111,11 @@ msgstr ""
 msgid "Manage and display talks and speakers"
 msgstr ""
 
-#: includes/CPT/Talk.php:158
+#: includes/CPT/Talk.php:162
 msgid "Max. number of participants"
 msgstr ""
 
-#: includes/CPT/Talk.php:33 includes/CPT/Speaker.php:37
+#: includes/CPT/Talk.php:37 includes/CPT/Speaker.php:37
 msgid "New"
 msgstr ""
 
@@ -123,7 +123,7 @@ msgstr ""
 msgid "New Speaker"
 msgstr ""
 
-#: includes/CPT/Talk.php:32
+#: includes/CPT/Talk.php:36
 msgid "New Talk"
 msgstr ""
 
@@ -131,11 +131,11 @@ msgstr ""
 msgid "No talk information found."
 msgstr ""
 
-#: includes/CPT/Talk.php:179
+#: includes/CPT/Talk.php:183
 msgid "Offer waiting list for fully booked talks"
 msgstr ""
 
-#: includes/CPT/Talk.php:29 includes/CPT/Speaker.php:33
+#: includes/CPT/Talk.php:33 includes/CPT/Speaker.php:33
 msgid "Parent Item:"
 msgstr ""
 
@@ -143,7 +143,7 @@ msgstr ""
 msgid "Participants"
 msgstr ""
 
-#: includes/CPT/Talk.php:168
+#: includes/CPT/Talk.php:172
 msgid "Places available"
 msgstr ""
 
@@ -158,7 +158,7 @@ msgctxt "Post Type General Name"
 msgid "Speakers"
 msgstr ""
 
-#: includes/CPT/Talk.php:26
+#: includes/CPT/Talk.php:30
 msgctxt "Post Type General Name"
 msgid "Talks"
 msgstr ""
@@ -168,12 +168,12 @@ msgctxt "Post Type Singular Name"
 msgid "Speaker"
 msgstr ""
 
-#: includes/CPT/Talk.php:27
+#: includes/CPT/Talk.php:31
 msgctxt "Post Type Singular Name"
 msgid "Talk"
 msgstr ""
 
-#: includes/CPT/Talk.php:190
+#: includes/CPT/Talk.php:194
 msgid "Presentation URL"
 msgstr ""
 
@@ -197,7 +197,7 @@ msgstr ""
 msgid "Search Speaker"
 msgstr ""
 
-#: includes/CPT/Talk.php:36
+#: includes/CPT/Talk.php:40
 msgid "Search Talk"
 msgstr ""
 
@@ -205,15 +205,11 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: includes/Shortcodes/Talk.php:320
-msgid "Slides"
-msgstr ""
-
 #: includes/CPT/Speaker.php:134
 msgid "Social Media"
 msgstr ""
 
-#: includes/CPT/Speaker.php:45
+#: includes/CPT/Speaker.php:45 templates/cpt/themes/fau/single-talk.php:83
 msgid "Speaker"
 msgstr ""
 
@@ -229,7 +225,7 @@ msgstr ""
 msgid "Speaker not found in recycle bin"
 msgstr ""
 
-#: includes/CPT/Talk.php:196
+#: includes/CPT/Talk.php:200
 msgid "Speaker(s)"
 msgstr ""
 
@@ -241,27 +237,27 @@ msgstr ""
 msgid "Start"
 msgstr ""
 
-#: includes/CPT/Talk.php:118
+#: includes/CPT/Talk.php:122
 msgid "Start Time"
 msgstr ""
 
-#: includes/CPT/Talk.php:41
+#: includes/CPT/Talk.php:45
 msgid "Talk"
 msgstr ""
 
-#: includes/CPT/Talk.php:99
+#: includes/CPT/Talk.php:103
 msgid "Talk Information"
 msgstr ""
 
-#: includes/CPT/Talk.php:37
+#: includes/CPT/Talk.php:41
 msgid "Talk not found"
 msgstr ""
 
-#: includes/CPT/Talk.php:38
+#: includes/CPT/Talk.php:42
 msgid "Talk not found in recycle bin"
 msgstr ""
 
-#: includes/Utils.php:79 includes/CPT/Talk.php:28
+#: includes/Utils.php:79 includes/CPT/Talk.php:32
 msgid "Talks"
 msgstr ""
 
@@ -275,12 +271,12 @@ msgctxt "Taxonomy general name"
 msgid "Speaker Tags"
 msgstr ""
 
-#: includes/CPT/Talk.php:66
+#: includes/CPT/Talk.php:70
 msgctxt "Taxonomy general name"
 msgid "Talk Categories"
 msgstr ""
 
-#: includes/CPT/Talk.php:82
+#: includes/CPT/Talk.php:86
 msgctxt "Taxonomy general name"
 msgid "Talk Tags"
 msgstr ""
@@ -295,12 +291,12 @@ msgctxt "Taxonomy singular name"
 msgid "Speaker Tag"
 msgstr ""
 
-#: includes/CPT/Talk.php:67
+#: includes/CPT/Talk.php:71
 msgctxt "Taxonomy singular name"
 msgid "Talk Category"
 msgstr ""
 
-#: includes/CPT/Talk.php:83
+#: includes/CPT/Talk.php:87
 msgctxt "Taxonomy singular name"
 msgid "Talk Tag"
 msgstr ""
@@ -325,15 +321,11 @@ msgstr ""
 msgid "Time"
 msgstr ""
 
-#: includes/CPT/Talk.php:35 includes/CPT/Speaker.php:39
+#: includes/CPT/Talk.php:39 includes/CPT/Speaker.php:39
 msgid "Update"
 msgstr ""
 
-#: includes/Shortcodes/Talk.php:317
-msgid "Video"
-msgstr ""
-
-#: includes/CPT/Talk.php:184
+#: includes/CPT/Talk.php:188
 msgid "Video URL"
 msgstr ""
 
@@ -341,11 +333,11 @@ msgstr ""
 msgid "View Speaker"
 msgstr ""
 
-#: includes/CPT/Talk.php:31
+#: includes/CPT/Talk.php:35
 msgid "View Talk"
 msgstr ""
 
-#: includes/CPT/Talk.php:178
+#: includes/CPT/Talk.php:182
 msgid "Waiting List"
 msgstr ""
 

@@ -10,6 +10,10 @@
             align-items: flex-start;
             gap: 15px;
         }
+        @media (min-width: 768px) {
+            gap: 30px;
+        }
+
         .mobiletitle {
             margin-bottom: 0;
             padding-left: 15px;
