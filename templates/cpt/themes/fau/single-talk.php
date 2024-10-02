@@ -75,48 +75,24 @@ while (have_posts()) : the_post(); ?>
                                 }
                             }
 
-                            // Speaker(s)
-                            $speakers = get_post_meta($id, 'talk_speakers', true);
-                            if ($speakers != '') {
-                                $speakerLinks = [];
-                                foreach ($speakers as $speakerID) {
-                                    $organisation = Utils::getMeta($meta, 'speaker_organisation');
-                                    $speakerLinks[] = '<a href="' . get_permalink($speakerID) . '">' . get_the_title($speakerID) . '</a>'
-                                        . ($organisation != '' ? ' (' . $organisation . ')' : '');
-                                }
-                                echo '<div class="talk-speaker"><span class="label">' . _n('Speaker', 'Speakers', count($speakers), 'rrze-events') . '</span>:<br />';
-                                echo implode('<br />', $speakerLinks);
-                                echo '</div>';
+                            $talkMeta = Utils::talkFields($id);
+                            if ($talkMeta != '') {
+                                echo $talkMeta;
                             }
-
-                            // Date/Time
-                            $date = Utils::getMeta($meta, 'talk_date');
-                            $start = Utils::getMeta($meta, 'talk_start');
-                            $end = Utils::getMeta($meta, 'talk_end');
-                            if ($date . $start . $end != '') {
-                                echo '<div class="talk-datetime">'
-                                    . do_shortcode('<span class="date">[icon icon="regular calendar"] '
-                                        . '<span class="sr-only">' . __('Date', 'rrze-events') . ': </span>'
-                                        . $date
-                                        . '</span><span class="time">'
-                                        . '[icon icon="regular clock"] '
-                                        . '<span class="sr-only">' . __('Time', 'rrze-events') . ': </span>'
-                                        . $start
-                                        . ($end != '' ? ' - ' . $end : ''))
-                                         . '</span>';
-                                echo '</div>';
-                            }
-
-
-                            //$links = Utils::talkLinks($id, 'icons');
-                            //if ($links != '') {
-                            //    echo '<div class="talk-links">' . $links . '</div>';
-                            //}
                             ?>
 
                             <?php if (/*get_my_theme_mod('show_talk_categories') == true && */false !== get_the_terms($post->ID, 'talk_category')) : ?>
                                 <div class="talk-categories">
-                                    <?php print get_the_term_list( $post->ID, 'talk_category', '<ul><li>','</li><li>', '</li></ul>'); ?>
+                                    <?php
+                                    print get_the_term_list( $post->ID, 'talk_category', '<ul><li>','</li><li>', '</li></ul>'); ?>
+                                </div><!-- end .entry-cats -->
+                            <?php endif; ?>
+
+                            <?php if (/*get_my_theme_mod('show_talk_categories') == true && */false !== get_the_terms($post->ID, 'talk_tag')) : ?>
+                                <div class="talk-tags">
+                                    <?php echo do_shortcode('[icon icon="solid tag"]'); ?>
+                                    <span class="sr-only"><?php echo __('Tags', 'rrze-events');?>: </span>
+                                    <?php print get_the_term_list( $post->ID, 'talk_tag', '<ul><li>','</li><li>', '</li></ul>'); ?>
                                 </div><!-- end .entry-cats -->
                             <?php endif; ?>
 

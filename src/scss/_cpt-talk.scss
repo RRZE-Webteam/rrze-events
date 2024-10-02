@@ -27,18 +27,35 @@
             background-color: var(--color-ContentRegions, #f5f7f9);
             padding: 15px;
             @media (min-width: 768px) {
-                order: 2;
+                //order: 2;
                 flex: 30% 0 0;
             }
+            @media (min-width: 1400px) {
+                padding: 30px;
+            }
 
-            .post-image { //FAU-Theme-Fix
+            a {
+                text-decoration-color: var(--color-TextLight, #797676);
+            }
+
+            .post-image {
                 float: none;
-                max-width: 446px;
                 background: #fff;
                 margin: -15px -15px 15px;
+                padding-bottom: 15px;
                 @media (min-width: 768px) {
-                    padding-bottom: 0;
+                    max-width: 446px;
+                    //padding-bottom: 0;
                 }
+                @media (min-width: 1400px) {
+                    margin: -30px -30px 30px;
+                    padding-bottom: 20px;
+                }
+            }
+
+            svg {
+                margin-right: .3em;
+                fill: var(--color-TextLight, #797676);
             }
 
             .talk-title {
@@ -49,14 +66,98 @@
                 padding-top: 15px;
             }
 
-            .talk-speaker {
+            .talk-speaker,
+            .talk-datetime,
+            .talk-location,
+            .talk-participants {
                 margin-bottom: 1em;
             }
 
+            .talk-speaker {
+                font-weight: bold;
+                .label {
+                    font-weight: normal;
+                }
+            }
+
             .talk-datetime {
-                margin-bottom: 1em;
                 .date {
                     margin-right: 2em;
+                }
+            }
+
+            .talk-media {
+                ul {
+                    margin: 0;
+                    li {
+                        list-style-type: none;
+                        display: inline-block;
+                        margin-right: 2em;
+                        padding: 0;
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                    }
+                }
+            }
+
+            .talk-categories {
+                margin-top: 1em;
+                padding-top: 1em;
+                border-top: solid 1px var(--color-TextLight, #797676);
+                margin-bottom: 1em;
+                padding-bottom: 1em;
+                border-bottom: solid 1px var(--color-TextLight, #797676);
+                ul {
+                    margin: 0;
+                    li {
+                        list-style-type: none;
+                        display: inline-block;
+                        margin-right: .5em;
+                        padding: .2em 0;
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                        a {
+                            background-color: var(--color-primary-ci-hell2, #ced9e7);
+                            color: var(--color-primary-ci-hell2-kontrast, #000);
+                            margin-right: .3em;
+                            padding: 3px 5px;
+                            text-decoration: none;
+                            &:hover, &:focus, &:active {
+                                background-color: var(--color-primary-ci-hell, #04316a);
+                                color: var(--color-primary-ci-hell-kontrast, #fff);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .talk-tags {
+                ul {
+                    display: inline;
+                    margin: 0;
+                    li {
+                        list-style-type: none;
+                        display: inline-block;
+                        margin-right: .5em;
+                        padding: 0 0 .3em;
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                        a {
+                            //color: var(--color-TextLight, #797676);
+                            /*background-color: var(--color-primary-ci-hell2, #ced9e7);
+                            color: var(--color-primary-ci-hell2-kontrast, #000);
+                            margin-right: .3em;
+                            padding: 3px 5px;
+                            text-decoration: none;
+                            &:hover, &:focus, &:active {
+                                background-color: var(--color-primary-ci-hell, #04316a);
+                                color: var(--color-primary-ci-hell-kontrast, #fff);
+                            }*/
+                        }
+                    }
                 }
             }
         }
