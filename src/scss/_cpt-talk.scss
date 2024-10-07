@@ -27,8 +27,8 @@
             background-color: var(--color-ContentRegions, #f5f7f9);
             padding: 15px;
             @media (min-width: 768px) {
-                //order: 2;
-                flex: 30% 0 0;
+                order: 2;
+                flex: 25% 0 0;
             }
             @media (min-width: 1400px) {
                 padding: 30px;

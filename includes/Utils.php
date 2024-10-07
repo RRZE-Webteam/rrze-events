@@ -93,10 +93,10 @@ class Utils {
 
         $output = '';
         $url_fields = array(
-            'speaker_email' => __('Email', 'fau-events'),
-            'speaker_website' => __('Website', 'fau-events'),
-            'speaker_blog' => __('Blog', 'fau-events'),
-            'speaker_social_media' => __('Social Media', 'fau-events'),
+            'speaker_email' => __('Email', 'rrze-events'),
+            'speaker_website' => __('Website', 'rrze-events'),
+            'speaker_blog' => __('Blog', 'rrze-events'),
+            'speaker_social_media' => __('Social Media', 'rrze-events'),
         );
         $links = [];
         foreach ($url_fields as $url_field => $label) {
@@ -293,10 +293,10 @@ class Utils {
         if (!in_array('media', $hide) && ('' != $talk_video || '' != $talk_slides)) {
             $output .= '<div class="talk-media"><ul>';
             if ('' != $talk_video) {
-                $output .= '<li class="video">[icon icon="solid video"] <a href="' . $talk_video . '">' . __('Video','fau-events') . '</a></li>';
+                $output .= '<li class="video">[icon icon="solid video"] <a href="' . $talk_video . '">' . __('Video','rrze-events') . '</a></li>';
             }
             if ('' != $talk_slides) {
-                $output .= '<li class="folien">[icon icon="regular file-powerpoint"] <a href="' . $talk_slides . '">' . __('Slides','fau-events') . '</a></li>';
+                $output .= '<li class="folien">[icon icon="regular file-powerpoint"] <a href="' . $talk_slides . '">' . __('Slides','rrze-events') . '</a></li>';
             }
             $output .= '</ul></div>';
         }
