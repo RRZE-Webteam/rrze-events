@@ -113,7 +113,7 @@ class Speaker {
                         '</header>';    // end .entry-header
 
                     $out .=         '<div class="entry-summary">' .
-                        strip_tags(get_the_excerpt()) . do_shortcode('[icon icon="solid angles-right"]') .
+                        wp_strip_all_tags(get_the_excerpt()) . do_shortcode('[icon icon="solid angles-right"]') .
                         '</div>' .      // end .entry-summary
                         '</a>';      // end .entry-main
 

@@ -9,12 +9,15 @@
  * @since FAU 1.0
  */
 
+use RRZE\Events\Settings;
 use RRZE\Events\Utils;
+use RRZE\Events\Config;
 
 get_header();
 
 $id = get_the_ID();
 $meta = get_post_meta($id);
+$speakerSettings = Settings::getOption('rrze-events-speaker-settings');
 
 while (have_posts()) : the_post(); ?>
 
@@ -27,7 +30,7 @@ while (have_posts()) : the_post(); ?>
                             <?php the_title();
                             $organisation = get_post_meta($id, 'speaker_organisation', true);
                             if ($organisation != '') {
-                                echo '<br /><span class="speaker-organisation">' . $organisation . '</span>';
+                                echo '<br /><span class="speaker-organisation">' . esc_html($organisation) . '</span>';
                             }
                             ?>
                         </h1>
@@ -43,9 +46,9 @@ while (have_posts()) : the_post(); ?>
                                     $imgdata = fau_get_image_attributs($post_thumbnail_id);
                                     $full_image_attributes = wp_get_attachment_image_src($post_thumbnail_id, 'full');
                                     if ($full_image_attributes) {
-                                        $altattr = trim(strip_tags($imgdata['alt']));
+                                        $altattr = trim(wp_strip_all_tags($imgdata['alt']));
                                         if ((fau_empty($altattr)) && (get_theme_mod("advanced_display_postthumb_alt-from-desc"))) {
-                                            $altattr = trim(strip_tags($imgdata['description']));
+                                            $altattr = trim(wp_strip_all_tags($imgdata['description']));
                                         }
                                         if (fau_empty($altattr)) {
                                             // falls es noch immer leer ist, geben wir an, dass dieses Bild ein Symbolbild ist und
@@ -60,8 +63,8 @@ while (have_posts()) : the_post(); ?>
                                         }
                                         echo '<div class="post-image">';
                                         echo '<figure>';
-                                        echo '<a class="lightbox" href="' . fau_esc_url($full_image_attributes[0]) . '">';
-                                        echo fau_get_image_htmlcode($post_thumbnail_id, 'rwd-480-3-2', $altattr);
+                                        echo '<a class="lightbox" href="' . esc_url($full_image_attributes[0]) . '">';
+                                        echo wp_kses_post(fau_get_image_htmlcode($post_thumbnail_id, 'rwd-480-3-2', $altattr));
                                         echo '</a>';
 
                                         /*$bildunterschrift = get_post_meta($post->ID, 'fauval_overwrite_thumbdesc', true);
@@ -75,28 +78,27 @@ while (have_posts()) : the_post(); ?>
                                 }
                             } ?>
 
-                            <?php echo '<div class="speaker-name">' . get_the_title() . '</div>'; ?>
+                            <?php echo '<div class="speaker-name">' . esc_html(get_the_title()) . '</div>'; ?>
 
                             <?php
                             $organisation = get_post_meta($id, 'speaker_organisation', true);
                             if ($organisation != '') {
-                                echo '<div class="speaker-organisation">' . $organisation . '</div>';
+                                echo '<div class="speaker-organisation">' . esc_html($organisation) . '</div>';
                             }
                             ?>
 
-                            <?php
-                            $links = Utils::speakerLinks($id, 'icons');
-                            if ($links != '') {
-                                echo '<div class="speaker-links">' . $links . '</div>';
-                            }
-                            ?>
+                            <?php if ($speakerSettings['show-link-icons'] == 'on') {
+                                $links = Utils::speakerLinks($id, 'icons');
+                                if ($links != '') {
+                                    echo '<div class="speaker-links">' . wp_kses($links, Utils::get_kses_extended_ruleset()) . '</div>';
+                                }
+                            } ?>
 
-                            <?php if (/*get_my_theme_mod('show_speaker_categories') == true && */false !== get_the_terms($post->ID, 'speaker_category')) : ?>
+                            <?php if ($speakerSettings['show-categories'] == 'on' && get_the_terms($post->ID, 'speaker_category') !== false) : ?>
                                 <div class="speaker-categories">
                                     <?php print get_the_term_list( $post->ID, 'speaker_category', '<ul><li>','</li><li>', '</li></ul>'); ?>
                                 </div><!-- end .entry-cats -->
                             <?php endif; ?>
-
 
                         </div>
 
@@ -105,9 +107,10 @@ while (have_posts()) : the_post(); ?>
                                 <?php the_content(); ?>
                             </div>
                             <?php
-                            $talks = Utils::talksBySpeaker($id);
+                            $orderby = $speakerSettings['talk-order'] == 'by-date' ? 'date' : 'title';
+                            $talks = Utils::talksBySpeaker($id, $orderby);
                             if ($talks != '') {
-                                echo '<div class="speaker-talks">' . $talks . '</div>';
+                                echo '<div class="speaker-talks">' . wp_kses_post($talks) . '</div>';
                             }
                             ?>
                         </div>

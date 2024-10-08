@@ -25,9 +25,9 @@ global $wp_query;
                 <main class="entry-content">
 
                     <?php if (empty($herotype)) {   ?>
-                        <h1 id="maintop"  class="screen-reader-text"><?php _e('Events', 'rrze-calendar'); ?></h1>
+                        <h1 id="maintop"  class="screen-reader-text"><?php esc_html_e('Events', 'rrze-calendar'); ?></h1>
                     <?php } else { ?>
-                        <h1 id="maintop" ><?php _e('Events', 'rrze-calendar');; ?></h1>
+                        <h1 id="maintop" ><?php esc_html_e('Events', 'rrze-calendar');; ?></h1>
                     <?php }
                     $atts = [];
                     $queryVars = $wp_query->query_vars;
@@ -36,7 +36,7 @@ global $wp_query;
                         $atts['abonnement_link'] = '1';
                         $atts['number'] = '99';
                     }
-                    echo Speaker::shortcodeOutput($atts);
+                    echo wp_kses_post(Speaker::shortcodeOutput($atts));
                     ?>
 
                 </main>

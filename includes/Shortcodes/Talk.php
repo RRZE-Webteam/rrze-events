@@ -115,10 +115,10 @@ class Talk {
                 $talkData[$post_id]['date'] = $talk_meta;
                 $talk_start = Utils::getMeta($meta, 'talk_start');
                 $talkData[$post_id]['start'] = $talk_start;
-                $talkData[$post_id]['dtstamp_start'] = date('Ymd', strtotime($talk_date)) . "T" . date('Hi', strtotime($talk_start));
+                $talkData[$post_id]['dtstamp_start'] = gmdate('Ymd', strtotime($talk_date)) . "T" . gmdate('Hi', strtotime($talk_start));
                 $talk_end = Utils::getMeta($meta, 'talk_end');
                 $talkData[$post_id]['end'] = $talk_end;
-                $talkData[$post_id]['dtstamp_end'] = date('Ymd', strtotime($talk_date)) . "T" . date('Hi', strtotime($talkData[$post_id]['end']));
+                $talkData[$post_id]['dtstamp_end'] = gmdate('Ymd', strtotime($talk_date)) . "T" . gmdate('Hi', strtotime($talkData[$post_id]['end']));
                 $talkData[$post_id]['duration'] = $talk_end != '' ? $talk_start . ' - ' . $talk_end : $talk_start;
                 $talkData[$post_id]['room'] = Utils::getMeta($meta, 'talk_room');
                 $talkData[$post_id]['max_participants'] = Utils::getMeta($meta, 'talk_max_participants');
@@ -297,7 +297,7 @@ class Talk {
             $output .= "\n";
 
             $output .= '<p class="short-description">';
-            $output .= strip_tags($talk['excerpt']) . do_shortcode('[icon icon="solid angles-right"]');
+            $output .= wp_strip_all_tags($talk['excerpt']) . do_shortcode('[icon icon="solid angles-right"]');
             $output .= '</p>';
 
             $output .= "</div>\n";

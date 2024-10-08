@@ -25,6 +25,8 @@ use RRZE\WP\Plugin\Plugin;
 const RRZE_PHP_VERSION = '8.2';
 const RRZE_WP_VERSION = '6.6';
 
+require_once 'config/defaults.php';
+
 // Autoloader
 require_once 'vendor/autoload.php';
 
@@ -86,12 +88,12 @@ function activation()
     if ($error = systemRequirements()) {
         deactivate_plugins(plugin_basename(__FILE__));
         wp_die(
-            sprintf(
+            esc_html(sprintf(
             /* translators: 1: The plugin name, 2: The error string. */
                 __('Plugins: %1$s: %2$s', 'rrze-events'),
                 plugin_basename(__FILE__),
                 $error
-            )
+            ))
         );
     }
 
@@ -185,8 +187,8 @@ function loaded()
                     printf(
                         '<div class="notice notice-error"><p>' .
                         /* translators: 1: The plugin name, 2: The error string. */
-                        __('Plugins: %1$s: %2$s', 'rrze-events') .
-                        '</p></div>',
+                        esc_html(__('Plugins: %1$s: %2$s', 'rrze-events') .
+                        '</p></div>'),
                         esc_html($pluginName),
                         esc_html($error)
                     );

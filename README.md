@@ -1,4 +1,6 @@
-# RRZE-Events – WordPress-Plugin für Veranstaltungen
+# RRZE-Events
+
+WordPress-Plugin für Veranstaltungen
 
 ## Features
 - Custom Post Types für Referenten und Vorträge (mit anpassbarer Benennung)

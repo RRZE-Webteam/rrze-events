@@ -23,7 +23,7 @@ class Main
         add_action('admin_enqueue_scripts', [$this, 'adminEnqueueScripts']);
         add_action('wp_enqueue_scripts', [$this, 'wpEnqueueScripts']);
 
-        settings()->loaded();
+        new Settings();
 
         Speaker::init();
         Talk::init();

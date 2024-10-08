@@ -119,7 +119,7 @@ class Talk {
             'type' => 'text_date',
             'date_format' => 'd.m.Y',
             'attributes' => array(
-                'data-datepicker' => json_encode( array(
+                'data-datepicker' => wp_json_encode( array(
                     'dayNames' => Utils::getDaysOfWeek(),
                     'monthNamesShort' => Utils::getMonthNames('short'),
                     'dateFormat' => 'dd.mm.yy',
@@ -133,7 +133,7 @@ class Talk {
             'type' => 'text_time',
             'time_format' => 'H:i',
             'attributes' => array(
-                'data-timepicker' => json_encode( array(
+                'data-timepicker' => wp_json_encode( array(
                     //'timeOnlyTitle' => __( 'Choose your Time', 'rrze-events' ),
                     'timeFormat' => 'HH:mm',
                     'stepMinute' => 1, // 1 minute increments instead of the default 5
@@ -147,7 +147,7 @@ class Talk {
             'type' => 'text_time',
             'time_format' => 'H:i',
             'attributes' => array(
-                'data-timepicker' => json_encode( array(
+                'data-timepicker' => wp_json_encode( array(
                     //'timeOnlyTitle' => __( 'Choose your Time', 'rrze-events' ),
                     'timeFormat' => 'HH:mm',
                     'stepMinute' => 1, // 1 minute increments instead of the default 5

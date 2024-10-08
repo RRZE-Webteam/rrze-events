@@ -57,11 +57,12 @@ class Utils {
     /**
      * Display a speaker's talks
      */
-    public static function talksBySpeaker($speakerID, $heading = 'h2'): string {
+    public static function talksBySpeaker($speakerID, $orderBy='date', $heading = 'h2'): string {
+        $order = ($orderBy == 'date' ? 'DESC' : 'ASC');
         $args = array(
             'post_type' => 'talk',
-            'orderby' => 'title',
-            'order' => 'ASC',
+            'orderby' => $orderBy,
+            'order' => $order,
             'numberposts' => -1,
             'meta_key' => 'talk_speakers',
             'meta_value' => '"' . $speakerID . '"',
@@ -211,9 +212,9 @@ class Utils {
         $talk_short = self::getMeta($meta, 'talk_shortname');
         $talk_date = self::getMeta($meta, 'talk_date');
         $talk_start = self::getMeta($meta, 'talk_start');
-        $dtstamp_beginn = date('Ymd', strtotime($talk_date)) . "T" . date('Hi', strtotime($talk_start));
+        $dtstamp_beginn = gmdate('Ymd', strtotime($talk_date)) . "T" . gmdate('Hi', strtotime($talk_start));
         $talk_end = self::getMeta($meta, 'talk_end');
-        $dtstamp_ende = date('Ymd', strtotime($talk_date)) . "T" . date('Hi', strtotime($talk_end));
+        $dtstamp_ende = gmdate('Ymd', strtotime($talk_date)) . "T" . gmdate('Hi', strtotime($talk_end));
         $talk_room = self::getMeta($meta, 'talk_room');
         $talk_room_url = self::getMeta($meta, 'talk_room_url');
         $talk_max_participants = self::getMeta($meta, 'talk_max_participants');
@@ -239,13 +240,13 @@ class Utils {
         $date = Utils::getMeta($meta, 'talk_date');
         $start = Utils::getMeta($meta, 'talk_start');
         $tsStart = strtotime($date . ' ' . $start);
-        $tsStartUTC = get_gmt_from_date(date('Y-m-d H:i', $tsStart), 'U');
+        $tsStartUTC = get_gmt_from_date(gmdate('Y-m-d H:i', $tsStart), 'U');
         $end = Utils::getMeta($meta, 'talk_end');
-        $metaStart = '<meta itemprop="startDate" content="'. date('c', $tsStartUTC) . '" />';
+        $metaStart = '<meta itemprop="startDate" content="'. gmdate('c', $tsStartUTC) . '" />';
         if ($end != '') {
             $tsEnd = strtotime($date . ' ' . $end);
-            $tsEndUTC = get_gmt_from_date(date('Y-m-d H:i', $tsEnd), 'U');
-            $metaEnd = '<meta itemprop="endDate" content="'. date('c', $tsEndUTC) . '" />';
+            $tsEndUTC = get_gmt_from_date(gmdate('Y-m-d H:i', $tsEnd), 'U');
+            $metaEnd = '<meta itemprop="endDate" content="'. gmdate('c', $tsEndUTC) . '" />';
         } else {
             $metaEnd = '';
         }
@@ -272,7 +273,7 @@ class Utils {
                 . ($talk_room_url != '' ? '<a href="' . $talk_room_url . '">' : '')
                 . $talk_room
                 . ($talk_room_url != '' ? '</a>' : '')
-                . '<meta itemprop="location" content="' . strip_tags($talk_room) . '">'
+                . '<meta itemprop="location" content="' . wp_strip_all_tags($talk_room) . '">'
                 . '</div>';
         }
 
@@ -431,4 +432,30 @@ class Utils {
         }
         return $monthNames;
     }
+
+    public static function get_kses_extended_ruleset() {
+        $kses_defaults = wp_kses_allowed_html('post');
+        $svg_args = [
+            'svg' => [
+                'class' => TRUE,
+                'aria-hidden' => TRUE,
+                'aria-labelledby' => TRUE,
+                'role' => TRUE,
+                'xmlns' => TRUE,
+                'width' => TRUE,
+                'height' => TRUE,
+                'viewbox' => TRUE, // <= Must be lower case!
+                'style' => TRUE,
+                'alt' => TRUE,
+            ],
+            'g' => ['fill' => TRUE],
+            'title' => ['title' => TRUE],
+            'path' => [
+                'd' => TRUE,
+                'fill' => TRUE,
+            ],
+        ];
+        return array_merge($kses_defaults, $svg_args);
+    }
+
 }

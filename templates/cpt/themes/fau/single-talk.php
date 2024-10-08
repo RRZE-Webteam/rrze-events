@@ -27,7 +27,7 @@ while (have_posts()) : the_post(); ?>
                             <?php the_title();
                             $organisation = get_post_meta($id, 'talk_organisation', true);
                             if ($organisation != '') {
-                                echo '<br /><span class="talk-organisation">' . $organisation . '</span>';
+                                echo '<br /><span class="talk-organisation">' . esc_html($organisation) . '</span>';
                             }
                             ?>
                         </h1>
@@ -43,9 +43,9 @@ while (have_posts()) : the_post(); ?>
                                     $imgdata = fau_get_image_attributs($post_thumbnail_id);
                                     $full_image_attributes = wp_get_attachment_image_src($post_thumbnail_id, 'full');
                                     if ($full_image_attributes) {
-                                        $altattr = trim(strip_tags($imgdata['alt']));
+                                        $altattr = trim(wp_strip_all_tags($imgdata['alt']));
                                         if ((fau_empty($altattr)) && (get_theme_mod("advanced_display_postthumb_alt-from-desc"))) {
-                                            $altattr = trim(strip_tags($imgdata['description']));
+                                            $altattr = trim(wp_strip_all_tags($imgdata['description']));
                                         }
                                         if (fau_empty($altattr)) {
                                             // falls es noch immer leer ist, geben wir an, dass dieses Bild ein Symbolbild ist und
@@ -60,8 +60,8 @@ while (have_posts()) : the_post(); ?>
                                         }
                                         echo '<div class="post-image">';
                                         echo '<figure>';
-                                        echo '<a class="lightbox" href="' . fau_esc_url($full_image_attributes[0]) . '">';
-                                        echo fau_get_image_htmlcode($post_thumbnail_id, 'rwd-480-3-2', $altattr);
+                                        echo '<a class="lightbox" href="' . esc_url($full_image_attributes[0]) . '">';
+                                        echo wp_kses_post(fau_get_image_htmlcode($post_thumbnail_id, 'rwd-480-3-2', $altattr));
                                         echo '</a>';
 
                                         /*$bildunterschrift = get_post_meta($post->ID, 'fauval_overwrite_thumbdesc', true);
@@ -77,7 +77,7 @@ while (have_posts()) : the_post(); ?>
 
                             $talkMeta = Utils::talkFields($id);
                             if ($talkMeta != '') {
-                                echo $talkMeta;
+                                echo wp_kses($talkMeta, Utils::get_kses_extended_ruleset());
                             }
                             ?>
 
@@ -91,11 +91,10 @@ while (have_posts()) : the_post(); ?>
                             <?php if (/*get_my_theme_mod('show_talk_categories') == true && */false !== get_the_terms($post->ID, 'talk_tag')) : ?>
                                 <div class="talk-tags">
                                     <?php echo do_shortcode('[icon icon="solid tag"]'); ?>
-                                    <span class="sr-only"><?php echo __('Tags', 'rrze-events');?>: </span>
+                                    <span class="sr-only"><?php esc_html_e('Tags', 'rrze-events');?>: </span>
                                     <?php print get_the_term_list( $post->ID, 'talk_tag', '<ul><li>','</li><li>', '</li></ul>'); ?>
                                 </div><!-- end .entry-cats -->
                             <?php endif; ?>
-
 
                         </div>
 
@@ -103,12 +102,6 @@ while (have_posts()) : the_post(); ?>
                             <div class="talk-description">
                                 <?php the_content(); ?>
                             </div>
-                            <?php
-                            $talks = Utils::talksBySpeaker($id);
-                            if ($talks != '') {
-                                echo '<div class="talk-talks">' . $talks . '</div>';
-                            }
-                            ?>
                         </div>
 
                     </article>

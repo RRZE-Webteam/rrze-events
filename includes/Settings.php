@@ -4,8 +4,6 @@ namespace RRZE\Events;
 
 defined('ABSPATH') || exit;
 
-use RRZE\WP\Settings\Settings as OptionsSettings;
-
 class Settings
 {
     const OPTION_NAME = 'rrze_events';
@@ -14,7 +12,6 @@ class Settings
 
     public function __construct()
     {
-        add_action('rrze_wp_settings_after_update_option', [$this, 'flushRewriteRules']);
         add_action('cmb2_admin_init', [$this, 'registerSettings']);
         if (!has_action('cmb2_render_toggle')) {
             add_action('cmb2_render_toggle', [$this, 'renderToggle' ], 10, 5);
@@ -22,36 +19,13 @@ class Settings
         }
     }
 
-    public function loaded()
+    public static function getOption($option)
     {
-        $this->settings = new OptionsSettings(__('Events Settings', 'rrze-events'), 'rrze-events');
-
-
-    }
-
-    public function flushRewriteRules($optionName)
-    {
-        if ($optionName === self::OPTION_NAME) {
-            flush_rewrite_rules(false);
+        $settings = get_option($option);
+        if (!$settings) {
+            $settings = Config\getDefaults($option);
         }
-    }
-
-    public function validateEndpointSlug($value)
-    {
-        if (mb_strlen(sanitize_title($value)) < 4) {
-            return false;
-        }
-        return true;
-    }
-
-    public function getOption($option)
-    {
-        return $this->settings->getOption($option);
-    }
-
-    public function getOptions()
-    {
-        return $this->settings->getOptions();
+        return $settings;
     }
 
     /**
@@ -72,63 +46,66 @@ class Settings
                 ]
             );
             if (defined('WP_DEBUG') && WP_DEBUG) {
-                throw new \Exception($message);
+                throw new \Exception(esc_html($message));
             }
         }
     }
 
     public function registerSettings() {
+        $defaults = Config\getDefaults();
         $speaker_options = new_cmb2_box([
             'id' => 'rrze-events-speaker-settings',
-            'title' => esc_html__('Speaker Page Options', 'rrze-events'),
+            'title' => esc_html__('Events Settings', 'rrze-events'),
             'object_types' => ['options-page'],
             'option_key' => 'rrze-events-speaker-settings', // The option key and admin menu page slug.
             'menu_title'      => esc_html__( 'RRZE Events', 'rrze-events' ), // Falls back to 'title' (above).
             'parent_slug'     => 'options-general.php',
             'tab_group'    => 'rrze-events-speaker-settings',
             'tab_title'    => esc_html__('Speaker Page Options', 'rrze-events'),
-            'display_cb' => [$this, 'yourprefix_options_display_with_tabs']
+            'display_cb' => [$this, 'options_display_with_tabs']
         ]);
         $speaker_options->add_field([
             'name' => esc_html__('Speaker image format', 'rrze-events'),
             //'desc' => esc_html__('', 'rrze-events'),
             'type' => 'radio_inline',
-            'id'   => 'speaker-image-format',
+            'id'   => 'image-format',
             'options' => [
-                'round' => __('round', 'rrze-events'),
+                'rounded' => __('rounded', 'rrze-events'),
                 'rectangle' => __('rectangle', 'rrze-events'),
-            ]
+            ],
+            'default' => $defaults['rrze-events-speaker-settings']['image-format'],
         ]);
         $speaker_options->add_field([
             'name' => esc_html__('Show link icons in speaker single view', 'rrze-events'),
             //'desc' => esc_html__('', 'rrze-events'),
             'type' => 'toggle',
-            'id'   => 'show_speaker_link_icons',
-            'default' => 'on',
+            'id'   => 'show-link-icons',
+            'default' => $defaults['rrze-events-speaker-settings']['show-link-icons'],
+        ]);
+        $speaker_options->add_field([
+            'name' => esc_html__(' Show categories in speaker single view', 'rrze-events'),
+            //'desc' => esc_html__('', 'rrze-events'),
+            'type' => 'toggle',
+            'id'   => 'show-categories',
+            'default' => $defaults['rrze-events-speaker-settings']['show-categories'],
         ]);
         $speaker_options->add_field([
             'name' => esc_html__(' Show talk list in speaker single view', 'rrze-events'),
             //'desc' => esc_html__('', 'rrze-events'),
             'type' => 'toggle',
-            'id'   => 'show_speaker_talk_list',
-            'default' => 'on',
-        ]);
-        $speaker_options->add_field([
-            'name' => esc_html__(' Show talk list in speaker single view', 'rrze-events'),
-            //'desc' => esc_html__('', 'rrze-events'),
-            'type' => 'toggle',
-            'id'   => 'show_speaker_categories',
-            'default' => 'on',
+            'id'   => 'show-talk-list',
+            'default' => $defaults['rrze-events-speaker-settings']['show-talk-list'],
         ]);
         $speaker_options->add_field([
             'name' => esc_html__('Talk Order', 'rrze-events'),
             'desc' => esc_html__('Order of the talks listed on a speakers single page.', 'rrze-events'),
             'type' => 'radio_inline',
-            'id'   => 'speaker_talk_order',
+            'id'   => 'talk-order',
             'options' => [
-                'title' => __('By title', 'rrze-events'),
-                'date' => __('By date', 'rrze-events'),
-            ]
+                'by-title' => __('By title', 'rrze-events'),
+                'by-date' => __('By date', 'rrze-events'),
+            ],
+            'default' => $defaults['rrze-events-speaker-settings']['talk-order'],
         ]);
 
         // Labels
@@ -140,7 +117,7 @@ class Settings
             'parent_slug'  => 'rrze-events-speaker-settings',
             'tab_group'    => 'rrze-events-speaker-settings',
             'tab_title'    => esc_html__('Labels', 'rrze-events'),
-            'display_cb' => [$this, 'yourprefix_options_display_with_tabs']
+            'display_cb' => [$this, 'options_display_with_tabs']
         ]);
         $label_options->add_field([
             'name' => esc_html__('"Talk": Singular', 'rrze-events'),
@@ -187,7 +164,7 @@ class Settings
             'parent_slug'  => 'rrze-events-speaker-settings',
             'tab_group'    => 'rrze-events-speaker-settings',
             'tab_title'    => esc_html__('Call For Papers', 'rrze-events'),
-            'display_cb' => [$this, 'yourprefix_options_display_with_tabs']
+            'display_cb' => [$this, 'options_display_with_tabs']
         ]);
         if (is_plugin_active( 'contact-form-7/wp-contact-form-7.php' ) ) {
             $cfp_options->add_field([
@@ -197,11 +174,12 @@ class Settings
                 'type'  => 'select',
                 'options_cb' => [$this, 'getCf7Forms'],
                 'show_option_none' => '-- ' . __('None', 'rrze-events') . ' --',
+                'default' => $defaults['rrze-events-cfp-settings']['cfp-form-id'],
             ]); //getCf7Fields
             $cfpFields = [
-                'cfp-talk_title' => esc_html__('Talk Title', 'rrze-events'),
-                'cfp-talk_excerpt' => esc_html__('Talk Excerpt', 'rrze-events'),
-                'cfp-talk_description' => esc_html__('Talk Description', 'rrze-events'),
+                'cfp-talk-title' => esc_html__('Talk Title', 'rrze-events'),
+                'cfp-talk-excerpt' => esc_html__('Talk Excerpt', 'rrze-events'),
+                'cfp-talk-description' => esc_html__('Talk Description', 'rrze-events'),
                 'cfp-speaker-title' => esc_html__('Speaker Academic Title', 'rrze-events'),
                 'cfp-speaker-firstname' => esc_html__('Speaker First Name', 'rrze-events'),
                 'cfp-speaker-lastname' => esc_html__('Speaker Last Name', 'rrze-events'),
@@ -217,12 +195,13 @@ class Settings
                     'type'  => 'select',
                     'options_cb' => [$this, 'getCf7Fields'],
                     'show_option_none' => '-- ' . __('None', 'rrze-events') . ' --',
+                    'default'   => $defaults['rrze-events-cfp-settings'][$key],
                 ]);
             }
         } else {
             $cfp_options->add_field([
                 'name' => __('Please activate Contact Form 7 Plugin to use this option','rrze-events'),
-                'desc' => sprintf(__('%s Go to Plugin page.%s','rrze-events'),'<a href="' . get_site_url(null, '/wp-admin/plugins.php?s=contact%20form%207') . '">&rarr;','</a>'),
+                'desc' => '<a href="' . get_site_url(null, '/wp-admin/plugins.php?s=contact%20form%207') . '">&rarr; ' . __('Go to Plugin page','rrze-events') . '</a>',
                 'type' => 'title',
                 'id'   => 'cfp-error',
             ]);
@@ -288,7 +267,7 @@ class Settings
     </svg>
   </span>
 
-  <span class="screen-reader-text"> ' . $field->args['name'] . '</span>
+  <span class="screen-reader-text"> ' . esc_html($field->args['name']) . '</span>
 </label>';
 
         $field_type_object->_desc( true, true );
@@ -406,10 +385,10 @@ class Settings
      *
      * @param CMB2_Options_Hookup $cmb_options The CMB2_Options_Hookup object.
      */
-    public function yourprefix_options_display_with_tabs( $cmb_options ): void {
-        $tabs = self::yourprefix_options_page_tabs( $cmb_options );
+    public function options_display_with_tabs( $cmb_options ): void {
+        $tabs = self::options_page_tabs( $cmb_options );
         ?>
-        <div class="wrap cmb2-options-page option-<?php echo $cmb_options->option_key; ?>">
+        <div class="wrap cmb2-options-page option-<?php echo esc_html($cmb_options->option_key); ?>">
             <?php if ( get_admin_page_title() ) : ?>
                 <h2><?php echo wp_kses_post( get_admin_page_title() ); ?></h2>
             <?php endif; ?>
@@ -418,7 +397,7 @@ class Settings
                     <a class="nav-tab<?php if ( isset( $_GET['page'] ) && $option_key === $_GET['page'] ) : ?> nav-tab-active<?php endif; ?>" href="<?php menu_page_url( $option_key ); ?>"><?php echo wp_kses_post( $tab_title ); ?></a>
                 <?php endforeach; ?>
             </h2>
-            <form class="cmb-form" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="POST" id="<?php echo $cmb_options->cmb->cmb_id; ?>" enctype="multipart/form-data" encoding="multipart/form-data">
+            <form class="cmb-form" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="POST" id="<?php echo esc_html($cmb_options->cmb->cmb_id); ?>" enctype="multipart/form-data" encoding="multipart/form-data">
                 <input type="hidden" name="action" value="<?php echo esc_attr( $cmb_options->option_key ); ?>">
                 <?php $cmb_options->options_page_metabox(); ?>
                 <?php submit_button( esc_attr( $cmb_options->cmb->prop( 'save_button' ) ), 'primary', 'submit-cmb' ); ?>
@@ -435,7 +414,7 @@ class Settings
      *
      * @return array Array of tab information.
      */
-    public function yourprefix_options_page_tabs( $cmb_options ): array {
+    public function options_page_tabs( $cmb_options ): array {
         $tab_group = $cmb_options->cmb->prop( 'tab_group' );
         $tabs      = array();
 
