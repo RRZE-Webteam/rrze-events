@@ -51,6 +51,22 @@ class Talk {
             }
         }
 
+        if ((isset($atts['tag'])) && ( strlen(trim($atts['tag'])) > 0)) {
+            $tags = explode(',', $atts['tag']);
+            $tags = array_map('trim',$tags);
+            $args = array(
+                'post_type' => 'talk',
+                'relation' => 'AND',
+            );
+            foreach ($tags as $_t) {
+                $args['tax_query'][] = array(
+                    'taxonomy' => 'talk_tag',
+                    'field' => 'slug',
+                    'terms' => $_t,
+                );
+            }
+        }
+
         if (strpos($atts['date'], '.')) {
             $dateparts = explode('.', $atts['date']);
             $dateparts['year'] = $dateparts[2];
@@ -326,7 +342,7 @@ class Talk {
         ];
         $args = shortcode_atts($defaults, $atts);
         $args['number'] = ($args['num'] != '-1') ? $args['num'] : $args['number'];
-        $args['category'] = ($args['cat'] != '-1') ? $args['cat'] : $args['category'];
+        $args['category'] = ($args['cat'] != '') ? $args['cat'] : $args['category'];
         array_walk($args, 'sanitize_text_field');
 
         return $args;

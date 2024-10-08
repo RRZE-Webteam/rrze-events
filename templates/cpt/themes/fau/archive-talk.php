@@ -7,7 +7,7 @@
  * @since FAU 1.0
  */
 
-use RRZE\Events\Shortcodes\Speaker;
+use RRZE\Events\Shortcodes\Talk;
 use RRZE\Events\Utils;
 
 if (isset($_GET['format']) && $_GET['format'] == 'embedded') {
@@ -26,20 +26,24 @@ global $wp_query;
                 <main class="entry-content">
 
                     <?php if (empty($herotype)) {   ?>
-                        <h1 id="maintop"  class="screen-reader-text"><?php esc_html_e('Speakers', 'rrze-events'); ?></h1>
+                        <h1 id="maintop"  class="screen-reader-text"><?php esc_html_e('Talks', 'rrze-events'); ?></h1>
                     <?php } else { ?>
-                        <h1 id="maintop" ><?php esc_html_e('Speakers', 'rrze-events');; ?></h1>
+                        <h1 id="maintop" ><?php esc_html_e('Talks', 'rrze-events');; ?></h1>
                     <?php }
 
                     $queryVars = $wp_query->query_vars;
+                    //var_dump($queryVars);
                     $atts = [
                         'format' => 'grid',
                     ];
-                    if (isset($queryVars['speaker_category']) && $queryVars['speaker_category'] != '') {
-                        $atts['category'] = esc_html($queryVars['speaker_category']);
+                    if (isset($queryVars['talk_category']) && $queryVars['talk_category'] != '') {
+                        $atts['category'] = esc_html($queryVars['talk_category']);
+                    }
+                    if (isset($queryVars['talk_tag']) && $queryVars['talk_tag'] != '') {
+                        $atts['tag'] = esc_html($queryVars['talk_tag']);
                     }
 
-                    echo wp_kses(Speaker::shortcodeOutput($atts), Utils::get_kses_extended_ruleset());
+                    echo wp_kses(Talk::shortcodeOutput($atts), Utils::get_kses_extended_ruleset());
                     ?>
 
                 </main>
