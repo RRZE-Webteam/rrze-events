@@ -291,35 +291,28 @@ class Talk {
         foreach ($talkData as $talk) {
             $talk['video'] = get_post_meta($talk['ID'], 'talk_video', true);
             $talk['slides'] = get_post_meta($talk['ID'], 'talk_slides', true);
-            $output .= '<article class="shortcode talk" id="post-' . $talk['ID'] . '" class="' . implode(' ', get_post_class('', $talk['ID'])) . '">'
-                . '<a href="' . $talk['link'] . '" rel="bookmark" class="entry-main">';
-            $output .= "\n";
+            $output .= '<article class="shortcode talk" id="post-' . $talk['ID'] . '" class="' . implode(' ', get_post_class('', $talk['ID'])) . '">';
             $output .= '<header class="titel">';
             // Titel
-            $output .= '<h3 class="summary">' . $talk['title'] . '</h3>';
-            // Referent
+            $output .= '<h3 class="summary"><a href="' . $talk['link'] . '" rel="bookmark">' . $talk['title'] . '</a></h3>';
+            $output .= '</header>';
+
+            $output .= '<div class="talk-data">';
             $hide = ['media'];
             if ($atts['showorganisation'] == 0) {
                 $hide[] = 'organisation';
             }
-            //var_dump($hide);
-            //$out .= fau_events_talk_fields($post['ID'], $hide);
+            $output .= Utils::talkFields($talk['ID'], $hide);
+            $output .= "</div>";
 
-            $output .= '</header>';
-            $output .= "\n";
-            $output .= '<div class="talk_daten">';
-            $output .= "\n";
             $output .= '<div class="post-entry">';
-            $output .= "\n";
 
             $output .= '<p class="short-description">';
-            $output .= wp_strip_all_tags($talk['excerpt']) . do_shortcode('[icon icon="solid angles-right"]');
+            $output .= wp_strip_all_tags($talk['excerpt']) . '<a href="' . $talk['link'] . '" rel="bookmark" class="read-more">' . do_shortcode('[icon icon="solid angles-right" alt="' . __('Read more about', 'rrze-events') . '"]') . '</a>';
             $output .= '</p>';
 
-            $output .= "</div>\n";
-
-            $output .= "</div>\n";
-            $output .= "</a></article>\n";
+            $output .= "</div>";
+            $output .= "</article>";
         }
         $output .= '</div>';
         return $output;
@@ -335,7 +328,7 @@ class Talk {
             'id' => '',
             'format' => '',
             'showimage' => 0,
-            'showorganisation' => 1,
+            'showorganisation' => 0,
             'date' => '',
             'columns' => 'date, duration, title, speaker',
             'orderby' => 'date,ASC,duration,ASC',//,title,ASC

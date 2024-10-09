@@ -90,7 +90,7 @@ while (have_posts()) : the_post(); ?>
                             <?php if ($speakerSettings['show-link-icons'] == 'on') {
                                 $links = Utils::speakerLinks($id, 'icons');
                                 if ($links != '') {
-                                    echo '<div class="speaker-links">' . wp_kses($links, Utils::get_kses_extended_ruleset()) . '</div>';
+                                    echo '<div class="speaker-links">' . wp_kses($links, Utils::getKsesExtendedRuleset()) . '</div>';
                                 }
                             } ?>
 

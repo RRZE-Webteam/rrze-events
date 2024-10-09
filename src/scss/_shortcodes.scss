@@ -56,7 +56,7 @@
                 }
 
             }
-            /*a.read-more {
+            a.read-more {
                 vertical-align: middle;
                 margin-left: .5em;
                 svg.rrze-elements-icon {
@@ -67,7 +67,27 @@
                         padding: 2px;
                     }
                 }
-            }*/
+            }
+        }
+    }
+
+    &.talk-grid {
+        & > article {
+            padding: var(--width-gutter-half, 15px);
+            .talk-data {
+                div {
+                    margin-bottom: .25em;
+                }
+                svg {
+                    margin-right: .3em;
+                }
+                .date {
+                    margin-right: 1em;
+                }
+            }
+            .post-entry {
+                margin-top: var(--width-gutter-half, 15px);
+            }
         }
     }
 
@@ -77,21 +97,5 @@
         }
     }
 
-    &.talk-grid,
-    &.talk-medium {
-        a.read-more {
-            vertical-align: middle;
-            margin-left: .5em;
-            svg.rrze-elements-icon {
-                padding: 0;
-            }
-            &:hover, &:focus, &:active {
-                svg.rrze-elements-icon {
-                    padding: 2px;
-                }
-            }
-        }
-    }
-    
 }
 

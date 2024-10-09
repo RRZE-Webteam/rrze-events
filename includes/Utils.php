@@ -221,18 +221,23 @@ class Utils {
         $talk_available = self::getMeta($meta, 'talk_available');
         $talk_video = self::getMeta($meta, 'talk_video');
         $talk_slides = self::getMeta($meta, 'talk_slides');
-
+        $settings = Settings::getOption('rrze-events-settings');
+        $accentColor = $settings['accent-color'];
+//var_dump($hide);
         // Speaker(s)
-        $speakers = get_post_meta($post_id, 'talk_speakers', true);
         if ($speakers != '') {
             $speakerLinks = [];
             foreach ($speakers as $speakerID) {
-                $organisation = Utils::getMeta($meta, 'speaker_organisation');
+                if (!in_array('organisation', $hide)) {
+                    $organisation = get_post_meta($speakerID, 'speaker_organisation', true);
+                } else {
+                    $organisation = '';
+                }
                 $speakerLinks[] = '<a href="' . get_permalink($speakerID) . '">' . get_the_title($speakerID) . '</a>'
                     . ($organisation != '' ? ' (' . $organisation . ')' : '');
             }
-            $output .= '<div class="talk-speaker"><span class="label">' . _n('Speaker', 'Speakers', count($speakers), 'rrze-events') . '</span>:<br />';
-            $output .= implode('<br />', $speakerLinks);
+            $output .= '<div class="talk-speaker" title="' . __('Speaker', 'rrze-events') . '">[icon icon="solid user" color="' . $accentColor . '"]<span class="sr-only">' . __('Speaker', 'rrze-events') . ': </span>';
+            $output .= implode(', ', $speakerLinks);
             $output .= '</div>';
         }
 
@@ -252,11 +257,11 @@ class Utils {
         }
         if ($date . $start . $end != '') {
             $output .= '<div class="talk-datetime">'
-                . ($date != '' ? '<span class="date">[icon icon="regular calendar"] '
+                . ($date != '' ? '<span class="date" title="' . __('Date', 'rrze-events') . '">[icon icon="regular calendar" color="' . $accentColor . '"] '
                     . '<span class="sr-only">' . __('Date', 'rrze-events') . ': </span>'
                     . $date . '</span>' : '')
-                . ($start .$end != '' ? '<span class="time">'
-                    . '[icon icon="regular clock"] '
+                . ($start .$end != '' ? '<span class="time" title="' . __('Time', 'rrze-events') . '">'
+                    . '[icon icon="regular clock" color="' . $accentColor . '"] '
                     . '<span class="sr-only">' . __('Time', 'rrze-events') . ': </span>'
                     . $start
                     . ($end != '' ? ' - ' . $end : '')
@@ -267,8 +272,8 @@ class Utils {
 
         // Location
         if ($talk_room != '') {
-            $output .= '<div class="talk-location">'
-                . '[icon icon="solid location-dot"]'
+            $output .= '<div class="talk-location" title="' . __('Location', 'rrze-events') . '">'
+                . '[icon icon="solid location-dot" color="' . $accentColor . '"]'
                 . '<span class="sr-only">' . __('Location', 'rrze-events') . ': </span>'
                 . ($talk_room_url != '' ? '<a href="' . $talk_room_url . '">' : '')
                 . $talk_room
@@ -279,9 +284,9 @@ class Utils {
 
         // Participants
         if ($talk_max_participants != '' || $talk_available != '') {
-            $output .= '<div class="talk-participants">'
-                . '[icon icon="solid users"]';
-                //. '<span class="sr-only">' . __('Participants', 'rrze-events') . ': </span>';
+            $output .= '<div class="talk-participants" title="' . __('Participants', 'rrze-events') . '">'
+                . '[icon icon="solid users" color="' . $accentColor . '"]'
+                . '<span class="sr-only">' . __('Participants', 'rrze-events') . ': </span>';
             if ($talk_max_participants != '') {
                 $output .= $talk_max_participants . ' '. __('Participants', 'rrze-events');
             }
@@ -294,10 +299,10 @@ class Utils {
         if (!in_array('media', $hide) && ('' != $talk_video || '' != $talk_slides)) {
             $output .= '<div class="talk-media"><ul>';
             if ('' != $talk_video) {
-                $output .= '<li class="video">[icon icon="solid video"] <a href="' . $talk_video . '">' . __('Video','rrze-events') . '</a></li>';
+                $output .= '<li class="video" title="' . __('Participants', 'rrze-events') . '">[icon icon="solid video" color="' . $accentColor . '"] <a href="' . $talk_video . '">' . __('Video','rrze-events') . '</a></li>';
             }
             if ('' != $talk_slides) {
-                $output .= '<li class="folien">[icon icon="regular file-powerpoint"] <a href="' . $talk_slides . '">' . __('Slides','rrze-events') . '</a></li>';
+                $output .= '<li class="folien" title="' . __('Participants', 'rrze-events') . '">[icon icon="regular file-powerpoint" color="' . $accentColor . '"] <a href="' . $talk_slides . '">' . __('Slides','rrze-events') . '</a></li>';
             }
             $output .= '</ul></div>';
         }
@@ -433,7 +438,7 @@ class Utils {
         return $monthNames;
     }
 
-    public static function get_kses_extended_ruleset() {
+    public static function getKsesExtendedRuleset() {
         $kses_defaults = wp_kses_allowed_html('post');
         $svg_args = [
             'svg' => [
@@ -445,7 +450,10 @@ class Utils {
                 'width' => TRUE,
                 'height' => TRUE,
                 'viewbox' => TRUE, // <= Must be lower case!
-                'style' => TRUE,
+                'style' => [
+                    'fill' => TRUE,
+                    'font-size' => TRUE,
+                ],
                 'alt' => TRUE,
             ],
             'g' => ['fill' => TRUE],

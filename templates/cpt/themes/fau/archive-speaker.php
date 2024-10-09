@@ -39,7 +39,7 @@ global $wp_query;
                         $atts['category'] = esc_html($queryVars['speaker_category']);
                     }
 
-                    echo wp_kses(Speaker::shortcodeOutput($atts), Utils::get_kses_extended_ruleset());
+                    echo wp_kses(Speaker::shortcodeOutput($atts), Utils::getKsesExtendedRuleset());
                     ?>
 
                 </main>

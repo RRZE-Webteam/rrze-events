@@ -53,14 +53,37 @@ class Settings
 
     public function registerSettings() {
         $defaults = Config\getDefaults();
-        $speaker_options = new_cmb2_box([
-            'id' => 'rrze-events-speaker-settings',
+        $general_options = new_cmb2_box([
+            'id' => 'rrze-events-settings',
             'title' => esc_html__('Events Settings', 'rrze-events'),
             'object_types' => ['options-page'],
-            'option_key' => 'rrze-events-speaker-settings', // The option key and admin menu page slug.
+            'option_key' => 'rrze-events-settings', // The option key and admin menu page slug.
             'menu_title'      => esc_html__( 'RRZE Events', 'rrze-events' ), // Falls back to 'title' (above).
             'parent_slug'     => 'options-general.php',
-            'tab_group'    => 'rrze-events-speaker-settings',
+            'tab_group'    => 'rrze-events-settings',
+            'tab_title'    => esc_html__('General', 'rrze-events'),
+            'display_cb' => [$this, 'options_display_with_tabs']
+        ]);
+        $general_options->add_field([
+            'id' => 'accent-color',
+            'name' => esc_html__('Accent Color', 'rrze-events'),
+            'desc' => esc_html__('Used for icons etc.', 'rrze-events'),
+            'type' => 'colorpicker',
+            'default' => '#04316a',
+            'attributes' => array(
+                'data-colorpicker' => json_encode( array(
+                    // Iris Options set here as values in the 'data-colorpicker' array
+                    'palettes' => array( '#04316a', '#e87722', '#005287', '#266141', '#971b2f', '#2f586e'),
+                ) ),
+            ),
+        ]);
+        $speaker_options = new_cmb2_box([
+            'id'           => 'rrze-events-speaker-settings',
+            'title'        => esc_html__('Speaker Page Options', 'rrze-events'),
+            'object_types' => ['options-page'],
+            'option_key'   => 'rrze-events-speaker-settings',
+            'parent_slug'  => 'rrze-events-settings',
+            'tab_group'    => 'rrze-events-settings',
             'tab_title'    => esc_html__('Speaker Page Options', 'rrze-events'),
             'display_cb' => [$this, 'options_display_with_tabs']
         ]);
@@ -114,8 +137,8 @@ class Settings
             'title'        => esc_html__('Labels', 'rrze-events'),
             'object_types' => ['options-page'],
             'option_key'   => 'rrze-events-label-settings',
-            'parent_slug'  => 'rrze-events-speaker-settings',
-            'tab_group'    => 'rrze-events-speaker-settings',
+            'parent_slug'  => 'rrze-events-settings',
+            'tab_group'    => 'rrze-events-settings',
             'tab_title'    => esc_html__('Labels', 'rrze-events'),
             'display_cb' => [$this, 'options_display_with_tabs']
         ]);
@@ -161,8 +184,8 @@ class Settings
             'title'        => esc_html__('Call For Papers', 'rrze-events'),
             'object_types' => ['options-page'],
             'option_key'   => 'rrze-events-cfp-settings',
-            'parent_slug'  => 'rrze-events-speaker-settings',
-            'tab_group'    => 'rrze-events-speaker-settings',
+            'parent_slug'  => 'rrze-events-settings',
+            'tab_group'    => 'rrze-events-settings',
             'tab_title'    => esc_html__('Call For Papers', 'rrze-events'),
             'display_cb' => [$this, 'options_display_with_tabs']
         ]);

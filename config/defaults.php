@@ -7,6 +7,9 @@ defined('ABSPATH') || exit;
 function getDefaults($key = ''): array {
 
     $defaults = [
+        'rrze-events-settings' => [
+            'accent-color' => '#04316a',
+        ],
         'rrze-events-speaker-settings' => [
             'image-format'      => 'rounded',
             'show-link-icons'   => 'on',

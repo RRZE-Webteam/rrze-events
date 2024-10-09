@@ -75,9 +75,9 @@ while (have_posts()) : the_post(); ?>
                                 }
                             }
 
-                            $talkMeta = Utils::talkFields($id);
+                            $talkMeta = Utils::talkFields($id, ['organisation']);
                             if ($talkMeta != '') {
-                                echo wp_kses($talkMeta, Utils::get_kses_extended_ruleset());
+                                echo wp_kses($talkMeta, Utils::getKsesExtendedRuleset());
                             }
                             ?>
 

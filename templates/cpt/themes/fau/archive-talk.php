@@ -32,9 +32,10 @@ global $wp_query;
                     <?php }
 
                     $queryVars = $wp_query->query_vars;
-                    //var_dump($queryVars);
+
                     $atts = [
                         'format' => 'grid',
+                        'showorganisation' => '0',
                     ];
                     if (isset($queryVars['talk_category']) && $queryVars['talk_category'] != '') {
                         $atts['category'] = esc_html($queryVars['talk_category']);
@@ -43,7 +44,8 @@ global $wp_query;
                         $atts['tag'] = esc_html($queryVars['talk_tag']);
                     }
 
-                    echo wp_kses(Talk::shortcodeOutput($atts), Utils::get_kses_extended_ruleset());
+                    echo wp_kses(Talk::shortcodeOutput($atts), Utils::getKsesExtendedRuleset());
+                    //echo Talk::shortcodeOutput($atts);
                     ?>
 
                 </main>
