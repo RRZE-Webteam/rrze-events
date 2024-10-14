@@ -11,13 +11,11 @@
 
 use RRZE\Events\Settings;
 use RRZE\Events\Utils;
-use RRZE\Events\Config;
 
 get_header();
 
 $id = get_the_ID();
 $meta = get_post_meta($id);
-$speakerSettings = Settings::getOption('rrze-events-speaker-settings');
 
 while (have_posts()) : the_post(); ?>
 
@@ -25,17 +23,17 @@ while (have_posts()) : the_post(); ?>
         <div class="content-container">
             <div class="content-row">
                 <main>
-                    <article class="rrze-speaker" itemscope itemtype="https://schema.org/Person">
+                    <article class="rrze-talk" itemscope itemtype="https://schema.org/Event">
                         <h1 id="maintop" class="mobiletitle" itemprop="name">
                             <?php the_title();
-                            $organisation = get_post_meta($id, 'speaker_organisation', true);
+                            $organisation = get_post_meta($id, 'talk_organisation', true);
                             if ($organisation != '') {
-                                echo '<br /><span class="speaker-organisation">' . esc_html($organisation) . '</span>';
+                                echo '<br /><span class="talk-organisation">' . esc_html($organisation) . '</span>';
                             }
                             ?>
                         </h1>
 
-                        <div class="speaker-details">
+                        <div class="talk-details">
 
                             <?php
                             // Thumbnail
@@ -76,43 +74,38 @@ while (have_posts()) : the_post(); ?>
                                         echo '</div>';
                                     }
                                 }
-                            } ?>
+                            }
 
-                            <?php echo '<div class="speaker-name">' . esc_html(get_the_title()) . '</div>'; ?>
-
-                            <?php
-                            $organisation = get_post_meta($id, 'speaker_organisation', true);
-                            if ($organisation != '') {
-                                echo '<div class="speaker-organisation">' . esc_html($organisation) . '</div>';
+                            $talkMeta = Utils::talkFields($id, ['organisation']);
+                            if ($talkMeta != '') {
+                                echo wp_kses($talkMeta, Utils::getKsesExtendedRuleset());
                             }
                             ?>
 
-                            <?php if ($speakerSettings['show-link-icons'] == 'on') {
-                                $links = Utils::speakerLinks($id, 'icons');
-                                if ($links != '') {
-                                    echo '<div class="speaker-links">' . wp_kses($links, Utils::getKsesExtendedRuleset()) . '</div>';
-                                }
-                            } ?>
+                            <?php if (/*get_my_theme_mod('show_talk_categories') == true && */false !== get_the_terms($post->ID, 'talk_category')) : ?>
+                                <div class="talk-categories">
+                                    <?php
+                                    print get_the_term_list( $post->ID, 'talk_category', '<ul><li>','</li><li>', '</li></ul>'); ?>
+                                </div><!-- end .entry-cats -->
+                            <?php endif; ?>
 
-                            <?php if ($speakerSettings['show-categories'] == 'on' && get_the_terms($post->ID, 'speaker_category') !== false) : ?>
-                                <div class="speaker-categories">
-                                    <?php print get_the_term_list( $post->ID, 'speaker_category', '<ul><li>','</li><li>', '</li></ul>'); ?>
+                            <?php if (/*get_my_theme_mod('show_talk_categories') == true && */false !== get_the_terms($post->ID, 'talk_tag')) :
+                                $settings = Settings::getOption('rrze-events-settings');
+                                $accentColor = $settings['accent-color'];
+                                ?>
+                                <div class="talk-tags">
+                                    <?php echo do_shortcode('[icon icon="solid tag" color="' . $accentColor . '"]'); ?>
+                                    <span class="sr-only"><?php esc_html_e('Tags', 'rrze-events');?>: </span>
+                                    <?php print get_the_term_list( $post->ID, 'talk_tag', '<ul><li>','</li><li>', '</li></ul>'); ?>
                                 </div><!-- end .entry-cats -->
                             <?php endif; ?>
 
                         </div>
 
-                        <div class="speaker-main">
-                            <div class="speaker-description">
+                        <div class="talk-main">
+                            <div class="talk-description">
                                 <?php the_content(); ?>
                             </div>
-                            <?php
-                            $orderby = $speakerSettings['talk-order'] == 'by-date' ? 'date' : 'title';
-                            $talks = Utils::talksBySpeaker($id, $orderby);
-                            if ($talks != '') {
-                                echo '<div class="speaker-talks">' . wp_kses_post($talks) . '</div>';
-                            }
-                            ?>
                         </div>
 
                     </article>

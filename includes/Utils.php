@@ -100,6 +100,8 @@ class Utils {
             'speaker_social_media' => __('Social Media', 'rrze-events'),
         );
         $links = [];
+        $settings = Settings::getOption('rrze-events-settings');
+        $accentColor = $settings['accent-color'];
         foreach ($url_fields as $url_field => $label) {
             $linkData = [];
             if ('speaker_social_media' == $url_field) {
@@ -187,7 +189,7 @@ class Utils {
                 $output .= "<span class=''>" . $link['label'] . "</span>: ";
             }
             $output .= '<a href="' . $link['url'] . '" title="' . $link['label'] . '">'
-                . '[icon icon="' . $link['icon'] . '" alt="' . $link['label'] . '" style="2x"]'
+                . '[icon icon="' . $link['icon'] . '" alt="' . $link['label'] . '" style="2x" color="' . $accentColor . '"]'
                 .  '<span class="sr-only">' . $link['label'] . '</span>'
             . "</a>";
             $output .= '</li>';
@@ -208,7 +210,6 @@ class Utils {
 
         $output = '';
         $meta = get_post_meta($post_id);
-        $speakers = self::getMeta($meta, 'talk_speakers');
         $talk_short = self::getMeta($meta, 'talk_shortname');
         $talk_date = self::getMeta($meta, 'talk_date');
         $talk_start = self::getMeta($meta, 'talk_start');
@@ -223,22 +224,25 @@ class Utils {
         $talk_slides = self::getMeta($meta, 'talk_slides');
         $settings = Settings::getOption('rrze-events-settings');
         $accentColor = $settings['accent-color'];
-//var_dump($hide);
+
         // Speaker(s)
-        if ($speakers != '') {
-            $speakerLinks = [];
-            foreach ($speakers as $speakerID) {
-                if (!in_array('organisation', $hide)) {
-                    $organisation = get_post_meta($speakerID, 'speaker_organisation', true);
-                } else {
-                    $organisation = '';
+        if (!in_array('speaker', $hide)) {
+            $speakers = self::getMeta($meta, 'talk_speakers');
+            if ($speakers != '') {
+                $speakerLinks = [];
+                foreach ($speakers as $speakerID) {
+                    if ( ! in_array('organisation', $hide)) {
+                        $organisation = get_post_meta($speakerID, 'speaker_organisation', TRUE);
+                    } else {
+                        $organisation = '';
+                    }
+                    $speakerLinks[] = '<a href="' . get_permalink($speakerID) . '">' . get_the_title($speakerID) . '</a>'
+                        . ($organisation != '' ? ' (' . $organisation . ')' : '');
                 }
-                $speakerLinks[] = '<a href="' . get_permalink($speakerID) . '">' . get_the_title($speakerID) . '</a>'
-                    . ($organisation != '' ? ' (' . $organisation . ')' : '');
+                $output .= '<div class="talk-speaker" title="' . __('Speaker', 'rrze-events') . '">[icon icon="solid user" color="' . $accentColor . '"]<span class="sr-only">' . __('Speaker', 'rrze-events') . ': </span>';
+                $output .= implode(', ', $speakerLinks);
+                $output .= '</div>';
             }
-            $output .= '<div class="talk-speaker" title="' . __('Speaker', 'rrze-events') . '">[icon icon="solid user" color="' . $accentColor . '"]<span class="sr-only">' . __('Speaker', 'rrze-events') . ': </span>';
-            $output .= implode(', ', $speakerLinks);
-            $output .= '</div>';
         }
 
         // Date/Time
@@ -291,7 +295,7 @@ class Utils {
                 $output .= $talk_max_participants . ' '. __('Participants', 'rrze-events');
             }
             if ($talk_available != '') {
-                $output .= ' (' . $talk_available . ' ' . __('available', 'rrze-events') . ')';
+                $output .= ' (' . $talk_available . '&nbsp;' . __('available', 'rrze-events') . ')';
             }
             $output .= '</div>';
         }
