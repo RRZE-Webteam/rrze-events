@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: RRZE Events\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-16 14:22+0000\n"
-"PO-Revision-Date: 2024-10-07 12:46+0000\n"
+"PO-Revision-Date: 2024-10-15 10:00+0000\n"
 "Last-Translator: Barbara Bothe\n"
 "Language-Team: Deutsch (Sie)\n"
 "Language: de_DE_formal\n"
@@ -18,7 +18,11 @@ msgstr ""
 "X-Loco-Template: languages/rrze-events-de_DE.po\n"
 "X-Loco-Template-Mode: PO,JSON"
 
-#: includes/Settings.php:110 includes/Settings.php:117
+#: includes/Settings.php:109
+msgid " Show categories in speaker single view"
+msgstr "Kategorien auf der Referentenseite anzeigen"
+
+#: includes/Settings.php:116
 msgid " Show talk list in speaker single view"
 msgstr "Vortragsliste auf der Referentenseite anzeigen"
 
@@ -38,11 +42,6 @@ msgstr "\"Vortrag\": Plural"
 msgid "\"Talk\": Singular"
 msgstr "\"Vortrag\": Singular"
 
-#: includes/Settings.php:225
-#, php-format
-msgid "%s Go to Plugin page.%s"
-msgstr "%s Zur Plugin-Seite %s"
-
 #: includes/Settings.php:175
 msgid "(e.g. Course Nr, ID etc.)"
 msgstr "(z.B. Kursnr., ID etc.)"
@@ -54,6 +53,10 @@ msgstr "(z.B. Dozent, Referent, Mitarbeiter etc.)"
 #: includes/Settings.php:147
 msgid "(e.g. Workshop, Course, Conference etc.)"
 msgstr "(z.B. Workshop, Kurs, Vortrag etc.)"
+
+#: includes/Settings.php:69
+msgid "Accent Color"
+msgstr "Akzentfarbe"
 
 #: includes/CPT/Speaker.php:143
 msgid "Add URL"
@@ -67,23 +70,23 @@ msgstr "Alle Referenten"
 msgid "All Talks"
 msgstr "Alle Vorträge"
 
-#: includes/Shortcodes/Talk.php:202
+#: includes/Shortcodes/Talk.php:219
 msgid "Available"
 msgstr "Verfügbar"
 
-#: includes/Utils.php:288
+#: includes/Utils.php:292
 msgid "available"
 msgstr "verfügbar"
 
-#: includes/Utils.php:98 includes/CPT/Speaker.php:128
+#: includes/Utils.php:93 includes/CPT/Speaker.php:128
 msgid "Blog"
 msgstr "Blog"
 
-#: includes/Settings.php:130
+#: includes/Settings.php:129
 msgid "By date"
 msgstr "Nach Datum"
 
-#: includes/Settings.php:129
+#: includes/Settings.php:128
 msgid "By title"
 msgstr "Nach Titel"
 
@@ -95,16 +98,16 @@ msgstr "Call For Papers"
 msgid "Code"
 msgstr "Kurzbezeichnung"
 
-#: includes/Utils.php:180
+#: includes/Utils.php:177
 msgid "Contact"
 msgstr "Kontakt"
 
-#: includes/Settings.php:178
+#: config/defaults.php:26 includes/Settings.php:178
 msgid "Course Nr"
 msgstr "Kursnr."
 
-#: includes/Utils.php:255 includes/CPT/Talk.php:116
-#: includes/Shortcodes/Talk.php:193
+#: includes/Utils.php:258 includes/Utils.php:259 includes/CPT/Talk.php:116
+#: includes/Shortcodes/Talk.php:210
 msgid "Date"
 msgstr "Datum"
 
@@ -122,11 +125,11 @@ msgstr ""
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: includes/Utils.php:96 includes/CPT/Speaker.php:116
+#: includes/Utils.php:91 includes/CPT/Speaker.php:116
 msgid "Email"
 msgstr "E-Mail"
 
-#: includes/Shortcodes/Talk.php:197
+#: includes/Shortcodes/Talk.php:214
 msgid "End"
 msgstr "Ende"
 
@@ -146,7 +149,7 @@ msgstr "URL der Präsentationsfolien eingeben: \"https://...\":"
 msgid "Enter URL..."
 msgstr "URL eingeben..."
 
-#: includes/Settings.php:27
+#: includes/Settings.php:58
 msgid "Events Settings"
 msgstr "Events Einstellungen"
 
@@ -157,6 +160,14 @@ msgstr "Firma / Organisation"
 #: includes/Settings.php:195
 msgid "Form ID"
 msgstr "Formular-ID"
+
+#: includes/Settings.php:64
+msgid "General"
+msgstr "Allgemein"
+
+#: includes/Settings.php:227
+msgid "Go to Plugin page"
+msgstr "Zur Plugin-Seite"
 
 #. Author URI of the plugin
 msgid "https://blogs.fau.de/webworking/"
@@ -174,8 +185,8 @@ msgstr "ID des Contact-Form-7-Formulars, das den Call for Papers enthält"
 msgid "Labels"
 msgstr "Bezeichnungen"
 
-#: includes/Utils.php:271 includes/CPT/Talk.php:158
-#: includes/Shortcodes/Talk.php:199
+#: includes/Utils.php:273 includes/Utils.php:275 includes/CPT/Talk.php:158
+#: includes/Shortcodes/Talk.php:216
 msgid "Location"
 msgstr "Ort/Raum"
 
@@ -191,6 +202,10 @@ msgstr "Vorträge und Referenten verwalten und anzeigen"
 msgid "Max. number of participants"
 msgstr "Maximale Teilnehmerzahl"
 
+#: templates/content/content-single-talk.php:64
+msgid "More about&hellip;"
+msgstr "Mehr zum Thema&hellip;"
+
 #: includes/CPT/Talk.php:37 includes/CPT/Speaker.php:37
 msgid "New"
 msgstr "Neu"
@@ -203,11 +218,11 @@ msgstr "Neuer Referent"
 msgid "New Talk"
 msgstr "Neuer Vortrag"
 
-#: includes/Shortcodes/Talk.php:156
+#: includes/Shortcodes/Talk.php:173
 msgid "No talk information found."
 msgstr "Keine Informationen zum Vortrag gefunden."
 
-#: includes/Settings.php:199 includes/Settings.php:219
+#: includes/Settings.php:199 includes/Settings.php:220
 msgid "None"
 msgstr "Keine Auswahl"
 
@@ -215,7 +230,7 @@ msgstr "Keine Auswahl"
 msgid "Offer waiting list for fully booked talks"
 msgstr "Warteliste für ausgebuchte Vorträge anbieten"
 
-#: includes/Settings.php:125
+#: includes/Settings.php:124
 msgid "Order of the talks listed on a speakers single page."
 msgstr ""
 "Reihenfolge der Vorträge, die auf der Referentenseite aufgelistet werden."
@@ -224,7 +239,9 @@ msgstr ""
 msgid "Parent Item:"
 msgstr "Übergeordneter Eintrag:"
 
-#: includes/Utils.php:285 includes/Shortcodes/Talk.php:201
+#: includes/Utils.php:285 includes/Utils.php:287 includes/Utils.php:289
+#: includes/Utils.php:300 includes/Utils.php:303
+#: includes/Shortcodes/Talk.php:218
 msgid "Participants"
 msgstr "Teilnehmer"
 
@@ -232,14 +249,14 @@ msgstr "Teilnehmer"
 msgid "Places available"
 msgstr "Verfügbare Plätze"
 
-#: includes/Settings.php:224
+#: includes/Settings.php:226
 msgid "Please activate Contact Form 7 Plugin to use this option"
 msgstr ""
 "Bitte aktivieren Sie das Plugin \"Contact Form 7\", um diese Funktion nutzen "
 "zu können."
 
 #. 1: The plugin name, 2: The error string.
-#: rrze-events.php:91 rrze-events.php:188
+#: rrze-events.php:93 rrze-events.php:190
 #, php-format
 msgid "Plugins: %1$s: %2$s"
 msgstr "Plugins: %1$s: %2$s"
@@ -268,20 +285,25 @@ msgstr "Vortrag"
 msgid "Presentation URL"
 msgstr "URL der Präsentationsfolien"
 
-#: includes/Settings.php:99
+#: includes/Shortcodes/Talk.php:317
+msgid "Read more about"
+msgstr "Mehr zu"
+
+#: includes/Settings.php:97
 msgid "rectangle"
 msgstr "rechteckig"
 
-#: includes/Settings.php:98
-msgid "round"
+#: includes/Settings.php:96
+#| msgid "round"
+msgid "rounded"
 msgstr "rund"
 
 #. Name of the plugin
-#: includes/Settings.php:86
+#: includes/Settings.php:61
 msgid "RRZE Events"
 msgstr "RRZE Events"
 
-#: rrze-events.php:75
+#: rrze-events.php:77
 msgid ""
 "RRZE Events plugin does not work with FAU Events Theme as the event features "
 "are already included in the theme. Please activate another theme before "
@@ -310,35 +332,37 @@ msgstr "Nach Vorträgen suchen"
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: includes/Settings.php:103
+#: includes/Settings.php:102
 msgid "Show link icons in speaker single view"
 msgstr "Link-Icons auf der Referentenseite anzeigen"
 
-#: includes/Utils.php:299
+#: includes/Utils.php:303
 msgid "Slides"
 msgstr "Vortragsfolien"
 
-#: includes/Utils.php:99 includes/CPT/Speaker.php:134
+#: includes/Utils.php:94 includes/CPT/Speaker.php:134
 msgid "Social Media"
 msgstr "Soziale Medien"
 
-#: includes/Settings.php:164 includes/Utils.php:233 includes/CPT/Speaker.php:45
+#: config/defaults.php:24 includes/Settings.php:164 includes/Utils.php:236
+#: includes/Utils.php:236 includes/CPT/Speaker.php:45
+#: templates/content/content-single-talk.php:22
 msgid "Speaker"
 msgstr "Referent"
 
-#: includes/Settings.php:205
+#: includes/Settings.php:206
 msgid "Speaker Academic Title"
 msgstr "Referent: Akademischer Titel"
 
-#: includes/Settings.php:210
+#: includes/Settings.php:211
 msgid "Speaker Email Address"
 msgstr "Referent: E-Mail-Adresse"
 
-#: includes/Settings.php:206
+#: includes/Settings.php:207
 msgid "Speaker First Name"
 msgstr "Referent: Vorname"
 
-#: includes/Settings.php:93
+#: includes/Settings.php:91
 msgid "Speaker image format"
 msgstr "Bildformat auf der Referentenseite"
 
@@ -346,7 +370,7 @@ msgstr "Bildformat auf der Referentenseite"
 msgid "Speaker Information"
 msgstr "Informationen"
 
-#: includes/Settings.php:207
+#: includes/Settings.php:208
 msgid "Speaker Last Name"
 msgstr "Referent: Nachname"
 
@@ -358,19 +382,19 @@ msgstr "Kein Referent gefunden"
 msgid "Speaker not found in recycle bin"
 msgstr "Kein Referent im Papierkorb gefunden"
 
-#: includes/Settings.php:209
+#: includes/Settings.php:210
 msgid "Speaker Organisation"
 msgstr "Referent: Organisation"
 
-#: includes/Settings.php:83 includes/Settings.php:89
+#: includes/Settings.php:82 includes/Settings.php:87
 msgid "Speaker Page Options"
 msgstr "Referenten-Seite"
 
-#: includes/Settings.php:208
+#: includes/Settings.php:209
 msgid "Speaker Short Biography"
 msgstr "Referent: Kurzbiographie"
 
-#: includes/Settings.php:211
+#: includes/Settings.php:212
 msgid "Speaker Website"
 msgstr "Referent: Website"
 
@@ -378,11 +402,13 @@ msgstr "Referent: Website"
 msgid "Speaker(s)"
 msgstr "Referent(en)"
 
-#: includes/Settings.php:171 includes/CPT/Speaker.php:32
+#: config/defaults.php:25 includes/Settings.php:171 includes/CPT/Speaker.php:32
+#: templates/themes/fau/archive-speaker.php:27
+#: templates/themes/fau/archive-speaker.php:29
 msgid "Speakers"
 msgstr "Referenten"
 
-#: includes/Shortcodes/Talk.php:196
+#: includes/Shortcodes/Talk.php:213
 msgid "Start"
 msgstr "Start"
 
@@ -390,19 +416,15 @@ msgstr "Start"
 msgid "Start Time"
 msgstr "Start"
 
-#: templates/cpt/themes/fau/single-talk.php:94
-msgid "Tags"
-msgstr "Schlagwörter"
-
-#: includes/Settings.php:150 includes/CPT/Talk.php:45
+#: config/defaults.php:22 includes/Settings.php:150 includes/CPT/Talk.php:45
 msgid "Talk"
 msgstr "Vortrag"
 
-#: includes/Settings.php:204
+#: includes/Settings.php:205
 msgid "Talk Description"
 msgstr "Vortrag: Langbeschreibung / Text"
 
-#: includes/Settings.php:203
+#: includes/Settings.php:204
 msgid "Talk Excerpt"
 msgstr "Vortrag: Kurzbeschreibung / Auszug"
 
@@ -418,15 +440,17 @@ msgstr "Keine Vorträge gefunden"
 msgid "Talk not found in recycle bin"
 msgstr "Keine Vorträge im Papierkorb gefunden"
 
-#: includes/Settings.php:124
+#: includes/Settings.php:123
 msgid "Talk Order"
 msgstr "Reihenfolge der Vorträge"
 
-#: includes/Settings.php:202
+#: includes/Settings.php:203
 msgid "Talk Title"
 msgstr "Vortrag: Titel"
 
-#: includes/Settings.php:157 includes/Utils.php:79 includes/CPT/Talk.php:32
+#: config/defaults.php:23 includes/Settings.php:157 includes/Utils.php:74
+#: includes/CPT/Talk.php:32 templates/themes/fau/archive-talk.php:27
+#: templates/themes/fau/archive-talk.php:29
 msgid "Talks"
 msgstr "Vorträge"
 
@@ -471,7 +495,7 @@ msgid "Talk Tag"
 msgstr "Schlagwort"
 
 #. 1: Server PHP version number, 2: Required PHP version number.
-#: rrze-events.php:63
+#: rrze-events.php:65
 #, php-format
 msgid ""
 "The server is running PHP version %1$s. The Plugin requires at least PHP "
@@ -481,7 +505,7 @@ msgstr ""
 "Version %2$s."
 
 #. 1: Server WordPress version number, 2: Required WordPress version number.
-#: rrze-events.php:70
+#: rrze-events.php:72
 #, php-format
 msgid ""
 "The server is running WordPress version %1$s. The Plugin requires at least "
@@ -490,7 +514,8 @@ msgstr ""
 "Auf dem Server läuft WordPress Version %1$s. Das Plugin benötigt mindestens "
 "WordPress Version %2$s."
 
-#: includes/Utils.php:259 includes/Shortcodes/Talk.php:198
+#: includes/Utils.php:261 includes/Utils.php:263
+#: includes/Shortcodes/Talk.php:215
 msgid "Time"
 msgstr "Zeit"
 
@@ -498,7 +523,11 @@ msgstr "Zeit"
 msgid "Update"
 msgstr "Aktualisieren"
 
-#: includes/Utils.php:296
+#: includes/Settings.php:70
+msgid "Used for icons etc."
+msgstr "Wird für Icons etc. verwendet."
+
+#: includes/Utils.php:300
 msgid "Video"
 msgstr "Video"
 
@@ -518,6 +547,6 @@ msgstr "Vortrag ansehen"
 msgid "Waiting List"
 msgstr "Warteliste"
 
-#: includes/Utils.php:97 includes/CPT/Speaker.php:122
+#: includes/Utils.php:92 includes/CPT/Speaker.php:122
 msgid "Website"
 msgstr "Website"

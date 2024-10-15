@@ -7,8 +7,7 @@
  * @since FAU 1.0
  */
 
-use RRZE\Events\Shortcodes\Talk;
-use RRZE\Events\Utils;
+use function RRZE\Events\plugin;
 
 if (isset($_GET['format']) && $_GET['format'] == 'embedded') {
     get_template_part('template-parts/index', 'embedded');
@@ -16,7 +15,6 @@ if (isset($_GET['format']) && $_GET['format'] == 'embedded') {
 }
 
 get_header();
-global $wp_query;
 
 ?>
 
@@ -31,21 +29,8 @@ global $wp_query;
                         <h1 id="maintop" ><?php esc_html_e('Talks', 'rrze-events');; ?></h1>
                     <?php }
 
-                    $queryVars = $wp_query->query_vars;
+                    include plugin()->getPath('templates/content/') . 'content-archive-talk.php';
 
-                    $atts = [
-                        'format' => 'grid',
-                        'showorganisation' => '0',
-                    ];
-                    if (isset($queryVars['talk_category']) && $queryVars['talk_category'] != '') {
-                        $atts['category'] = esc_html($queryVars['talk_category']);
-                    }
-                    if (isset($queryVars['talk_tag']) && $queryVars['talk_tag'] != '') {
-                        $atts['tag'] = esc_html($queryVars['talk_tag']);
-                    }
-
-                    echo wp_kses(Talk::shortcodeOutput($atts), Utils::getKsesExtendedRuleset());
-                    //echo Talk::shortcodeOutput($atts);
                     ?>
 
                 </main>

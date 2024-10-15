@@ -2,6 +2,7 @@
 
 namespace RRZE\Events\Shortcodes;
 
+use RRZE\Events\Settings;
 use RRZE\Events\Utils;
 
 class Talk {
@@ -287,6 +288,11 @@ class Talk {
     }
 
     private static function talkGrid($talkData, $atts) {
+        $settings = Settings::getOption('rrze-events-settings');
+        $accentColor = $settings['accent-color'];
+        $max = ($atts['number'] == '-1' ? 999999 : $atts['number']);
+        $i = 0;
+
         $output = '<div class="rrze-events talk-' . $atts['format'] . '">';
         foreach ($talkData as $talk) {
             $talk['video'] = get_post_meta($talk['ID'], 'talk_video', true);
@@ -308,11 +314,15 @@ class Talk {
             $output .= '<div class="post-entry">';
 
             $output .= '<p class="short-description">';
-            $output .= wp_strip_all_tags($talk['excerpt']) . '<a href="' . $talk['link'] . '" rel="bookmark" class="read-more">' . do_shortcode('[icon icon="solid angles-right" alt="' . __('Read more about', 'rrze-events') . '"]') . '</a>';
+            $output .= wp_strip_all_tags($talk['excerpt']) . '<a href="' . $talk['link'] . '" rel="bookmark" class="read-more">' . do_shortcode('[icon icon="solid angles-right" alt="' . __('Read more about', 'rrze-events') . '" color="' . $accentColor . '"]') . '</a>';
             $output .= '</p>';
 
             $output .= "</div>";
             $output .= "</article>";
+
+            $i ++;
+            if ($i >= $max)
+                break;
         }
         $output .= '</div>';
         return $output;
@@ -326,7 +336,7 @@ class Talk {
             'num' => -1,
             'number' => -1,
             'id' => '',
-            'format' => '',
+            'format' => 'grid',
             'showimage' => 0,
             'showorganisation' => 0,
             'date' => '',

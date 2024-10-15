@@ -2,6 +2,7 @@
 
 namespace RRZE\Events\Shortcodes;
 
+use RRZE\Events\Settings;
 use RRZE\Events\Utils;
 
 class Speaker {
@@ -29,6 +30,8 @@ class Speaker {
         $id = sanitize_text_field($id);
         $format = sanitize_text_field($format);
         $orderby = ($orderby == 'lastname' ? 'lastname' : 'firstname');
+        $settings = Settings::getOption('rrze-events-settings');
+        $accentColor = $settings['accent-color'];
 
         $args = [
             'post_type' => 'speaker',
@@ -100,10 +103,8 @@ class Speaker {
                     }
 
                     if ('' !== get_the_post_thumbnail() && !post_password_required()) :
-                        $out .=     '<div class="entry-thumbnail">';
-                        $out .=				'<figure class="thumb-wrap">';
-                        $out .=					get_the_post_thumbnail($post->ID, 'large');
-                        $out .=				'</figure>';
+                        $out .=     '<div class="speaker-thumbnail">';
+                        $out .=			get_the_post_thumbnail($post->ID, 'large');
                         $out .=		'</div>';       // end .entry-thumbnail
                     endif;
 
@@ -113,7 +114,7 @@ class Speaker {
                         '</header>';    // end .entry-header
 
                     $out .=         '<div class="entry-summary">' .
-                        wp_strip_all_tags(get_the_excerpt()) . do_shortcode('[icon icon="solid angles-right"]') .
+                        wp_strip_all_tags(get_the_excerpt()) . do_shortcode('[icon icon="solid angles-right" color="' . $accentColor . '"]') .
                         '</div>' .      // end .entry-summary
                         '</a>';      // end .entry-main
 

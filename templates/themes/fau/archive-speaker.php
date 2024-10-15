@@ -7,8 +7,7 @@
  * @since FAU 1.0
  */
 
-use RRZE\Events\Shortcodes\Speaker;
-use RRZE\Events\Utils;
+use function RRZE\Events\plugin;
 
 if (isset($_GET['format']) && $_GET['format'] == 'embedded') {
     get_template_part('template-parts/index', 'embedded');
@@ -16,7 +15,6 @@ if (isset($_GET['format']) && $_GET['format'] == 'embedded') {
 }
 
 get_header();
-global $wp_query;
 
 ?>
 
@@ -31,15 +29,8 @@ global $wp_query;
                         <h1 id="maintop" ><?php esc_html_e('Speakers', 'rrze-events');; ?></h1>
                     <?php }
 
-                    $queryVars = $wp_query->query_vars;
-                    $atts = [
-                        'format' => 'grid',
-                    ];
-                    if (isset($queryVars['speaker_category']) && $queryVars['speaker_category'] != '') {
-                        $atts['category'] = esc_html($queryVars['speaker_category']);
-                    }
+                    include plugin()->getPath('templates/content/') . 'content-archive-speaker.php';
 
-                    echo wp_kses(Speaker::shortcodeOutput($atts), Utils::getKsesExtendedRuleset());
                     ?>
 
                 </main>

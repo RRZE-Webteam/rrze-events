@@ -27,20 +27,14 @@ class Utils {
         ]
     ];
 
-    public static function getTemplatePath($tpl): string {
-        switch ($tpl) {
-            case 'cpt':
-                $currentTheme = wp_get_theme();
-                foreach (self::$themes as $slug => $theme) {
-                    if (in_array(strtolower($currentTheme->stylesheet), array_map('strtolower', $theme))) {
-                        return plugin()->getPath('templates/cpt/themes/') . $slug . '/';
-                    }
-                }
-                break;
-            case 'shortcode':
-                return plugin()->getPath('templates/') . 'shortcodes/';
+    public static function getTemplatePath(): string {
+        $currentTheme = wp_get_theme();
+        foreach (self::$themes as $slug => $theme) {
+            if (in_array(strtolower($currentTheme->stylesheet), array_map('strtolower', $theme))) {
+                return plugin()->getPath('templates/themes/') . $slug . '/';
+            }
         }
-        return false;
+        return plugin()->getPath('templates/');
     }
 
     public static function getMeta($meta, $key)

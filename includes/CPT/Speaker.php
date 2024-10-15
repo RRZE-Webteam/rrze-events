@@ -152,7 +152,7 @@ class Speaker {
             return $singleTemplate;
 
         wp_enqueue_style('rrze-events');
-        return Utils::getTemplatePath('cpt') . 'single-speaker.php';
+        return Utils::getTemplatePath() . 'single-speaker.php';
     }
 
     public static function includeArchiveTemplate($archiveTemplate)
@@ -161,7 +161,7 @@ class Speaker {
         if (!$post || $post->post_type != 'speaker')
             return $archiveTemplate;
 
-        return Utils::getTemplatePath('cpt') . 'archive-speaker.php';
+        return Utils::getTemplatePath() . 'archive-speaker.php';
     }
 
 

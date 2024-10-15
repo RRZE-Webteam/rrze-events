@@ -23,6 +23,14 @@
                 color: var(--color-TextLight, #797676);
             }
         }
+
+        .entry-title {
+            width: 100%;
+            @media (min-width: 768px) {
+                padding: 0;
+            }
+        }
+
         .speaker-details {
             background-color: var(--color-ContentRegions, #f5f7f9);
             padding: 15px;
@@ -31,10 +39,11 @@
                 flex: 30% 0 0;
                 padding: 0;
             }
-            .post-image { //FAU-Theme-Fix
+            .post-image {
                 float: none;
                 margin: 0 auto 15px;
                 max-width: 446px;
+                text-align: center;
                 @media (min-width: 768px) {
                     background: #fff;
                     padding-bottom: 15px;
@@ -132,6 +141,9 @@
             }
         }
         .speaker-talks {
+            li {
+                padding-bottom: .2em;
+            }
             .speaker-categories {
                 a {
                     display: inline-block;
