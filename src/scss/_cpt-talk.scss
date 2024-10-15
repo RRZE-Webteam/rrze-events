@@ -1,0 +1,214 @@
+.single-talk {
+
+    .rrze-talk {
+        @media (min-width: 768px) {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        @media (min-width: 768px) {
+            gap: 30px;
+        }
+
+        .mobiletitle {
+            margin-bottom: 0;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .entry-title {
+            width: 100%;
+            @media (min-width: 768px) {
+                padding: 0;
+            }
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        .talk-speaker {
+            padding: 15px;
+            @media (min-width: 768px) {
+                order: 1;
+                flex: 25% 0 0;
+                max-width: 300px;
+                padding: 15px 0 0;
+            }
+            .talk-speaker-item {
+                margin-bottom: 2em;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+            h2 {
+                margin-top: 0;
+                margin-bottom: .5rem;
+                padding-top: 0;
+            }
+            a {
+                text-decoration-color: var(--color-TextLight, #797676);
+                text-decoration-thickness: unset;
+                &:hover, &:focus, &:active {
+                    text-decoration-thickness: .2rem;
+                }
+            }
+            .talk-speaker-thumbnail {
+                display: block;
+                margin-bottom: .5em;
+            }
+            .speaker-name,
+            .speaker-organisation {
+                display: block;
+            }
+            .speaker-name {
+                font-weight: bold;
+            }
+            .speaker-organisation {
+                color: var(--color-TextLight, #797676);
+            }
+        }
+
+        .talk-details {
+            background-color: var(--color-ContentRegions, #f5f7f9);
+            margin-left: -15px;
+            margin-right: -15px;
+            margin-bottom: 15px;
+            padding: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--width-gutter-half, 15px);
+            @media (min-width: 768px) {
+                order: 2;
+                flex: 25% 0 0;
+                margin: 0 0 30px;
+            }
+            @media (min-width: 1400px) {
+                padding: 20px 30px 30px;
+            }
+            h2 {
+                margin-top: 0;
+                margin-bottom: 0;
+                padding-top: 0;
+                padding-bottom: 0;
+                flex: 100% 0 0;
+            }
+            a {
+                text-decoration-color: var(--color-TextLight, #797676);
+            }
+            svg {
+                margin-right: .3em;
+            }
+            .talk-title {
+                padding-left: 15px;
+                padding-right: 15px;
+                font-weight: bold;
+                font-size: 1.2em;
+                padding-top: 15px;
+            }
+
+            .talk-speaker,
+            .talk-datetime,
+            .talk-location,
+            .talk-participants,
+            .talk-media {
+                //margin-bottom: 1em;
+                flex: 180px 1 0;
+                min-width: 180px;
+                max-width: 300px;
+            }
+
+            .talk-datetime {
+                .date {
+                    //margin-right: 2em;
+                }
+                .date,
+                .time {
+                    display: block;
+                }
+            }
+
+            .talk-media {
+                ul {
+                    margin: 0;
+                    li {
+                        list-style-type: none;
+                        //display: inline-block;
+                        margin-right: 2em;
+                        padding: 0;
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        .talk-main {
+            padding: 0 15px 15px;
+            @media (min-width: 768px) {
+                order: 3;
+                flex: 60% 1 0;
+                padding: 0;
+            }
+        }
+
+        .post-image {
+            float: right;
+            margin: 0 0 10px 10px;
+            max-width: min(50%, 300px);
+            @media (min-width: 768px) {
+                margin-left: 20px;
+            }
+        }
+
+        .talk-categories {
+            margin-top: 1em;
+            margin-bottom: 1em;
+            ul {
+                margin: 0;
+                li {
+                    list-style-type: none;
+                    display: inline-block;
+                    margin-right: .5em;
+                    padding: .2em 0;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                    a {
+                        background-color: var(--color-primary-ci-hell2, #ced9e7);
+                        color: var(--color-primary-ci-hell2-kontrast, #000);
+                        margin-right: .3em;
+                        padding: 3px 5px;
+                        text-decoration: none;
+                        &:hover, &:focus, &:active {
+                            background-color: var(--color-primary-ci-hell, #04316a);
+                            color: var(--color-primary-ci-hell-kontrast, #fff);
+                        }
+                    }
+                }
+            }
+        }
+
+        .talk-tags {
+            svg {
+                margin-right: .3em;
+            }
+            ul {
+                display: inline;
+                margin: 0;
+                li {
+                    list-style-type: none;
+                    display: inline-block;
+                    margin-right: .5em;
+                    padding: 0 0 .3em;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}

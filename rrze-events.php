@@ -17,13 +17,15 @@ namespace RRZE\Events;
 
 defined('ABSPATH') || exit;
 
-use RRZE\Events\Speaker\Speaker;
-use RRZE\Events\Talk\Talk;
+use RRZE\Events\CPT\Speaker;
+use RRZE\Events\CPT\Talk;
 use RRZE\WP\Plugin\Plugin;
 
 
 const RRZE_PHP_VERSION = '8.2';
 const RRZE_WP_VERSION = '6.6';
+
+require_once 'config/defaults.php';
 
 // Autoloader
 require_once 'vendor/autoload.php';
@@ -55,6 +57,7 @@ function systemRequirements(): string
     // Strip off any -alpha, -RC, -beta, -src suffixes.
     [$wpVersion] = explode('-', $wp_version);
     $phpVersion = phpversion();
+    $theme = wp_get_theme();
     $error = '';
     if (!is_php_version_compatible(RRZE_PHP_VERSION)) {
         $error = sprintf(
@@ -70,6 +73,8 @@ function systemRequirements(): string
             $wpVersion,
             RRZE_WP_VERSION
         );
+    } elseif ( 'FAU Events' == $theme->name || 'FAU Events' == $theme->parent_theme ) {
+        $error = __('RRZE Events plugin does not work with FAU Events Theme as the event features are already included in the theme. Please activate another theme before activating RRZE Events. The plugin will preserve your existing speakers, talks and shortcodes.', 'rrze-events');
     }
     return $error;
 }
@@ -83,12 +88,12 @@ function activation()
     if ($error = systemRequirements()) {
         deactivate_plugins(plugin_basename(__FILE__));
         wp_die(
-            sprintf(
+            esc_html(sprintf(
             /* translators: 1: The plugin name, 2: The error string. */
                 __('Plugins: %1$s: %2$s', 'rrze-events'),
                 plugin_basename(__FILE__),
                 $error
-            )
+            ))
         );
     }
 
@@ -96,10 +101,36 @@ function activation()
         'init',
         function () {
             Speaker::registerPostType();
-            //Talk::registerPostType();
+            Talk::registerPostType();
             flush_rewrite_rules(false);
         }
     );
+
+    // Import existing social media profiles from FAU-Events Theme
+    $speakers = get_posts([
+        'post_type' => 'speaker',
+        'posts_per_page' => -1,
+    ]);
+    $urlFields = array(
+        'speaker_blog',
+        'speaker_twitter',
+        'speaker_xing',
+        'speaker_linkedin',
+        'speaker_facebook',
+        'speaker_other_profile',
+    );
+    foreach ($speakers as $speaker) {
+        $socialMediaURLs = [];
+        foreach ($urlFields as $field) {
+            $value = get_post_meta($speaker->ID, $field, true);
+            if ($value != '') {
+                $socialMediaURLs[] = ($field == 'speaker_twitter' ? 'https://twitter.com/' . $value : $value);
+            }
+        }
+        if (!empty($socialMediaURLs)) {
+            update_post_meta($speaker->ID, 'speaker_social_media', $socialMediaURLs);
+        }
+    }
 
     flush_rewrite_rules(false);
 }
@@ -156,8 +187,8 @@ function loaded()
                     printf(
                         '<div class="notice notice-error"><p>' .
                         /* translators: 1: The plugin name, 2: The error string. */
-                        __('Plugins: %1$s: %2$s', 'rrze-events') .
-                        '</p></div>',
+                        esc_html(__('Plugins: %1$s: %2$s', 'rrze-events') .
+                        '</p></div>'),
                         esc_html($pluginName),
                         esc_html($error)
                     );

@@ -2,6 +2,8 @@
 
 namespace RRZE\Events\CPT;
 
+use RRZE\Events\Utils;
+
 class Speaker {
     const POST_TYPE = 'speaker';
 
@@ -17,6 +19,10 @@ class Speaker {
         add_action('init', [__CLASS__, 'registerTag']);
         // CMB2 Fields
         add_action('cmb2_admin_init', [__CLASS__, 'addFields']);
+        // Templates
+        add_filter('single_template', [__CLASS__, 'includeSingleTemplate']);
+        add_filter('archive_template', [__CLASS__, 'includeArchiveTemplate']);
+
     }
 
     public static function registerPostType() {
@@ -62,7 +68,7 @@ class Speaker {
     public static function registerCategory() {
         $labels = [
             'name'              => _x('Speaker Categories', 'Taxonomy general name', 'rrze-events'),
-            'singular_name'     => _x('Speaker Category', 'Taxonomy singular name', 'rrze-events')
+            'singular_name'     => _x('Speaker Category', 'Taxonomy singular name', 'rrze-events'),
         ];
         $args = [
             'labels'            => $labels,
@@ -70,7 +76,7 @@ class Speaker {
             'hierarchical'      => true,
             'show_admin_column' => true,
             'show_in_rest'      => true,
-            'rewrite'           => ['slug' => 'speaker-category', 'with_front' => false]
+            'rewrite'           => ['slug' => 'speaker-category', 'with_front' => false],
         ];
         register_taxonomy(self::TAX_CATEGORY, self::POST_TYPE, $args);
     }
@@ -78,7 +84,7 @@ class Speaker {
     public static function registerTag() {
         $labels = [
             'name'              => _x('Speaker Tags', 'Taxonomy general name', 'rrze-events'),
-            'singular_name'     => _x('Speaker Tag', 'Taxonomy singular name', 'rrze-events')
+            'singular_name'     => _x('Speaker Tag', 'Taxonomy singular name', 'rrze-events'),
         ];
         $args = [
             'labels'            => $labels,
@@ -86,7 +92,7 @@ class Speaker {
             'hierarchical'      => true,
             'show_admin_column' => true,
             'show_in_rest'      => true,
-            'rewrite'           => ['slug' => 'speaker-tags', 'with_front' => false]
+            'rewrite'           => ['slug' => 'speaker-tags', 'with_front' => false],
         ];
         register_taxonomy(self::TAX_TAG, self::POST_TYPE, $args);
     }
@@ -119,6 +125,12 @@ class Speaker {
             'type' => 'text_url',
         ));
         $cmb_info->add_field(array(
+            'name' => esc_html__('Blog', 'rrze-events'),
+            //'desc' => esc_html__( '', 'rrze-events' ),
+            'id'   => 'speaker_blog',
+            'type' => 'text_url',
+        ));
+        $cmb_info->add_field(array(
             'name' => esc_html__('Social Media', 'rrze-events'),
             //'desc' => esc_html__( '', 'rrze-events' ),
             'id'   => 'speaker_social_media',
@@ -126,8 +138,31 @@ class Speaker {
             'repeatable' => true,
             'attributes' => [
                 'placeholder' => __('Enter URL...', 'rrze-events'),
-            ]
+            ],
+            'text' => [
+                'add_row_text' => __('Add URL', 'rrze-events'),
+            ],
         ));
-
     }
+
+    public static function includeSingleTemplate($singleTemplate)
+    {
+        global $post;
+        if (!$post || $post->post_type != 'speaker')
+            return $singleTemplate;
+
+        wp_enqueue_style('rrze-events');
+        return Utils::getTemplatePath() . 'single-speaker.php';
+    }
+
+    public static function includeArchiveTemplate($archiveTemplate)
+    {
+        global $post;
+        if (!$post || $post->post_type != 'speaker')
+            return $archiveTemplate;
+
+        return Utils::getTemplatePath() . 'archive-speaker.php';
+    }
+
+
 }
