@@ -1,0 +1,37 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "rrze/events-speaker",
+	"version": "1.0.0",
+	"title": "RRZE Events Speaker",
+	"category": "widgets",
+	"description": "RRZE Events Speaker",
+	"example": {},
+	"attributes": {
+		"number": {
+			"type": "integer",
+			"default": -1
+		},
+		"category": {
+			"type": "array"
+		},
+		"id": {
+			"type": "integer"
+		},
+		"format": {
+			"enum": [ "list", "grid" ],
+			"default": "grid"
+		},
+		"orderBy": {
+			"enum": ["lastname", "firstname"]
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "rrze-events",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"viewScript": "file:./view.js",
+	"render": "file:./render.php"
+}

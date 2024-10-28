@@ -198,4 +198,11 @@ function loaded()
         return;
     }
     new Main;
+
+    add_action('init', __NAMESPACE__ . '\createBlocks');
+}
+
+function createBlocks(): void {
+    register_block_type( __DIR__ . '/build/blocks/speaker' );
+    //register_block_type( __DIR__ . '/build/blocks/talk' );
 }
