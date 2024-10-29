@@ -60,7 +60,7 @@ __webpack_require__.r(__webpack_exports__);
   const categories = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useSelect)(select => {
     return select('core').getEntityRecords('taxonomy', 'speaker_category', {
       per_page: -1
-    });
+    }) || [];
   }, []);
 
   // Funktion zur Aktualisierung der Mehrfachauswahl
@@ -89,7 +89,7 @@ __webpack_require__.r(__webpack_exports__);
 
   // Posts abrufen
   const speakers = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useSelect)(select => {
-    return select('core').getEntityRecords('postType', 'speaker');
+    return select('core').getEntityRecords('postType', 'speaker') || [];
   }, []);
 
   // Begriffe für die Combobox-Optionen aufbereiten

@@ -29,7 +29,7 @@ export default ({ attributes, setAttributes }) => {
 
     // Begriffe der Taxonomie abrufen (z. B. Kategorien)
     const categories = useSelect(select => {
-        return select('core').getEntityRecords('taxonomy', 'speaker_category', { per_page: -1 });
+        return select('core').getEntityRecords('taxonomy', 'speaker_category', { per_page: -1 }) || [];
     }, []);
 
     // Funktion zur Aktualisierung der Mehrfachauswahl
@@ -55,7 +55,7 @@ export default ({ attributes, setAttributes }) => {
 
     // Posts abrufen
     const speakers = useSelect(select => {
-        return select('core').getEntityRecords('postType', 'speaker');
+        return select('core').getEntityRecords('postType', 'speaker') || [];
     }, []);
 
     // Begriffe für die Combobox-Optionen aufbereiten
