@@ -8,22 +8,25 @@
 	"description": "RRZE Events Speaker",
 	"example": {},
 	"attributes": {
-		"number": {
+		"numSpeakers": {
 			"type": "integer",
 			"default": -1
 		},
-		"category": {
-			"type": "array"
+		"selectedCategories": {
+			"type": "array",
+			"default": {}
 		},
-		"id": {
-			"type": "integer"
+		"selectedSpeakers": {
+			"type": "array",
+			"default": {}
 		},
-		"format": {
-			"enum": [ "list", "grid" ],
+		"layout": {
+			"type": "string",
 			"default": "grid"
 		},
 		"orderBy": {
-			"enum": ["lastname", "firstname"]
+			"type": "string",
+			"default": "lastname"
 		}
 	},
 	"supports": {

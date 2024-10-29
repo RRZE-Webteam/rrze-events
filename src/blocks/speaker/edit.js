@@ -1,51 +1,63 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, ComboboxControl, TextControl } from '@wordpress/components';
+import { PanelBody, ComboboxControl, TextControl, RadioControl } from '@wordpress/components';
+//import { ServerSideRender } from '@wordpress/server-side-render';
 import { useSelect } from '@wordpress/data';
-import { useState } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
+import metadata from './block.json'; // Import block.json metadata
+
 
 export default ({ attributes, setAttributes }) => {
-    const blockProps = useBlockProps();
 
-    // State für die Mehrfachauswahl
-    const [selectedTerms, setSelectedTerms] = useState(attributes.selectedTerms || []);
+    const blockProps = useBlockProps();
+    const {numSpeakers } = attributes;
+    const [layout, setLayout] = useState( attributes.layout || 'grid' );
+    const [orderBy, setOrderBy] = useState( attributes.orderBy || 'lastname' );
+    const [selectedCategories, setSelectedCategories] = useState(attributes.selectedCategories || []);
+    const [selectedSpeakers, setSelectedSpeakers] = useState(attributes.selectedSpeakers || []);
+
+    // Initialize attributes with default values from block.json
+    const defaultAttributes = {};
+    Object.keys(metadata.attributes).forEach(key => {
+        defaultAttributes[key] = metadata.attributes[key].default;
+    });
+
+    useEffect(() => {
+        // Set default attributes when the component mounts
+        setAttributes(defaultAttributes);
+    }, []);
 
     // Begriffe der Taxonomie abrufen (z. B. Kategorien)
-    const terms = useSelect(select => {
+    const categories = useSelect(select => {
         return select('core').getEntityRecords('taxonomy', 'speaker_category', { per_page: -1 });
     }, []);
 
-    console.log(terms);
-
     // Funktion zur Aktualisierung der Mehrfachauswahl
-    const onAddTerm = (termId) => {
-        if (!selectedTerms.includes(termId)) {
-            const newTerms = [...selectedTerms, termId];
-            setSelectedTerms(newTerms);
-            setAttributes({ selectedTerms: newTerms });
+    const onAddCategory = (categoryId) => {
+        if (!selectedCategories.includes(categoryId)) {
+            const newCategories = [...selectedCategories, categoryId];
+            setSelectedCategories(newCategories);
+            setAttributes({ selectedCategories: newCategories });
         }
     };
 
-    const onRemoveTerm = (termId) => {
-        const newTerms = selectedTerms.filter(id => id !== termId);
-        setSelectedTerms(newTerms);
-        setAttributes({ selectedTerms: newTerms });
+    const onRemoveCategory = (categoryId) => {
+        const newCategories = selectedCategories.filter(id => id !== categoryId);
+        setSelectedCategories(newCategories);
+        setAttributes({ selectedCategories: newCategories });
     };
 
     // Begriffe für die Combobox-Optionen aufbereiten
-    const termOptions = terms ? terms.map(term => ({
-        label: term.name,
-        value: term.id
+    const categoryOptions = categories ? categories.map(category => ({
+        label: category.name,
+        value: category.slug
     })) : [];
 
-    // State für die Mehrfachauswahl
-    const [selectedSpeakers, setSelectedSpeakers] = useState(attributes.selectedSpeakers || []);
-
-    // Begriffe der Taxonomie abrufen (z. B. Kategorien)
+    // Posts abrufen
     const speakers = useSelect(select => {
         return select('core').getEntityRecords('postType', 'speaker');
     }, []);
-console.log(speakers);
+
     // Begriffe für die Combobox-Optionen aufbereiten
     const speakerOptions = speakers ? speakers.map(speaker => ({
         label: speaker.title.rendered,
@@ -67,46 +79,72 @@ console.log(speakers);
         setAttributes({ selectedSpeakers: newSpeakers });
     };
 
-    const { numberValue } = attributes;
-
     // Funktion zur Aktualisierung der numerischen Eingabe
     const onChangeNumber = (value) => {
         // Sicherstellen, dass nur Zahlen gespeichert werden
-        const number = parseInt(value, 10);
-        if (!isNaN(number) && number >= -1) {
-            setAttributes({ numberValue: number });
+        const newNumber = parseInt(value, 10);
+        if (!isNaN(newNumber) && newNumber >= -1) {
+            setAttributes({ numSpeakers: newNumber });
         } else {
-            setAttributes({ numberValue: '' });
+            setAttributes({ numSpeakers: '' });
         }
     };
 
+    const onChangeLayout = (value) => {
+        setLayout( value );
+        setAttributes({Layout: value});
+    };
+    const onChangeOrderBy = (value) => {
+        setOrderBy( value );
+        setAttributes({orderBy: value});
+    };
 
     return (
         <div {...blockProps}>
             <InspectorControls>
+                <PanelBody title={__('Layout', 'rrze-events')}>
+                    <RadioControl
+                        label={__('Layout', 'rrze-events')}
+                        selected={ layout }
+                        options={ [
+                            { label: __('Grid', 'rrze-events'), value: 'grid' },
+                            { label: __('List', 'rrze-events'), value: 'list' },
+                        ] }
+                        onChange={onChangeLayout}
+                    />
+                    <RadioControl
+                        label={__('Order', 'rrze-events')}
+                        selected={ orderBy }
+                        options={ [
+                            { label: __('Last Name', 'rrze-events'), value: 'lastname' },
+                            { label: __('First Name', 'rrze-events'), value: 'firstname' },
+                        ] }
+                        onChange={onChangeOrderBy}
+                    />
+                </PanelBody>
                 <PanelBody title={__('Select Speakers', 'rrze-events')}>
                     <TextControl
                         label={__('Count', 'rrze-events')}
                         type="number"
-                        value={numberValue}
+                        value={numSpeakers}
                         onChange={onChangeNumber}
-                        help={ __('How many speakers do you want to show? Enter -1 for all speakers.', 'rrze-events') }
+                        help={__('How many speakers do you want to show? Enter -1 for all speakers.', 'rrze-events')}
                     />
                     <hr/>
                     <ComboboxControl
                         label={__('Categories', 'rrze-events')}
-                        options={termOptions}
-                        onChange={onAddTerm}
+                        options={categoryOptions}
+                        onChange={onAddCategory}
                     />
                     <div style={{marginTop: '10px'}}>
                         <strong>{__('Selected Categories', 'rrze-events')}:</strong>
                         <ul>
-                            {selectedTerms.map(termId => {
-                                const term = terms.find(t => t.id === termId);
+                            {selectedCategories.map(categorySlug => {
+                                const category = categories.find(t => t.slug === categorySlug);
                                 return (
-                                    <li key={termId}>
-                                        {term?.name}
-                                        <button onClick={() => onRemoveTerm(termId)} style={{marginLeft: '5px'}}>
+                                    <li key={categorySlug}>
+                                        {category?.name}
+                                        <button onClick={() => onRemoveCategory(categorySlug)} style={{marginLeft: '5px'}}>
                                             {__('Remove', 'rrze-events')}
                                         </button>
                                     </li>
@@ -137,9 +175,9 @@ console.log(speakers);
                         </ul>
                     </div>
                 </PanelBody>
-            </InspectorControls>
-            <p>{__('Selected Categories', 'rrze-events')}: {selectedTerms.join(', ')}<br/>
-                Eingegebene Zahl: {numberValue}</p>
+                </InspectorControls>
+            <p>{__('Selected Categories', 'rrze-events')}: {selectedCategories.join(', ')}<br/>
+                Eingegebene Zahl: {numSpeakers}</p>
         </div>
     );
 };

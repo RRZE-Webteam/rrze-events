@@ -22,63 +22,76 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/blocks/speaker/block.json");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__);
 
 
 
+//import { ServerSideRender } from '@wordpress/server-side-render';
 
 
+ // Import block.json metadata
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (({
   attributes,
   setAttributes
 }) => {
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
+  const {
+    numSpeakers
+  } = attributes;
+  const [layout, setLayout] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(attributes.layout || 'grid');
+  const [orderBy, setOrderBy] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(attributes.orderBy || 'lastname');
+  const [selectedCategories, setSelectedCategories] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(attributes.selectedCategories || []);
+  const [selectedSpeakers, setSelectedSpeakers] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(attributes.selectedSpeakers || []);
 
-  // State für die Mehrfachauswahl
-  const [selectedTerms, setSelectedTerms] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(attributes.selectedTerms || []);
+  // Initialize attributes with default values from block.json
+  const defaultAttributes = {};
+  Object.keys(_block_json__WEBPACK_IMPORTED_MODULE_5__.attributes).forEach(key => {
+    defaultAttributes[key] = _block_json__WEBPACK_IMPORTED_MODULE_5__.attributes[key].default;
+  });
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
+    // Set default attributes when the component mounts
+    setAttributes(defaultAttributes);
+  }, []);
 
   // Begriffe der Taxonomie abrufen (z. B. Kategorien)
-  const terms = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useSelect)(select => {
+  const categories = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useSelect)(select => {
     return select('core').getEntityRecords('taxonomy', 'speaker_category', {
       per_page: -1
     });
   }, []);
-  console.log(terms);
 
   // Funktion zur Aktualisierung der Mehrfachauswahl
-  const onAddTerm = termId => {
-    if (!selectedTerms.includes(termId)) {
-      const newTerms = [...selectedTerms, termId];
-      setSelectedTerms(newTerms);
+  const onAddCategory = categoryId => {
+    if (!selectedCategories.includes(categoryId)) {
+      const newCategories = [...selectedCategories, categoryId];
+      setSelectedCategories(newCategories);
       setAttributes({
-        selectedTerms: newTerms
+        selectedCategories: newCategories
       });
     }
   };
-  const onRemoveTerm = termId => {
-    const newTerms = selectedTerms.filter(id => id !== termId);
-    setSelectedTerms(newTerms);
+  const onRemoveCategory = categoryId => {
+    const newCategories = selectedCategories.filter(id => id !== categoryId);
+    setSelectedCategories(newCategories);
     setAttributes({
-      selectedTerms: newTerms
+      selectedCategories: newCategories
     });
   };
 
   // Begriffe für die Combobox-Optionen aufbereiten
-  const termOptions = terms ? terms.map(term => ({
-    label: term.name,
-    value: term.id
+  const categoryOptions = categories ? categories.map(category => ({
+    label: category.name,
+    value: category.slug
   })) : [];
 
-  // State für die Mehrfachauswahl
-  const [selectedSpeakers, setSelectedSpeakers] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(attributes.selectedSpeakers || []);
-
-  // Begriffe der Taxonomie abrufen (z. B. Kategorien)
+  // Posts abrufen
   const speakers = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useSelect)(select => {
     return select('core').getEntityRecords('postType', 'speaker');
   }, []);
-  console.log(speakers);
+
   // Begriffe für die Combobox-Optionen aufbereiten
   const speakerOptions = speakers ? speakers.map(speaker => ({
     label: speaker.title.rendered,
@@ -102,74 +115,108 @@ __webpack_require__.r(__webpack_exports__);
       selectedSpeakers: newSpeakers
     });
   };
-  const {
-    numberValue
-  } = attributes;
 
   // Funktion zur Aktualisierung der numerischen Eingabe
   const onChangeNumber = value => {
     // Sicherstellen, dass nur Zahlen gespeichert werden
-    const number = parseInt(value, 10);
-    if (!isNaN(number) && number >= -1) {
+    const newNumber = parseInt(value, 10);
+    if (!isNaN(newNumber) && newNumber >= -1) {
       setAttributes({
-        numberValue: number
+        numSpeakers: newNumber
       });
     } else {
       setAttributes({
-        numberValue: ''
+        numSpeakers: ''
       });
     }
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+  const onChangeLayout = value => {
+    setLayout(value);
+    setAttributes({
+      Layout: value
+    });
+  };
+  const onChangeOrderBy = value => {
+    setOrderBy(value);
+    setAttributes({
+      orderBy: value
+    });
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     ...blockProps,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Layout', 'rrze-events'),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RadioControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Layout', 'rrze-events'),
+          selected: layout,
+          options: [{
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Grid', 'rrze-events'),
+            value: 'grid'
+          }, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('List', 'rrze-events'),
+            value: 'list'
+          }],
+          onChange: onChangeLayout
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RadioControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Order', 'rrze-events'),
+          selected: orderBy,
+          options: [{
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Last Name', 'rrze-events'),
+            value: 'lastname'
+          }, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('First Name', 'rrze-events'),
+            value: 'firstname'
+          }],
+          onChange: onChangeOrderBy
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Select Speakers', 'rrze-events'),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Count', 'rrze-events'),
           type: "number",
-          value: numberValue,
+          value: numSpeakers,
           onChange: onChangeNumber,
           help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('How many speakers do you want to show? Enter -1 for all speakers.', 'rrze-events')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ComboboxControl, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ComboboxControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Categories', 'rrze-events'),
-          options: termOptions,
-          onChange: onAddTerm
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          options: categoryOptions,
+          onChange: onAddCategory
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           style: {
             marginTop: '10px'
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("strong", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("strong", {
             children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Selected Categories', 'rrze-events'), ":"]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
-            children: selectedTerms.map(termId => {
-              const term = terms.find(t => t.id === termId);
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-                children: [term?.name, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-                  onClick: () => onRemoveTerm(termId),
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
+            children: selectedCategories.map(categorySlug => {
+              const category = categories.find(t => t.slug === categorySlug);
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("li", {
+                children: [category?.name, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+                  onClick: () => onRemoveCategory(categorySlug),
                   style: {
                     marginLeft: '5px'
                   },
                   children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove', 'rrze-events')
                 })]
-              }, termId);
+              }, categorySlug);
             })
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ComboboxControl, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ComboboxControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Speakers', 'rrze-events'),
           options: speakerOptions,
           onChange: onAddSpeaker
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           style: {
             marginTop: '10px'
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("strong", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("strong", {
             children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Selected Speakers', 'rrze-events'), ":"]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
             children: selectedSpeakers.map(speakerId => {
               const speaker = speakers.find(t => t.id === speakerId);
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-                children: [speaker?.title.rendered, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("li", {
+                children: [speaker?.title.rendered, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
                   onClick: () => onRemoveSpeaker(speakerId),
                   style: {
                     marginLeft: '5px'
@@ -180,9 +227,9 @@ __webpack_require__.r(__webpack_exports__);
             })
           })]
         })]
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
-      children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Selected Categories', 'rrze-events'), ": ", selectedTerms.join(', '), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), "Eingegebene Zahl: ", numberValue]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("p", {
+      children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Selected Categories', 'rrze-events'), ": ", selectedCategories.join(', '), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("br", {}), "Eingegebene Zahl: ", numSpeakers]
     })]
   });
 });
@@ -199,33 +246,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ save)
 /* harmony export */ });
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__);
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-
-
-/**
- * The save function defines the way in which the different attributes should
- * be combined into the final markup, which is then serialized by the block
- * editor into `post_content`.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
- *
- * @return {Element} Element to render.
- */
-
+//It's a dynamic block
 function save() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save(),
-    children: 'Block Template Create Block – hello from the saved content!'
-  });
+  return null;
 }
 
 /***/ }),
@@ -306,7 +329,7 @@ module.exports = window["wp"]["i18n"];
   \***************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"rrze/events-speaker","version":"1.0.0","title":"RRZE Events Speaker","category":"widgets","description":"RRZE Events Speaker","example":{},"attributes":{"number":{"type":"integer","default":-1},"category":{"type":"array"},"id":{"type":"integer"},"format":{"enum":["list","grid"],"default":"grid"},"orderBy":{"enum":["lastname","firstname"]}},"supports":{"html":false},"textdomain":"rrze-events","editorScript":"file:./index.js","editorStyle":"file:./index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"rrze/events-speaker","version":"1.0.0","title":"RRZE Events Speaker","category":"widgets","description":"RRZE Events Speaker","example":{},"attributes":{"numSpeakers":{"type":"integer","default":-1},"selectedCategories":{"type":"array","default":{}},"selectedSpeakers":{"type":"array","default":{}},"layout":{"type":"string","default":"grid"},"orderBy":{"type":"string","default":"lastname"}},"supports":{"html":false},"textdomain":"rrze-events","editorScript":"file:./index.js","editorStyle":"file:./index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
 
 /***/ })
 

@@ -27,7 +27,8 @@ class Speaker {
         $single = 0;
         $category = ('' != $category) ? sanitize_text_field($category) : sanitize_text_field($cat);
         $number = ('-1' != $num) ? sanitize_text_field($num) : sanitize_text_field($number);
-        $id = sanitize_text_field($id);
+        $idsRaw = explode(',', $id);
+        $ids = array_map('intval', $idsRaw);
         $format = sanitize_text_field($format);
         $orderby = ($orderby == 'lastname' ? 'lastname' : 'firstname');
         $settings = Settings::getOption('rrze-events-settings');
@@ -42,7 +43,7 @@ class Speaker {
             $args['posts_per_page'] = $number;
         }
         if ((isset($id)) && ( strlen(trim($id)) > 0)) {
-            $args ['p'] = $id;
+            $args ['post__in'] = $ids;
             $single = 1;
         } elseif ((isset($category)) && ( strlen(trim($category)) > 0)) {
             $args['tax_query'][] = array(
