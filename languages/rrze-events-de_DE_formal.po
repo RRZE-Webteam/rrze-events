@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: RRZE Events\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-16 14:22+0000\n"
-"PO-Revision-Date: 2024-10-15 10:00+0000\n"
+"PO-Revision-Date: 2024-10-30 08:18+0000\n"
 "Last-Translator: Barbara Bothe\n"
 "Language-Team: Deutsch (Sie)\n"
 "Language: de_DE_formal\n"
@@ -78,6 +78,16 @@ msgstr "Verfügbar"
 msgid "available"
 msgstr "verfügbar"
 
+#: build/blocks/speaker/block.json:1 src/blocks/speaker/block.json:1
+msgctxt "block description"
+msgid "RRZE Events Speaker"
+msgstr "RRZE Events: Referent"
+
+#: build/blocks/speaker/block.json:1 src/blocks/speaker/block.json:1
+msgctxt "block title"
+msgid "RRZE Events Speaker"
+msgstr "RRZE Events: Referent"
+
 #: includes/Utils.php:93 includes/CPT/Speaker.php:128
 msgid "Blog"
 msgstr "Blog"
@@ -94,6 +104,10 @@ msgstr "Nach Titel"
 msgid "Call For Papers"
 msgstr "Call For Papers"
 
+#: src/blocks/speaker/edit.js:135
+msgid "Categories"
+msgstr "Kategorien"
+
 #: includes/Settings.php:174 includes/CPT/Talk.php:110
 msgid "Code"
 msgstr "Kurzbezeichnung"
@@ -102,24 +116,21 @@ msgstr "Kurzbezeichnung"
 msgid "Contact"
 msgstr "Kontakt"
 
+#: src/blocks/speaker/edit.js:127
+msgid "Count"
+msgstr "Anzahl"
+
 #: config/defaults.php:26 includes/Settings.php:178
 msgid "Course Nr"
 msgstr "Kursnr."
 
-#: includes/Utils.php:258 includes/Utils.php:259 includes/CPT/Talk.php:116
-#: includes/Shortcodes/Talk.php:210
+#: includes/Utils.php:258 includes/Utils.php:259 includes/CPT/Talk.php:116 includes/Shortcodes/Talk.php:210
 msgid "Date"
 msgstr "Datum"
 
 #: includes/CPT/Talk.php:209
-msgid ""
-"Drag speakers from the left column to the right column to attach them to "
-"this talk.<br />You may rearrange the order of the speakers in the right "
-"column by dragging and dropping."
-msgstr ""
-"Ziehe Referenten von der linken in die rechte Spalte, um sie mit diesem "
-"Vortrag zu verknüpfen.<br />Die Reihenfolge der Referenten kann später durch "
-"ziehen verändert werden."
+msgid "Drag speakers from the left column to the right column to attach them to this talk.<br />You may rearrange the order of the speakers in the right column by dragging and dropping."
+msgstr "Ziehe Referenten von der linken in die rechte Spalte, um sie mit diesem Vortrag zu verknüpfen.<br />Die Reihenfolge der Referenten kann später durch ziehen verändert werden."
 
 #: includes/CPT/Talk.php:38 includes/CPT/Speaker.php:38
 msgid "Edit"
@@ -157,6 +168,10 @@ msgstr "Events Einstellungen"
 msgid "Firma / Organisation"
 msgstr "Firma / Organisation"
 
+#: src/blocks/speaker/edit.js:120
+msgid "First Name"
+msgstr "Vorname"
+
 #: includes/Settings.php:195
 msgid "Form ID"
 msgstr "Formular-ID"
@@ -168,6 +183,14 @@ msgstr "Allgemein"
 #: includes/Settings.php:227
 msgid "Go to Plugin page"
 msgstr "Zur Plugin-Seite"
+
+#: src/blocks/speaker/edit.js:110
+msgid "Grid"
+msgstr "Kacheln"
+
+#: src/blocks/speaker/edit.js:131
+msgid "How many speakers do you want to show? Enter -1 for all speakers."
+msgstr "Wie viele Referenten sollen angezeigt werden? -1 für alle Referenten."
 
 #. Author URI of the plugin
 msgid "https://blogs.fau.de/webworking/"
@@ -185,8 +208,19 @@ msgstr "ID des Contact-Form-7-Formulars, das den Call for Papers enthält"
 msgid "Labels"
 msgstr "Bezeichnungen"
 
-#: includes/Utils.php:273 includes/Utils.php:275 includes/CPT/Talk.php:158
-#: includes/Shortcodes/Talk.php:216
+#: src/blocks/speaker/edit.js:119
+msgid "Last Name"
+msgstr "Nachname"
+
+#: src/blocks/speaker/edit.js:105 src/blocks/speaker/edit.js:107
+msgid "Layout"
+msgstr "Design"
+
+#: src/blocks/speaker/edit.js:111
+msgid "List"
+msgstr "Liste"
+
+#: includes/Utils.php:273 includes/Utils.php:275 includes/CPT/Talk.php:158 includes/Shortcodes/Talk.php:216
 msgid "Location"
 msgstr "Ort/Raum"
 
@@ -230,18 +264,19 @@ msgstr "Keine Auswahl"
 msgid "Offer waiting list for fully booked talks"
 msgstr "Warteliste für ausgebuchte Vorträge anbieten"
 
+#: src/blocks/speaker/edit.js:116
+msgid "Order"
+msgstr "Reihenfolge"
+
 #: includes/Settings.php:124
 msgid "Order of the talks listed on a speakers single page."
-msgstr ""
-"Reihenfolge der Vorträge, die auf der Referentenseite aufgelistet werden."
+msgstr "Reihenfolge der Vorträge, die auf der Referentenseite aufgelistet werden."
 
 #: includes/CPT/Talk.php:33 includes/CPT/Speaker.php:33
 msgid "Parent Item:"
 msgstr "Übergeordneter Eintrag:"
 
-#: includes/Utils.php:285 includes/Utils.php:287 includes/Utils.php:289
-#: includes/Utils.php:300 includes/Utils.php:303
-#: includes/Shortcodes/Talk.php:218
+#: includes/Utils.php:285 includes/Utils.php:287 includes/Utils.php:289 includes/Utils.php:300 includes/Utils.php:303 includes/Shortcodes/Talk.php:218
 msgid "Participants"
 msgstr "Teilnehmer"
 
@@ -251,9 +286,7 @@ msgstr "Verfügbare Plätze"
 
 #: includes/Settings.php:226
 msgid "Please activate Contact Form 7 Plugin to use this option"
-msgstr ""
-"Bitte aktivieren Sie das Plugin \"Contact Form 7\", um diese Funktion nutzen "
-"zu können."
+msgstr "Bitte aktivieren Sie das Plugin \"Contact Form 7\", um diese Funktion nutzen zu können."
 
 #. 1: The plugin name, 2: The error string.
 #: rrze-events.php:93 rrze-events.php:190
@@ -293,6 +326,10 @@ msgstr "Mehr zu"
 msgid "rectangle"
 msgstr "rechteckig"
 
+#: src/blocks/speaker/edit.js:148 src/blocks/speaker/edit.js:170
+msgid "Remove"
+msgstr "Entfernen"
+
 #: includes/Settings.php:96
 #| msgid "round"
 msgid "rounded"
@@ -304,17 +341,8 @@ msgid "RRZE Events"
 msgstr "RRZE Events"
 
 #: rrze-events.php:77
-msgid ""
-"RRZE Events plugin does not work with FAU Events Theme as the event features "
-"are already included in the theme. Please activate another theme before "
-"activating RRZE Events. The plugin will preserve your existing speakers, "
-"talks and shortcodes."
-msgstr ""
-"Sie können das Plugin RRZE-Events nicht zusammen mit dem Theme FAU-Events "
-"verwenden. Alle Veranstaltungs-Funktionen sind bereits im Theme enthalten. "
-"Wählen Sie ein anderes Theme, bevor Sie RRZE-Events aktivieren. Bestehende "
-"Daten zu Referenten und Vorträgen werden automatisch aus FAU-Events in das "
-"Plugin importiert."
+msgid "RRZE Events plugin does not work with FAU Events Theme as the event features are already included in the theme. Please activate another theme before activating RRZE Events. The plugin will preserve your existing speakers, talks and shortcodes."
+msgstr "Sie können das Plugin RRZE-Events nicht zusammen mit dem Theme FAU-Events verwenden. Alle Veranstaltungs-Funktionen sind bereits im Theme enthalten. Wählen Sie ein anderes Theme, bevor Sie RRZE-Events aktivieren. Bestehende Daten zu Referenten und Vorträgen werden automatisch aus FAU-Events in das Plugin importiert."
 
 #. Author of the plugin
 msgid "RRZE Webteam"
@@ -327,6 +355,18 @@ msgstr "Nach Referenten suchen"
 #: includes/CPT/Talk.php:40
 msgid "Search Talk"
 msgstr "Nach Vorträgen suchen"
+
+#: src/blocks/speaker/edit.js:125
+msgid "Select Speakers"
+msgstr "Referenten auswählen"
+
+#: src/blocks/speaker/edit.js:140 src/blocks/speaker/edit.js:179
+msgid "Selected Categories"
+msgstr "Kategorien auswählen"
+
+#: src/blocks/speaker/edit.js:162
+msgid "Selected Speakers"
+msgstr "Ausgewählte Referenten"
 
 #: includes/Main.php:46
 msgid "Settings"
@@ -344,9 +384,7 @@ msgstr "Vortragsfolien"
 msgid "Social Media"
 msgstr "Soziale Medien"
 
-#: config/defaults.php:24 includes/Settings.php:164 includes/Utils.php:236
-#: includes/Utils.php:236 includes/CPT/Speaker.php:45
-#: templates/content/content-single-talk.php:22
+#: config/defaults.php:24 includes/Settings.php:164 includes/Utils.php:236 includes/Utils.php:236 includes/CPT/Speaker.php:45 templates/content/content-single-talk.php:22
 msgid "Speaker"
 msgstr "Referent"
 
@@ -402,9 +440,7 @@ msgstr "Referent: Website"
 msgid "Speaker(s)"
 msgstr "Referent(en)"
 
-#: config/defaults.php:25 includes/Settings.php:171 includes/CPT/Speaker.php:32
-#: templates/themes/fau/archive-speaker.php:27
-#: templates/themes/fau/archive-speaker.php:29
+#: config/defaults.php:25 includes/Settings.php:171 includes/CPT/Speaker.php:32 templates/themes/fau/archive-speaker.php:27 templates/themes/fau/archive-speaker.php:29 src/blocks/speaker/edit.js:157
 msgid "Speakers"
 msgstr "Referenten"
 
@@ -448,9 +484,7 @@ msgstr "Reihenfolge der Vorträge"
 msgid "Talk Title"
 msgstr "Vortrag: Titel"
 
-#: config/defaults.php:23 includes/Settings.php:157 includes/Utils.php:74
-#: includes/CPT/Talk.php:32 templates/themes/fau/archive-talk.php:27
-#: templates/themes/fau/archive-talk.php:29
+#: config/defaults.php:23 includes/Settings.php:157 includes/Utils.php:74 includes/CPT/Talk.php:32 templates/themes/fau/archive-talk.php:27 templates/themes/fau/archive-talk.php:29
 msgid "Talks"
 msgstr "Vorträge"
 
@@ -497,25 +531,16 @@ msgstr "Schlagwort"
 #. 1: Server PHP version number, 2: Required PHP version number.
 #: rrze-events.php:65
 #, php-format
-msgid ""
-"The server is running PHP version %1$s. The Plugin requires at least PHP "
-"version %2$s."
-msgstr ""
-"Auf dem Server läuft PHP Version %1$s. Das Plugin benötigt mindestens PHP "
-"Version %2$s."
+msgid "The server is running PHP version %1$s. The Plugin requires at least PHP version %2$s."
+msgstr "Auf dem Server läuft PHP Version %1$s. Das Plugin benötigt mindestens PHP Version %2$s."
 
 #. 1: Server WordPress version number, 2: Required WordPress version number.
 #: rrze-events.php:72
 #, php-format
-msgid ""
-"The server is running WordPress version %1$s. The Plugin requires at least "
-"WordPress version %2$s."
-msgstr ""
-"Auf dem Server läuft WordPress Version %1$s. Das Plugin benötigt mindestens "
-"WordPress Version %2$s."
+msgid "The server is running WordPress version %1$s. The Plugin requires at least WordPress version %2$s."
+msgstr "Auf dem Server läuft WordPress Version %1$s. Das Plugin benötigt mindestens WordPress Version %2$s."
 
-#: includes/Utils.php:261 includes/Utils.php:263
-#: includes/Shortcodes/Talk.php:215
+#: includes/Utils.php:261 includes/Utils.php:263 includes/Shortcodes/Talk.php:215
 msgid "Time"
 msgstr "Zeit"
 

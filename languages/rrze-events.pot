@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RRZE Events\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-15 09:59+0000\n"
+"POT-Creation-Date: 2024-10-30 08:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -76,6 +76,16 @@ msgstr ""
 msgid "available"
 msgstr ""
 
+#: build/blocks/speaker/block.json:1 src/blocks/speaker/block.json:1
+msgctxt "block description"
+msgid "RRZE Events Speaker"
+msgstr ""
+
+#: build/blocks/speaker/block.json:1 src/blocks/speaker/block.json:1
+msgctxt "block title"
+msgid "RRZE Events Speaker"
+msgstr ""
+
 #: includes/Utils.php:93 includes/CPT/Speaker.php:128
 msgid "Blog"
 msgstr ""
@@ -92,6 +102,10 @@ msgstr ""
 msgid "Call For Papers"
 msgstr ""
 
+#: src/blocks/speaker/edit.js:135
+msgid "Categories"
+msgstr ""
+
 #: includes/Settings.php:174 includes/CPT/Talk.php:110
 msgid "Code"
 msgstr ""
@@ -100,20 +114,20 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
+#: src/blocks/speaker/edit.js:127
+msgid "Count"
+msgstr ""
+
 #: config/defaults.php:26 includes/Settings.php:178
 msgid "Course Nr"
 msgstr ""
 
-#: includes/Utils.php:258 includes/Utils.php:259 includes/CPT/Talk.php:116
-#: includes/Shortcodes/Talk.php:210
+#: includes/Utils.php:258 includes/Utils.php:259 includes/CPT/Talk.php:116 includes/Shortcodes/Talk.php:210
 msgid "Date"
 msgstr ""
 
 #: includes/CPT/Talk.php:209
-msgid ""
-"Drag speakers from the left column to the right column to attach them to "
-"this talk.<br />You may rearrange the order of the speakers in the right "
-"column by dragging and dropping."
+msgid "Drag speakers from the left column to the right column to attach them to this talk.<br />You may rearrange the order of the speakers in the right column by dragging and dropping."
 msgstr ""
 
 #: includes/CPT/Talk.php:38 includes/CPT/Speaker.php:38
@@ -152,6 +166,10 @@ msgstr ""
 msgid "Firma / Organisation"
 msgstr ""
 
+#: src/blocks/speaker/edit.js:120
+msgid "First Name"
+msgstr ""
+
 #: includes/Settings.php:195
 msgid "Form ID"
 msgstr ""
@@ -162,6 +180,14 @@ msgstr ""
 
 #: includes/Settings.php:227
 msgid "Go to Plugin page"
+msgstr ""
+
+#: src/blocks/speaker/edit.js:110
+msgid "Grid"
+msgstr ""
+
+#: src/blocks/speaker/edit.js:131
+msgid "How many speakers do you want to show? Enter -1 for all speakers."
 msgstr ""
 
 #. Author URI of the plugin
@@ -180,8 +206,19 @@ msgstr ""
 msgid "Labels"
 msgstr ""
 
-#: includes/Utils.php:273 includes/Utils.php:275 includes/CPT/Talk.php:158
-#: includes/Shortcodes/Talk.php:216
+#: src/blocks/speaker/edit.js:119
+msgid "Last Name"
+msgstr ""
+
+#: src/blocks/speaker/edit.js:105 src/blocks/speaker/edit.js:107
+msgid "Layout"
+msgstr ""
+
+#: src/blocks/speaker/edit.js:111
+msgid "List"
+msgstr ""
+
+#: includes/Utils.php:273 includes/Utils.php:275 includes/CPT/Talk.php:158 includes/Shortcodes/Talk.php:216
 msgid "Location"
 msgstr ""
 
@@ -225,6 +262,10 @@ msgstr ""
 msgid "Offer waiting list for fully booked talks"
 msgstr ""
 
+#: src/blocks/speaker/edit.js:116
+msgid "Order"
+msgstr ""
+
 #: includes/Settings.php:124
 msgid "Order of the talks listed on a speakers single page."
 msgstr ""
@@ -233,9 +274,7 @@ msgstr ""
 msgid "Parent Item:"
 msgstr ""
 
-#: includes/Utils.php:285 includes/Utils.php:287 includes/Utils.php:289
-#: includes/Utils.php:300 includes/Utils.php:303
-#: includes/Shortcodes/Talk.php:218
+#: includes/Utils.php:285 includes/Utils.php:287 includes/Utils.php:289 includes/Utils.php:300 includes/Utils.php:303 includes/Shortcodes/Talk.php:218
 msgid "Participants"
 msgstr ""
 
@@ -285,6 +324,10 @@ msgstr ""
 msgid "rectangle"
 msgstr ""
 
+#: src/blocks/speaker/edit.js:148 src/blocks/speaker/edit.js:170
+msgid "Remove"
+msgstr ""
+
 #: includes/Settings.php:96
 msgid "rounded"
 msgstr ""
@@ -295,11 +338,7 @@ msgid "RRZE Events"
 msgstr ""
 
 #: rrze-events.php:77
-msgid ""
-"RRZE Events plugin does not work with FAU Events Theme as the event features "
-"are already included in the theme. Please activate another theme before "
-"activating RRZE Events. The plugin will preserve your existing speakers, "
-"talks and shortcodes."
+msgid "RRZE Events plugin does not work with FAU Events Theme as the event features are already included in the theme. Please activate another theme before activating RRZE Events. The plugin will preserve your existing speakers, talks and shortcodes."
 msgstr ""
 
 #. Author of the plugin
@@ -312,6 +351,18 @@ msgstr ""
 
 #: includes/CPT/Talk.php:40
 msgid "Search Talk"
+msgstr ""
+
+#: src/blocks/speaker/edit.js:125
+msgid "Select Speakers"
+msgstr ""
+
+#: src/blocks/speaker/edit.js:140 src/blocks/speaker/edit.js:179
+msgid "Selected Categories"
+msgstr ""
+
+#: src/blocks/speaker/edit.js:162
+msgid "Selected Speakers"
 msgstr ""
 
 #: includes/Main.php:46
@@ -330,9 +381,7 @@ msgstr ""
 msgid "Social Media"
 msgstr ""
 
-#: config/defaults.php:24 includes/Settings.php:164 includes/Utils.php:236
-#: includes/Utils.php:236 includes/CPT/Speaker.php:45
-#: templates/content/content-single-talk.php:22
+#: config/defaults.php:24 includes/Settings.php:164 includes/Utils.php:236 includes/Utils.php:236 includes/CPT/Speaker.php:45 templates/content/content-single-talk.php:22
 msgid "Speaker"
 msgstr ""
 
@@ -388,9 +437,7 @@ msgstr ""
 msgid "Speaker(s)"
 msgstr ""
 
-#: config/defaults.php:25 includes/Settings.php:171 includes/CPT/Speaker.php:32
-#: templates/themes/fau/archive-speaker.php:27
-#: templates/themes/fau/archive-speaker.php:29
+#: config/defaults.php:25 includes/Settings.php:171 includes/CPT/Speaker.php:32 templates/themes/fau/archive-speaker.php:27 templates/themes/fau/archive-speaker.php:29 src/blocks/speaker/edit.js:157
 msgid "Speakers"
 msgstr ""
 
@@ -434,9 +481,7 @@ msgstr ""
 msgid "Talk Title"
 msgstr ""
 
-#: config/defaults.php:23 includes/Settings.php:157 includes/Utils.php:74
-#: includes/CPT/Talk.php:32 templates/themes/fau/archive-talk.php:27
-#: templates/themes/fau/archive-talk.php:29
+#: config/defaults.php:23 includes/Settings.php:157 includes/Utils.php:74 includes/CPT/Talk.php:32 templates/themes/fau/archive-talk.php:27 templates/themes/fau/archive-talk.php:29
 msgid "Talks"
 msgstr ""
 
@@ -483,21 +528,16 @@ msgstr ""
 #. 1: Server PHP version number, 2: Required PHP version number.
 #: rrze-events.php:65
 #, php-format
-msgid ""
-"The server is running PHP version %1$s. The Plugin requires at least PHP "
-"version %2$s."
+msgid "The server is running PHP version %1$s. The Plugin requires at least PHP version %2$s."
 msgstr ""
 
 #. 1: Server WordPress version number, 2: Required WordPress version number.
 #: rrze-events.php:72
 #, php-format
-msgid ""
-"The server is running WordPress version %1$s. The Plugin requires at least "
-"WordPress version %2$s."
+msgid "The server is running WordPress version %1$s. The Plugin requires at least WordPress version %2$s."
 msgstr ""
 
-#: includes/Utils.php:261 includes/Utils.php:263
-#: includes/Shortcodes/Talk.php:215
+#: includes/Utils.php:261 includes/Utils.php:263 includes/Shortcodes/Talk.php:215
 msgid "Time"
 msgstr ""
 

@@ -1,10 +1,12 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, ComboboxControl, TextControl, RadioControl } from '@wordpress/components';
-//import { ServerSideRender } from '@wordpress/server-side-render';
+import ServerSideRender from '@wordpress/server-side-render';
 import { useSelect } from '@wordpress/data';
 import { useState, useEffect } from '@wordpress/element';
-import metadata from './block.json'; // Import block.json metadata
+import metadata from './block.json';
+
+import './editor.scss';
 
 
 export default ({ attributes, setAttributes }) => {
@@ -92,7 +94,7 @@ export default ({ attributes, setAttributes }) => {
 
     const onChangeLayout = (value) => {
         setLayout( value );
-        setAttributes({Layout: value});
+        setAttributes({layout: value});
     };
     const onChangeOrderBy = (value) => {
         setOrderBy( value );
@@ -175,9 +177,11 @@ export default ({ attributes, setAttributes }) => {
                         </ul>
                     </div>
                 </PanelBody>
-                </InspectorControls>
-            <p>{__('Selected Categories', 'rrze-events')}: {selectedCategories.join(', ')}<br/>
-                Eingegebene Zahl: {numSpeakers}</p>
+            </InspectorControls>
+            <ServerSideRender
+                block="rrze/events-speaker"
+                attributes={attributes}
+            />
         </div>
     );
 };
