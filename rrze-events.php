@@ -204,5 +204,5 @@ function loaded()
 
 function createBlocks(): void {
     register_block_type( __DIR__ . '/build/blocks/speaker' );
-    //register_block_type( __DIR__ . '/build/blocks/talk' );
+    register_block_type( __DIR__ . '/build/blocks/talk' );
 }

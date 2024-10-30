@@ -7,8 +7,6 @@ use RRZE\Events\Utils;
 
 class Talk {
     public function __construct() {
-        //add_action('admin_enqueue_scripts', [$this, 'enqueueGutenberg']);
-        //add_action('init', [$this, 'initGutenberg']);
         add_shortcode('talk', [$this, 'shortcodeOutput']);
     }
 

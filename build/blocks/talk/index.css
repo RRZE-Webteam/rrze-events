@@ -1,6 +1,6 @@
-/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/@wordpress/scripts/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks/speaker/editor.scss ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************/
+/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/@wordpress/scripts/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks/talk/editor.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************/
 /**
  * The following styles get applied inside the editor only.
  *
@@ -46,8 +46,8 @@
 }
 .single-speaker .rrze-speaker .mobiletitle {
   margin-bottom: 0;
-  padding-right: 15px;
   padding-left: 15px;
+  padding-right: 15px;
 }
 .single-speaker .rrze-speaker .mobiletitle .speaker-organisation {
   font-weight: normal;
@@ -91,8 +91,8 @@
 @media (min-width: 768px) {
   .single-speaker .rrze-speaker .speaker-details .speaker-name {
     display: block;
-    padding-right: 15px;
     padding-left: 15px;
+    padding-right: 15px;
     font-weight: bold;
     font-size: 1.2em;
     padding-top: 15px;
@@ -105,8 +105,8 @@
 @media (min-width: 768px) {
   .single-speaker .rrze-speaker .speaker-details .speaker-organisation {
     display: block;
-    padding-right: 15px;
     padding-left: 15px;
+    padding-right: 15px;
     padding-bottom: 15px;
     font-size: 1em;
     text-align: center;
@@ -114,8 +114,8 @@
 }
 @media (min-width: 768px) {
   .single-speaker .rrze-speaker .speaker-details .speaker-links {
-    padding-right: 15px;
     padding-left: 15px;
+    padding-right: 15px;
   }
 }
 .single-speaker .rrze-speaker .speaker-details .speaker-links span.rrze-elements-icon-error {
@@ -140,7 +140,7 @@
 }
 @media (min-width: 768px) {
   .single-speaker .rrze-speaker .speaker-details ul.speaker-social-icons li {
-    margin-right: 0;
+    margin-left: 0;
   }
 }
 .single-speaker .rrze-speaker .speaker-details ul.speaker-social-icons li a svg {
@@ -154,8 +154,8 @@
 }
 @media (min-width: 768px) {
   .single-speaker .rrze-speaker .speaker-details .speaker-categories {
-    padding-right: 15px;
     padding-left: 15px;
+    padding-right: 15px;
     padding-bottom: 15px;
   }
 }
@@ -165,10 +165,10 @@
 .single-speaker .rrze-speaker .speaker-details .speaker-categories ul li {
   list-style-type: none;
   display: inline-block;
-  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
 .single-speaker .rrze-speaker .speaker-details .speaker-categories ul li:last-child {
-  margin-left: 0;
+  margin-right: 0;
 }
 .single-speaker .rrze-speaker .speaker-details .speaker-categories ul li a {
   text-decoration-color: var(--color-TextLight, #797676);
@@ -191,9 +191,9 @@
   display: inline-block;
   background-color: var(--color-primary-ci-hell2, #ced9e7);
   color: var(--color-primary-ci-hell2-kontrast, #000);
-  margin-left: 0.3em;
-  padding-left: 5px;
+  margin-right: 0.3em;
   padding-right: 5px;
+  padding-left: 5px;
   text-decoration: none;
 }
 .single-speaker .rrze-speaker .speaker-talks .speaker-categories a:hover, .single-speaker .rrze-speaker .speaker-talks .speaker-categories a:focus, .single-speaker .rrze-speaker .speaker-talks .speaker-categories a:active {
@@ -202,7 +202,7 @@
 }
 .single-speaker .rrze-speaker .speaker-talks .speaker-categories.inline {
   display: inline;
-  margin-right: 0.5em;
+  margin-left: 0.5em;
 }
 
 @media (min-width: 768px) {
@@ -227,8 +227,8 @@
 }
 .single-talk .rrze-talk .mobiletitle {
   margin-bottom: 0;
-  padding-right: 15px;
   padding-left: 15px;
+  padding-right: 15px;
 }
 .single-talk .rrze-talk .entry-title {
   width: 100%;
@@ -286,8 +286,8 @@
 }
 .single-talk .rrze-talk .talk-details {
   background-color: var(--color-ContentRegions, #f5f7f9);
-  margin-right: -15px;
   margin-left: -15px;
+  margin-right: -15px;
   margin-bottom: 15px;
   padding: 15px;
   display: flex;
@@ -317,11 +317,11 @@
   text-decoration-color: var(--color-TextLight, #797676);
 }
 .single-talk .rrze-talk .talk-details svg {
-  margin-left: 0.3em;
+  margin-right: 0.3em;
 }
 .single-talk .rrze-talk .talk-details .talk-title {
-  padding-right: 15px;
   padding-left: 15px;
+  padding-right: 15px;
   font-weight: bold;
   font-size: 1.2em;
   padding-top: 15px;
@@ -344,11 +344,11 @@
 }
 .single-talk .rrze-talk .talk-details .talk-media ul li {
   list-style-type: none;
-  margin-left: 2em;
+  margin-right: 2em;
   padding: 0;
 }
 .single-talk .rrze-talk .talk-details .talk-media ul li:last-child {
-  margin-left: 0;
+  margin-right: 0;
 }
 .single-talk .rrze-talk .talk-main {
   padding: 0 15px 15px;
@@ -361,13 +361,13 @@
   }
 }
 .single-talk .rrze-talk .post-image {
-  float: left;
-  margin: 0 10px 10px 0;
+  float: right;
+  margin: 0 0 10px 10px;
   max-width: min(50%, 300px);
 }
 @media (min-width: 768px) {
   .single-talk .rrze-talk .post-image {
-    margin-right: 20px;
+    margin-left: 20px;
   }
 }
 .single-talk .rrze-talk .talk-categories {
@@ -380,16 +380,16 @@
 .single-talk .rrze-talk .talk-categories ul li {
   list-style-type: none;
   display: inline-block;
-  margin-left: 0.5em;
+  margin-right: 0.5em;
   padding: 0.2em 0;
 }
 .single-talk .rrze-talk .talk-categories ul li:last-child {
-  margin-left: 0;
+  margin-right: 0;
 }
 .single-talk .rrze-talk .talk-categories ul li a {
   background-color: var(--color-primary-ci-hell2, #ced9e7);
   color: var(--color-primary-ci-hell2-kontrast, #000);
-  margin-left: 0.3em;
+  margin-right: 0.3em;
   padding: 3px 5px;
   text-decoration: none;
 }
@@ -398,7 +398,7 @@
   color: var(--color-primary-ci-hell-kontrast, #fff);
 }
 .single-talk .rrze-talk .talk-tags svg {
-  margin-left: 0.3em;
+  margin-right: 0.3em;
 }
 .single-talk .rrze-talk .talk-tags ul {
   display: inline;
@@ -407,11 +407,11 @@
 .single-talk .rrze-talk .talk-tags ul li {
   list-style-type: none;
   display: inline-block;
-  margin-left: 0.5em;
+  margin-right: 0.5em;
   padding: 0 0 0.3em;
 }
 .single-talk .rrze-talk .talk-tags ul li:last-child {
-  margin-left: 0;
+  margin-right: 0;
 }
 
 .rrze-events.speaker-grid, .rrze-events.talk-grid {
@@ -474,7 +474,7 @@
   text-decoration: none;
 }
 .rrze-events.speaker-grid > article a.entry-main .rrze-elements-icon, .rrze-events.talk-grid > article a.entry-main .rrze-elements-icon {
-  margin-right: 0.5em;
+  margin-left: 0.5em;
 }
 .rrze-events.speaker-grid > article .entry-cats, .rrze-events.talk-grid > article .entry-cats {
   font-size: 0.9em;
@@ -498,7 +498,7 @@
 }
 .rrze-events.speaker-grid > article a.read-more, .rrze-events.talk-grid > article a.read-more {
   vertical-align: middle;
-  margin-right: 0.5em;
+  margin-left: 0.5em;
 }
 .rrze-events.speaker-grid > article a.read-more svg.rrze-elements-icon, .rrze-events.talk-grid > article a.read-more svg.rrze-elements-icon {
   padding: 0;
@@ -516,10 +516,10 @@
   margin-bottom: 0.25em;
 }
 .rrze-events.talk-grid > article .talk-data svg {
-  margin-left: 0.3em;
+  margin-right: 0.3em;
 }
 .rrze-events.talk-grid > article .talk-data .date {
-  margin-left: 1em;
+  margin-right: 1em;
 }
 .rrze-events.talk-grid > article .post-entry {
   margin-top: var(--width-gutter-half, 15px);
@@ -528,7 +528,9 @@
   font-weight: bold;
 }
 
-.post-type-page .editor-styles-wrapper .wp-block-rrze-events-speaker * {
+.post-type-page .editor-styles-wrapper .wp-block-rrze-events-talk * {
   font-family: Roboto, FAU Chimera, sans-serif;
   line-height: 1.5;
 }
+
+/*# sourceMappingURL=index.css.map*/

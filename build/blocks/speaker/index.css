@@ -528,4 +528,9 @@
   font-weight: bold;
 }
 
+.post-type-page .editor-styles-wrapper .wp-block-rrze-events-speaker * {
+  font-family: Roboto, FAU Chimera, sans-serif;
+  line-height: 1.5;
+}
+
 /*# sourceMappingURL=index.css.map*/
