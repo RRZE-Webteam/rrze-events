@@ -42,11 +42,11 @@
     },
     "showImage": {
       "type": "boolean",
-      "default": true
+      "default": false
     },
-    "showOrganization": {
+    "showOrganisation": {
       "type": "boolean",
-      "default": true
+      "default": false
     },
     "tableColumns": {
       "type": "array",
@@ -54,7 +54,9 @@
         "date",
         "duration",
         "title",
-        "speaker"
+        "speaker",
+        "none",
+        "none"
       ]
     }
   },

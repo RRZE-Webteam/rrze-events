@@ -42,15 +42,15 @@
 		},
 		"showImage": {
 			"type": "boolean",
-			"default": true
+			"default": false
 		},
-		"showOrganization": {
+		"showOrganisation": {
 			"type": "boolean",
-			"default": true
+			"default": false
 		},
 		"tableColumns": {
 			"type": "array",
-			"default": ["date", "duration", "title", "speaker"]
+			"default": ["date", "duration", "title", "speaker", "none", "none"]
 		}
 	},
 	"supports": {

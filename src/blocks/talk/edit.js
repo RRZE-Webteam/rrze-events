@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, ComboboxControl, TextControl, RadioControl, DatePicker } from '@wordpress/components';
+import { PanelBody, ComboboxControl, TextControl, ToggleControl, SelectControl } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
 import { useSelect } from '@wordpress/data';
 import { useState, useEffect } from '@wordpress/element';
@@ -14,8 +14,12 @@ export default ({ attributes, setAttributes }) => {
     const blockProps = useBlockProps();
     const { numTalks } = attributes;
     const { talkDate } = attributes;
+    const { showImage } = attributes;
+    const { showOrganisation } = attributes;
+    const [tableColumns, setTableColumns] = useState(attributes.tableColumns || []);
     const [layout, setLayout] = useState( attributes.layout || 'grid' );
-    const [orderBy, setOrderBy] = useState( attributes.orderBy || 'lastname' );
+    const [orderBy, setOrderBy] = useState( attributes.orderBy || 'date' );
+    const [orderType, setOrderType] = useState( attributes.orderType || 'ASC' );
     const [selectedCategories, setSelectedCategories] = useState(attributes.selectedCategories || []);
     const [selectedTags, setSelectedTags] = useState(attributes.selectedTags || []);
     const [selectedTalks, setSelectedTalks] = useState(attributes.selectedTalks || []);
@@ -124,30 +128,112 @@ export default ({ attributes, setAttributes }) => {
         setAttributes({orderBy: value});
     };
 
+    const onChangeOrderType = (value) => {
+        setOrderType( value );
+        setAttributes({orderType: value});
+    };
+
+    const onChangeDate = (value) => {
+        setAttributes({talkDate: value});
+    };
+
+    const onChangeTableColumns = (index, value) => {
+        const newValues = [...tableColumns];
+        console.log(index, value);
+        newValues[index] = value;
+        setTableColumns(newValues);
+        setAttributes({ tableColumns: newValues });
+        console.log(tableColumns);
+    };
+
+    // Array zum Speichern der Komponenten
+    const tableColumnFields = [];
+    let i = 0;
+//console.log(tableColumns[i]);
+    while (i < 6) {
+        tableColumnFields.push(
+            <SelectControl
+                label={__('Column ', 'rrze-events') +  ` ${i + 1}`}
+                selected={tableColumns["i"]}
+                options={ [
+                    { label: __('None', 'rrze-events'), value: 'none' },
+                    { label: __('Date', 'rrze-events'), value: 'date' },
+                    { label: __('Start Time', 'rrze-events'), value: 'start' },
+                    { label: __('End Time', 'rrze-events'), value: 'end' },
+                    { label: __('Start - End', 'rrze-events'), value: 'duration' },
+                    { label: __('Location', 'rrze-events'), value: 'location' },
+                    { label: __('Title', 'rrze-events'), value: 'talk' },
+                    { label: __('Speaker', 'rrze-events'), value: 'speaker' },
+                    { label: __('Participants', 'rrze-events'), value: 'participants' },
+                    { label: __('Available Places', 'rrze-events'), value: 'available' },
+                    { label: __('Code', 'rrze-events'), value: 'short' },
+                ] }
+                onChange={(value) => onChangeTableColumns(i, value)}
+            />
+        )
+        i++;
+    }
+
+
     return (
         <div {...blockProps}>
             <InspectorControls>
                 <PanelBody title={__('Layout', 'rrze-events')}>
-                    <RadioControl
+                    <SelectControl
                         label={__('Layout', 'rrze-events')}
                         selected={ layout }
                         options={ [
                             { label: __('Grid', 'rrze-events'), value: 'grid' },
                             { label: __('Table', 'rrze-events'), value: 'table' },
-                            { label: __('Short', 'rrze-events'), value: 'short' },
+                            { label: __('Short', 'rrze-events'), value: 'short' }
                         ] }
                         onChange={onChangeLayout}
                     />
-                    <RadioControl
-                        label={__('Order', 'rrze-events')}
+                    { layout === "table" && (
+                        [tableColumnFields]
+                    ) }
+                    <ToggleControl
+                        __nextHasNoMarginBottom
+                        checked={ !! showImage }
+                        label={__('Show Talk Image', 'rrze-events')}
+                        onChange={ () =>
+                            setAttributes( {
+                                showImage: ! showImage,
+                            } )
+                        }
+                    />
+                    <ToggleControl
+                        __nextHasNoMarginBottom
+                        checked={ !! showOrganisation }
+                        label={__('Show Speaker Organisation', 'rrze-events')}
+                        onChange={ () =>
+                            setAttributes( {
+                                showOrganisation: ! showOrganisation,
+                            } )
+                        }
+                    />
+                    <SelectControl
+                        label={__('Order By', 'rrze-events')}
                         selected={ orderBy }
                         options={ [
-                            { label: __('Last Name', 'rrze-events'), value: 'lastname' },
-                            { label: __('First Name', 'rrze-events'), value: 'firstname' },
+                            { label: __('Date', 'rrze-events'), value: 'date' },
+                            { label: __('Start Time', 'rrze-events'), value: 'start' },
+                            { label: __('Title', 'rrze-events'), value: 'title' },
+                            { label: __('Code', 'rrze-events'), value: 'shortname' }
                         ] }
                         onChange={onChangeOrderBy}
                     />
+                    <SelectControl
+                        label={__('Order', 'rrze-events')}
+                        selected={ orderType }
+                        options={ [
+                            { label: __('ascending', 'rrze-events'), value: 'ASC' },
+                            { label: __('descending', 'rrze-events'), value: 'DESC' }
+                        ] }
+                        onChange={onChangeOrderType}
+                    />
                 </PanelBody>
+
                 <PanelBody title={__('Select Talks', 'rrze-events')}>
                     <TextControl
                         label={__('Count', 'rrze-events')}
@@ -163,7 +249,7 @@ export default ({ attributes, setAttributes }) => {
                         onChange={onAddCategory}
                     />
                     <div style={{marginTop: '10px'}}>
-                        <strong>{__('Selected Categories', 'rrze-events')}:</strong>
+                        {__('Selected Categories', 'rrze-events')}:
                         <ul>
                             {selectedCategories.map(categorySlug => {
                                 const category = categories.find(t => t.slug === categorySlug);
@@ -185,7 +271,7 @@ export default ({ attributes, setAttributes }) => {
                         onChange={onAddTag}
                     />
                     <div style={{marginTop: '10px'}}>
-                        <strong>{__('Selected Tags', 'rrze-events')}:</strong>
+                        {__('Selected Tags', 'rrze-events')}:
                         <ul>
                             {selectedTags.map(tagSlug => {
                                 const tag = tags.find(t => t.slug === tagSlug);
@@ -207,7 +293,7 @@ export default ({ attributes, setAttributes }) => {
                         onChange={onAddTalk}
                     />
                     <div style={{marginTop: '10px'}}>
-                        <strong>{__('Selected Talks', 'rrze-events')}:</strong>
+                        {__('Selected Talks', 'rrze-events')}:
                         <ul>
                             {selectedTalks.map(talkId => {
                                 const talk = talks.find(t => t.id === talkId);
@@ -222,9 +308,13 @@ export default ({ attributes, setAttributes }) => {
                             })}
                         </ul>
                     </div>
-                    <DatePicker
-                        currentDate={ talkDate }
-                        onChange={ ( newDate ) => setDate( newDate ) }
+                    <hr />
+                    <TextControl
+                        label={__('Date', 'rrze-events')}
+                        type="date"
+                        value={talkDate}
+                        onChange={onChangeDate}
+                        help={__('Only show talks of one day.', 'rrze-events')}
                     />
                 </PanelBody>
             </InspectorControls>

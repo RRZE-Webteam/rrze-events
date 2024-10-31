@@ -48,8 +48,16 @@ __webpack_require__.r(__webpack_exports__);
   const {
     talkDate
   } = attributes;
+  const {
+    showImage
+  } = attributes;
+  const {
+    showOrganisation
+  } = attributes;
+  const [tableColumns, setTableColumns] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)(attributes.tableColumns || []);
   const [layout, setLayout] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)(attributes.layout || 'grid');
-  const [orderBy, setOrderBy] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)(attributes.orderBy || 'lastname');
+  const [orderBy, setOrderBy] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)(attributes.orderBy || 'date');
+  const [orderType, setOrderType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)(attributes.orderType || 'ASC');
   const [selectedCategories, setSelectedCategories] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)(attributes.selectedCategories || []);
   const [selectedTags, setSelectedTags] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)(attributes.selectedTags || []);
   const [selectedTalks, setSelectedTalks] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)(attributes.selectedTalks || []);
@@ -171,12 +179,80 @@ __webpack_require__.r(__webpack_exports__);
       orderBy: value
     });
   };
+  const onChangeOrderType = value => {
+    setOrderType(value);
+    setAttributes({
+      orderType: value
+    });
+  };
+  const onChangeDate = value => {
+    setAttributes({
+      talkDate: value
+    });
+  };
+  const onChangeTableColumns = (index, value) => {
+    const newValues = [...tableColumns];
+    console.log(index, value);
+    newValues[index] = value;
+    setTableColumns(newValues);
+    setAttributes({
+      tableColumns: newValues
+    });
+    console.log(tableColumns);
+  };
+
+  // Array zum Speichern der Komponenten
+  const tableColumnFields = [];
+  let i = 0;
+  //console.log(tableColumns[i]);
+  while (i < 6) {
+    tableColumnFields.push(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Column ', 'rrze-events') + ` ${i + 1}`,
+      selected: tableColumns["i"],
+      options: [{
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('None', 'rrze-events'),
+        value: 'none'
+      }, {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Date', 'rrze-events'),
+        value: 'date'
+      }, {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Start Time', 'rrze-events'),
+        value: 'start'
+      }, {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('End Time', 'rrze-events'),
+        value: 'end'
+      }, {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Start - End', 'rrze-events'),
+        value: 'duration'
+      }, {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Location', 'rrze-events'),
+        value: 'location'
+      }, {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Title', 'rrze-events'),
+        value: 'talk'
+      }, {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Speaker', 'rrze-events'),
+        value: 'speaker'
+      }, {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Participants', 'rrze-events'),
+        value: 'participants'
+      }, {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Available Places', 'rrze-events'),
+        value: 'available'
+      }, {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Code', 'rrze-events'),
+        value: 'short'
+      }],
+      onChange: value => onChangeTableColumns(i, value)
+    }));
+    i++;
+  }
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
     ...blockProps,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Layout', 'rrze-events'),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RadioControl, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Layout', 'rrze-events'),
           selected: layout,
           options: [{
@@ -190,17 +266,48 @@ __webpack_require__.r(__webpack_exports__);
             value: 'short'
           }],
           onChange: onChangeLayout
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RadioControl, {
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Order', 'rrze-events'),
+        }), layout === "table" && [tableColumnFields], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+          __nextHasNoMarginBottom: true,
+          checked: !!showImage,
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Show Talk Image', 'rrze-events'),
+          onChange: () => setAttributes({
+            showImage: !showImage
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+          __nextHasNoMarginBottom: true,
+          checked: !!showOrganisation,
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Show Speaker Organisation', 'rrze-events'),
+          onChange: () => setAttributes({
+            showOrganisation: !showOrganisation
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Order By', 'rrze-events'),
           selected: orderBy,
           options: [{
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Last Name', 'rrze-events'),
-            value: 'lastname'
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Date', 'rrze-events'),
+            value: 'date'
           }, {
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('First Name', 'rrze-events'),
-            value: 'firstname'
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Start Time', 'rrze-events'),
+            value: 'start'
+          }, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Title', 'rrze-events'),
+            value: 'title'
+          }, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Code', 'rrze-events'),
+            value: 'shortname'
           }],
           onChange: onChangeOrderBy
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Order', 'rrze-events'),
+          selected: orderType,
+          options: [{
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('ascending', 'rrze-events'),
+            value: 'ASC'
+          }, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('descending', 'rrze-events'),
+            value: 'DESC'
+          }],
+          onChange: onChangeOrderType
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Select Talks', 'rrze-events'),
@@ -218,9 +325,7 @@ __webpack_require__.r(__webpack_exports__);
           style: {
             marginTop: '10px'
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("strong", {
-            children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Selected Categories', 'rrze-events'), ":"]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
+          children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Selected Categories', 'rrze-events'), ":", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
             children: selectedCategories.map(categorySlug => {
               const category = categories.find(t => t.slug === categorySlug);
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
@@ -242,9 +347,7 @@ __webpack_require__.r(__webpack_exports__);
           style: {
             marginTop: '10px'
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("strong", {
-            children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Selected Tags', 'rrze-events'), ":"]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
+          children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Selected Tags', 'rrze-events'), ":", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
             children: selectedTags.map(tagSlug => {
               const tag = tags.find(t => t.slug === tagSlug);
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
@@ -266,9 +369,7 @@ __webpack_require__.r(__webpack_exports__);
           style: {
             marginTop: '10px'
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("strong", {
-            children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Selected Talks', 'rrze-events'), ":"]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
+          children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Selected Talks', 'rrze-events'), ":", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
             children: selectedTalks.map(talkId => {
               const talk = talks.find(t => t.id === talkId);
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
@@ -282,9 +383,12 @@ __webpack_require__.r(__webpack_exports__);
               }, talkId);
             })
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.DatePicker, {
-          currentDate: talkDate,
-          onChange: newDate => setDate(newDate)
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Date', 'rrze-events'),
+          type: "date",
+          value: talkDate,
+          onChange: onChangeDate,
+          help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Only show talks of one day.', 'rrze-events')
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)((_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3___default()), {
@@ -411,7 +515,7 @@ module.exports = window["wp"]["serverSideRender"];
   \************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"rrze/events-talk","version":"1.0.0","title":"RRZE Events Talk","category":"widgets","description":"RRZE Events Talk","example":{},"attributes":{"numTalks":{"type":"integer","default":-1},"selectedCategories":{"type":"array","default":{}},"selectedTags":{"type":"array","default":{}},"talkDate":{"type":"string","default":""},"selectedTalks":{"type":"array","default":{}},"layout":{"type":"string","default":"grid"},"orderBy":{"type":"string","default":"date"},"orderType":{"type":"string","default":"ASC"},"showImage":{"type":"boolean","default":true},"showOrganization":{"type":"boolean","default":true},"tableColumns":{"type":"array","default":["date","duration","title","speaker"]}},"supports":{"html":false},"textdomain":"rrze-events","editorScript":"file:./index.js","editorStyle":"file:./index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"rrze/events-talk","version":"1.0.0","title":"RRZE Events Talk","category":"widgets","description":"RRZE Events Talk","example":{},"attributes":{"numTalks":{"type":"integer","default":-1},"selectedCategories":{"type":"array","default":{}},"selectedTags":{"type":"array","default":{}},"talkDate":{"type":"string","default":""},"selectedTalks":{"type":"array","default":{}},"layout":{"type":"string","default":"grid"},"orderBy":{"type":"string","default":"date"},"orderType":{"type":"string","default":"ASC"},"showImage":{"type":"boolean","default":false},"showOrganisation":{"type":"boolean","default":false},"tableColumns":{"type":"array","default":["date","duration","title","speaker","none","none"]}},"supports":{"html":false},"textdomain":"rrze-events","editorScript":"file:./index.js","editorStyle":"file:./index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
 
 /***/ })
 

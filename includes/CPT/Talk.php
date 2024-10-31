@@ -122,7 +122,7 @@ class Talk {
                 'data-datepicker' => wp_json_encode( array(
                     'dayNames' => Utils::getDaysOfWeek(),
                     'monthNamesShort' => Utils::getMonthNames('short'),
-                    'dateFormat' => 'dd.mm.yy',
+                    'dateFormat' => 'Y-m-d',
                 ) ),
             ),
         ));
