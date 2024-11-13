@@ -118,6 +118,35 @@ export default ({ attributes, setAttributes }) => {
         }
     };
 
+    // Columns Settings
+
+    const columns = [
+        {label: __('Date', 'rrze-events'), value: 'date'},
+        {label: __('Start Time', 'rrze-events'), value: 'start'},
+        {label: __('End Time', 'rrze-events'), value: 'end'},
+        {label: __('Start-End', 'rrze-events'), value: 'duration'},
+        {label: __('Location', 'rrze-events'), value: 'location'},
+        {label: __('Title', 'rrze-events'), value: 'title'},
+        {label: __('Speaker', 'rrze-events'), value: 'speaker'},
+        {label: __('Participants', 'rrze-events'), value: 'participants'},
+        {label: __('Available Places', 'rrze-events'), value: 'available'},
+        {label: __('Code', 'rrze-events'), value: 'short'},
+    ];
+
+    const onAddColumn = (columnKey) => {
+        if (!tableColumns.includes(columnKey)) {
+            const newColumns = [...tableColumns, columnKey];
+            setTableColumns(newColumns);
+            setAttributes({ tableColumns: newColumns });
+        }
+    };
+
+    const onRemoveColumn = (columnKey) => {
+        const newColumns = tableColumns.filter(value => value !== columnKey);
+        setTableColumns(newColumns);
+        setAttributes({ tableColumns: newColumns });
+    };
+
     // Other Settings
     const onChangeLayout = (value) => {
         setLayout( value );
@@ -136,100 +165,96 @@ export default ({ attributes, setAttributes }) => {
     const onChangeDate = (value) => {
         setAttributes({talkDate: value});
     };
-
-    const onChangeTableColumns = (index, value) => {
-        const newValues = [...tableColumns];
-        console.log(index, value);
-        newValues[index] = value;
-        setTableColumns(newValues);
-        setAttributes({ tableColumns: newValues });
-        console.log(tableColumns);
-    };
-
-    // Array zum Speichern der Komponenten
-    const tableColumnFields = [];
-    let i = 0;
-//console.log(tableColumns[i]);
-    while (i < 6) {
-        tableColumnFields.push(
-            <SelectControl
-                label={__('Column ', 'rrze-events') +  ` ${i + 1}`}
-                selected={tableColumns["i"]}
-                options={ [
-                    { label: __('None', 'rrze-events'), value: 'none' },
-                    { label: __('Date', 'rrze-events'), value: 'date' },
-                    { label: __('Start Time', 'rrze-events'), value: 'start' },
-                    { label: __('End Time', 'rrze-events'), value: 'end' },
-                    { label: __('Start - End', 'rrze-events'), value: 'duration' },
-                    { label: __('Location', 'rrze-events'), value: 'location' },
-                    { label: __('Title', 'rrze-events'), value: 'talk' },
-                    { label: __('Speaker', 'rrze-events'), value: 'speaker' },
-                    { label: __('Participants', 'rrze-events'), value: 'participants' },
-                    { label: __('Available Places', 'rrze-events'), value: 'available' },
-                    { label: __('Code', 'rrze-events'), value: 'short' },
-                ] }
-                onChange={(value) => onChangeTableColumns(i, value)}
-            />
-        )
-        i++;
-    }
-
-
     return (
         <div {...blockProps}>
             <InspectorControls>
                 <PanelBody title={__('Layout', 'rrze-events')}>
                     <SelectControl
                         label={__('Layout', 'rrze-events')}
-                        selected={ layout }
-                        options={ [
-                            { label: __('Grid', 'rrze-events'), value: 'grid' },
-                            { label: __('Table', 'rrze-events'), value: 'table' },
-                            { label: __('Short', 'rrze-events'), value: 'short' }
-                        ] }
+                        value={layout}
+                        options={[
+                            {label: __('Grid', 'rrze-events'), value: 'grid'},
+                            {label: __('Table', 'rrze-events'), value: 'table'},
+                            {label: __('Short', 'rrze-events'), value: 'short'}
+                        ]}
                         onChange={onChangeLayout}
                     />
-                    { layout === "table" && (
-                        [tableColumnFields]
-                    ) }
-                    <ToggleControl
-                        __nextHasNoMarginBottom
-                        checked={ !! showImage }
-                        label={__('Show Talk Image', 'rrze-events')}
-                        onChange={ () =>
-                            setAttributes( {
-                                showImage: ! showImage,
-                            } )
-                        }
-                    />
-                    <ToggleControl
-                        __nextHasNoMarginBottom
-                        checked={ !! showOrganisation }
-                        label={__('Show Speaker Organisation', 'rrze-events')}
-                        onChange={ () =>
-                            setAttributes( {
-                                showOrganisation: ! showOrganisation,
-                            } )
-                        }
-                    />
+                    {layout === "table" && (
+                        <ComboboxControl
+                            label={__('Columns', 'rrze-events')}
+                            options={columns}
+                            onChange={onAddColumn}
+                        />
+                    )}
+                    {layout === "table" && (
+                        <div style={{marginTop: '10px'}}>
+                            {__('Selected Columns', 'rrze-events')}:
+                            <ul>
+                                {tableColumns.map(columnSlug => {
+                                    const column = columns.find(t => t.value === columnSlug);
+                                    //console.log(columns);
+                                    return (
+                                        <li key={columnSlug}>
+                                            {column?.label}
+                                            <button onClick={() => onRemoveColumn(columnSlug)}
+                                                    style={{marginLeft: '5px'}}>
+                                                {__('Remove', 'rrze-events')}
+                                            </button>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                            <hr />
+                        </div>
+                    )}
+                    {layout === "grid" && (
+                        <ToggleControl
+                            __nextHasNoMarginBottom
+                            checked={!!showImage}
+                            label={__('Show Talk Image', 'rrze-events')}
+                            onChange={() =>
+                                setAttributes({
+                                    showImage: !showImage,
+                                })
+                            }
+                        />
+                    )}
+                    {layout === "grid" && (
+                        <ToggleControl
+                            __nextHasNoMarginBottom
+                            checked={!!showOrganisation}
+                            label={__('Show Speaker Organisation', 'rrze-events')}
+                            onChange={() =>
+                                setAttributes({
+                                    showOrganisation: !showOrganisation,
+                                })
+                            }
+                        />
+                    )}
+                    {layout === "grid" && (
+                    <hr />
+                    )}
+                    {layout === "short" && (
+                    <hr />
+                    )}
                     <SelectControl
                         label={__('Order By', 'rrze-events')}
-                        selected={ orderBy }
-                        options={ [
-                            { label: __('Date', 'rrze-events'), value: 'date' },
-                            { label: __('Start Time', 'rrze-events'), value: 'start' },
-                            { label: __('Title', 'rrze-events'), value: 'title' },
-                            { label: __('Code', 'rrze-events'), value: 'shortname' }
-                        ] }
+                        selected={orderBy}
+                        options={[
+                            {label: __('Date', 'rrze-events'), value: 'date'},
+                            {label: __('Start Time', 'rrze-events'), value: 'start'},
+                            {label: __('Title', 'rrze-events'), value: 'title'},
+                            {label: __('Code', 'rrze-events'), value: 'shortname'}
+                        ]}
                         onChange={onChangeOrderBy}
                     />
                     <SelectControl
                         label={__('Order', 'rrze-events')}
-                        selected={ orderType }
-                        options={ [
-                            { label: __('ascending', 'rrze-events'), value: 'ASC' },
-                            { label: __('descending', 'rrze-events'), value: 'DESC' }
-                        ] }
+                        selected={orderType}
+                        options={[
+                            {label: __('ascending', 'rrze-events'), value: 'ASC'},
+                            {label: __('descending', 'rrze-events'), value: 'DESC'}
+                        ]}
                         onChange={onChangeOrderType}
                     />
                 </PanelBody>

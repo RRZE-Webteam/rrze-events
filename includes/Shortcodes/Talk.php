@@ -206,16 +206,16 @@ class Talk {
     protected static function talkTable ($talkData, $atts) {
         $headers = array(
             'date' => __('Date', 'rrze-events'),
-            'title' => get_theme_mod('label-talk'),
-            'talk' => get_theme_mod('label-talk'),
+            'title' => get_theme_mod('label-talk', __('Talk', 'rrze-events')),
+            'talk' => get_theme_mod('label-talk', __('Talk', 'rrze-events')),
             'start' => __('Start', 'rrze-events'),
             'end' => __('End', 'rrze-events'),
             'duration' => __('Time', 'rrze-events'),
             'location' => __('Location', 'rrze-events'),
-            'speaker' => get_theme_mod('label-speaker'),
+            'speaker' => get_theme_mod('label-speaker', __('Speaker', 'rrze-events')),
             'participants' => __('Participants', 'rrze-events'),
             'available' => __('Available', 'rrze-events'),
-            'short' => get_theme_mod('label-short'),
+            'short' => get_theme_mod('label-short', __('Code', 'rrze-events')),
         );
 
         $columns = explode(',', $atts['columns']);

@@ -50,7 +50,7 @@
 		},
 		"tableColumns": {
 			"type": "array",
-			"default": ["date", "duration", "title", "speaker", "none", "none"]
+			"default": ["date", "duration", "title", "speaker"]
 		}
 	},
 	"supports": {

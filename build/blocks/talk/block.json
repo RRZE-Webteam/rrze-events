@@ -54,9 +54,7 @@
         "date",
         "duration",
         "title",
-        "speaker",
-        "none",
-        "none"
+        "speaker"
       ]
     }
   },
