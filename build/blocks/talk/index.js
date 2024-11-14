@@ -62,16 +62,6 @@ __webpack_require__.r(__webpack_exports__);
   const [selectedTags, setSelectedTags] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)(attributes.selectedTags || []);
   const [selectedTalks, setSelectedTalks] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)(attributes.selectedTalks || []);
 
-  // Initialize attributes with default values from block.json
-  const defaultAttributes = {};
-  Object.keys(_block_json__WEBPACK_IMPORTED_MODULE_6__.attributes).forEach(key => {
-    defaultAttributes[key] = _block_json__WEBPACK_IMPORTED_MODULE_6__.attributes[key].default;
-  });
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useEffect)(() => {
-    // Set default attributes when the component mounts
-    setAttributes(defaultAttributes);
-  }, []);
-
   // Category Settings
   const categories = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => {
     return select('core').getEntityRecords('taxonomy', 'talk_category', {
@@ -215,6 +205,32 @@ __webpack_require__.r(__webpack_exports__);
       tableColumns: newColumns
     });
   };
+  const onMoveColumnUp = columnKey => {
+    console.log(tableColumns, columnKey, tableColumns.indexOf(columnKey));
+    const newColumnUp = move(tableColumns, tableColumns.indexOf(columnKey), tableColumns.indexOf(columnKey) - 1);
+    console.log(newColumnUp, columnKey, newColumnUp.indexOf(columnKey));
+    setTableColumns(newColumnUp);
+    setAttributes({
+      tableColumns: newColumnUp
+    });
+  };
+  const onMoveColumnDown = columnKey => {
+    const newColumnDown = move(tableColumns, tableColumns.indexOf(columnKey), tableColumns.indexOf(columnKey) + 1);
+    setTableColumns(newColumnDown);
+    setAttributes({
+      tableColumns: newColumnDown
+    });
+  };
+  function move(array, from, to) {
+    if (to === from) return array;
+    const target = array[from];
+    const increment = to < from ? -1 : 1;
+    for (let k = from; k !== to; k += increment) {
+      array[k] = array[k + increment];
+    }
+    array[to] = target;
+    return array;
+  }
 
   // Other Settings
   const onChangeLayout = value => {
@@ -259,44 +275,105 @@ __webpack_require__.r(__webpack_exports__);
             value: 'short'
           }],
           onChange: onChangeLayout
-        }), layout === "table" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ComboboxControl, {
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Columns', 'rrze-events'),
-          options: columns,
-          onChange: onAddColumn
-        }), layout === "table" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-          style: {
-            marginTop: '10px'
-          },
-          children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Selected Columns', 'rrze-events'), ":", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
-            children: tableColumns.map(columnSlug => {
-              const column = columns.find(t => t.value === columnSlug);
-              //console.log(columns);
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
-                children: [column?.label, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
-                  onClick: () => onRemoveColumn(columnSlug),
-                  style: {
-                    marginLeft: '5px'
-                  },
-                  children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove', 'rrze-events')
-                })]
-              }, columnSlug);
+        }), layout === "table" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ComboboxControl, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Columns', 'rrze-events'),
+            options: columns,
+            onChange: onAddColumn
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            style: {
+              marginTop: '10px'
+            },
+            children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Selected Columns', 'rrze-events'), ":", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
+              children: tableColumns.map(columnSlug => {
+                const column = columns.find(t => t.value === columnSlug);
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
+                  children: [column?.label, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("button", {
+                    onClick: () => onMoveColumnUp(columnSlug),
+                    style: {
+                      marginLeft: '5px'
+                    },
+                    "aria-describedby": columnSlug + "_button_up",
+                    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Up', 'rrze-events'),
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("svg", {
+                      height: "18",
+                      viewBox: "0 0 512 512",
+                      width: "18",
+                      xmlns: "http://www.w3.org/2000/svg",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("g", {
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("polygon", {
+                          points: "402.8,361.2 256,214.4 109.2,361.2 66.8,318.8 256,129.6 445.2,318.8  "
+                        })
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+                      className: "screen-reader-text sr-only",
+                      id: columnSlug + "_button_up",
+                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Up', 'rrze-events')
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("button", {
+                    onClick: () => onMoveColumnDown(columnSlug),
+                    "aria-describedby": columnSlug + "_button_down",
+                    style: {
+                      marginLeft: '5px'
+                    },
+                    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Down', 'rrze-events'),
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("svg", {
+                      height: "18",
+                      viewBox: "0 0 512 512",
+                      width: "18",
+                      xmlns: "http://www.w3.org/2000/svg",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("g", {
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("polygon", {
+                          points: "256,382.4 66.8,193.2 109.2,150.8 256,297.6 402.8,150.8 445.2,193.2  "
+                        })
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+                      className: "screen-reader-text sr-only",
+                      id: columnSlug + "_button_down",
+                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Down', 'rrze-events')
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("button", {
+                    onClick: () => onRemoveColumn(columnSlug),
+                    "aria-describedby": columnSlug + "_button_remove",
+                    style: {
+                      marginLeft: '5px'
+                    },
+                    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove', 'rrze-events'),
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("svg", {
+                      height: "18",
+                      viewBox: "0 0 512 512",
+                      width: "18",
+                      xmlns: "http://www.w3.org/2000/svg",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("polygon", {
+                        points: "445.2,109.2 402.8,66.8 256,213.6 109.2,66.8 66.8,109.2 213.6,256 66.8,402.8 109.2,445.2 256,298.4 402.8,445.2   445.2,402.8 298.4,256 "
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+                      className: "screen-reader-text sr-only",
+                      id: columnSlug + "_button_up",
+                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove', 'rrze-events')
+                    })]
+                  })]
+                }, columnSlug);
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("hr", {})]
+          })]
+        }), layout === "grid" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+            __nextHasNoMarginBottom: true,
+            checked: !!showImage,
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Show Talk Image', 'rrze-events'),
+            onChange: () => setAttributes({
+              showImage: !showImage
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("hr", {})]
-        }), layout === "grid" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
-          __nextHasNoMarginBottom: true,
-          checked: !!showImage,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Show Talk Image', 'rrze-events'),
-          onChange: () => setAttributes({
-            showImage: !showImage
-          })
-        }), layout === "grid" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
-          __nextHasNoMarginBottom: true,
-          checked: !!showOrganisation,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Show Speaker Organisation', 'rrze-events'),
-          onChange: () => setAttributes({
-            showOrganisation: !showOrganisation
-          })
-        }), layout === "grid" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("hr", {}), layout === "short" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+            __nextHasNoMarginBottom: true,
+            checked: !!showOrganisation,
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Show Speaker Organisation', 'rrze-events'),
+            onChange: () => setAttributes({
+              showOrganisation: !showOrganisation
+            })
+          })]
+        }), (layout === "grid" || layout === "short") && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Order By', 'rrze-events'),
           selected: orderBy,
           options: [{

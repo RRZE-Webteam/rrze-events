@@ -18,17 +18,6 @@ export default ({ attributes, setAttributes }) => {
     const [selectedCategories, setSelectedCategories] = useState(attributes.selectedCategories || []);
     const [selectedSpeakers, setSelectedSpeakers] = useState(attributes.selectedSpeakers || []);
 
-    // Initialize attributes with default values from block.json
-    const defaultAttributes = {};
-    Object.keys(metadata.attributes).forEach(key => {
-        defaultAttributes[key] = metadata.attributes[key].default;
-    });
-
-    useEffect(() => {
-        // Set default attributes when the component mounts
-        setAttributes(defaultAttributes);
-    }, []);
-
     // Begriffe der Taxonomie abrufen (z. B. Kategorien)
     const categories = useSelect(select => {
         return select('core').getEntityRecords('taxonomy', 'speaker_category', { per_page: -1 }) || [];

@@ -532,3 +532,10 @@
   font-family: Roboto, FAU Chimera, sans-serif;
   line-height: 1.5;
 }
+.post-type-page .editor-styles-wrapper .wp-block-rrze-events-talk * table {
+  border-collapse: collapse;
+}
+.post-type-page .editor-styles-wrapper .wp-block-rrze-events-talk * table td, .post-type-page .editor-styles-wrapper .wp-block-rrze-events-talk * table th {
+  border: 1px solid #e9edf2;
+  padding: 0.3rem 0.6rem;
+}

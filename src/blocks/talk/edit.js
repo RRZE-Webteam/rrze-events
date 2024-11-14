@@ -24,17 +24,6 @@ export default ({ attributes, setAttributes }) => {
     const [selectedTags, setSelectedTags] = useState(attributes.selectedTags || []);
     const [selectedTalks, setSelectedTalks] = useState(attributes.selectedTalks || []);
 
-    // Initialize attributes with default values from block.json
-    const defaultAttributes = {};
-    Object.keys(metadata.attributes).forEach(key => {
-        defaultAttributes[key] = metadata.attributes[key].default;
-    });
-
-    useEffect(() => {
-        // Set default attributes when the component mounts
-        setAttributes(defaultAttributes);
-    }, []);
-
     // Category Settings
     const categories = useSelect(select => {
         return select('core').getEntityRecords('taxonomy', 'talk_category', { per_page: -1 }) || [];
@@ -147,6 +136,31 @@ export default ({ attributes, setAttributes }) => {
         setAttributes({ tableColumns: newColumns });
     };
 
+    const onMoveColumnUp = (columnKey) => {
+        console.log(tableColumns, columnKey, tableColumns.indexOf(columnKey));
+        const newColumnUp = move(tableColumns, tableColumns.indexOf(columnKey), tableColumns.indexOf(columnKey) - 1);
+        console.log(newColumnUp, columnKey, newColumnUp.indexOf(columnKey));
+        setTableColumns(newColumnUp);
+        setAttributes({ tableColumns: newColumnUp });
+    };
+
+    const onMoveColumnDown = (columnKey) => {
+        const newColumnDown = move(tableColumns, tableColumns.indexOf(columnKey), tableColumns.indexOf(columnKey) + 1);
+        setTableColumns(newColumnDown);
+        setAttributes({ tableColumns: newColumnDown });
+    };
+
+    function move(array, from, to) {
+        if( to === from ) return array;
+        const target = array[from];
+        const increment = to < from ? -1 : 1;
+        for(let k = from; k !== to; k += increment){
+            array[k] = array[k + increment];
+        }
+        array[to] = target;
+        return array;
+    }
+
     // Other Settings
     const onChangeLayout = (value) => {
         setLayout( value );
@@ -180,34 +194,60 @@ export default ({ attributes, setAttributes }) => {
                         onChange={onChangeLayout}
                     />
                     {layout === "table" && (
+                        <>
                         <ComboboxControl
                             label={__('Columns', 'rrze-events')}
                             options={columns}
                             onChange={onAddColumn}
                         />
-                    )}
-                    {layout === "table" && (
                         <div style={{marginTop: '10px'}}>
                             {__('Selected Columns', 'rrze-events')}:
                             <ul>
                                 {tableColumns.map(columnSlug => {
                                     const column = columns.find(t => t.value === columnSlug);
-                                    //console.log(columns);
                                     return (
                                         <li key={columnSlug}>
                                             {column?.label}
+                                            <button onClick={() => onMoveColumnUp(columnSlug)}
+                                                    style={{marginLeft: '5px'}}
+                                                    aria-describedby={columnSlug + "_button_up"}
+                                                    title={__('Up', 'rrze-events')}>
+                                                <svg height="18" viewBox="0 0 512 512" width="18" xmlns="http://www.w3.org/2000/svg"><g><polygon points="402.8,361.2 256,214.4 109.2,361.2 66.8,318.8 256,129.6 445.2,318.8  "/></g></svg>
+                                                <span className="screen-reader-text sr-only"
+                                                    id={columnSlug + "_button_up"}>
+                                                    {__('Up', 'rrze-events')}
+                                                </span>
+                                            </button>
+                                            <button onClick={() => onMoveColumnDown(columnSlug)}
+                                                    aria-describedby={columnSlug + "_button_down"}
+                                                    style={{marginLeft: '5px'}}
+                                                    title={__('Down', 'rrze-events')}>
+                                                <svg height="18" viewBox="0 0 512 512" width="18" xmlns="http://www.w3.org/2000/svg"><g><polygon points="256,382.4 66.8,193.2 109.2,150.8 256,297.6 402.8,150.8 445.2,193.2  "/></g></svg>
+                                                <span className="screen-reader-text sr-only"
+                                                      id={columnSlug + "_button_down"}>
+                                                    {__('Down', 'rrze-events')}
+                                                </span>
+                                            </button>
                                             <button onClick={() => onRemoveColumn(columnSlug)}
-                                                    style={{marginLeft: '5px'}}>
-                                                {__('Remove', 'rrze-events')}
+                                                    aria-describedby={columnSlug + "_button_remove"}
+                                                    style={{marginLeft: '5px'}}
+                                                    title={__('Remove', 'rrze-events')}>
+                                                <svg height="18" viewBox="0 0 512 512" width="18" xmlns="http://www.w3.org/2000/svg"><polygon points="445.2,109.2 402.8,66.8 256,213.6 109.2,66.8 66.8,109.2 213.6,256 66.8,402.8 109.2,445.2 256,298.4 402.8,445.2   445.2,402.8 298.4,256 "/></svg>
+                                                <span className="screen-reader-text sr-only"
+                                                      id={columnSlug + "_button_up"}>
+                                                    {__('Remove', 'rrze-events')}
+                                                </span>
                                             </button>
                                         </li>
                                     );
                                 })}
                             </ul>
-                            <hr />
+                            <hr/>
                         </div>
+                        </>
                     )}
                     {layout === "grid" && (
+                        <>
                         <ToggleControl
                             __nextHasNoMarginBottom
                             checked={!!showImage}
@@ -218,8 +258,6 @@ export default ({ attributes, setAttributes }) => {
                                 })
                             }
                         />
-                    )}
-                    {layout === "grid" && (
                         <ToggleControl
                             __nextHasNoMarginBottom
                             checked={!!showOrganisation}
@@ -230,12 +268,10 @@ export default ({ attributes, setAttributes }) => {
                                 })
                             }
                         />
+                        </>
                     )}
-                    {layout === "grid" && (
-                    <hr />
-                    )}
-                    {layout === "short" && (
-                    <hr />
+                    {(layout === "grid" || layout === "short") && (
+                        <hr />
                     )}
                     <SelectControl
                         label={__('Order By', 'rrze-events')}

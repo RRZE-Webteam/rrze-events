@@ -4,10 +4,18 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-@import '../../scss/rrze-events';
+@use '../../scss/rrze-events';
 
 .post-type-page .editor-styles-wrapper .wp-block-rrze-events-talk * {
   font-family: Roboto,FAU Chimera,sans-serif;
   line-height: 1.5;
+
+  table {
+    border-collapse: collapse;
+    td, th {
+      border: 1px solid #e9edf2;
+      padding: .3rem .6rem;
+    }
+  }
 }
 

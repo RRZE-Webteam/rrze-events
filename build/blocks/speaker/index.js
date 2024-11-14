@@ -50,16 +50,6 @@ __webpack_require__.r(__webpack_exports__);
   const [selectedCategories, setSelectedCategories] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)(attributes.selectedCategories || []);
   const [selectedSpeakers, setSelectedSpeakers] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)(attributes.selectedSpeakers || []);
 
-  // Initialize attributes with default values from block.json
-  const defaultAttributes = {};
-  Object.keys(_block_json__WEBPACK_IMPORTED_MODULE_6__.attributes).forEach(key => {
-    defaultAttributes[key] = _block_json__WEBPACK_IMPORTED_MODULE_6__.attributes[key].default;
-  });
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useEffect)(() => {
-    // Set default attributes when the component mounts
-    setAttributes(defaultAttributes);
-  }, []);
-
   // Begriffe der Taxonomie abrufen (z. B. Kategorien)
   const categories = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => {
     return select('core').getEntityRecords('taxonomy', 'speaker_category', {
