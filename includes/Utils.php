@@ -52,6 +52,7 @@ class Utils {
      * Display a speaker's talks
      */
     public static function talksBySpeaker($speakerID, $orderBy='date', $heading = 'h2'): string {
+        // TODO: Order by date richtig machen!!!
         $order = ($orderBy == 'date' ? 'DESC' : 'ASC');
         $args = array(
             'post_type' => 'talk',
