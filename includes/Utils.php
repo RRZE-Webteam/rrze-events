@@ -62,16 +62,13 @@ class Utils {
             'meta_value' => '"' . $speakerID . '"',
             'meta_compare' => 'LIKE',
         );
-        if ('date' == get_theme_mod('talk_order')) {
-            $args['orderby'] = 'post_date';
-            $args['order'] = 'DESC';
-        }
 
         $talks = get_posts($args);
         $output = '';
 
         if (!empty($talks)) {
-            $output .= "<$heading>" . get_theme_mod('label-talk-pl', __('Talks', 'rrze-events')) . "</$heading>";
+            $labels = Settings::getOption('rrze-events-label-settings');
+            $output .= "<$heading>" . $labels['label-talk-plural'] . "</$heading>";
             $output .= "<ul>";
             foreach ($talks as $talk) {
                 $output .= "<li><a href='" . get_post_permalink($talk->ID) . "'>";
