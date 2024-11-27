@@ -206,13 +206,14 @@ __webpack_require__.r(__webpack_exports__);
     });
   };
   const onMoveColumnUp = columnKey => {
-    console.log(tableColumns, columnKey, tableColumns.indexOf(columnKey));
+    //console.log(tableColumns, columnKey, tableColumns.indexOf(columnKey));
     const newColumnUp = move(tableColumns, tableColumns.indexOf(columnKey), tableColumns.indexOf(columnKey) - 1);
-    console.log(newColumnUp, columnKey, newColumnUp.indexOf(columnKey));
+    //console.log(newColumnUp, columnKey, newColumnUp.indexOf(columnKey));
     setTableColumns(newColumnUp);
     setAttributes({
       tableColumns: newColumnUp
     });
+    //console.log(attributes);
   };
   const onMoveColumnDown = columnKey => {
     const newColumnDown = move(tableColumns, tableColumns.indexOf(columnKey), tableColumns.indexOf(columnKey) + 1);
@@ -285,72 +286,79 @@ __webpack_require__.r(__webpack_exports__);
               marginTop: '10px'
             },
             children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Selected Columns', 'rrze-events'), ":", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
+              className: "selected-columns",
               children: tableColumns.map(columnSlug => {
                 const column = columns.find(t => t.value === columnSlug);
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
-                  children: [column?.label, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("button", {
-                    onClick: () => onMoveColumnUp(columnSlug),
-                    style: {
-                      marginLeft: '5px'
-                    },
-                    "aria-describedby": columnSlug + "_button_up",
-                    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Up', 'rrze-events'),
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("svg", {
-                      height: "18",
-                      viewBox: "0 0 512 512",
-                      width: "18",
-                      xmlns: "http://www.w3.org/2000/svg",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("g", {
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("polygon", {
-                          points: "402.8,361.2 256,214.4 109.2,361.2 66.8,318.8 256,129.6 445.2,318.8  "
+                  children: [column?.label, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
+                    className: "buttons",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("button", {
+                      onClick: () => onMoveColumnUp(columnSlug),
+                      style: {
+                        marginLeft: '5px'
+                      },
+                      "aria-describedby": columnSlug + "_button_up",
+                      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Up', 'rrze-events'),
+                      className: "button-up",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("svg", {
+                        height: "18",
+                        viewBox: "0 0 512 512",
+                        width: "18",
+                        xmlns: "http://www.w3.org/2000/svg",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("g", {
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("polygon", {
+                            points: "402.8,361.2 256,214.4 109.2,361.2 66.8,318.8 256,129.6 445.2,318.8  "
+                          })
                         })
-                      })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
-                      className: "screen-reader-text sr-only",
-                      id: columnSlug + "_button_up",
-                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Up', 'rrze-events')
-                    })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("button", {
-                    onClick: () => onMoveColumnDown(columnSlug),
-                    "aria-describedby": columnSlug + "_button_down",
-                    style: {
-                      marginLeft: '5px'
-                    },
-                    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Down', 'rrze-events'),
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("svg", {
-                      height: "18",
-                      viewBox: "0 0 512 512",
-                      width: "18",
-                      xmlns: "http://www.w3.org/2000/svg",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("g", {
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("polygon", {
-                          points: "256,382.4 66.8,193.2 109.2,150.8 256,297.6 402.8,150.8 445.2,193.2  "
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+                        className: "screen-reader-text sr-only",
+                        id: columnSlug + "_button_up",
+                        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Up', 'rrze-events')
+                      })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("button", {
+                      onClick: () => onMoveColumnDown(columnSlug),
+                      "aria-describedby": columnSlug + "_button_down",
+                      style: {
+                        marginLeft: '5px'
+                      },
+                      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Down', 'rrze-events'),
+                      className: "button-down",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("svg", {
+                        height: "18",
+                        viewBox: "0 0 512 512",
+                        width: "18",
+                        xmlns: "http://www.w3.org/2000/svg",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("g", {
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("polygon", {
+                            points: "256,382.4 66.8,193.2 109.2,150.8 256,297.6 402.8,150.8 445.2,193.2  "
+                          })
                         })
-                      })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
-                      className: "screen-reader-text sr-only",
-                      id: columnSlug + "_button_down",
-                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Down', 'rrze-events')
-                    })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("button", {
-                    onClick: () => onRemoveColumn(columnSlug),
-                    "aria-describedby": columnSlug + "_button_remove",
-                    style: {
-                      marginLeft: '5px'
-                    },
-                    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove', 'rrze-events'),
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("svg", {
-                      height: "18",
-                      viewBox: "0 0 512 512",
-                      width: "18",
-                      xmlns: "http://www.w3.org/2000/svg",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("polygon", {
-                        points: "445.2,109.2 402.8,66.8 256,213.6 109.2,66.8 66.8,109.2 213.6,256 66.8,402.8 109.2,445.2 256,298.4 402.8,445.2   445.2,402.8 298.4,256 "
-                      })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
-                      className: "screen-reader-text sr-only",
-                      id: columnSlug + "_button_up",
-                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove', 'rrze-events')
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+                        className: "screen-reader-text sr-only",
+                        id: columnSlug + "_button_down",
+                        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Down', 'rrze-events')
+                      })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("button", {
+                      onClick: () => onRemoveColumn(columnSlug),
+                      "aria-describedby": columnSlug + "_button_remove",
+                      style: {
+                        marginLeft: '5px'
+                      },
+                      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove', 'rrze-events'),
+                      className: "button-remove",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("svg", {
+                        height: "18",
+                        viewBox: "0 0 512 512",
+                        width: "18",
+                        xmlns: "http://www.w3.org/2000/svg",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("polygon", {
+                          points: "445.2,109.2 402.8,66.8 256,213.6 109.2,66.8 66.8,109.2 213.6,256 66.8,402.8 109.2,445.2 256,298.4 402.8,445.2   445.2,402.8 298.4,256 "
+                        })
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+                        className: "screen-reader-text sr-only",
+                        id: columnSlug + "_button_up",
+                        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove', 'rrze-events')
+                      })]
                     })]
                   })]
                 }, columnSlug);

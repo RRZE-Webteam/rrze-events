@@ -540,4 +540,19 @@
   padding: 0.3rem 0.6rem;
 }
 
+.components-panel ul.selected-columns li {
+  clear: right;
+  margin-bottom: 2px;
+}
+.components-panel ul.selected-columns li:first-child button.button-up {
+  visibility: hidden;
+}
+.components-panel ul.selected-columns li:last-child button.button-down {
+  visibility: hidden;
+}
+.components-panel ul.selected-columns .buttons {
+  display: inline-block;
+  float: right;
+}
+
 /*# sourceMappingURL=index.css.map*/

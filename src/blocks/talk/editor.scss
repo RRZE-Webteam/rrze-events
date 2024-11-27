@@ -19,3 +19,26 @@
   }
 }
 
+.components-panel {
+  ul.selected-columns {
+    li {
+      clear: right;
+      margin-bottom: 2px;
+      &:first-child {
+        button.button-up {
+          visibility: hidden;
+        }
+      }
+      &:last-child {
+        button.button-down {
+          visibility: hidden;
+        }
+      }
+    }
+    .buttons {
+      display: inline-block;
+      float: right;
+    }
+  }
+}
+

@@ -137,11 +137,12 @@ export default ({ attributes, setAttributes }) => {
     };
 
     const onMoveColumnUp = (columnKey) => {
-        console.log(tableColumns, columnKey, tableColumns.indexOf(columnKey));
+        //console.log(tableColumns, columnKey, tableColumns.indexOf(columnKey));
         const newColumnUp = move(tableColumns, tableColumns.indexOf(columnKey), tableColumns.indexOf(columnKey) - 1);
-        console.log(newColumnUp, columnKey, newColumnUp.indexOf(columnKey));
+        //console.log(newColumnUp, columnKey, newColumnUp.indexOf(columnKey));
         setTableColumns(newColumnUp);
         setAttributes({ tableColumns: newColumnUp });
+        //console.log(attributes);
     };
 
     const onMoveColumnDown = (columnKey) => {
@@ -202,42 +203,47 @@ export default ({ attributes, setAttributes }) => {
                         />
                         <div style={{marginTop: '10px'}}>
                             {__('Selected Columns', 'rrze-events')}:
-                            <ul>
+                            <ul className="selected-columns">
                                 {tableColumns.map(columnSlug => {
                                     const column = columns.find(t => t.value === columnSlug);
                                     return (
                                         <li key={columnSlug}>
                                             {column?.label}
-                                            <button onClick={() => onMoveColumnUp(columnSlug)}
-                                                    style={{marginLeft: '5px'}}
-                                                    aria-describedby={columnSlug + "_button_up"}
-                                                    title={__('Up', 'rrze-events')}>
-                                                <svg height="18" viewBox="0 0 512 512" width="18" xmlns="http://www.w3.org/2000/svg"><g><polygon points="402.8,361.2 256,214.4 109.2,361.2 66.8,318.8 256,129.6 445.2,318.8  "/></g></svg>
-                                                <span className="screen-reader-text sr-only"
-                                                    id={columnSlug + "_button_up"}>
-                                                    {__('Up', 'rrze-events')}
-                                                </span>
-                                            </button>
-                                            <button onClick={() => onMoveColumnDown(columnSlug)}
-                                                    aria-describedby={columnSlug + "_button_down"}
-                                                    style={{marginLeft: '5px'}}
-                                                    title={__('Down', 'rrze-events')}>
-                                                <svg height="18" viewBox="0 0 512 512" width="18" xmlns="http://www.w3.org/2000/svg"><g><polygon points="256,382.4 66.8,193.2 109.2,150.8 256,297.6 402.8,150.8 445.2,193.2  "/></g></svg>
-                                                <span className="screen-reader-text sr-only"
-                                                      id={columnSlug + "_button_down"}>
-                                                    {__('Down', 'rrze-events')}
-                                                </span>
-                                            </button>
-                                            <button onClick={() => onRemoveColumn(columnSlug)}
-                                                    aria-describedby={columnSlug + "_button_remove"}
-                                                    style={{marginLeft: '5px'}}
-                                                    title={__('Remove', 'rrze-events')}>
-                                                <svg height="18" viewBox="0 0 512 512" width="18" xmlns="http://www.w3.org/2000/svg"><polygon points="445.2,109.2 402.8,66.8 256,213.6 109.2,66.8 66.8,109.2 213.6,256 66.8,402.8 109.2,445.2 256,298.4 402.8,445.2   445.2,402.8 298.4,256 "/></svg>
-                                                <span className="screen-reader-text sr-only"
-                                                      id={columnSlug + "_button_up"}>
-                                                    {__('Remove', 'rrze-events')}
-                                                </span>
-                                            </button>
+                                            <span className="buttons">
+                                                <button onClick={() => onMoveColumnUp(columnSlug)}
+                                                        style={{marginLeft: '5px'}}
+                                                        aria-describedby={columnSlug + "_button_up"}
+                                                        title={__('Up', 'rrze-events')}
+                                                        className="button-up">
+                                                    <svg height="18" viewBox="0 0 512 512" width="18" xmlns="http://www.w3.org/2000/svg"><g><polygon points="402.8,361.2 256,214.4 109.2,361.2 66.8,318.8 256,129.6 445.2,318.8  "/></g></svg>
+                                                    <span className="screen-reader-text sr-only"
+                                                        id={columnSlug + "_button_up"}>
+                                                        {__('Up', 'rrze-events')}
+                                                    </span>
+                                                </button>
+                                                <button onClick={() => onMoveColumnDown(columnSlug)}
+                                                        aria-describedby={columnSlug + "_button_down"}
+                                                        style={{marginLeft: '5px'}}
+                                                        title={__('Down', 'rrze-events')}
+                                                        className="button-down">
+                                                    <svg height="18" viewBox="0 0 512 512" width="18" xmlns="http://www.w3.org/2000/svg"><g><polygon points="256,382.4 66.8,193.2 109.2,150.8 256,297.6 402.8,150.8 445.2,193.2  "/></g></svg>
+                                                    <span className="screen-reader-text sr-only"
+                                                          id={columnSlug + "_button_down"}>
+                                                        {__('Down', 'rrze-events')}
+                                                    </span>
+                                                </button>
+                                                <button onClick={() => onRemoveColumn(columnSlug)}
+                                                        aria-describedby={columnSlug + "_button_remove"}
+                                                        style={{marginLeft: '5px'}}
+                                                        title={__('Remove', 'rrze-events')}
+                                                        className="button-remove">
+                                                    <svg height="18" viewBox="0 0 512 512" width="18" xmlns="http://www.w3.org/2000/svg"><polygon points="445.2,109.2 402.8,66.8 256,213.6 109.2,66.8 66.8,109.2 213.6,256 66.8,402.8 109.2,445.2 256,298.4 402.8,445.2   445.2,402.8 298.4,256 "/></svg>
+                                                    <span className="screen-reader-text sr-only"
+                                                          id={columnSlug + "_button_up"}>
+                                                        {__('Remove', 'rrze-events')}
+                                                    </span>
+                                                </button>
+                                            </span>
                                         </li>
                                     );
                                 })}
