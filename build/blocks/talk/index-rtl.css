@@ -534,6 +534,7 @@
 }
 .post-type-page .editor-styles-wrapper .wp-block-rrze-events-talk * table {
   border-collapse: collapse;
+  margin-bottom: 1em;
 }
 .post-type-page .editor-styles-wrapper .wp-block-rrze-events-talk * table td, .post-type-page .editor-styles-wrapper .wp-block-rrze-events-talk * table th {
   border: 1px solid #e9edf2;
@@ -541,7 +542,9 @@
 }
 
 .components-panel ul.selected-columns li {
-  clear: left;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin-bottom: 2px;
 }
 .components-panel ul.selected-columns li:first-child button.button-up {
@@ -550,7 +553,8 @@
 .components-panel ul.selected-columns li:last-child button.button-down {
   visibility: hidden;
 }
-.components-panel ul.selected-columns .buttons {
-  display: inline-block;
-  float: left;
+.components-panel ul.selected-columns li:only-child button.button-up,
+.components-panel ul.selected-columns li:only-child button.button-down,
+.components-panel ul.selected-columns li:only-child button.button-remove {
+  visibility: hidden;
 }

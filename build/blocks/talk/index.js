@@ -224,13 +224,14 @@ __webpack_require__.r(__webpack_exports__);
   };
   function move(array, from, to) {
     if (to === from) return array;
-    const target = array[from];
+    const newArray = [...array];
+    const target = newArray[from];
     const increment = to < from ? -1 : 1;
     for (let k = from; k !== to; k += increment) {
-      array[k] = array[k + increment];
+      newArray[k] = newArray[k + increment];
     }
-    array[to] = target;
-    return array;
+    newArray[to] = target;
+    return newArray;
   }
 
   // Other Settings
