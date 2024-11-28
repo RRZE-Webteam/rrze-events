@@ -36,6 +36,11 @@ register_deactivation_hook(__FILE__, __NAMESPACE__ . '\deactivation');
 add_action('plugins_loaded', __NAMESPACE__ . '\loaded');
 add_action('init', __NAMESPACE__ . '\init');
 
+/* TODO:
+    * Call for Papers
+    * Select-/Radio-/Checkbox-Auswahl "talk-list" für CF7
+*/
+
 /**
  * loadTextdomain
  */
@@ -202,6 +207,8 @@ function loaded()
     new Main;
 
     add_action('init', __NAMESPACE__ . '\createBlocks');
+    add_filter('block_categories_all', __NAMESPACE__ . '\rrze_block_category', 10, 2);
+
 }
 
 function init() {
@@ -212,6 +219,19 @@ function createBlocks(): void {
     register_block_type( __DIR__ . '/build/blocks/speaker' );
     register_block_type( __DIR__ . '/build/blocks/talk' );
 }
+
+function rrze_block_category($categories, $post) {
+    $custom_category = [
+        'slug'  => 'rrze',
+        'title' => __('RRZE Plugins', 'rrze-plugins'),
+        'icon'  => 'layout',
+    ];
+
+    array_unshift($categories, $custom_category);
+
+    return $categories;
+}
+add_filter('block_categories_all', __NAMESPACE__ . '\rrze_block_category', 10, 2);
 
 function importThemeMods() {
     $themeMods = [

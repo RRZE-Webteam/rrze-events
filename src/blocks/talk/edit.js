@@ -387,7 +387,7 @@ export default ({ attributes, setAttributes }) => {
                 </PanelBody>
             </InspectorControls>
             <ServerSideRender
-                block="rrze/events-talk"
+                block="rrze-events/talk"
                 attributes={attributes}
             />
         </div>

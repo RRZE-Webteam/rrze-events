@@ -4,7 +4,7 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-@import '../../scss/rrze-events';
+@use '../../scss/rrze-events';
 
 .post-type-page .editor-styles-wrapper .wp-block-rrze-events-speaker * {
   font-family: Roboto,FAU Chimera,sans-serif;

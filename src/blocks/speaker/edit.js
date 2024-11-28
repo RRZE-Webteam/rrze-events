@@ -168,7 +168,7 @@ export default ({ attributes, setAttributes }) => {
                 </PanelBody>
             </InspectorControls>
             <ServerSideRender
-                block="rrze/events-speaker"
+                block="rrze-events/speaker"
                 attributes={attributes}
             />
         </div>

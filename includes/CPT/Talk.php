@@ -117,12 +117,12 @@ class Talk {
             //'desc' => esc_html__( '', 'rrze-events' ),
             'id'   => 'talk_date',
             'type' => 'text_date',
-            'date_format' => 'd.m.Y',
+            'date_format' => 'Y-m-d',
             'attributes' => array(
                 'data-datepicker' => wp_json_encode( array(
-                    'dayNames' => Utils::getDaysOfWeek(),
+                    'dayNames' => Utils::getDaysOfWeek('short'),
                     'monthNamesShort' => Utils::getMonthNames('short'),
-                    'dateFormat' => 'Y-m-d',
+                    'dateFormat' => 'dd.mm.yy',
                 ) ),
             ),
         ));

@@ -101,7 +101,7 @@ class Speaker {
                     $out .= '<article id="post-' . $post->ID . '" class="' . implode(' ', get_post_class()) . '">';
                     $out .= '<a href="' . $url . '" rel="bookmark" class="entry-main">' .
                         '<header class="entry-header">';
-                    if ($speakerSettings['show_speaker_categories'] == true && get_the_terms($post->ID, 'speaker_category') !== false) {
+                    if (isset($speakerSettings['show-categories']) && $speakerSettings['show-categories'] == true && get_the_terms($post->ID, 'speaker_category') !== false) {
                         $out .= '<div class="entry-cats">' . get_the_term_list( $post->ID, 'speaker_category', null,' | ') . '</div>';
                     }
 

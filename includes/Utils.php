@@ -52,17 +52,25 @@ class Utils {
      * Display a speaker's talks
      */
     public static function talksBySpeaker($speakerID, $orderBy='date', $heading = 'h2'): string {
-        // TODO: Order by date richtig machen!!!
-        $order = ($orderBy == 'date' ? 'DESC' : 'ASC');
         $args = array(
             'post_type' => 'talk',
-            'orderby' => $orderBy,
-            'order' => $order,
             'numberposts' => -1,
-            'meta_key' => 'talk_speakers',
-            'meta_value' => '"' . $speakerID . '"',
-            'meta_compare' => 'LIKE',
+            'meta_query' => [
+                'relation' => 'AND',
+                [
+                'key' => 'talk_speakers',
+                'value' => '"' . $speakerID . '"',
+                'compare' => 'LIKE',
+                ]]
         );
+        if ($orderBy == 'date') {
+            $args['orderby'] = 'meta_value';
+            $args['meta_key'] = 'talk_date';
+            $args['order'] = 'ASC';
+        } else {
+            $args['orderby'] = 'title';
+            $args['order'] = 'ASC';
+        }
 
         $talks = get_posts($args);
         $output = '';
@@ -76,6 +84,7 @@ class Utils {
                 $output .= apply_filters('the_title', $talk->post_title);
                 $output .= "</a> ";
                 $output .= get_the_term_list($talk->ID, 'talk_category', '<div class="speaker-categories inline">', ' ', '</div>');
+                //$output .= get_post_meta($talk->ID, 'talk_date', true);
             }
             $output .= "</ul>";
         }
@@ -255,7 +264,7 @@ class Utils {
             $output .= '<div class="talk-datetime">'
                 . ($date != '' ? '<span class="date" title="' . __('Date', 'rrze-events') . '">[icon icon="regular calendar" color="' . $accentColor . '"] '
                     . '<span class="sr-only">' . __('Date', 'rrze-events') . ': </span>'
-                    . $date . '</span>' : '')
+                    . date_i18n('d.m.Y', $tsStart) . '</span>' : '')
                 . ($start .$end != '' ? '<span class="time" title="' . __('Time', 'rrze-events') . '">'
                     . '[icon icon="regular clock" color="' . $accentColor . '"] '
                     . '<span class="sr-only">' . __('Time', 'rrze-events') . ': </span>'

@@ -1,10 +1,10 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "rrze/events-speaker",
+  "name": "rrze-events/speaker",
   "version": "1.0.0",
   "title": "RRZE Events Speaker",
-  "category": "widgets",
+  "category": "rrze-plugins",
   "description": "RRZE Events Speaker",
   "example": {},
   "attributes": {

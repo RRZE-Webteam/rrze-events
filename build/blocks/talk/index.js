@@ -494,7 +494,7 @@ __webpack_require__.r(__webpack_exports__);
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)((_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3___default()), {
-      block: "rrze/events-talk",
+      block: "rrze-events/talk",
       attributes: attributes
     })]
   });
@@ -617,7 +617,7 @@ module.exports = window["wp"]["serverSideRender"];
   \************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"rrze/events-talk","version":"1.0.0","title":"RRZE Events Talk","category":"widgets","description":"RRZE Events Talk","example":{},"attributes":{"numTalks":{"type":"integer","default":-1},"selectedCategories":{"type":"array","default":{}},"selectedTags":{"type":"array","default":{}},"talkDate":{"type":"string","default":""},"selectedTalks":{"type":"array","default":{}},"layout":{"type":"string","default":"grid"},"orderBy":{"type":"string","default":"date"},"orderType":{"type":"string","default":"ASC"},"showImage":{"type":"boolean","default":false},"showOrganisation":{"type":"boolean","default":false},"tableColumns":{"type":"array","default":["date","duration","title","speaker"]}},"supports":{"html":false},"textdomain":"rrze-events","editorScript":"file:./index.js","editorStyle":"file:./index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"rrze-events/talk","version":"1.0.0","title":"RRZE Events Talk","category":"rrze-plugins","description":"RRZE Events Talk","example":{},"attributes":{"numTalks":{"type":"integer","default":-1},"selectedCategories":{"type":"array","default":{}},"selectedTags":{"type":"array","default":{}},"talkDate":{"type":"string","default":""},"selectedTalks":{"type":"array","default":{}},"layout":{"type":"string","default":"grid"},"orderBy":{"type":"string","default":"date"},"orderType":{"type":"string","default":"ASC"},"showImage":{"type":"boolean","default":false},"showOrganisation":{"type":"boolean","default":false},"tableColumns":{"type":"array","default":["date","duration","title","speaker"]}},"supports":{"html":false},"textdomain":"rrze-events","editorScript":"file:./index.js","editorStyle":"file:./index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
 
 /***/ })
 

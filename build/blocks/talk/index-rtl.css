@@ -85,6 +85,13 @@
     margin-bottom: 0;
   }
 }
+.single-speaker .rrze-speaker .speaker-details .post-image img.format-rounded {
+  width: 250px;
+  height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
 .single-speaker .rrze-speaker .speaker-details .speaker-name {
   display: none;
 }

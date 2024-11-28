@@ -23,8 +23,12 @@ $speakerSettings = Settings::getOption('rrze-events-speaker-settings');
         <?php
         // Thumbnail
         if (has_post_thumbnail() && !post_password_required()) {
+            $cssClass = 'speaker-thumbnail';
+            if (isset($speakerSettings['image-format']) && $speakerSettings['image-format'] == 'rounded') {
+                $cssClass .= ' format-rounded';
+            }
             echo '<div class="post-image">'
-                . get_the_post_thumbnail($post->ID, 'large', ['class' => 'speaker-thumbnail'])
+                . get_the_post_thumbnail($post->ID, 'large', ['class' => $cssClass])
                 . '</div>';
         } ?>
 
@@ -37,14 +41,14 @@ $speakerSettings = Settings::getOption('rrze-events-speaker-settings');
         }
         ?>
 
-        <?php if ($speakerSettings['show-link-icons'] == 'on') {
+        <?php if (isset($speakerSettings['show-link-icons']) && $speakerSettings['show-link-icons'] == 'on') {
             $links = Utils::speakerLinks($id, 'icons');
             if ($links != '') {
                 echo '<div class="speaker-links">' . wp_kses($links, Utils::getKsesExtendedRuleset()) . '</div>';
             }
         } ?>
 
-        <?php if ($speakerSettings['show-categories'] == 'on' && get_the_terms($post->ID, 'speaker_category') !== false) : ?>
+        <?php if (isset($speakerSettings['show-categories']) && $speakerSettings['show-categories'] == 'on' && get_the_terms($post->ID, 'speaker_category') !== false) : ?>
             <div class="speaker-categories">
                 <?php print get_the_term_list( $post->ID, 'speaker_category', '<ul><li>','</li><li>', '</li></ul>'); ?>
             </div><!-- end .entry-cats -->
