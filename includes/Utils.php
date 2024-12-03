@@ -23,7 +23,8 @@ class Utils {
             'rrze-2019'
         ],
         'vendor' => [
-            'Francesca-Child'
+            'Francesca-Child',
+            'Francesca-Child-Main'
         ]
     ];
 

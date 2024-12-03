@@ -7,9 +7,8 @@ use RRZE\Events\Utils;
 
 class Speaker {
     public function __construct() {
-        //add_action('admin_enqueue_scripts', [$this, 'enqueueGutenberg']);
-        //add_action('init', [$this, 'initGutenberg']);
         add_shortcode('speaker', [$this, 'shortcodeOutput']);
+        add_shortcode('rrze-speaker', [$this, 'shortcodeOutput']);
     }
 
     public static function shortcodeOutput($atts, $content = "") {

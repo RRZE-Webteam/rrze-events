@@ -8,6 +8,7 @@ $id = get_the_ID();
 $meta = get_post_meta($id);
 $talkCategories = get_the_terms($id, 'talk_category');
 $talkTags = get_the_terms($id, 'talk_tag');
+$speakerSettings = Settings::getOption('rrze-events-speaker-settings');
 ?>
 
 <article class="rrze-talk" itemscope itemtype="https://schema.org/Event">
@@ -24,8 +25,12 @@ $talkTags = get_the_terms($id, 'talk_tag');
             if (!has_post_thumbnail($speakerID))
                 continue;
             $organisation = get_post_meta($speakerID, 'speaker_organisation', TRUE);
+            $cssClass = 'talk-speaker-thumbnail';
+            if (isset($speakerSettings['image-format']) && $speakerSettings['image-format'] == 'rounded') {
+                $cssClass .= ' format-rounded';
+            }
             echo '<div class="talk-speaker-item"><a href="' . get_permalink($speakerID) . '">';
-            echo get_the_post_thumbnail($speakerID, 'medium', ['class' => 'talk-speaker-thumbnail']);
+            echo get_the_post_thumbnail($speakerID, 'medium', ['class' => $cssClass]);
             echo '<span class="speaker-name">' . get_the_title($speakerID) . '</span>';
             echo ($organisation != '' ? '<span class="speaker-organisation">' . $organisation . '</span>' : '');
             echo '</a></div>';
@@ -48,8 +53,9 @@ $talkTags = get_the_terms($id, 'talk_tag');
         <?php
         // Thumbnail
         if (has_post_thumbnail() && !post_password_required()) {
+            $cssClass = 'talk-thumbnail';
             echo '<div class="post-image">'
-                . get_the_post_thumbnail($post->ID, 'medium', ['class' => 'talk-thumbnail'])
+                . get_the_post_thumbnail($post->ID, 'medium', ['class' => $cssClass])
                 . '</div>';
         }
         ?>

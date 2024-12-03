@@ -30,6 +30,13 @@
   fill: var(--color-button-text, #ffffff);
 }
 
+@media screen and (min-width: 1600px) {
+  .rrze-2019.single-speaker #primary, .rrze-2019.single-talk #primary {
+    padding-left: 0;
+    margin: 0 auto;
+  }
+}
+
 @media (min-width: 768px) {
   .single-speaker .rrze-speaker {
     display: flex;

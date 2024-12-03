@@ -8,6 +8,7 @@ use RRZE\Events\Utils;
 class Talk {
     public function __construct() {
         add_shortcode('talk', [$this, 'shortcodeOutput']);
+        add_shortcode('rrze-talk', [$this, 'shortcodeOutput']);
     }
 
     public static function shortcodeOutput($atts, $content = "") {
@@ -299,7 +300,7 @@ class Talk {
             $output .= '<article class="shortcode talk" id="post-' . $talk['ID'] . '" class="' . implode(' ', get_post_class('', $talk['ID'])) . '">';
             $output .= '<header class="titel">';
             // Titel
-            $output .= '<h3 class="summary"><a href="' . $talk['link'] . '" rel="bookmark">' . $talk['title'] . '</a></h3>';
+            $output .= '<h2 class="entry-title"><a href="' . $talk['link'] . '" rel="bookmark">' . $talk['title'] . '</a></h2>';
             $output .= '</header>';
 
             $output .= '<div class="talk-data">';

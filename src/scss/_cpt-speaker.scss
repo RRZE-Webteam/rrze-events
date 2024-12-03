@@ -31,8 +31,7 @@
             }
         }
 
-        .speaker-details {
-            background-color: var(--color-ContentRegions, #f5f7f9);
+        .speaker-info {
             padding: 15px;
             @media (min-width: 768px) {
                 order: 2;
@@ -45,16 +44,12 @@
                 max-width: 446px;
                 text-align: center;
                 @media (min-width: 768px) {
-                    background: #fff;
                     padding-bottom: 15px;
                     margin-bottom: 0;
                 }
-                img.format-rounded {
-                    width: 250px;
-                    height: 250px;
-                    object-fit: cover;
-                    border-radius: 50%;
-                }
+            }
+            .speaker-details {
+                background-color: var(--color-ContentRegions, #f5f7f9);
             }
             .speaker-name {
                 display: none;

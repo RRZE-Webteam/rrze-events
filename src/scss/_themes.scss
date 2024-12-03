@@ -1,0 +1,125 @@
+// RRZE 2019
+.rrze-2019 {
+  &.single-speaker,
+  &.single-talk {
+    #primary {
+      @media screen and (min-width: 768px) {
+        max-width: unset;
+        padding: 0 0 20px;
+      }
+      @media screen and (min-width: 1300px) {
+        max-width: 80%;
+        padding-left: 0;
+        margin: 0 auto;
+      }
+    }
+  }
+  &.post-type-archive-speaker,
+  &.post-type-archive-talk {
+    #breadcrumbs {
+      @media screen and (min-width: 992px) {
+        padding: 10px 20px;
+      }
+      @media screen and (min-width: 1220px) {
+        padding: 10px 30px;
+      }
+    }
+    #primary {
+      @media screen and (min-width: 768px) {
+        padding-left: 0;
+        max-width: unset;
+      }
+      @media screen and (min-width: 992px) {
+        padding-left: 0;
+        max-width: unset;
+      }
+    }
+  }
+  &.single-speaker {
+    .rrze-speaker {
+      .speaker-organisation {
+        font-size: 1.8rem;
+        line-height: 1.5;
+      }
+      .speaker-details {
+        .post-image {
+          max-width: 482px;
+        }
+      }
+      @media (min-width: 768px) {
+        display: grid;
+        grid-template-columns: 60% 1fr;
+        column-gap: 30px;
+        row-gap: 0;
+        h1.entry-title {
+          grid-row: 1;
+          grid-column: 1;
+          margin-bottom: .5em;
+        }
+        .speaker-details {
+          grid-row: 1 / span 2;
+          grid-column: 2;
+        }
+        .speaker-main {
+          grid-row: 2;
+          grid-column: 1;
+        }
+      }
+    }
+  }
+  .rrze-events.speaker-grid,
+  .rrze-events.talk-grid {
+    @media (min-width: 1400px) {
+      gap: 30px;
+    }
+  }
+}
+
+// Francesca
+.posts.posts-list {
+  .entry-main,
+  article.shortcode.talk {
+    background-color: #fff;
+  }
+  h2.entry-title {
+    font-size: calc(var(--typography_heading_size_posts)* 1em);
+    line-height: calc(1 + var(--typography_line_height_headings) / var(--typography_heading_size_posts) / var(--responsive_scale));
+  }
+  a .entry-summary {
+    color: var(--color_body_text, #353535);
+  }
+  .has-post-thumbnail {
+    @media (min-width: 880px) {
+      padding-top: 0;
+    }
+  }
+  .has-post-thumbnail>:not(.entry-media) {
+    @media (min-width: 880px) {
+      margin-left: 0;
+      width: 100%;
+    }
+    @media (min-width: 1280px) {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+}
+
+:not(.fau-theme):not(.rrze-2019) {
+  .single-talk,
+  .single-speaker,
+  .post-type-archive-talk,
+  .post-type-archive-speaker {
+    #primary {
+      max-width: 1240px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  .post-type-archive-talk,
+  .post-type-archive-speaker {
+    article {
+      background: #fff;
+    }
+  }
+}
