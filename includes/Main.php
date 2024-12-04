@@ -30,6 +30,8 @@ class Main
 
         new SC_Speaker;
         new SC_Talk;
+
+        new CF7();
     }
 
     /**
