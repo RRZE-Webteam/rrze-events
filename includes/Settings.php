@@ -71,7 +71,7 @@ class Settings
             'type' => 'colorpicker',
             'default' => '#04316a',
             'attributes' => array(
-                'data-colorpicker' => json_encode( array(
+                'data-colorpicker' => wp_json_encode( array(
                     // Iris Options set here as values in the 'data-colorpicker' array
                     'palettes' => array( '#04316a', '#e87722', '#005287', '#266141', '#971b2f', '#2f586e'),
                 ) ),

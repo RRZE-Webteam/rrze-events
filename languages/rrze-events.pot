@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RRZE Events\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-04 12:10+0000\n"
+"POT-Creation-Date: 2024-12-05 14:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -58,6 +58,11 @@ msgstr ""
 
 #: includes/CPT/Speaker.php:143
 msgid "Add URL"
+msgstr ""
+
+#: includes/CF7.php:53
+msgctxt "Addition to select list option on registration form"
+msgid "WAITING LIST"
 msgstr ""
 
 #: includes/CPT/Speaker.php:34
@@ -129,7 +134,7 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: includes/CF7.php:35
+#: includes/CF7.php:39 includes/Shortcodes/Talk.php:126
 msgctxt "Date format"
 msgid "Y-m-d"
 msgstr ""
@@ -199,6 +204,10 @@ msgstr ""
 
 #: includes/Settings.php:196
 msgid "ID of the Contact Form 7 form containing the Call for Papers"
+msgstr ""
+
+#: templates/content/content-single-talk.php:44
+msgid "Infos"
 msgstr ""
 
 #: includes/Settings.php:137 includes/Settings.php:142
@@ -325,6 +334,10 @@ msgid ""
 "are already included in the theme. Please activate another theme before "
 "activating RRZE Events. The plugin will preserve your existing speakers, "
 "talks and shortcodes."
+msgstr ""
+
+#: rrze-events.php:226
+msgid "RRZE Plugins"
 msgstr ""
 
 #. Author of the plugin

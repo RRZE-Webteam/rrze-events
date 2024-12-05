@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: RRZE Events\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-16 14:22+0000\n"
-"PO-Revision-Date: 2024-12-04 12:10+0000\n"
+"PO-Revision-Date: 2024-12-05 14:45+0000\n"
 "Last-Translator: Barbara Bothe\n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -58,6 +58,11 @@ msgstr "Akzentfarbe"
 #: includes/CPT/Speaker.php:143
 msgid "Add URL"
 msgstr "URL eingeben"
+
+#: includes/CF7.php:53
+msgctxt "Addition to select list option on registration form"
+msgid "WAITING LIST"
+msgstr "WARTELISTE"
 
 #: includes/CPT/Speaker.php:34
 msgid "All Speakers"
@@ -128,7 +133,7 @@ msgstr "Kursnr."
 msgid "Date"
 msgstr "Datum"
 
-#: includes/CF7.php:35
+#: includes/CF7.php:39 includes/Shortcodes/Talk.php:126
 msgctxt "Date format"
 msgid "Y-m-d"
 msgstr "d.m.Y"
@@ -202,6 +207,10 @@ msgstr "https://github.com/RRZE-Webteam/rrze-events"
 #: includes/Settings.php:196
 msgid "ID of the Contact Form 7 form containing the Call for Papers"
 msgstr "ID des Contact-Form-7-Formulars, das den Call for Papers enthält"
+
+#: templates/content/content-single-talk.php:44
+msgid "Infos"
+msgstr "Infos"
 
 #: includes/Settings.php:137 includes/Settings.php:142
 msgid "Labels"
@@ -337,6 +346,10 @@ msgstr ""
 "Wählen Sie ein anderes Theme, bevor Sie RRZE-Events aktivieren. Bestehende "
 "Daten zu Referenten und Vorträgen werden automatisch aus FAU-Events in das "
 "Plugin importiert."
+
+#: rrze-events.php:226
+msgid "RRZE Plugins"
+msgstr "RRZE-Plugins"
 
 #. Author of the plugin
 msgid "RRZE Webteam"

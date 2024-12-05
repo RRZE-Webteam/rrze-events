@@ -223,7 +223,7 @@ function createBlocks(): void {
 function rrze_block_category($categories, $post) {
     $custom_category = [
         'slug'  => 'rrze',
-        'title' => __('RRZE Plugins', 'rrze-plugins'),
+        'title' => __('RRZE Plugins', 'rrze-events'),
         'icon'  => 'layout',
     ];
 

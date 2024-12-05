@@ -1,6 +1,9 @@
-[![Aktuelle Version](https://img.shields.io/github/package-json/v/rrze-webteam/rrze-events/main?label=Version)](https://github.com/RRZE-Webteam/rrze-events) [![Release Version](https://img.shields.io/github/v/release/rrze-webteam/rrze-events?label=Release+Version)](https://github.com/rrze-webteam/rrze-events/releases/) [![GitHub License](https://img.shields.io/github/license/rrze-webteam/rrze-events)](https://github.com/RRZE-Webteam/rrze-events) [![GitHub issues](https://img.shields.io/github/issues/RRZE-Webteam/rrze-events)](https://github.com/RRZE-Webteam/rrze-events/issues) ![GitHub milestone details](https://img.shields.io/github/milestones/progress-percent/RRZE-Webteam/rrze-events/3)
-
-# RRZE-Events
+=== RRZE Events ===
+Tags:              event, talk, speaker
+Tested up to:      6.7
+Stable tag:        1.0.0
+License:           GPL-3.0-or-later
+License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 
 WordPress-Plugin für Veranstaltungen
 

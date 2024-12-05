@@ -45,7 +45,7 @@ class Speaker {
             'label' => __('Speaker', 'rrze-events'),
             //'description' => __('Add and edit speaker information', 'rrze-events'),
             'labels' => $labels,
-            'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', 'page-attributes'),
+            'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions'),
             'hierarchical' => true,
             'public' => true,
             'show_ui' => true,

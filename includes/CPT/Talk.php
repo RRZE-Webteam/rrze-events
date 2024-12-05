@@ -45,7 +45,7 @@ class Talk {
             'label' => __('Talk', 'rrze-events'),
             //'description' => __('Add and edit talk information', 'rrze-events'),
             'labels' => $labels,
-            'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'little-promo-boxes', 'comments', 'revisions', 'custom-fields', 'page-attributes'),
+            'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions'),
             'hierarchical' => true,
             'public' => true,
             'show_ui' => true,

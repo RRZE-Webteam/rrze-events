@@ -46,7 +46,7 @@ class CF7 {
             if (((isset($available)) && ($available > 0)) || $available == '') {
                 $tag['raw_values'][] = $value . "_" . $talk->post_name;
                 $tag['values'][] = $value . "_" . $talk->post_name;
-                $tag['labels'][] = $dateOut . $talk->post_title . " (" . $short . ")";
+                $tag['labels'][] = $dateOut . $talk->post_title /*. " (" . $short . ")"*/;
             } elseif ((isset($available)) && ($available == 0) && $waitinglist == "on") {
                 $tag['raw_values'][] = $value . "_" . $talk->post_name . "_waitinglist";
                 $tag['values'][] = $value . "_" . $talk->post_name . "_waitinglist";

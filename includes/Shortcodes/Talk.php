@@ -123,7 +123,7 @@ class Talk {
                 $talkData[$post_id]['shortname'] = Utils::getMeta($meta, 'talk_shortname');
                 $talk_meta = strtotime(Utils::getMeta($meta, 'talk_date'));
                 if ($talk_meta !== FALSE) {
-                    $talk_date = date_i18n( get_option('date_format'), strtotime(Utils::getMeta($meta, 'talk_date')));
+                    $talk_date = date_i18n( _x('Y-m-d', 'Date format', 'rrze-events'), strtotime(Utils::getMeta($meta, 'talk_date')));
                 } else {
                     $talk_date = '';
                 }

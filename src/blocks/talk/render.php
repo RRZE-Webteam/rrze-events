@@ -15,6 +15,5 @@ $attributes['date'] = $attributes['talkDate'] ?? '';
 $attributes['showimage'] = $attributes['showImage'] ?? '';
 $attributes['showorganisation'] = $attributes['showOrganisation'] ?? '';
 $attributes['columns'] = implode(',', $attributes['tableColumns']);
-//var_dump($attributes['date']);
 
-echo \RRZE\Events\Shortcodes\Talk::shortcodeOutput($attributes);
+echo esc_html(\RRZE\Events\Shortcodes\Talk::shortcodeOutput($attributes));
