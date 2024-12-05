@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "rrze-events/speaker",
+  "version": "1.0.0",
+  "title": "RRZE Events Speaker",
+  "category": "rrze-plugins",
+  "description": "RRZE Events Speaker",
+  "example": {},
+  "attributes": {
+    "numSpeakers": {
+      "type": "integer",
+      "default": -1
+    },
+    "selectedCategories": {
+      "type": "array",
+      "default": {}
+    },
+    "selectedSpeakers": {
+      "type": "array",
+      "default": {}
+    },
+    "layout": {
+      "type": "string",
+      "default": "grid"
+    },
+    "orderBy": {
+      "type": "string",
+      "default": "lastname"
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "textdomain": "rrze-events",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewScript": "file:./view.js",
+  "render": "file:./render.php"
+}

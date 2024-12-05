@@ -31,8 +31,7 @@
             }
         }
 
-        .speaker-details {
-            background-color: var(--color-ContentRegions, #f5f7f9);
+        .speaker-info {
             padding: 15px;
             @media (min-width: 768px) {
                 order: 2;
@@ -45,10 +44,12 @@
                 max-width: 446px;
                 text-align: center;
                 @media (min-width: 768px) {
-                    background: #fff;
-                    padding-bottom: 15px;
+                    //padding-bottom: 15px;
                     margin-bottom: 0;
                 }
+            }
+            .speaker-details {
+                background-color: var(--color-ContentRegions, #f5f7f9);
             }
             .speaker-name {
                 display: none;
@@ -84,6 +85,7 @@
             }
             ul.speaker-social-icons {
                 margin: 0;
+                padding: 0;
                 list-style-type: none;
                 text-align: center;
                 @media (min-width: 768px) {

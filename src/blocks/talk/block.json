@@ -1,0 +1,64 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "rrze-events/talk",
+	"version": "1.0.0",
+	"title": "RRZE Events Talk",
+	"category": "rrze-plugins",
+	"description": "RRZE Events Talk",
+	"example": {},
+	"attributes": {
+		"numTalks": {
+			"type": "integer",
+			"default": -1
+		},
+		"selectedCategories": {
+			"type": "array",
+			"default": {}
+		},
+		"selectedTags": {
+			"type": "array",
+			"default": {}
+		},
+		"talkDate": {
+			"type": "string",
+			"default": ""
+		},
+		"selectedTalks": {
+			"type": "array",
+			"default": {}
+		},
+		"layout": {
+			"type": "string",
+			"default": "grid"
+		},
+		"orderBy": {
+			"type": "string",
+			"default": "date"
+		},
+		"orderType": {
+			"type": "string",
+			"default": "ASC"
+		},
+		"showImage": {
+			"type": "boolean",
+			"default": false
+		},
+		"showOrganisation": {
+			"type": "boolean",
+			"default": false
+		},
+		"tableColumns": {
+			"type": "array",
+			"default": ["date", "duration", "title", "speaker"]
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "rrze-events",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"viewScript": "file:./view.js",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,50 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+@use '../../scss/rrze-events';
+
+.post-type-page .editor-styles-wrapper .wp-block-rrze-events-talk * {
+  font-family: Roboto,FAU Chimera,sans-serif;
+  line-height: 1.5;
+
+  table {
+    border-collapse: collapse;
+    margin-bottom: 1em;
+    td, th {
+      border: 1px solid #e9edf2;
+      padding: .3rem .6rem;
+    }
+  }
+}
+
+.components-panel {
+  ul.selected-columns {
+    li {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 2px;
+      &:first-child {
+        button.button-up {
+          visibility: hidden;
+        }
+      }
+      &:last-child {
+        button.button-down {
+          visibility: hidden;
+        }
+      }
+      &:only-child {
+        button.button-up,
+        button.button-down,
+        button.button-remove {
+          visibility: hidden;
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,13 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+@use '../../scss/rrze-events';
+
+.post-type-page .editor-styles-wrapper .wp-block-rrze-events-speaker * {
+  font-family: Roboto,FAU Chimera,sans-serif;
+  line-height: 1.5;
+}
+

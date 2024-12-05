@@ -45,7 +45,7 @@ class Talk {
             'label' => __('Talk', 'rrze-events'),
             //'description' => __('Add and edit talk information', 'rrze-events'),
             'labels' => $labels,
-            'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'little-promo-boxes', 'comments', 'revisions', 'custom-fields', 'page-attributes'),
+            'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions'),
             'hierarchical' => true,
             'public' => true,
             'show_ui' => true,
@@ -117,10 +117,10 @@ class Talk {
             //'desc' => esc_html__( '', 'rrze-events' ),
             'id'   => 'talk_date',
             'type' => 'text_date',
-            'date_format' => 'd.m.Y',
+            'date_format' => 'Y-m-d',
             'attributes' => array(
                 'data-datepicker' => wp_json_encode( array(
-                    'dayNames' => Utils::getDaysOfWeek(),
+                    'dayNames' => Utils::getDaysOfWeek('short'),
                     'monthNamesShort' => Utils::getMonthNames('short'),
                     'dateFormat' => 'dd.mm.yy',
                 ) ),

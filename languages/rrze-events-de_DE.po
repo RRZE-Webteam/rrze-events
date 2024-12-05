@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: RRZE Events\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-16 14:22+0000\n"
-"PO-Revision-Date: 2024-10-15 09:59+0000\n"
+"PO-Revision-Date: 2024-12-05 14:45+0000\n"
 "Last-Translator: Barbara Bothe\n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -59,6 +59,11 @@ msgstr "Akzentfarbe"
 msgid "Add URL"
 msgstr "URL eingeben"
 
+#: includes/CF7.php:53
+msgctxt "Addition to select list option on registration form"
+msgid "WAITING LIST"
+msgstr "WARTELISTE"
+
 #: includes/CPT/Speaker.php:34
 msgid "All Speakers"
 msgstr "Alle Referenten"
@@ -71,11 +76,31 @@ msgstr "Alle Vorträge"
 msgid "Available"
 msgstr "Verfügbar"
 
-#: includes/Utils.php:292
+#: includes/Utils.php:300
 msgid "available"
 msgstr "verfügbar"
 
-#: includes/Utils.php:93 includes/CPT/Speaker.php:128
+#: build/blocks/speaker/block.json:1 src/blocks/speaker/block.json:1
+msgctxt "block description"
+msgid "RRZE Events Speaker"
+msgstr "RRZE Events: Referenten"
+
+#: build/blocks/talk/block.json:1 src/blocks/talk/block.json:1
+msgctxt "block description"
+msgid "RRZE Events Talk"
+msgstr "RRZE Events: Vorträge"
+
+#: build/blocks/speaker/block.json:1 src/blocks/speaker/block.json:1
+msgctxt "block title"
+msgid "RRZE Events Speaker"
+msgstr "RRZE Events: Referenten"
+
+#: build/blocks/talk/block.json:1 src/blocks/talk/block.json:1
+msgctxt "block title"
+msgid "RRZE Events Talk"
+msgstr "RRZE Events: Vorträge"
+
+#: includes/Utils.php:101 includes/CPT/Speaker.php:128
 msgid "Blog"
 msgstr "Blog"
 
@@ -95,7 +120,7 @@ msgstr "Call For Papers"
 msgid "Code"
 msgstr "Kurzbezeichnung"
 
-#: includes/Utils.php:177
+#: includes/Utils.php:185
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -103,10 +128,15 @@ msgstr "Kontakt"
 msgid "Course Nr"
 msgstr "Kursnr."
 
-#: includes/Utils.php:258 includes/Utils.php:259 includes/CPT/Talk.php:116
+#: includes/Utils.php:266 includes/Utils.php:267 includes/CPT/Talk.php:116
 #: includes/Shortcodes/Talk.php:210
 msgid "Date"
 msgstr "Datum"
+
+#: includes/CF7.php:39 includes/Shortcodes/Talk.php:126
+msgctxt "Date format"
+msgid "Y-m-d"
+msgstr "d.m.Y"
 
 #: includes/CPT/Talk.php:209
 msgid ""
@@ -122,7 +152,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: includes/Utils.php:91 includes/CPT/Speaker.php:116
+#: includes/Utils.php:99 includes/CPT/Speaker.php:116
 msgid "Email"
 msgstr "E-Mail"
 
@@ -178,11 +208,15 @@ msgstr "https://github.com/RRZE-Webteam/rrze-events"
 msgid "ID of the Contact Form 7 form containing the Call for Papers"
 msgstr "ID des Contact-Form-7-Formulars, das den Call for Papers enthält"
 
+#: templates/content/content-single-talk.php:44
+msgid "Infos"
+msgstr "Infos"
+
 #: includes/Settings.php:137 includes/Settings.php:142
 msgid "Labels"
 msgstr "Bezeichnungen"
 
-#: includes/Utils.php:273 includes/Utils.php:275 includes/CPT/Talk.php:158
+#: includes/Utils.php:281 includes/Utils.php:283 includes/CPT/Talk.php:158
 #: includes/Shortcodes/Talk.php:216
 msgid "Location"
 msgstr "Ort/Raum"
@@ -199,7 +233,7 @@ msgstr "Vorträge und Referenten verwalten und anzeigen"
 msgid "Max. number of participants"
 msgstr "Maximale Teilnehmerzahl"
 
-#: templates/content/content-single-talk.php:64
+#: templates/content/content-single-talk.php:70
 msgid "More about&hellip;"
 msgstr "Mehr zum Thema&hellip;"
 
@@ -215,7 +249,7 @@ msgstr "Neuer Referent"
 msgid "New Talk"
 msgstr "Neuer Vortrag"
 
-#: includes/Shortcodes/Talk.php:173
+#: includes/Shortcodes/Talk.php:172
 msgid "No talk information found."
 msgstr "Keine Informationen zum Vortrag gefunden."
 
@@ -236,8 +270,8 @@ msgstr ""
 msgid "Parent Item:"
 msgstr "Übergeordneter Eintrag:"
 
-#: includes/Utils.php:285 includes/Utils.php:287 includes/Utils.php:289
-#: includes/Utils.php:300 includes/Utils.php:303
+#: includes/Utils.php:293 includes/Utils.php:295 includes/Utils.php:297
+#: includes/Utils.php:308 includes/Utils.php:311
 #: includes/Shortcodes/Talk.php:218
 msgid "Participants"
 msgstr "Teilnehmer"
@@ -253,7 +287,7 @@ msgstr ""
 "zu können."
 
 #. 1: The plugin name, 2: The error string.
-#: rrze-events.php:93 rrze-events.php:190
+#: rrze-events.php:99 rrze-events.php:197
 #, php-format
 msgid "Plugins: %1$s: %2$s"
 msgstr "Plugins: %1$s: %2$s"
@@ -300,7 +334,7 @@ msgstr "rund"
 msgid "RRZE Events"
 msgstr "RRZE Events"
 
-#: rrze-events.php:77
+#: rrze-events.php:83
 msgid ""
 "RRZE Events plugin does not work with FAU Events Theme as the event features "
 "are already included in the theme. Please activate another theme before "
@@ -312,6 +346,10 @@ msgstr ""
 "Wählen Sie ein anderes Theme, bevor Sie RRZE-Events aktivieren. Bestehende "
 "Daten zu Referenten und Vorträgen werden automatisch aus FAU-Events in das "
 "Plugin importiert."
+
+#: rrze-events.php:226
+msgid "RRZE Plugins"
+msgstr "RRZE-Plugins"
 
 #. Author of the plugin
 msgid "RRZE Webteam"
@@ -325,7 +363,7 @@ msgstr "Nach Referenten suchen"
 msgid "Search Talk"
 msgstr "Nach Vorträgen suchen"
 
-#: includes/Main.php:46
+#: includes/Main.php:48
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -333,17 +371,17 @@ msgstr "Einstellungen"
 msgid "Show link icons in speaker single view"
 msgstr "Link-Icons auf der Referentenseite anzeigen"
 
-#: includes/Utils.php:303
+#: includes/Utils.php:311
 msgid "Slides"
 msgstr "Vortragsfolien"
 
-#: includes/Utils.php:94 includes/CPT/Speaker.php:134
+#: includes/Utils.php:102 includes/CPT/Speaker.php:134
 msgid "Social Media"
 msgstr "Soziale Medien"
 
-#: config/defaults.php:24 includes/Settings.php:164 includes/Utils.php:236
-#: includes/Utils.php:236 includes/CPT/Speaker.php:45
-#: templates/content/content-single-talk.php:22
+#: config/defaults.php:24 includes/Settings.php:164 includes/Utils.php:244
+#: includes/Utils.php:244 includes/CPT/Speaker.php:45
+#: templates/content/content-single-talk.php:23
 msgid "Speaker"
 msgstr "Referent"
 
@@ -445,8 +483,8 @@ msgstr "Reihenfolge der Vorträge"
 msgid "Talk Title"
 msgstr "Vortrag: Titel"
 
-#: config/defaults.php:23 includes/Settings.php:157 includes/Utils.php:74
-#: includes/CPT/Talk.php:32 templates/themes/fau/archive-talk.php:27
+#: config/defaults.php:23 includes/Settings.php:157 includes/CPT/Talk.php:32
+#: templates/themes/fau/archive-talk.php:27
 #: templates/themes/fau/archive-talk.php:29
 msgid "Talks"
 msgstr "Vorträge"
@@ -492,7 +530,7 @@ msgid "Talk Tag"
 msgstr "Schlagwort"
 
 #. 1: Server PHP version number, 2: Required PHP version number.
-#: rrze-events.php:65
+#: rrze-events.php:71
 #, php-format
 msgid ""
 "The server is running PHP version %1$s. The Plugin requires at least PHP "
@@ -502,7 +540,7 @@ msgstr ""
 "Version %2$s."
 
 #. 1: Server WordPress version number, 2: Required WordPress version number.
-#: rrze-events.php:72
+#: rrze-events.php:78
 #, php-format
 msgid ""
 "The server is running WordPress version %1$s. The Plugin requires at least "
@@ -511,7 +549,7 @@ msgstr ""
 "Auf dem Server läuft WordPress Version %1$s. Das Plugin benötigt mindestens "
 "WordPress Version %2$s."
 
-#: includes/Utils.php:261 includes/Utils.php:263
+#: includes/Utils.php:269 includes/Utils.php:271
 #: includes/Shortcodes/Talk.php:215
 msgid "Time"
 msgstr "Zeit"
@@ -524,7 +562,7 @@ msgstr "Aktualisieren"
 msgid "Used for icons etc."
 msgstr "Wird für Icons etc. verwendet."
 
-#: includes/Utils.php:300
+#: includes/Utils.php:308
 msgid "Video"
 msgstr "Video"
 
@@ -544,6 +582,6 @@ msgstr "Vortrag ansehen"
 msgid "Waiting List"
 msgstr "Warteliste"
 
-#: includes/Utils.php:92 includes/CPT/Speaker.php:122
+#: includes/Utils.php:100 includes/CPT/Speaker.php:122
 msgid "Website"
 msgstr "Website"

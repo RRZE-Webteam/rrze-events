@@ -7,13 +7,14 @@ use RRZE\Events\Utils;
 
 class Speaker {
     public function __construct() {
-        //add_action('admin_enqueue_scripts', [$this, 'enqueueGutenberg']);
-        //add_action('init', [$this, 'initGutenberg']);
         add_shortcode('speaker', [$this, 'shortcodeOutput']);
+        add_shortcode('rrze-speaker', [$this, 'shortcodeOutput']);
     }
 
     public static function shortcodeOutput($atts, $content = "") {
         global $post;
+        $speakerSettings = Settings::getOption('rrze-events-speaker-settings');
+
         extract(shortcode_atts(array(
             'cat' => '',
             'category' => '',
@@ -27,7 +28,8 @@ class Speaker {
         $single = 0;
         $category = ('' != $category) ? sanitize_text_field($category) : sanitize_text_field($cat);
         $number = ('-1' != $num) ? sanitize_text_field($num) : sanitize_text_field($number);
-        $id = sanitize_text_field($id);
+        $idsRaw = explode(',', $id);
+        $ids = array_map('intval', $idsRaw);
         $format = sanitize_text_field($format);
         $orderby = ($orderby == 'lastname' ? 'lastname' : 'firstname');
         $settings = Settings::getOption('rrze-events-settings');
@@ -42,7 +44,7 @@ class Speaker {
             $args['posts_per_page'] = $number;
         }
         if ((isset($id)) && ( strlen(trim($id)) > 0)) {
-            $args ['p'] = $id;
+            $args ['post__in'] = $ids;
             $single = 1;
         } elseif ((isset($category)) && ( strlen(trim($category)) > 0)) {
             $args['tax_query'][] = array(
@@ -98,7 +100,7 @@ class Speaker {
                     $out .= '<article id="post-' . $post->ID . '" class="' . implode(' ', get_post_class()) . '">';
                     $out .= '<a href="' . $url . '" rel="bookmark" class="entry-main">' .
                         '<header class="entry-header">';
-                    if (get_theme_mod('show_speaker_categories') == true && get_the_terms($post->ID, 'speaker_category') !== false) {
+                    if (isset($speakerSettings['show-categories']) && $speakerSettings['show-categories'] == true && get_the_terms($post->ID, 'speaker_category') !== false) {
                         $out .= '<div class="entry-cats">' . get_the_term_list( $post->ID, 'speaker_category', null,' | ') . '</div>';
                     }
 

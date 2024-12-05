@@ -7,9 +7,8 @@ use RRZE\Events\Utils;
 
 class Talk {
     public function __construct() {
-        //add_action('admin_enqueue_scripts', [$this, 'enqueueGutenberg']);
-        //add_action('init', [$this, 'initGutenberg']);
         add_shortcode('talk', [$this, 'shortcodeOutput']);
+        add_shortcode('rrze-talk', [$this, 'shortcodeOutput']);
     }
 
     public static function shortcodeOutput($atts, $content = "") {
@@ -124,7 +123,7 @@ class Talk {
                 $talkData[$post_id]['shortname'] = Utils::getMeta($meta, 'talk_shortname');
                 $talk_meta = strtotime(Utils::getMeta($meta, 'talk_date'));
                 if ($talk_meta !== FALSE) {
-                    $talk_date = date_i18n( get_option('date_format'), strtotime(Utils::getMeta($meta, 'talk_date')));
+                    $talk_date = date_i18n( _x('Y-m-d', 'Date format', 'rrze-events'), strtotime(Utils::getMeta($meta, 'talk_date')));
                 } else {
                     $talk_date = '';
                 }
@@ -206,18 +205,19 @@ class Talk {
     }
 
     protected static function talkTable ($talkData, $atts) {
+        $labels = Settings::getOption('rrze-events-label-settings');
         $headers = array(
             'date' => __('Date', 'rrze-events'),
-            'title' => get_theme_mod('label-talk'),
-            'talk' => get_theme_mod('label-talk'),
+            'title' => $labels['label-talk'],
+            'talk' => $labels['label-talk'],
             'start' => __('Start', 'rrze-events'),
             'end' => __('End', 'rrze-events'),
             'duration' => __('Time', 'rrze-events'),
             'location' => __('Location', 'rrze-events'),
-            'speaker' => get_theme_mod('label-speaker'),
+            'speaker' => $labels['label-speaker'],
             'participants' => __('Participants', 'rrze-events'),
             'available' => __('Available', 'rrze-events'),
-            'short' => get_theme_mod('label-short'),
+            'short' => $labels['label-short'],
         );
 
         $columns = explode(',', $atts['columns']);
@@ -300,7 +300,7 @@ class Talk {
             $output .= '<article class="shortcode talk" id="post-' . $talk['ID'] . '" class="' . implode(' ', get_post_class('', $talk['ID'])) . '">';
             $output .= '<header class="titel">';
             // Titel
-            $output .= '<h3 class="summary"><a href="' . $talk['link'] . '" rel="bookmark">' . $talk['title'] . '</a></h3>';
+            $output .= '<h2 class="entry-title"><a href="' . $talk['link'] . '" rel="bookmark">' . $talk['title'] . '</a></h2>';
             $output .= '</header>';
 
             $output .= '<div class="talk-data">';

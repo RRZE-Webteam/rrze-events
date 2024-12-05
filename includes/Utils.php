@@ -23,7 +23,8 @@ class Utils {
             'rrze-2019'
         ],
         'vendor' => [
-            'Francesca-Child'
+            'Francesca-Child',
+            'Francesca-Child-Main'
         ]
     ];
 
@@ -52,32 +53,39 @@ class Utils {
      * Display a speaker's talks
      */
     public static function talksBySpeaker($speakerID, $orderBy='date', $heading = 'h2'): string {
-        $order = ($orderBy == 'date' ? 'DESC' : 'ASC');
         $args = array(
             'post_type' => 'talk',
-            'orderby' => $orderBy,
-            'order' => $order,
             'numberposts' => -1,
-            'meta_key' => 'talk_speakers',
-            'meta_value' => '"' . $speakerID . '"',
-            'meta_compare' => 'LIKE',
+            'meta_query' => [
+                'relation' => 'AND',
+                [
+                'key' => 'talk_speakers',
+                'value' => '"' . $speakerID . '"',
+                'compare' => 'LIKE',
+                ]]
         );
-        if ('date' == get_theme_mod('talk_order')) {
-            $args['orderby'] = 'post_date';
-            $args['order'] = 'DESC';
+        if ($orderBy == 'date') {
+            $args['orderby'] = 'meta_value';
+            $args['meta_key'] = 'talk_date';
+            $args['order'] = 'ASC';
+        } else {
+            $args['orderby'] = 'title';
+            $args['order'] = 'ASC';
         }
 
         $talks = get_posts($args);
         $output = '';
 
         if (!empty($talks)) {
-            $output .= "<$heading>" . get_theme_mod('label-talk-pl', __('Talks', 'rrze-events')) . "</$heading>";
+            $labels = Settings::getOption('rrze-events-label-settings');
+            $output .= "<$heading>" . $labels['label-talk-plural'] . "</$heading>";
             $output .= "<ul>";
             foreach ($talks as $talk) {
                 $output .= "<li><a href='" . get_post_permalink($talk->ID) . "'>";
                 $output .= apply_filters('the_title', $talk->post_title);
                 $output .= "</a> ";
                 $output .= get_the_term_list($talk->ID, 'talk_category', '<div class="speaker-categories inline">', ' ', '</div>');
+                //$output .= get_post_meta($talk->ID, 'talk_date', true);
             }
             $output .= "</ul>";
         }
@@ -257,7 +265,7 @@ class Utils {
             $output .= '<div class="talk-datetime">'
                 . ($date != '' ? '<span class="date" title="' . __('Date', 'rrze-events') . '">[icon icon="regular calendar" color="' . $accentColor . '"] '
                     . '<span class="sr-only">' . __('Date', 'rrze-events') . ': </span>'
-                    . $date . '</span>' : '')
+                    . date_i18n('d.m.Y', $tsStart) . '</span>' : '')
                 . ($start .$end != '' ? '<span class="time" title="' . __('Time', 'rrze-events') . '">'
                     . '[icon icon="regular clock" color="' . $accentColor . '"] '
                     . '<span class="sr-only">' . __('Time', 'rrze-events') . ': </span>'

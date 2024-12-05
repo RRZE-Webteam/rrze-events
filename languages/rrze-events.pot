@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RRZE Events\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-15 09:59+0000\n"
+"POT-Creation-Date: 2024-12-05 14:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -60,6 +60,11 @@ msgstr ""
 msgid "Add URL"
 msgstr ""
 
+#: includes/CF7.php:53
+msgctxt "Addition to select list option on registration form"
+msgid "WAITING LIST"
+msgstr ""
+
 #: includes/CPT/Speaker.php:34
 msgid "All Speakers"
 msgstr ""
@@ -72,11 +77,31 @@ msgstr ""
 msgid "Available"
 msgstr ""
 
-#: includes/Utils.php:292
+#: includes/Utils.php:300
 msgid "available"
 msgstr ""
 
-#: includes/Utils.php:93 includes/CPT/Speaker.php:128
+#: build/blocks/speaker/block.json:1 src/blocks/speaker/block.json:1
+msgctxt "block description"
+msgid "RRZE Events Speaker"
+msgstr ""
+
+#: build/blocks/talk/block.json:1 src/blocks/talk/block.json:1
+msgctxt "block description"
+msgid "RRZE Events Talk"
+msgstr ""
+
+#: build/blocks/speaker/block.json:1 src/blocks/speaker/block.json:1
+msgctxt "block title"
+msgid "RRZE Events Speaker"
+msgstr ""
+
+#: build/blocks/talk/block.json:1 src/blocks/talk/block.json:1
+msgctxt "block title"
+msgid "RRZE Events Talk"
+msgstr ""
+
+#: includes/Utils.php:101 includes/CPT/Speaker.php:128
 msgid "Blog"
 msgstr ""
 
@@ -96,7 +121,7 @@ msgstr ""
 msgid "Code"
 msgstr ""
 
-#: includes/Utils.php:177
+#: includes/Utils.php:185
 msgid "Contact"
 msgstr ""
 
@@ -104,9 +129,14 @@ msgstr ""
 msgid "Course Nr"
 msgstr ""
 
-#: includes/Utils.php:258 includes/Utils.php:259 includes/CPT/Talk.php:116
+#: includes/Utils.php:266 includes/Utils.php:267 includes/CPT/Talk.php:116
 #: includes/Shortcodes/Talk.php:210
 msgid "Date"
+msgstr ""
+
+#: includes/CF7.php:39 includes/Shortcodes/Talk.php:126
+msgctxt "Date format"
+msgid "Y-m-d"
 msgstr ""
 
 #: includes/CPT/Talk.php:209
@@ -120,7 +150,7 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: includes/Utils.php:91 includes/CPT/Speaker.php:116
+#: includes/Utils.php:99 includes/CPT/Speaker.php:116
 msgid "Email"
 msgstr ""
 
@@ -176,11 +206,15 @@ msgstr ""
 msgid "ID of the Contact Form 7 form containing the Call for Papers"
 msgstr ""
 
+#: templates/content/content-single-talk.php:44
+msgid "Infos"
+msgstr ""
+
 #: includes/Settings.php:137 includes/Settings.php:142
 msgid "Labels"
 msgstr ""
 
-#: includes/Utils.php:273 includes/Utils.php:275 includes/CPT/Talk.php:158
+#: includes/Utils.php:281 includes/Utils.php:283 includes/CPT/Talk.php:158
 #: includes/Shortcodes/Talk.php:216
 msgid "Location"
 msgstr ""
@@ -197,7 +231,7 @@ msgstr ""
 msgid "Max. number of participants"
 msgstr ""
 
-#: templates/content/content-single-talk.php:64
+#: templates/content/content-single-talk.php:70
 msgid "More about&hellip;"
 msgstr ""
 
@@ -213,7 +247,7 @@ msgstr ""
 msgid "New Talk"
 msgstr ""
 
-#: includes/Shortcodes/Talk.php:173
+#: includes/Shortcodes/Talk.php:172
 msgid "No talk information found."
 msgstr ""
 
@@ -233,8 +267,8 @@ msgstr ""
 msgid "Parent Item:"
 msgstr ""
 
-#: includes/Utils.php:285 includes/Utils.php:287 includes/Utils.php:289
-#: includes/Utils.php:300 includes/Utils.php:303
+#: includes/Utils.php:293 includes/Utils.php:295 includes/Utils.php:297
+#: includes/Utils.php:308 includes/Utils.php:311
 #: includes/Shortcodes/Talk.php:218
 msgid "Participants"
 msgstr ""
@@ -248,7 +282,7 @@ msgid "Please activate Contact Form 7 Plugin to use this option"
 msgstr ""
 
 #. 1: The plugin name, 2: The error string.
-#: rrze-events.php:93 rrze-events.php:190
+#: rrze-events.php:99 rrze-events.php:197
 #, php-format
 msgid "Plugins: %1$s: %2$s"
 msgstr ""
@@ -294,12 +328,16 @@ msgstr ""
 msgid "RRZE Events"
 msgstr ""
 
-#: rrze-events.php:77
+#: rrze-events.php:83
 msgid ""
 "RRZE Events plugin does not work with FAU Events Theme as the event features "
 "are already included in the theme. Please activate another theme before "
 "activating RRZE Events. The plugin will preserve your existing speakers, "
 "talks and shortcodes."
+msgstr ""
+
+#: rrze-events.php:226
+msgid "RRZE Plugins"
 msgstr ""
 
 #. Author of the plugin
@@ -314,7 +352,7 @@ msgstr ""
 msgid "Search Talk"
 msgstr ""
 
-#: includes/Main.php:46
+#: includes/Main.php:48
 msgid "Settings"
 msgstr ""
 
@@ -322,17 +360,17 @@ msgstr ""
 msgid "Show link icons in speaker single view"
 msgstr ""
 
-#: includes/Utils.php:303
+#: includes/Utils.php:311
 msgid "Slides"
 msgstr ""
 
-#: includes/Utils.php:94 includes/CPT/Speaker.php:134
+#: includes/Utils.php:102 includes/CPT/Speaker.php:134
 msgid "Social Media"
 msgstr ""
 
-#: config/defaults.php:24 includes/Settings.php:164 includes/Utils.php:236
-#: includes/Utils.php:236 includes/CPT/Speaker.php:45
-#: templates/content/content-single-talk.php:22
+#: config/defaults.php:24 includes/Settings.php:164 includes/Utils.php:244
+#: includes/Utils.php:244 includes/CPT/Speaker.php:45
+#: templates/content/content-single-talk.php:23
 msgid "Speaker"
 msgstr ""
 
@@ -434,8 +472,8 @@ msgstr ""
 msgid "Talk Title"
 msgstr ""
 
-#: config/defaults.php:23 includes/Settings.php:157 includes/Utils.php:74
-#: includes/CPT/Talk.php:32 templates/themes/fau/archive-talk.php:27
+#: config/defaults.php:23 includes/Settings.php:157 includes/CPT/Talk.php:32
+#: templates/themes/fau/archive-talk.php:27
 #: templates/themes/fau/archive-talk.php:29
 msgid "Talks"
 msgstr ""
@@ -481,7 +519,7 @@ msgid "Talk Tag"
 msgstr ""
 
 #. 1: Server PHP version number, 2: Required PHP version number.
-#: rrze-events.php:65
+#: rrze-events.php:71
 #, php-format
 msgid ""
 "The server is running PHP version %1$s. The Plugin requires at least PHP "
@@ -489,14 +527,14 @@ msgid ""
 msgstr ""
 
 #. 1: Server WordPress version number, 2: Required WordPress version number.
-#: rrze-events.php:72
+#: rrze-events.php:78
 #, php-format
 msgid ""
 "The server is running WordPress version %1$s. The Plugin requires at least "
 "WordPress version %2$s."
 msgstr ""
 
-#: includes/Utils.php:261 includes/Utils.php:263
+#: includes/Utils.php:269 includes/Utils.php:271
 #: includes/Shortcodes/Talk.php:215
 msgid "Time"
 msgstr ""
@@ -509,7 +547,7 @@ msgstr ""
 msgid "Used for icons etc."
 msgstr ""
 
-#: includes/Utils.php:300
+#: includes/Utils.php:308
 msgid "Video"
 msgstr ""
 
@@ -529,6 +567,6 @@ msgstr ""
 msgid "Waiting List"
 msgstr ""
 
-#: includes/Utils.php:92 includes/CPT/Speaker.php:122
+#: includes/Utils.php:100 includes/CPT/Speaker.php:122
 msgid "Website"
 msgstr ""

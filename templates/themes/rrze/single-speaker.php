@@ -13,12 +13,6 @@ get_header();
 
 ?>
 
-<?php if ( !is_front_page() ) { ?>
-    <div id="sidebar" class="sidebar">
-        <?php get_sidebar('page'); ?>
-    </div><!-- .sidebar -->
-<?php } ?>
-
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 

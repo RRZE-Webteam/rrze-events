@@ -7,6 +7,8 @@
  * @package RRZE_2019
  */
 
+use RRZE\Events\Settings;
+
 use function RRZE\Events\plugin;
 
 if (isset($_GET['format']) && $_GET['format'] == 'embedded') {
@@ -14,19 +16,17 @@ if (isset($_GET['format']) && $_GET['format'] == 'embedded') {
     return;
 }
 
+$labels = Settings::getOption('rrze-events-label-settings');
+
 get_header();
 ?>
-
-    <?php if ( !is_front_page() ) { ?>
-        <div id="sidebar" class="sidebar">
-            <?php get_sidebar('page'); ?>
-        </div><!-- .sidebar -->
-    <?php } ?>
 
     <div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
-		<?php include plugin()->getPath('templates/content/') . 'content-archive-speaker.php'; ?>
+            <h1><?php echo esc_html($labels['label-speaker-plural'])?></h1>
+
+		    <?php include plugin()->getPath('templates/content/') . 'content-archive-speaker.php'; ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->

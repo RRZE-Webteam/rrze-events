@@ -34,6 +34,12 @@ register_activation_hook(__FILE__, __NAMESPACE__ . '\activation');
 register_deactivation_hook(__FILE__, __NAMESPACE__ . '\deactivation');
 
 add_action('plugins_loaded', __NAMESPACE__ . '\loaded');
+add_action('init', __NAMESPACE__ . '\init');
+
+/* TODO:
+    * Call for Papers
+    * Select-/Radio-/Checkbox-Auswahl "talk-list" für CF7
+*/
 
 /**
  * loadTextdomain
@@ -106,7 +112,8 @@ function activation()
         }
     );
 
-    // Import existing social media profiles from FAU-Events Theme
+    // Import existing theme mods and social media profiles from FAU-Events Theme
+    importThemeMods();
     $speakers = get_posts([
         'post_type' => 'speaker',
         'posts_per_page' => -1,
@@ -132,6 +139,7 @@ function activation()
         }
     }
 
+    // Flush rewrite rules
     flush_rewrite_rules(false);
 }
 
@@ -175,7 +183,6 @@ function settings()
  */
 function loaded()
 {
-    loadTextdomain();
     plugin()->loaded();
     if ($error = systemRequirements()) {
         add_action('admin_init', function () use ($error) {
@@ -198,4 +205,71 @@ function loaded()
         return;
     }
     new Main;
+
+    add_action('init', __NAMESPACE__ . '\createBlocks');
+    add_filter('block_categories_all', __NAMESPACE__ . '\rrze_block_category', 10, 2);
+
+}
+
+function init() {
+    loadTextdomain();
+}
+
+function createBlocks(): void {
+    register_block_type( __DIR__ . '/build/blocks/speaker' );
+    register_block_type( __DIR__ . '/build/blocks/talk' );
+}
+
+function rrze_block_category($categories, $post) {
+    $custom_category = [
+        'slug'  => 'rrze',
+        'title' => __('RRZE Plugins', 'rrze-events'),
+        'icon'  => 'layout',
+    ];
+
+    array_unshift($categories, $custom_category);
+
+    return $categories;
+}
+add_filter('block_categories_all', __NAMESPACE__ . '\rrze_block_category', 10, 2);
+
+function importThemeMods() {
+    $themeMods = [
+        'speaker-image-format' => 'speaker|image-format',
+        'speaker_link_icons' => 'speaker|show-link-icons',
+        'speaker_talk_list' => 'speaker|show-talk-list',
+        'show_speaker_categories' => 'speaker|show-categories',
+        'talk_order' => 'speaker|talk-order',
+        'label-talk' => 'label|label-talk',
+        'label-talk-pl' => 'label|label-talk-plural',
+        'label-speaker' => 'label|label-speaker',
+        'label-speaker-pl' => 'label|label-speaker-plural',
+        'label-short' => 'label|label-short',
+        'cfp-form-id' => 'cfp|form-id',
+        'cfp-talk_title' => 'cfp|talk-title',
+        'cfp-talk_excerpt' => 'cfp|talk-excerpt',
+        'cfp-talk_description' => 'cfp|talk-description',
+        'cfp-speaker-title' => 'cfp|speaker-title',
+        'cfp-speaker-firstname' => 'cfp|speaker-firstname',
+        'cfp-speaker-lastname' => 'cfp|speaker-lastname',
+        'cfp-speaker-cv' => 'cfp|speaker-cv',
+        'cfp-speaker-organisation' => 'cfp|speaker-organisation',
+        'cfp-speaker-email' => 'cfp|speaker-email',
+        'cfp-speaker-website' => 'cfp|speaker-website',
+    ];
+    foreach ($themeMods as $key => $settings) {
+        $mod = get_theme_mod($key);
+        if ($mod === false) {
+            continue;
+        }
+        if ($key == 'talk_order') {
+            $mod = 'by-' . $mod; // renamed because of CMB2 problems with value 'date'
+        }
+        $settingsParts = explode('|', $settings);
+        $settingsCat = $settingsParts[0];
+        $settingsKey = $settingsParts[1];
+        $settingsNew = Settings::getOption('rrze-events-' . $settingsCat . '-settings');
+        $settingsNew[$settingsKey] = $mod;
+        update_option('rrze-events-' . $settingsCat . '-settings', $settingsNew);
+    }
 }
