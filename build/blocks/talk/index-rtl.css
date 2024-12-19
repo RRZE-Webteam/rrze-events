@@ -453,6 +453,15 @@
   transition: all 0.25s;
   -webkit-hyphens: auto;
           hyphens: auto;
+  padding: var(--width-gutter-half, 15px);
+  /*a.entry-main {
+      display: block;
+      padding: 15px 15px 20px;
+      text-decoration: none;
+      .rrze-elements-icon {
+          margin-left: .5em;
+      }
+  }*/
 }
 @media screen and (min-width: 992px) {
   .page #primary .hentry .rrze-events.speaker-grid > article, .page #primary .hentry .rrze-events.talk-grid > article {
@@ -479,21 +488,16 @@
 .rrze-events.speaker-grid > article .entry-header, .rrze-events.talk-grid > article .entry-header {
   margin-top: 0;
 }
-.rrze-events.speaker-grid > article a.entry-main, .rrze-events.talk-grid > article a.entry-main {
-  display: block;
-  padding: 15px 15px 20px;
-  text-decoration: none;
-}
-.rrze-events.speaker-grid > article a.entry-main .rrze-elements-icon, .rrze-events.talk-grid > article a.entry-main .rrze-elements-icon {
-  margin-right: 0.5em;
-}
 .rrze-events.speaker-grid > article .entry-cats, .rrze-events.talk-grid > article .entry-cats {
   font-size: 0.9em;
-  margin-bottom: 1em;
+  margin-top: 1em;
 }
 .rrze-events.speaker-grid > article .entry-title, .rrze-events.talk-grid > article .entry-title {
   margin-top: 0;
   margin-bottom: 0.25em;
+}
+.rrze-events.speaker-grid > article a.media-img, .rrze-events.talk-grid > article a.media-img {
+  display: inline;
 }
 .rrze-events.speaker-grid > article .speaker-thumbnail, .rrze-events.talk-grid > article .speaker-thumbnail {
   margin: -15px -15px 15px;

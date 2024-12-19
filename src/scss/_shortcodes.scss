@@ -24,6 +24,7 @@
             box-shadow: 0 3px 12px 0 #ebebeb;
             transition: all 0.25s;
             hyphens: auto;
+            padding: var(--width-gutter-half, 15px);
             @media screen and (min-width: 992px) { // Fix for RRZE-2019
                 .page #primary .hentry & {
                     flex-basis: 25%;
@@ -49,21 +50,24 @@
             .entry-header { // Fix for RRZE-2019
                 margin-top: 0;
             }
-            a.entry-main {
+            /*a.entry-main {
                 display: block;
                 padding: 15px 15px 20px;
                 text-decoration: none;
                 .rrze-elements-icon {
                     margin-left: .5em;
                 }
-            }
+            }*/
             .entry-cats {
                 font-size: .9em;
-                margin-bottom: 1em;
+                margin-top: 1em;
             }
             .entry-title {
                 margin-top: 0;
                 margin-bottom: .25em;
+            }
+            a.media-img {
+                display: inline;
             }
             .speaker-thumbnail {
                 margin: -15px -15px 15px;
@@ -75,7 +79,6 @@
                     object-fit: cover;
                     box-shadow: none;
                 }
-
             }
             a.read-more {
                 vertical-align: middle;

@@ -4,7 +4,7 @@
 Plugin Name:     RRZE Events
 Plugin URI:      https://github.com/RRZE-Webteam/rrze-events
 Description:     Manage and display talks and speakers
-Version:         1.0.0
+Version:         1.0.1
 Author:          RRZE Webteam
 Author URI:      https://blogs.fau.de/webworking/
 License:         GNU General Public License v3.0
@@ -35,11 +35,6 @@ register_deactivation_hook(__FILE__, __NAMESPACE__ . '\deactivation');
 
 add_action('plugins_loaded', __NAMESPACE__ . '\loaded');
 add_action('init', __NAMESPACE__ . '\init');
-
-/* TODO:
-    * Call for Papers
-    * Select-/Radio-/Checkbox-Auswahl "talk-list" für CF7
-*/
 
 /**
  * loadTextdomain
@@ -217,7 +212,12 @@ function init() {
 
 function createBlocks(): void {
     register_block_type( __DIR__ . '/build/blocks/speaker' );
+    $script_handle_speaker = generate_block_asset_handle( 'rrze-events/speaker', 'editorScript' );
+    wp_set_script_translations( $script_handle_speaker, 'rrze-events', plugin_dir_path( __FILE__ ) . 'languages' );
+
     register_block_type( __DIR__ . '/build/blocks/talk' );
+    $script_handle_talk = generate_block_asset_handle( 'rrze-events/talk', 'editorScript' );
+    wp_set_script_translations( $script_handle_talk, 'rrze-events', plugin_dir_path( __FILE__ ) . 'languages' );
 }
 
 function rrze_block_category($categories, $post) {
