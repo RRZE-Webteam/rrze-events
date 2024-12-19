@@ -7,4 +7,4 @@ $attributes['id'] = isset($attributes['selectedSpeakers']) ? implode(',',$attrib
 $attributes['orderby'] = $attributes['orderBy'] ?? 'lastname';
 $attributes['format'] = $attributes['layout'] ?? 'grid';
 
-echo esc_html(\RRZE\Events\Shortcodes\Speaker::shortcodeOutput($attributes));
+echo wp_kses_post(\RRZE\Events\Shortcodes\Speaker::shortcodeOutput($attributes));

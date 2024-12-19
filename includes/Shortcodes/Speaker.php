@@ -98,27 +98,25 @@ class Speaker {
                     $out .= '</li>';
                 } else {
                     $out .= '<article id="post-' . $post->ID . '" class="' . implode(' ', get_post_class()) . '">';
-                    $out .= '<a href="' . $url . '" rel="bookmark" class="entry-main">' .
-                        '<header class="entry-header">';
-                    if (isset($speakerSettings['show-categories']) && $speakerSettings['show-categories'] == true && get_the_terms($post->ID, 'speaker_category') !== false) {
-                        $out .= '<div class="entry-cats">' . get_the_term_list( $post->ID, 'speaker_category', null,' | ') . '</div>';
-                    }
-
+                    $out .= '<header class="entry-header">';
                     if ('' !== get_the_post_thumbnail() && !post_password_required()) :
-                        $out .=     '<div class="speaker-thumbnail">';
+                        $out .=     '<div class="speaker-thumbnail">' . '<a href="' . $url . '" rel="bookmark">';
                         $out .=			get_the_post_thumbnail($post->ID, 'large');
-                        $out .=		'</div>';       // end .entry-thumbnail
+                        $out .=		'</a></div>';       // end .entry-thumbnail
                     endif;
 
                     $out .= '<h2 class="entry-title">' .
-                        $title .
+                        '<a href="' . $url . '" rel="bookmark">' . $title . '</a>' .
                         '</h2>' .
                         '</header>';    // end .entry-header
 
                     $out .=         '<div class="entry-summary">' .
                         wp_strip_all_tags(get_the_excerpt()) . do_shortcode('[icon icon="solid angles-right" color="' . $accentColor . '"]') .
-                        '</div>' .      // end .entry-summary
-                        '</a>';      // end .entry-main
+                        '</div>';      // end .entry-main
+
+                    if (isset($speakerSettings['show-categories']) && $speakerSettings['show-categories'] == true && get_the_terms($post->ID, 'speaker_category') !== false) {
+                        $out .= '<div class="entry-cats">' . get_the_term_list( $post->ID, 'speaker_category', null,' | ') . '</div>';
+                    }
 
                     $out .= '</article>';
                 }

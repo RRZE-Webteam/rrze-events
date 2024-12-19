@@ -16,4 +16,4 @@ $attributes['showimage'] = $attributes['showImage'] ?? '';
 $attributes['showorganisation'] = $attributes['showOrganisation'] ?? '';
 $attributes['columns'] = implode(',', $attributes['tableColumns']);
 
-echo esc_html(\RRZE\Events\Shortcodes\Talk::shortcodeOutput($attributes));
+echo wp_kses_post(\RRZE\Events\Shortcodes\Talk::shortcodeOutput($attributes));
