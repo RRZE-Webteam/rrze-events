@@ -21,7 +21,7 @@
  */
 
 /* eslint-disable no-console */
-console.log(
-	'Hello World! (from create-block-block-template-create-block block)'
-);
+// console.log(
+//	'Hello World! (from create-block-block-template-create-block block)'
+//);
 /* eslint-enable no-console */

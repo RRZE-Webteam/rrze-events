@@ -1,63 +1,92 @@
-#, fuzzy
+# Copyright (C) 2025 RRZE Webteam
+# This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: RRZE Events\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 09:21+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Project-Id-Version: RRZE Events 1.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/rrze-events\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.11; wp-6.6.2\n"
-"X-Domain: rrze-events"
+"POT-Creation-Date: 2025-02-26T13:09:05+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: rrze-events\n"
 
-#: includes/Settings.php:109
-msgid " Show categories in speaker single view"
+#. Plugin Name of the plugin
+#: rrze-events.php
+#: includes/Settings.php:61
+msgid "RRZE Events"
 msgstr ""
 
-#: includes/Settings.php:116
-msgid " Show talk list in speaker single view"
+#. Plugin URI of the plugin
+#: rrze-events.php
+msgid "https://github.com/RRZE-Webteam/rrze-events"
 msgstr ""
 
-#: includes/Settings.php:167
-msgid "\"Speaker\": Plural"
+#. Description of the plugin
+#: rrze-events.php
+msgid "Manage and display talks and speakers"
 msgstr ""
 
-#: includes/Settings.php:160
-msgid "\"Speaker\": Singular"
+#. Author of the plugin
+#: rrze-events.php
+msgid "RRZE Webteam"
 msgstr ""
 
-#: includes/Settings.php:153
-msgid "\"Talk\": Plural"
+#. Author URI of the plugin
+#: rrze-events.php
+msgid "https://blogs.fau.de/webworking/"
 msgstr ""
 
-#: includes/Settings.php:146
-msgid "\"Talk\": Singular"
+#: config/defaults.php:22
+#: includes/CPT/Talk.php:45
+#: includes/Settings.php:150
+msgid "Talk"
 msgstr ""
 
-#: includes/Settings.php:175
-msgid "(e.g. Course Nr, ID etc.)"
+#: config/defaults.php:23
+#: includes/CPT/Talk.php:32
+#: includes/Settings.php:157
+#: templates/themes/fau/archive-talk.php:27
+#: templates/themes/fau/archive-talk.php:29
+#: build/blocks/talk/index.js:467
+#: build/blocks/talk/index.js:359
+msgid "Talks"
 msgstr ""
 
-#: includes/Settings.php:161
-msgid "(e.g. Lecturer, Speaker, Contributor etc.)"
+#: config/defaults.php:24
+#: includes/CPT/Speaker.php:45
+#: includes/Settings.php:164
+#: includes/Utils.php:244
+#: templates/content/content-single-talk.php:23
+#: build/blocks/talk/index.js:180
+#: build/blocks/talk/index.js:119
+msgid "Speaker"
+msgid_plural "Speakers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: config/defaults.php:25
+#: includes/CPT/Speaker.php:32
+#: includes/Settings.php:171
+#: templates/themes/fau/archive-speaker.php:27
+#: templates/themes/fau/archive-speaker.php:29
+#: build/blocks/speaker/index.js:200
+#: build/blocks/speaker/index.js:148
+msgid "Speakers"
 msgstr ""
 
-#: includes/Settings.php:147
-msgid "(e.g. Workshop, Course, Conference etc.)"
+#: config/defaults.php:26
+#: includes/Settings.php:178
+msgid "Course Nr"
 msgstr ""
 
-#: includes/Settings.php:69
-msgid "Accent Color"
-msgstr ""
-
-#: includes/CPT/Speaker.php:143
-msgid "Add URL"
+#: includes/CF7.php:39
+#: includes/Shortcodes/Talk.php:126
+msgctxt "Date format"
+msgid "Y-m-d"
 msgstr ""
 
 #: includes/CF7.php:53
@@ -65,297 +94,9 @@ msgctxt "Addition to select list option on registration form"
 msgid "WAITING LIST"
 msgstr ""
 
-#: includes/CPT/Speaker.php:34
-msgid "All Speakers"
-msgstr ""
-
-#: includes/CPT/Talk.php:34
-msgid "All Talks"
-msgstr ""
-
-#: src/blocks/talk/edit.js:298
-msgid "ascending"
-msgstr ""
-
-#: includes/Shortcodes/Talk.php:219
-msgid "Available"
-msgstr ""
-
-#: includes/Utils.php:300
-msgid "available"
-msgstr ""
-
-#: src/blocks/talk/edit.js:121
-msgid "Available Places"
-msgstr ""
-
-#: build/blocks/speaker/block.json:1 src/blocks/speaker/block.json:1
-msgctxt "block description"
-msgid "RRZE Events Speaker"
-msgstr ""
-
-#: build/blocks/talk/block.json:1 src/blocks/talk/block.json:1
-msgctxt "block description"
-msgid "RRZE Events Talk"
-msgstr ""
-
-#: build/blocks/speaker/block.json:1 src/blocks/speaker/block.json:1
-msgctxt "block title"
-msgid "RRZE Events Speaker"
-msgstr ""
-
-#: build/blocks/talk/block.json:1 src/blocks/talk/block.json:1
-msgctxt "block title"
-msgid "RRZE Events Talk"
-msgstr ""
-
-#: includes/Utils.php:101 includes/CPT/Speaker.php:128
-msgid "Blog"
-msgstr ""
-
-#: includes/Settings.php:129
-msgid "By date"
-msgstr ""
-
-#: includes/Settings.php:128
-msgid "By title"
-msgstr ""
-
-#: includes/Settings.php:184 includes/Settings.php:189
-msgid "Call For Papers"
-msgstr ""
-
-#: src/blocks/speaker/edit.js:126 src/blocks/talk/edit.js:315
-msgid "Categories"
-msgstr ""
-
-#: includes/Settings.php:174 includes/CPT/Talk.php:110 src/blocks/talk/edit.js:122 src/blocks/talk/edit.js:290
-msgid "Code"
-msgstr ""
-
-#: src/blocks/talk/edit.js:201
-msgid "Columns"
-msgstr ""
-
-#: includes/Utils.php:185
-msgid "Contact"
-msgstr ""
-
-#: src/blocks/speaker/edit.js:118 src/blocks/talk/edit.js:307
-msgid "Count"
-msgstr ""
-
-#: config/defaults.php:26 includes/Settings.php:178
-msgid "Course Nr"
-msgstr ""
-
-#: includes/Utils.php:266 includes/Utils.php:267 includes/CPT/Talk.php:116 includes/Shortcodes/Talk.php:210 src/blocks/talk/edit.js:113 src/blocks/talk/edit.js:287 src/blocks/talk/edit.js:381
-msgid "Date"
-msgstr ""
-
-#: includes/CF7.php:39 includes/Shortcodes/Talk.php:126
-msgctxt "Date format"
-msgid "Y-m-d"
-msgstr ""
-
-#: src/blocks/talk/edit.js:299
-msgid "descending"
-msgstr ""
-
-#: src/blocks/talk/edit.js:228 src/blocks/talk/edit.js:233
-msgid "Down"
-msgstr ""
-
-#: includes/CPT/Talk.php:209
-msgid "Drag speakers from the left column to the right column to attach them to this talk.<br />You may rearrange the order of the speakers in the right column by dragging and dropping."
-msgstr ""
-
-#: includes/CPT/Talk.php:38 includes/CPT/Speaker.php:38
-msgid "Edit"
-msgstr ""
-
-#: includes/Utils.php:99 includes/CPT/Speaker.php:116
-msgid "Email"
-msgstr ""
-
-#: includes/Shortcodes/Talk.php:214
-msgid "End"
-msgstr ""
-
-#: includes/CPT/Talk.php:144 src/blocks/talk/edit.js:115
-msgid "End Time"
-msgstr ""
-
-#: includes/CPT/Talk.php:197
-msgid "Enter URL for video (FAU Video portal): &quot;https://...&quot;"
-msgstr ""
-
-#: includes/CPT/Talk.php:203
-msgid "Enter URL to talk presentation slides: &quot;https://...&quot;"
-msgstr ""
-
-#: includes/CPT/Speaker.php:140
-msgid "Enter URL..."
-msgstr ""
-
-#: includes/Settings.php:58
-msgid "Events Settings"
-msgstr ""
-
-#: includes/CPT/Speaker.php:110
-msgid "Firma / Organisation"
-msgstr ""
-
-#: src/blocks/speaker/edit.js:111
-msgid "First Name"
-msgstr ""
-
-#: includes/Settings.php:195
-msgid "Form ID"
-msgstr ""
-
-#: includes/Settings.php:64
-msgid "General"
-msgstr ""
-
-#: includes/Settings.php:227
-msgid "Go to Plugin page"
-msgstr ""
-
-#: src/blocks/speaker/edit.js:101 src/blocks/talk/edit.js:192
-msgid "Grid"
-msgstr ""
-
-#: src/blocks/speaker/edit.js:122
-msgid "How many speakers do you want to show? Enter -1 for all speakers."
-msgstr ""
-
-#: src/blocks/talk/edit.js:311
-msgid "How many talks do you want to show? Enter -1 for all talks."
-msgstr ""
-
-#. Author URI of the plugin
-msgid "https://blogs.fau.de/webworking/"
-msgstr ""
-
-#. URI of the plugin
-msgid "https://github.com/RRZE-Webteam/rrze-events"
-msgstr ""
-
-#: includes/Settings.php:196
-msgid "ID of the Contact Form 7 form containing the Call for Papers"
-msgstr ""
-
-#: templates/content/content-single-talk.php:44
-msgid "Infos"
-msgstr ""
-
-#: includes/Settings.php:137 includes/Settings.php:142
-msgid "Labels"
-msgstr ""
-
-#: src/blocks/speaker/edit.js:110
-msgid "Last Name"
-msgstr ""
-
-#: src/blocks/speaker/edit.js:96 src/blocks/speaker/edit.js:98 src/blocks/talk/edit.js:187 src/blocks/talk/edit.js:189
-msgid "Layout"
-msgstr ""
-
-#: src/blocks/speaker/edit.js:102
-msgid "List"
-msgstr ""
-
-#: includes/Utils.php:281 includes/Utils.php:283 includes/CPT/Talk.php:158 includes/Shortcodes/Talk.php:216 src/blocks/talk/edit.js:117
-msgid "Location"
-msgstr ""
-
-#: includes/CPT/Talk.php:164
-msgid "Location URL"
-msgstr ""
-
-#. Description of the plugin
-msgid "Manage and display talks and speakers"
-msgstr ""
-
-#: includes/CPT/Talk.php:170
-msgid "Max. number of participants"
-msgstr ""
-
-#: templates/content/content-single-talk.php:70
-msgid "More about&hellip;"
-msgstr ""
-
-#: includes/CPT/Talk.php:37 includes/CPT/Speaker.php:37
-msgid "New"
-msgstr ""
-
-#: includes/CPT/Speaker.php:36
-msgid "New Speaker"
-msgstr ""
-
-#: includes/CPT/Talk.php:36
-msgid "New Talk"
-msgstr ""
-
-#: includes/Shortcodes/Talk.php:172
-msgid "No talk information found."
-msgstr ""
-
-#: includes/Settings.php:199 includes/Settings.php:220
-msgid "None"
-msgstr ""
-
-#: includes/CPT/Talk.php:191
-msgid "Offer waiting list for fully booked talks"
-msgstr ""
-
-#: src/blocks/talk/edit.js:385
-msgid "Only show talks of one day."
-msgstr ""
-
-#: src/blocks/speaker/edit.js:107 src/blocks/talk/edit.js:295
-msgid "Order"
-msgstr ""
-
-#: src/blocks/talk/edit.js:284
-msgid "Order By"
-msgstr ""
-
-#: includes/Settings.php:124
-msgid "Order of the talks listed on a speakers single page."
-msgstr ""
-
-#: includes/CPT/Talk.php:33 includes/CPT/Speaker.php:33
-msgid "Parent Item:"
-msgstr ""
-
-#: includes/Utils.php:293 includes/Utils.php:295 includes/Utils.php:297 includes/Utils.php:308 includes/Utils.php:311 includes/Shortcodes/Talk.php:218 src/blocks/talk/edit.js:120
-msgid "Participants"
-msgstr ""
-
-#: includes/CPT/Talk.php:180
-msgid "Places available"
-msgstr ""
-
-#: includes/Settings.php:226
-msgid "Please activate Contact Form 7 Plugin to use this option"
-msgstr ""
-
-#. 1: The plugin name, 2: The error string.
-#: rrze-events.php:99 rrze-events.php:197
-#, php-format
-msgid "Plugins: %1$s: %2$s"
-msgstr ""
-
 #: includes/CPT/Speaker.php:30
 msgctxt "Post Type General Name"
 msgid "Speakers"
-msgstr ""
-
-#: includes/CPT/Talk.php:30
-msgctxt "Post Type General Name"
-msgid "Talks"
 msgstr ""
 
 #: includes/CPT/Speaker.php:31
@@ -363,138 +104,40 @@ msgctxt "Post Type Singular Name"
 msgid "Speaker"
 msgstr ""
 
-#: includes/CPT/Talk.php:31
-msgctxt "Post Type Singular Name"
-msgid "Talk"
+#: includes/CPT/Speaker.php:33
+#: includes/CPT/Talk.php:33
+msgid "Parent Item:"
 msgstr ""
 
-#: includes/CPT/Talk.php:202
-msgid "Presentation URL"
+#: includes/CPT/Speaker.php:34
+msgid "All Speakers"
 msgstr ""
 
-#: includes/Shortcodes/Talk.php:317
-msgid "Read more about"
+#: includes/CPT/Speaker.php:35
+msgid "View Speaker"
 msgstr ""
 
-#: includes/Settings.php:97
-msgid "rectangle"
+#: includes/CPT/Speaker.php:36
+msgid "New Speaker"
 msgstr ""
 
-#: src/blocks/speaker/edit.js:139 src/blocks/speaker/edit.js:161 src/blocks/talk/edit.js:239 src/blocks/talk/edit.js:244 src/blocks/talk/edit.js:328 src/blocks/talk/edit.js:350 src/blocks/talk/edit.js:372
-msgid "Remove"
+#: includes/CPT/Speaker.php:37
+#: includes/CPT/Talk.php:37
+msgid "New"
 msgstr ""
 
-#: includes/Settings.php:96
-msgid "rounded"
+#: includes/CPT/Speaker.php:38
+#: includes/CPT/Talk.php:38
+msgid "Edit"
 msgstr ""
 
-#. Name of the plugin
-#: includes/Settings.php:61
-msgid "RRZE Events"
-msgstr ""
-
-#: rrze-events.php:83
-msgid "RRZE Events plugin does not work with FAU Events Theme as the event features are already included in the theme. Please activate another theme before activating RRZE Events. The plugin will preserve your existing speakers, talks and shortcodes."
-msgstr ""
-
-#: rrze-events.php:226
-msgid "RRZE Plugins"
-msgstr ""
-
-#. Author of the plugin
-msgid "RRZE Webteam"
+#: includes/CPT/Speaker.php:39
+#: includes/CPT/Talk.php:39
+msgid "Update"
 msgstr ""
 
 #: includes/CPT/Speaker.php:40
 msgid "Search Speaker"
-msgstr ""
-
-#: includes/CPT/Talk.php:40
-msgid "Search Talk"
-msgstr ""
-
-#: src/blocks/speaker/edit.js:116
-msgid "Select Speakers"
-msgstr ""
-
-#: src/blocks/talk/edit.js:305
-msgid "Select Talks"
-msgstr ""
-
-#: src/blocks/speaker/edit.js:131 src/blocks/talk/edit.js:320
-msgid "Selected Categories"
-msgstr ""
-
-#: src/blocks/talk/edit.js:206
-msgid "Selected Columns"
-msgstr ""
-
-#: src/blocks/speaker/edit.js:153
-msgid "Selected Speakers"
-msgstr ""
-
-#: src/blocks/talk/edit.js:342
-msgid "Selected Tags"
-msgstr ""
-
-#: src/blocks/talk/edit.js:364
-msgid "Selected Talks"
-msgstr ""
-
-#: includes/Main.php:48
-msgid "Settings"
-msgstr ""
-
-#: src/blocks/talk/edit.js:194
-msgid "Short"
-msgstr ""
-
-#: includes/Settings.php:102
-msgid "Show link icons in speaker single view"
-msgstr ""
-
-#: src/blocks/talk/edit.js:271
-msgid "Show Speaker Organisation"
-msgstr ""
-
-#: src/blocks/talk/edit.js:261
-msgid "Show Talk Image"
-msgstr ""
-
-#: includes/Utils.php:311
-msgid "Slides"
-msgstr ""
-
-#: includes/Utils.php:102 includes/CPT/Speaker.php:134
-msgid "Social Media"
-msgstr ""
-
-#: config/defaults.php:24 includes/Settings.php:164 includes/Utils.php:244 includes/Utils.php:244 includes/CPT/Speaker.php:45 templates/content/content-single-talk.php:23 src/blocks/talk/edit.js:119
-msgid "Speaker"
-msgstr ""
-
-#: includes/Settings.php:206
-msgid "Speaker Academic Title"
-msgstr ""
-
-#: includes/Settings.php:211
-msgid "Speaker Email Address"
-msgstr ""
-
-#: includes/Settings.php:207
-msgid "Speaker First Name"
-msgstr ""
-
-#: includes/Settings.php:91
-msgid "Speaker image format"
-msgstr ""
-
-#: includes/CPT/Speaker.php:103
-msgid "Speaker Information"
-msgstr ""
-
-#: includes/Settings.php:208
-msgid "Speaker Last Name"
 msgstr ""
 
 #: includes/CPT/Speaker.php:41
@@ -505,64 +148,86 @@ msgstr ""
 msgid "Speaker not found in recycle bin"
 msgstr ""
 
-#: includes/Settings.php:210
-msgid "Speaker Organisation"
+#: includes/CPT/Speaker.php:70
+msgctxt "Taxonomy general name"
+msgid "Speaker Categories"
 msgstr ""
 
-#: includes/Settings.php:82 includes/Settings.php:87
-msgid "Speaker Page Options"
+#: includes/CPT/Speaker.php:71
+msgctxt "Taxonomy singular name"
+msgid "Speaker Category"
 msgstr ""
 
-#: includes/Settings.php:209
-msgid "Speaker Short Biography"
+#: includes/CPT/Speaker.php:86
+msgctxt "Taxonomy general name"
+msgid "Speaker Tags"
 msgstr ""
 
-#: includes/Settings.php:212
-msgid "Speaker Website"
+#: includes/CPT/Speaker.php:87
+msgctxt "Taxonomy singular name"
+msgid "Speaker Tag"
 msgstr ""
 
-#: includes/CPT/Talk.php:208
-msgid "Speaker(s)"
+#: includes/CPT/Speaker.php:103
+msgid "Speaker Information"
 msgstr ""
 
-#: config/defaults.php:25 includes/Settings.php:171 includes/CPT/Speaker.php:32 templates/themes/fau/archive-speaker.php:27 templates/themes/fau/archive-speaker.php:29 src/blocks/speaker/edit.js:148
-msgid "Speakers"
+#: includes/CPT/Speaker.php:110
+msgid "Firma / Organisation"
 msgstr ""
 
-#: includes/Shortcodes/Talk.php:213
-msgid "Start"
+#: includes/CPT/Speaker.php:116
+#: includes/Utils.php:99
+msgid "Email"
 msgstr ""
 
-#: includes/CPT/Talk.php:130 src/blocks/talk/edit.js:114 src/blocks/talk/edit.js:288
-msgid "Start Time"
+#: includes/CPT/Speaker.php:122
+#: includes/Utils.php:100
+msgid "Website"
 msgstr ""
 
-#: src/blocks/talk/edit.js:116
-msgid "Start-End"
+#: includes/CPT/Speaker.php:128
+#: includes/Utils.php:101
+msgid "Blog"
 msgstr ""
 
-#: src/blocks/talk/edit.js:193
-msgid "Table"
+#: includes/CPT/Speaker.php:134
+#: includes/Utils.php:102
+msgid "Social Media"
 msgstr ""
 
-#: src/blocks/talk/edit.js:337
-msgid "Tags"
+#: includes/CPT/Speaker.php:140
+msgid "Enter URL..."
 msgstr ""
 
-#: config/defaults.php:22 includes/Settings.php:150 includes/CPT/Talk.php:45
+#: includes/CPT/Speaker.php:143
+msgid "Add URL"
+msgstr ""
+
+#: includes/CPT/Talk.php:30
+msgctxt "Post Type General Name"
+msgid "Talks"
+msgstr ""
+
+#: includes/CPT/Talk.php:31
+msgctxt "Post Type Singular Name"
 msgid "Talk"
 msgstr ""
 
-#: includes/Settings.php:205
-msgid "Talk Description"
+#: includes/CPT/Talk.php:34
+msgid "All Talks"
 msgstr ""
 
-#: includes/Settings.php:204
-msgid "Talk Excerpt"
+#: includes/CPT/Talk.php:35
+msgid "View Talk"
 msgstr ""
 
-#: includes/CPT/Talk.php:103
-msgid "Talk Information"
+#: includes/CPT/Talk.php:36
+msgid "New Talk"
+msgstr ""
+
+#: includes/CPT/Talk.php:40
+msgid "Search Talk"
 msgstr ""
 
 #: includes/CPT/Talk.php:41
@@ -573,46 +238,9 @@ msgstr ""
 msgid "Talk not found in recycle bin"
 msgstr ""
 
-#: includes/Settings.php:123
-msgid "Talk Order"
-msgstr ""
-
-#: includes/Settings.php:203
-msgid "Talk Title"
-msgstr ""
-
-#: config/defaults.php:23 includes/Settings.php:157 includes/CPT/Talk.php:32 templates/themes/fau/archive-talk.php:27 templates/themes/fau/archive-talk.php:29 src/blocks/talk/edit.js:359
-msgid "Talks"
-msgstr ""
-
-#: includes/CPT/Speaker.php:70
-msgctxt "Taxonomy general name"
-msgid "Speaker Categories"
-msgstr ""
-
-#: includes/CPT/Speaker.php:86
-msgctxt "Taxonomy general name"
-msgid "Speaker Tags"
-msgstr ""
-
 #: includes/CPT/Talk.php:70
 msgctxt "Taxonomy general name"
 msgid "Talk Categories"
-msgstr ""
-
-#: includes/CPT/Talk.php:86
-msgctxt "Taxonomy general name"
-msgid "Talk Tags"
-msgstr ""
-
-#: includes/CPT/Speaker.php:71
-msgctxt "Taxonomy singular name"
-msgid "Speaker Category"
-msgstr ""
-
-#: includes/CPT/Speaker.php:87
-msgctxt "Taxonomy singular name"
-msgid "Speaker Tag"
 msgstr ""
 
 #: includes/CPT/Talk.php:71
@@ -620,63 +248,573 @@ msgctxt "Taxonomy singular name"
 msgid "Talk Category"
 msgstr ""
 
+#: includes/CPT/Talk.php:86
+msgctxt "Taxonomy general name"
+msgid "Talk Tags"
+msgstr ""
+
 #: includes/CPT/Talk.php:87
 msgctxt "Taxonomy singular name"
 msgid "Talk Tag"
 msgstr ""
 
-#. 1: Server PHP version number, 2: Required PHP version number.
-#: rrze-events.php:71
-#, php-format
-msgid "The server is running PHP version %1$s. The Plugin requires at least PHP version %2$s."
+#: includes/CPT/Talk.php:103
+msgid "Talk Information"
 msgstr ""
 
-#. 1: Server WordPress version number, 2: Required WordPress version number.
-#: rrze-events.php:78
-#, php-format
-msgid "The server is running WordPress version %1$s. The Plugin requires at least WordPress version %2$s."
+#: includes/CPT/Talk.php:110
+#: includes/Settings.php:174
+#: build/blocks/talk/index.js:189
+#: build/blocks/talk/index.js:398
+#: build/blocks/talk/index.js:122
+#: build/blocks/talk/index.js:290
+msgid "Code"
 msgstr ""
 
-#: includes/Utils.php:269 includes/Utils.php:271 includes/Shortcodes/Talk.php:215
-msgid "Time"
+#: includes/CPT/Talk.php:116
+#: includes/Shortcodes/Talk.php:210
+#: includes/Utils.php:266
+#: includes/Utils.php:267
+#: build/blocks/talk/index.js:162
+#: build/blocks/talk/index.js:389
+#: build/blocks/talk/index.js:489
+#: build/blocks/talk/index.js:113
+#: build/blocks/talk/index.js:287
+#: build/blocks/talk/index.js:381
+msgid "Date"
 msgstr ""
 
-#: src/blocks/talk/edit.js:118 src/blocks/talk/edit.js:289
-msgid "Title"
+#: includes/CPT/Talk.php:130
+#: build/blocks/talk/index.js:165
+#: build/blocks/talk/index.js:392
+#: build/blocks/talk/index.js:114
+#: build/blocks/talk/index.js:288
+msgid "Start Time"
 msgstr ""
 
-#: src/blocks/talk/edit.js:217 src/blocks/talk/edit.js:222
-msgid "Up"
+#: includes/CPT/Talk.php:144
+#: build/blocks/talk/index.js:168
+#: build/blocks/talk/index.js:115
+msgid "End Time"
 msgstr ""
 
-#: includes/CPT/Talk.php:39 includes/CPT/Speaker.php:39
-msgid "Update"
+#: includes/CPT/Talk.php:158
+#: includes/Shortcodes/Talk.php:216
+#: includes/Utils.php:281
+#: includes/Utils.php:283
+#: build/blocks/talk/index.js:174
+#: build/blocks/talk/index.js:117
+msgid "Location"
 msgstr ""
 
-#: includes/Settings.php:70
-msgid "Used for icons etc."
+#: includes/CPT/Talk.php:164
+msgid "Location URL"
 msgstr ""
 
-#: includes/Utils.php:308
-msgid "Video"
+#: includes/CPT/Talk.php:170
+msgid "Max. number of participants"
 msgstr ""
 
-#: includes/CPT/Talk.php:196
-msgid "Video URL"
-msgstr ""
-
-#: includes/CPT/Speaker.php:35
-msgid "View Speaker"
-msgstr ""
-
-#: includes/CPT/Talk.php:35
-msgid "View Talk"
+#: includes/CPT/Talk.php:180
+msgid "Places available"
 msgstr ""
 
 #: includes/CPT/Talk.php:190
 msgid "Waiting List"
 msgstr ""
 
-#: includes/Utils.php:100 includes/CPT/Speaker.php:122
-msgid "Website"
+#: includes/CPT/Talk.php:191
+msgid "Offer waiting list for fully booked talks"
+msgstr ""
+
+#: includes/CPT/Talk.php:196
+msgid "Video URL"
+msgstr ""
+
+#: includes/CPT/Talk.php:197
+msgid "Enter URL for video (FAU Video portal): &quot;https://...&quot;"
+msgstr ""
+
+#: includes/CPT/Talk.php:202
+msgid "Presentation URL"
+msgstr ""
+
+#: includes/CPT/Talk.php:203
+msgid "Enter URL to talk presentation slides: &quot;https://...&quot;"
+msgstr ""
+
+#: includes/CPT/Talk.php:208
+msgid "Speaker(s)"
+msgstr ""
+
+#: includes/CPT/Talk.php:209
+msgid "Drag speakers from the left column to the right column to attach them to this talk.<br />You may rearrange the order of the speakers in the right column by dragging and dropping."
+msgstr ""
+
+#: includes/Main.php:48
+msgid "Settings"
+msgstr ""
+
+#: includes/Settings.php:58
+msgid "Events Settings"
+msgstr ""
+
+#: includes/Settings.php:64
+msgid "General"
+msgstr ""
+
+#: includes/Settings.php:69
+msgid "Accent Color"
+msgstr ""
+
+#: includes/Settings.php:70
+msgid "Used for icons etc."
+msgstr ""
+
+#: includes/Settings.php:82
+#: includes/Settings.php:87
+msgid "Speaker Page Options"
+msgstr ""
+
+#: includes/Settings.php:91
+msgid "Speaker image format"
+msgstr ""
+
+#: includes/Settings.php:96
+msgid "rounded"
+msgstr ""
+
+#: includes/Settings.php:97
+msgid "rectangle"
+msgstr ""
+
+#: includes/Settings.php:102
+msgid "Show link icons in speaker single view"
+msgstr ""
+
+#: includes/Settings.php:109
+msgid " Show categories in speaker single view"
+msgstr ""
+
+#: includes/Settings.php:116
+msgid " Show talk list in speaker single view"
+msgstr ""
+
+#: includes/Settings.php:123
+msgid "Talk Order"
+msgstr ""
+
+#: includes/Settings.php:124
+msgid "Order of the talks listed on a speakers single page."
+msgstr ""
+
+#: includes/Settings.php:128
+msgid "By title"
+msgstr ""
+
+#: includes/Settings.php:129
+msgid "By date"
+msgstr ""
+
+#: includes/Settings.php:137
+#: includes/Settings.php:142
+msgid "Labels"
+msgstr ""
+
+#: includes/Settings.php:146
+msgid "\"Talk\": Singular"
+msgstr ""
+
+#: includes/Settings.php:147
+msgid "(e.g. Workshop, Course, Conference etc.)"
+msgstr ""
+
+#: includes/Settings.php:153
+msgid "\"Talk\": Plural"
+msgstr ""
+
+#: includes/Settings.php:160
+msgid "\"Speaker\": Singular"
+msgstr ""
+
+#: includes/Settings.php:161
+msgid "(e.g. Lecturer, Speaker, Contributor etc.)"
+msgstr ""
+
+#: includes/Settings.php:167
+msgid "\"Speaker\": Plural"
+msgstr ""
+
+#: includes/Settings.php:175
+msgid "(e.g. Course Nr, ID etc.)"
+msgstr ""
+
+#: includes/Settings.php:184
+#: includes/Settings.php:189
+msgid "Call For Papers"
+msgstr ""
+
+#: includes/Settings.php:195
+msgid "Form ID"
+msgstr ""
+
+#: includes/Settings.php:196
+msgid "ID of the Contact Form 7 form containing the Call for Papers"
+msgstr ""
+
+#: includes/Settings.php:199
+#: includes/Settings.php:220
+msgid "None"
+msgstr ""
+
+#: includes/Settings.php:203
+msgid "Talk Title"
+msgstr ""
+
+#: includes/Settings.php:204
+msgid "Talk Excerpt"
+msgstr ""
+
+#: includes/Settings.php:205
+msgid "Talk Description"
+msgstr ""
+
+#: includes/Settings.php:206
+msgid "Speaker Academic Title"
+msgstr ""
+
+#: includes/Settings.php:207
+msgid "Speaker First Name"
+msgstr ""
+
+#: includes/Settings.php:208
+msgid "Speaker Last Name"
+msgstr ""
+
+#: includes/Settings.php:209
+msgid "Speaker Short Biography"
+msgstr ""
+
+#: includes/Settings.php:210
+msgid "Speaker Organisation"
+msgstr ""
+
+#: includes/Settings.php:211
+msgid "Speaker Email Address"
+msgstr ""
+
+#: includes/Settings.php:212
+msgid "Speaker Website"
+msgstr ""
+
+#: includes/Settings.php:226
+msgid "Please activate Contact Form 7 Plugin to use this option"
+msgstr ""
+
+#: includes/Settings.php:227
+msgid "Go to Plugin page"
+msgstr ""
+
+#: includes/Shortcodes/Talk.php:172
+msgid "No talk information found."
+msgstr ""
+
+#: includes/Shortcodes/Talk.php:213
+msgid "Start"
+msgstr ""
+
+#: includes/Shortcodes/Talk.php:214
+msgid "End"
+msgstr ""
+
+#: includes/Shortcodes/Talk.php:215
+#: includes/Utils.php:269
+#: includes/Utils.php:271
+msgid "Time"
+msgstr ""
+
+#: includes/Shortcodes/Talk.php:218
+#: includes/Utils.php:293
+#: includes/Utils.php:295
+#: includes/Utils.php:297
+#: includes/Utils.php:308
+#: includes/Utils.php:311
+#: build/blocks/talk/index.js:183
+#: build/blocks/talk/index.js:120
+msgid "Participants"
+msgstr ""
+
+#: includes/Shortcodes/Talk.php:219
+msgid "Available"
+msgstr ""
+
+#: includes/Shortcodes/Talk.php:317
+msgid "Read more about"
+msgstr ""
+
+#: includes/Utils.php:185
+msgid "Contact"
+msgstr ""
+
+#: includes/Utils.php:300
+msgid "available"
+msgstr ""
+
+#: includes/Utils.php:308
+msgid "Video"
+msgstr ""
+
+#: includes/Utils.php:311
+msgid "Slides"
+msgstr ""
+
+#. translators: 1: Server PHP version number, 2: Required PHP version number.
+#: rrze-events.php:66
+msgid "The server is running PHP version %1$s. The Plugin requires at least PHP version %2$s."
+msgstr ""
+
+#. translators: 1: Server WordPress version number, 2: Required WordPress version number.
+#: rrze-events.php:73
+msgid "The server is running WordPress version %1$s. The Plugin requires at least WordPress version %2$s."
+msgstr ""
+
+#: rrze-events.php:78
+msgid "RRZE Events plugin does not work with FAU Events Theme as the event features are already included in the theme. Please activate another theme before activating RRZE Events. The plugin will preserve your existing speakers, talks and shortcodes."
+msgstr ""
+
+#. translators: 1: The plugin name, 2: The error string.
+#: rrze-events.php:94
+#: rrze-events.php:192
+msgid "Plugins: %1$s: %2$s"
+msgstr ""
+
+#: rrze-events.php:226
+msgid "RRZE Plugins"
+msgstr ""
+
+#: templates/content/content-single-talk.php:44
+msgid "Infos"
+msgstr ""
+
+#: templates/content/content-single-talk.php:70
+msgid "More about&hellip;"
+msgstr ""
+
+#: build/blocks/speaker/index.js:143
+#: build/blocks/speaker/index.js:145
+#: build/blocks/talk/index.js:265
+#: build/blocks/talk/index.js:267
+#: build/blocks/speaker/index.js:96
+#: build/blocks/speaker/index.js:98
+#: build/blocks/talk/index.js:187
+#: build/blocks/talk/index.js:189
+msgid "Layout"
+msgstr ""
+
+#: build/blocks/speaker/index.js:148
+#: build/blocks/talk/index.js:270
+#: build/blocks/speaker/index.js:101
+#: build/blocks/talk/index.js:192
+msgid "Grid"
+msgstr ""
+
+#: build/blocks/speaker/index.js:151
+#: build/blocks/speaker/index.js:102
+msgid "List"
+msgstr ""
+
+#: build/blocks/speaker/index.js:156
+#: build/blocks/talk/index.js:403
+#: build/blocks/speaker/index.js:107
+#: build/blocks/talk/index.js:295
+msgid "Order"
+msgstr ""
+
+#: build/blocks/speaker/index.js:159
+#: build/blocks/speaker/index.js:110
+msgid "Last Name"
+msgstr ""
+
+#: build/blocks/speaker/index.js:162
+#: build/blocks/speaker/index.js:111
+msgid "First Name"
+msgstr ""
+
+#: build/blocks/speaker/index.js:168
+#: build/blocks/speaker/index.js:116
+msgid "Select Speakers"
+msgstr ""
+
+#: build/blocks/speaker/index.js:170
+#: build/blocks/talk/index.js:417
+#: build/blocks/speaker/index.js:118
+#: build/blocks/talk/index.js:307
+msgid "Count"
+msgstr ""
+
+#: build/blocks/speaker/index.js:174
+#: build/blocks/speaker/index.js:122
+msgid "How many speakers do you want to show? Enter -1 for all speakers."
+msgstr ""
+
+#: build/blocks/speaker/index.js:176
+#: build/blocks/talk/index.js:423
+#: build/blocks/speaker/index.js:126
+#: build/blocks/talk/index.js:315
+msgid "Categories"
+msgstr ""
+
+#: build/blocks/speaker/index.js:184
+#: build/blocks/talk/index.js:430
+#: build/blocks/speaker/index.js:131
+#: build/blocks/talk/index.js:320
+msgid "Selected Categories"
+msgstr ""
+
+#: build/blocks/speaker/index.js:194
+#: build/blocks/speaker/index.js:218
+#: build/blocks/talk/index.js:348
+#: build/blocks/talk/index.js:361
+#: build/blocks/talk/index.js:439
+#: build/blocks/talk/index.js:461
+#: build/blocks/talk/index.js:483
+#: build/blocks/speaker/index.js:139
+#: build/blocks/speaker/index.js:161
+#: build/blocks/talk/index.js:239
+#: build/blocks/talk/index.js:244
+#: build/blocks/talk/index.js:328
+#: build/blocks/talk/index.js:350
+#: build/blocks/talk/index.js:372
+msgid "Remove"
+msgstr ""
+
+#: build/blocks/speaker/index.js:208
+#: build/blocks/speaker/index.js:153
+msgid "Selected Speakers"
+msgstr ""
+
+#: build/blocks/talk/index.js:171
+#: build/blocks/talk/index.js:116
+msgid "Start-End"
+msgstr ""
+
+#: build/blocks/talk/index.js:177
+#: build/blocks/talk/index.js:395
+#: build/blocks/talk/index.js:118
+#: build/blocks/talk/index.js:289
+msgid "Title"
+msgstr ""
+
+#: build/blocks/talk/index.js:186
+#: build/blocks/talk/index.js:121
+msgid "Available Places"
+msgstr ""
+
+#: build/blocks/talk/index.js:273
+#: build/blocks/talk/index.js:193
+msgid "Table"
+msgstr ""
+
+#: build/blocks/talk/index.js:276
+#: build/blocks/talk/index.js:194
+msgid "Short"
+msgstr ""
+
+#: build/blocks/talk/index.js:282
+#: build/blocks/talk/index.js:201
+msgid "Columns"
+msgstr ""
+
+#: build/blocks/talk/index.js:289
+#: build/blocks/talk/index.js:206
+msgid "Selected Columns"
+msgstr ""
+
+#: build/blocks/talk/index.js:302
+#: build/blocks/talk/index.js:317
+#: build/blocks/talk/index.js:217
+#: build/blocks/talk/index.js:222
+msgid "Up"
+msgstr ""
+
+#: build/blocks/talk/index.js:325
+#: build/blocks/talk/index.js:340
+#: build/blocks/talk/index.js:228
+#: build/blocks/talk/index.js:233
+msgid "Down"
+msgstr ""
+
+#: build/blocks/talk/index.js:373
+#: build/blocks/talk/index.js:261
+msgid "Show Talk Image"
+msgstr ""
+
+#: build/blocks/talk/index.js:380
+#: build/blocks/talk/index.js:271
+msgid "Show Speaker Organisation"
+msgstr ""
+
+#: build/blocks/talk/index.js:386
+#: build/blocks/talk/index.js:284
+msgid "Order By"
+msgstr ""
+
+#: build/blocks/talk/index.js:406
+#: build/blocks/talk/index.js:298
+msgid "ascending"
+msgstr ""
+
+#: build/blocks/talk/index.js:409
+#: build/blocks/talk/index.js:299
+msgid "descending"
+msgstr ""
+
+#: build/blocks/talk/index.js:415
+#: build/blocks/talk/index.js:305
+msgid "Select Talks"
+msgstr ""
+
+#: build/blocks/talk/index.js:421
+#: build/blocks/talk/index.js:311
+msgid "How many talks do you want to show? Enter -1 for all talks."
+msgstr ""
+
+#: build/blocks/talk/index.js:445
+#: build/blocks/talk/index.js:337
+msgid "Tags"
+msgstr ""
+
+#: build/blocks/talk/index.js:452
+#: build/blocks/talk/index.js:342
+msgid "Selected Tags"
+msgstr ""
+
+#: build/blocks/talk/index.js:474
+#: build/blocks/talk/index.js:364
+msgid "Selected Talks"
+msgstr ""
+
+#: build/blocks/talk/index.js:493
+#: build/blocks/talk/index.js:385
+msgid "Only show talks of one day."
+msgstr ""
+
+#: build/blocks/speaker/block.json
+msgctxt "block title"
+msgid "RRZE Events Speaker"
+msgstr ""
+
+#: build/blocks/speaker/block.json
+msgctxt "block description"
+msgid "RRZE Events Speaker"
+msgstr ""
+
+#: build/blocks/talk/block.json
+msgctxt "block title"
+msgid "RRZE Events Talk"
+msgstr ""
+
+#: build/blocks/talk/block.json
+msgctxt "block description"
+msgid "RRZE Events Talk"
 msgstr ""
