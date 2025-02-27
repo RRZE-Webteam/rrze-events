@@ -4,7 +4,7 @@
   "name": "rrze-events/speaker",
   "version": "1.0.3",
   "title": "RRZE Events Speaker",
-  "category": "rrze-plugins",
+  "category": "rrze",
   "description": "RRZE Events Speaker",
   "example": {},
   "attributes": {
