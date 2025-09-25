@@ -1,6 +1,6 @@
 {
   "name": "rrze-events",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "build/index.js",
   "scripts": {
     "build": "wp-scripts build",
@@ -12,7 +12,7 @@
     "start": "wp-scripts start"
   },
   "devDependencies": {
-    "@wordpress/scripts": "^30.3.0",
-    "node-sass": "^8.0.0"
+    "@wordpress/scripts": "^30.7.0",
+    "sass": "^1.85.0"
   }
 }
