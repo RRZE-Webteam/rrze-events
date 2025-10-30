@@ -19,6 +19,9 @@ class Utils {
             'FAU-Techfak',
             'FAU-Natfak'
         ],
+        'fau-elemental' => [
+            'FAU-Elemental',
+        ],
         'rrze' => [
             'rrze-2019'
         ],
