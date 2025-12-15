@@ -8,7 +8,7 @@ $meta = get_post_meta($id);
 $speakerSettings = Settings::getOption('rrze-events-speaker-settings');
 ?>
 
-<article class="rrze-speaker" itemscope itemtype="https://schema.org/Person">
+<div class="rrze-speaker" itemscope itemtype="https://schema.org/Person">
     <h1 id="maintop" class="mobiletitle entry-title" itemprop="name">
         <?php the_title();
         $organisation = get_post_meta($id, 'speaker_organisation', true);
@@ -73,6 +73,6 @@ $speakerSettings = Settings::getOption('rrze-events-speaker-settings');
         ?>
     </div>
 
-</article>
+</div>
 
 <?php

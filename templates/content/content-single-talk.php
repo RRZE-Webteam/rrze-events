@@ -11,7 +11,7 @@ $talkTags = get_the_terms($id, 'talk_tag');
 $speakerSettings = Settings::getOption('rrze-events-speaker-settings');
 ?>
 
-<article class="rrze-talk" itemscope itemtype="https://schema.org/Event">
+<div class="rrze-talk" itemscope itemtype="https://schema.org/Event">
     <h1 id="maintop" class="mobiletitle entry-title" itemprop="name">
         <?php the_title(); ?>
     </h1>
@@ -88,6 +88,6 @@ $speakerSettings = Settings::getOption('rrze-events-speaker-settings');
         ?>
     </div>
 
-</article>
+</div>
 
 <?php
