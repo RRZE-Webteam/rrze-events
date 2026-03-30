@@ -63,6 +63,64 @@
             "install-path": "../cmb2/cmb2"
         },
         {
+            "name": "cmb2/cmb2-attached-posts",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CMB2/cmb2-attached-posts.git",
+                "reference": "be85d168be21d748f3b17252a8ad5497737c7660"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CMB2/cmb2-attached-posts/zipball/be85d168be21d748f3b17252a8ad5497737c7660",
+                "reference": "be85d168be21d748f3b17252a8ad5497737c7660",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">5.2.4"
+            },
+            "suggest": {
+                "composer/installers": "~1.0"
+            },
+            "time": "2022-12-07T18:17:19+00:00",
+            "default-branch": true,
+            "type": "wordpress-plugin",
+            "installation-source": "dist",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Justin Sternberg",
+                    "email": "justin@dsgnwrks.pro",
+                    "homepage": "https://dsgnwrks.pro",
+                    "role": "Developer"
+                },
+                {
+                    "name": "WebDevStudios",
+                    "email": "contact@webdevstudios.com",
+                    "homepage": "https://github.com/WebDevStudios",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Custom field for CMB2 for creating post relationships.",
+            "homepage": "https://github.com/CMB2/CMB2",
+            "keywords": [
+                "attached",
+                "metabox",
+                "plugin",
+                "post",
+                "relationship",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/CMB2/cmb2-attached-posts/issues",
+                "source": "https://github.com/CMB2/cmb2-attached-posts/"
+            },
+            "install-path": "../cmb2/cmb2-attached-posts"
+        },
+        {
             "name": "rrze/wp",
             "version": "2.1.0",
             "version_normalized": "2.1.0.0",
@@ -109,58 +167,6 @@
                 "source": "https://github.com/RRZE-Webteam/rrze-wp/tree/2.1.0"
             },
             "install-path": "../rrze/wp"
-        },
-        {
-            "name": "webdevstudios/cmb2-attached-posts",
-            "version": "v1.2.7",
-            "version_normalized": "1.2.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/CMB2/cmb2-attached-posts.git",
-                "reference": "556701d8f032931838c524ddc55c40b177a0e1a8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/CMB2/cmb2-attached-posts/zipball/556701d8f032931838c524ddc55c40b177a0e1a8",
-                "reference": "556701d8f032931838c524ddc55c40b177a0e1a8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">5.2.4"
-            },
-            "suggest": {
-                "composer/installers": "~1.0"
-            },
-            "time": "2017-11-09T18:44:20+00:00",
-            "type": "wordpress-plugin",
-            "installation-source": "dist",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "WebDevStudios",
-                    "email": "contact@webdevstudios.com",
-                    "homepage": "https://github.com/WebDevStudios",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Custom field for CMB2 for creating post relationships.",
-            "homepage": "https://github.com/WebDevStudios/CMB2",
-            "keywords": [
-                "attached",
-                "metabox",
-                "plugin",
-                "post",
-                "relationship",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/WebDevStudios/cmb2-attached-posts/issues",
-                "source": "https://github.com/WebDevStudios/cmb2-attached-posts/"
-            },
-            "install-path": "../webdevstudios/cmb2-attached-posts"
         }
     ],
     "dev": true,
