@@ -18,7 +18,7 @@
         },
         "files": [
             "vendor/cmb2/cmb2/init.php",
-            "vendor/webdevstudios/cmb2-attached-posts/cmb2-attached-posts-field.php"
+            "vendor/cmb2/cmb2-attached-posts/cmb2-attached-posts-field.php"
         ]
     },
     "extra": {

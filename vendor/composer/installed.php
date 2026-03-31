@@ -3,7 +3,7 @@
         'name' => 'rrze/rrze-events',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '0037cc255b30c1a0ee503a60a8f7b9578bad108d',
+        'reference' => '70a1f2fb7ebf2d5175f491c504fad32d0bd392ef',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -33,7 +33,7 @@
         'rrze/rrze-events' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '0037cc255b30c1a0ee503a60a8f7b9578bad108d',
+            'reference' => '70a1f2fb7ebf2d5175f491c504fad32d0bd392ef',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

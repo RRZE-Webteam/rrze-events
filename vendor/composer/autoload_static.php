@@ -8,7 +8,7 @@ class ComposerStaticInitfd7a5843a9f6c87c35d63a24cfbb1f3c
 {
     public static $files = array (
         '2c13a69b84bef5b15aad5676ac51ed30' => __DIR__ . '/..' . '/cmb2/cmb2/init.php',
-        '0a6522bb72b399cc3913de68ac523ef4' => __DIR__ . '/..' . '/webdevstudios/cmb2-attached-posts/cmb2-attached-posts-field.php',
+        '16fc9de6fc74a997d19938e221fef307' => __DIR__ . '/..' . '/cmb2/cmb2-attached-posts/cmb2-attached-posts-field.php',
     );
 
     public static $prefixLengthsPsr4 = array (
