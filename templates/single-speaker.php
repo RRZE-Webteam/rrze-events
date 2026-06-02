@@ -1,16 +1,21 @@
 <?php
-/**
- * The template for displaying single posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package RRZE_2019
- */
+
+defined( 'ABSPATH' ) || exit;
 
 use function RRZE\Events\plugin;
 
-get_header();
+get_header(); ?>
 
-include plugin()->getPath('templates/content/') . 'content-single-speaker.php';
+<main id="content">
+    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-get_footer();
+        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <?php include plugin()->getPath('templates/content/') . 'content-single-speaker.php'; ?>
+        </article>
+
+        <?php comments_template(); ?>
+
+    <?php endwhile; endif; ?>
+</main>
+
+<?php get_footer(); ?>

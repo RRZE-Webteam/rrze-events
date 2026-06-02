@@ -11,7 +11,7 @@ $talkTags = get_the_terms($id, 'talk_tag');
 $speakerSettings = Settings::getOption('rrze-events-speaker-settings');
 ?>
 
-<article class="rrze-talk" itemscope itemtype="https://schema.org/Event">
+<div class="rrze-talk" itemscope itemtype="https://schema.org/Event">
     <h1 id="maintop" class="mobiletitle entry-title" itemprop="name">
         <?php the_title(); ?>
     </h1>
@@ -22,15 +22,15 @@ $speakerSettings = Settings::getOption('rrze-events-speaker-settings');
         echo '<div class="talk-speaker">';
         echo '<h2>' . (esc_html(_n('Speaker', 'Speakers', count($speakers), 'rrze-events'))) . '</h2>';
         foreach ($speakers as $speakerID) {
-            if (!has_post_thumbnail($speakerID))
-                continue;
             $organisation = get_post_meta($speakerID, 'speaker_organisation', TRUE);
             $cssClass = 'talk-speaker-thumbnail';
             if (isset($speakerSettings['image-format']) && $speakerSettings['image-format'] == 'rounded') {
                 $cssClass .= ' format-rounded';
             }
             echo '<div class="talk-speaker-item"><a href="' . esc_html(get_permalink($speakerID)) . '">';
-            echo get_the_post_thumbnail($speakerID, 'medium', ['class' => $cssClass]);
+            if (has_post_thumbnail($speakerID)) {
+                echo get_the_post_thumbnail($speakerID, 'medium', ['class' => $cssClass]);
+            }
             echo '<span class="speaker-name">' . esc_html(get_the_title($speakerID)) . '</span>';
             echo ($organisation != '' ? '<span class="speaker-organisation">' . esc_html($organisation) . '</span>' : '');
             echo '</a></div>';
@@ -88,6 +88,6 @@ $speakerSettings = Settings::getOption('rrze-events-speaker-settings');
         ?>
     </div>
 
-</article>
+</div>
 
 <?php

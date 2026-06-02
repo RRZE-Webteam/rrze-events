@@ -2,33 +2,30 @@
     "packages": [
         {
             "name": "cmb2/cmb2",
-            "version": "v2.11.0",
-            "version_normalized": "2.11.0.0",
+            "version": "v2.12.0",
+            "version_normalized": "2.12.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CMB2/CMB2.git",
-                "reference": "2847828b5cce1b48d09427ee13e6f7c752704468"
+                "reference": "9a3686d42539ee3c1113bd09623f4ffbbee94397"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CMB2/CMB2/zipball/2847828b5cce1b48d09427ee13e6f7c752704468",
-                "reference": "2847828b5cce1b48d09427ee13e6f7c752704468",
+                "url": "https://api.github.com/repos/CMB2/CMB2/zipball/9a3686d42539ee3c1113bd09623f4ffbbee94397",
+                "reference": "9a3686d42539ee3c1113bd09623f4ffbbee94397",
                 "shasum": ""
             },
             "require": {
                 "php": ">7.4"
             },
             "require-dev": {
-                "apigen/apigen": "4.1.2",
-                "awesomemotive/am-cli-tools": ">=1.3.7",
-                "nette/utils": "2.5.3",
-                "phpunit/phpunit": "^6.5",
+                "phpunit/phpunit": "^9.6",
                 "yoast/phpunit-polyfills": "^1.1"
             },
             "suggest": {
                 "composer/installers": "~1.0"
             },
-            "time": "2024-04-02T19:30:07+00:00",
+            "time": "2026-05-31T02:21:57+00:00",
             "type": "wordpress-plugin",
             "installation-source": "dist",
             "notification-url": "https://packagist.org/downloads/",
@@ -63,24 +60,82 @@
             "install-path": "../cmb2/cmb2"
         },
         {
-            "name": "rrze/wp",
-            "version": "2.0.0",
-            "version_normalized": "2.0.0.0",
+            "name": "cmb2/cmb2-attached-posts",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RRZE-Webteam/rrze-wp.git",
-                "reference": "02076c39edcf586c1cbb5e889553bff0b24048a5"
+                "url": "https://github.com/CMB2/cmb2-attached-posts.git",
+                "reference": "be85d168be21d748f3b17252a8ad5497737c7660"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RRZE-Webteam/rrze-wp/zipball/02076c39edcf586c1cbb5e889553bff0b24048a5",
-                "reference": "02076c39edcf586c1cbb5e889553bff0b24048a5",
+                "url": "https://api.github.com/repos/CMB2/cmb2-attached-posts/zipball/be85d168be21d748f3b17252a8ad5497737c7660",
+                "reference": "be85d168be21d748f3b17252a8ad5497737c7660",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">5.2.4"
+            },
+            "suggest": {
+                "composer/installers": "~1.0"
+            },
+            "time": "2022-12-07T18:17:19+00:00",
+            "default-branch": true,
+            "type": "wordpress-plugin",
+            "installation-source": "dist",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Justin Sternberg",
+                    "email": "justin@dsgnwrks.pro",
+                    "homepage": "https://dsgnwrks.pro",
+                    "role": "Developer"
+                },
+                {
+                    "name": "WebDevStudios",
+                    "email": "contact@webdevstudios.com",
+                    "homepage": "https://github.com/WebDevStudios",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Custom field for CMB2 for creating post relationships.",
+            "homepage": "https://github.com/CMB2/CMB2",
+            "keywords": [
+                "attached",
+                "metabox",
+                "plugin",
+                "post",
+                "relationship",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/CMB2/cmb2-attached-posts/issues",
+                "source": "https://github.com/CMB2/cmb2-attached-posts/"
+            },
+            "install-path": "../cmb2/cmb2-attached-posts"
+        },
+        {
+            "name": "rrze/wp",
+            "version": "2.1.0",
+            "version_normalized": "2.1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RRZE-Webteam/rrze-wp.git",
+                "reference": "fd2d35426dc36af17f22b1e3d68e08daa229c305"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RRZE-Webteam/rrze-wp/zipball/fd2d35426dc36af17f22b1e3d68e08daa229c305",
+                "reference": "fd2d35426dc36af17f22b1e3d68e08daa229c305",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0"
             },
-            "time": "2024-02-19T15:07:11+00:00",
+            "time": "2024-12-06T10:01:13+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -106,7 +161,7 @@
             ],
             "support": {
                 "issues": "https://github.com/RRZE-Webteam/rrze-wp/issues",
-                "source": "https://github.com/RRZE-Webteam/rrze-wp/tree/2.0.0"
+                "source": "https://github.com/RRZE-Webteam/rrze-wp/tree/2.1.0"
             },
             "install-path": "../rrze/wp"
         }

@@ -6,6 +6,18 @@ get_header();
 
 ?>
 
+    <section class="hero-page" aria-labelledby="pagetitle">
+        <div>
+            <h1 id="pagetitle" class="wp-block-post-title">
+                <?php
+                the_title();
+                $organisation = get_post_meta(get_the_ID(), 'speaker_organisation', true);
+                if ($organisation != '') {
+                    echo '<br /><span class="speaker-organisation">' . esc_html($organisation) . '</span>';
+                }?></h1>
+        </div>
+    </section>
+
     <main id="main" class="site-main" role="main">
         <?php
         if (have_posts()) :

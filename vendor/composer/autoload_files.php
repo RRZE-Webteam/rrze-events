@@ -6,6 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'ad901de1e5d16b81f427bfe3dc3de508' => $vendorDir . '/cmb2/cmb2/init.php',
-    '4e877593ae551819eca912a36eb9ed10' => $vendorDir . '/cmb2/cmb2-attached-posts/cmb2-attached-posts-field.php',
+    '2c13a69b84bef5b15aad5676ac51ed30' => $vendorDir . '/cmb2/cmb2/init.php',
+    '16fc9de6fc74a997d19938e221fef307' => $vendorDir . '/cmb2/cmb2-attached-posts/cmb2-attached-posts-field.php',
 );

@@ -1,9 +1,18 @@
 <?php
 
+use RRZE\Events\Settings;
 use function RRZE\Events\plugin;
+$labels = Settings::getOption('rrze-events-label-settings');
 
-get_header();
+get_header(); ?>
 
-include plugin()->getPath('templates/content/') . 'content-archive-talk.php';
+<main id="content">
+    <header class="archive-header">
+        <h1><?php echo esc_html($labels['label-talk-plural'])?></h1>
+    </header>
 
-get_footer();
+    <?php include plugin()->getPath('templates/content/') . 'content-archive-talk.php'; ?>
+
+</main>
+
+<?php get_footer(); ?>

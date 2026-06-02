@@ -87,7 +87,7 @@ class Utils {
                 $output .= "<li><a href='" . get_post_permalink($talk->ID) . "'>";
                 $output .= wp_kses_post($talk->post_title);
                 $output .= "</a> ";
-                $output .= get_the_term_list($talk->ID, 'talk_category', '<div class="speaker-categories inline">', ' ', '</div>');
+                $output .= get_the_term_list($talk->ID, 'talk_category', '<div class="talk-categories inline">', ' ', '</div>');
                 //$output .= get_post_meta($talk->ID, 'talk_date', true);
             }
             $output .= "</ul>";
