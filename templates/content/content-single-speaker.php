@@ -28,7 +28,7 @@ $speakerSettings = Settings::getOption('rrze-events-speaker-settings');
                 $cssClass .= ' format-rounded';
             }
             echo '<div class="post-image">'
-                . get_the_post_thumbnail($post->ID, 'large', ['class' => $cssClass])
+                . get_the_post_thumbnail($id, 'large', ['class' => $cssClass])
                 . '</div>';
         } ?>
 

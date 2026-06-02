@@ -16,8 +16,8 @@ get_header();
         <div>
             <h1 id="pagetitle" class="wp-block-post-title"><?php the_title(); ?></h1>
         </div>
-
     </section>
+
     <main id="main" class="site-main" role="main">
         <?php
         if (have_posts()) :
