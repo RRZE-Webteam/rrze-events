@@ -3,7 +3,7 @@
         'name' => 'rrze/rrze-events',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '70a1f2fb7ebf2d5175f491c504fad32d0bd392ef',
+        'reference' => '24ed2406b15270b9dbf844f2a1bc11b4a2d721f8',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'cmb2/cmb2' => array(
-            'pretty_version' => 'v2.11.0',
-            'version' => '2.11.0.0',
-            'reference' => '2847828b5cce1b48d09427ee13e6f7c752704468',
+            'pretty_version' => 'v2.12.0',
+            'version' => '2.12.0.0',
+            'reference' => '9a3686d42539ee3c1113bd09623f4ffbbee94397',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../cmb2/cmb2',
             'aliases' => array(),
@@ -33,7 +33,7 @@
         'rrze/rrze-events' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '70a1f2fb7ebf2d5175f491c504fad32d0bd392ef',
+            'reference' => '24ed2406b15270b9dbf844f2a1bc11b4a2d721f8',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
