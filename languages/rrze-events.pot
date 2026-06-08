@@ -1,15 +1,15 @@
-# Copyright (C) 2025 RRZE Webteam
+# Copyright (C) 2026 RRZE Webteam
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: RRZE Events 1.0.1\n"
+"Project-Id-Version: RRZE Events 1.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/rrze-events\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-26T13:09:05+00:00\n"
+"POT-Creation-Date: 2026-06-08T12:48:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: rrze-events\n"
@@ -51,18 +51,18 @@ msgstr ""
 #: includes/Settings.php:157
 #: templates/themes/fau/archive-talk.php:27
 #: templates/themes/fau/archive-talk.php:29
-#: build/blocks/talk/index.js:467
-#: build/blocks/talk/index.js:359
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:359
 msgid "Talks"
 msgstr ""
 
 #: config/defaults.php:24
 #: includes/CPT/Speaker.php:45
 #: includes/Settings.php:164
-#: includes/Utils.php:244
+#: includes/Utils.php:247
 #: templates/content/content-single-talk.php:23
-#: build/blocks/talk/index.js:180
-#: build/blocks/talk/index.js:119
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:119
 msgid "Speaker"
 msgid_plural "Speakers"
 msgstr[0] ""
@@ -73,8 +73,8 @@ msgstr[1] ""
 #: includes/Settings.php:171
 #: templates/themes/fau/archive-speaker.php:27
 #: templates/themes/fau/archive-speaker.php:29
-#: build/blocks/speaker/index.js:200
-#: build/blocks/speaker/index.js:148
+#: build/blocks/speaker/index.js:1
+#: src/blocks/speaker/edit.js:148
 msgid "Speakers"
 msgstr ""
 
@@ -177,22 +177,22 @@ msgid "Firma / Organisation"
 msgstr ""
 
 #: includes/CPT/Speaker.php:116
-#: includes/Utils.php:99
+#: includes/Utils.php:102
 msgid "Email"
 msgstr ""
 
 #: includes/CPT/Speaker.php:122
-#: includes/Utils.php:100
+#: includes/Utils.php:103
 msgid "Website"
 msgstr ""
 
 #: includes/CPT/Speaker.php:128
-#: includes/Utils.php:101
+#: includes/Utils.php:104
 msgid "Blog"
 msgstr ""
 
 #: includes/CPT/Speaker.php:134
-#: includes/Utils.php:102
+#: includes/Utils.php:105
 msgid "Social Media"
 msgstr ""
 
@@ -264,46 +264,42 @@ msgstr ""
 
 #: includes/CPT/Talk.php:110
 #: includes/Settings.php:174
-#: build/blocks/talk/index.js:189
-#: build/blocks/talk/index.js:398
-#: build/blocks/talk/index.js:122
-#: build/blocks/talk/index.js:290
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:122
+#: src/blocks/talk/edit.js:290
 msgid "Code"
 msgstr ""
 
 #: includes/CPT/Talk.php:116
 #: includes/Shortcodes/Talk.php:210
-#: includes/Utils.php:266
-#: includes/Utils.php:267
-#: build/blocks/talk/index.js:162
-#: build/blocks/talk/index.js:389
-#: build/blocks/talk/index.js:489
-#: build/blocks/talk/index.js:113
-#: build/blocks/talk/index.js:287
-#: build/blocks/talk/index.js:381
+#: includes/Utils.php:269
+#: includes/Utils.php:270
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:113
+#: src/blocks/talk/edit.js:287
+#: src/blocks/talk/edit.js:381
 msgid "Date"
 msgstr ""
 
 #: includes/CPT/Talk.php:130
-#: build/blocks/talk/index.js:165
-#: build/blocks/talk/index.js:392
-#: build/blocks/talk/index.js:114
-#: build/blocks/talk/index.js:288
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:114
+#: src/blocks/talk/edit.js:288
 msgid "Start Time"
 msgstr ""
 
 #: includes/CPT/Talk.php:144
-#: build/blocks/talk/index.js:168
-#: build/blocks/talk/index.js:115
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:115
 msgid "End Time"
 msgstr ""
 
 #: includes/CPT/Talk.php:158
 #: includes/Shortcodes/Talk.php:216
-#: includes/Utils.php:281
-#: includes/Utils.php:283
-#: build/blocks/talk/index.js:174
-#: build/blocks/talk/index.js:117
+#: includes/Utils.php:284
+#: includes/Utils.php:286
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:117
 msgid "Location"
 msgstr ""
 
@@ -528,19 +524,19 @@ msgid "End"
 msgstr ""
 
 #: includes/Shortcodes/Talk.php:215
-#: includes/Utils.php:269
-#: includes/Utils.php:271
+#: includes/Utils.php:272
+#: includes/Utils.php:274
 msgid "Time"
 msgstr ""
 
 #: includes/Shortcodes/Talk.php:218
-#: includes/Utils.php:293
-#: includes/Utils.php:295
-#: includes/Utils.php:297
-#: includes/Utils.php:308
+#: includes/Utils.php:296
+#: includes/Utils.php:298
+#: includes/Utils.php:300
 #: includes/Utils.php:311
-#: build/blocks/talk/index.js:183
-#: build/blocks/talk/index.js:120
+#: includes/Utils.php:314
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:120
 msgid "Participants"
 msgstr ""
 
@@ -552,19 +548,19 @@ msgstr ""
 msgid "Read more about"
 msgstr ""
 
-#: includes/Utils.php:185
+#: includes/Utils.php:188
 msgid "Contact"
 msgstr ""
 
-#: includes/Utils.php:300
+#: includes/Utils.php:303
 msgid "available"
 msgstr ""
 
-#: includes/Utils.php:308
+#: includes/Utils.php:311
 msgid "Video"
 msgstr ""
 
-#: includes/Utils.php:311
+#: includes/Utils.php:314
 msgid "Slides"
 msgstr ""
 
@@ -588,8 +584,8 @@ msgstr ""
 msgid "Plugins: %1$s: %2$s"
 msgstr ""
 
-#: rrze-events.php:226
-msgid "RRZE Plugins"
+#: rrze-events.php:240
+msgid "RRZE"
 msgstr ""
 
 #: templates/content/content-single-talk.php:44
@@ -600,221 +596,215 @@ msgstr ""
 msgid "More about&hellip;"
 msgstr ""
 
-#: build/blocks/speaker/index.js:143
-#: build/blocks/speaker/index.js:145
-#: build/blocks/talk/index.js:265
-#: build/blocks/talk/index.js:267
-#: build/blocks/speaker/index.js:96
-#: build/blocks/speaker/index.js:98
-#: build/blocks/talk/index.js:187
-#: build/blocks/talk/index.js:189
+#: build/blocks/speaker/index.js:1
+#: build/blocks/talk/index.js:1
+#: src/blocks/speaker/edit.js:96
+#: src/blocks/speaker/edit.js:98
+#: src/blocks/talk/edit.js:187
+#: src/blocks/talk/edit.js:189
 msgid "Layout"
 msgstr ""
 
-#: build/blocks/speaker/index.js:148
-#: build/blocks/talk/index.js:270
-#: build/blocks/speaker/index.js:101
-#: build/blocks/talk/index.js:192
+#: build/blocks/speaker/index.js:1
+#: build/blocks/talk/index.js:1
+#: src/blocks/speaker/edit.js:101
+#: src/blocks/talk/edit.js:192
 msgid "Grid"
 msgstr ""
 
-#: build/blocks/speaker/index.js:151
-#: build/blocks/speaker/index.js:102
+#: build/blocks/speaker/index.js:1
+#: src/blocks/speaker/edit.js:102
 msgid "List"
 msgstr ""
 
-#: build/blocks/speaker/index.js:156
-#: build/blocks/talk/index.js:403
-#: build/blocks/speaker/index.js:107
-#: build/blocks/talk/index.js:295
+#: build/blocks/speaker/index.js:1
+#: build/blocks/talk/index.js:1
+#: src/blocks/speaker/edit.js:107
+#: src/blocks/talk/edit.js:295
 msgid "Order"
 msgstr ""
 
-#: build/blocks/speaker/index.js:159
-#: build/blocks/speaker/index.js:110
+#: build/blocks/speaker/index.js:1
+#: src/blocks/speaker/edit.js:110
 msgid "Last Name"
 msgstr ""
 
-#: build/blocks/speaker/index.js:162
-#: build/blocks/speaker/index.js:111
+#: build/blocks/speaker/index.js:1
+#: src/blocks/speaker/edit.js:111
 msgid "First Name"
 msgstr ""
 
-#: build/blocks/speaker/index.js:168
-#: build/blocks/speaker/index.js:116
+#: build/blocks/speaker/index.js:1
+#: src/blocks/speaker/edit.js:116
 msgid "Select Speakers"
 msgstr ""
 
-#: build/blocks/speaker/index.js:170
-#: build/blocks/talk/index.js:417
-#: build/blocks/speaker/index.js:118
-#: build/blocks/talk/index.js:307
+#: build/blocks/speaker/index.js:1
+#: build/blocks/talk/index.js:1
+#: src/blocks/speaker/edit.js:118
+#: src/blocks/talk/edit.js:307
 msgid "Count"
 msgstr ""
 
-#: build/blocks/speaker/index.js:174
-#: build/blocks/speaker/index.js:122
+#: build/blocks/speaker/index.js:1
+#: src/blocks/speaker/edit.js:122
 msgid "How many speakers do you want to show? Enter -1 for all speakers."
 msgstr ""
 
-#: build/blocks/speaker/index.js:176
-#: build/blocks/talk/index.js:423
-#: build/blocks/speaker/index.js:126
-#: build/blocks/talk/index.js:315
+#: build/blocks/speaker/index.js:1
+#: build/blocks/talk/index.js:1
+#: src/blocks/speaker/edit.js:126
+#: src/blocks/talk/edit.js:315
 msgid "Categories"
 msgstr ""
 
-#: build/blocks/speaker/index.js:184
-#: build/blocks/talk/index.js:430
-#: build/blocks/speaker/index.js:131
-#: build/blocks/talk/index.js:320
+#: build/blocks/speaker/index.js:1
+#: build/blocks/talk/index.js:1
+#: src/blocks/speaker/edit.js:131
+#: src/blocks/talk/edit.js:320
 msgid "Selected Categories"
 msgstr ""
 
-#: build/blocks/speaker/index.js:194
-#: build/blocks/speaker/index.js:218
-#: build/blocks/talk/index.js:348
-#: build/blocks/talk/index.js:361
-#: build/blocks/talk/index.js:439
-#: build/blocks/talk/index.js:461
-#: build/blocks/talk/index.js:483
-#: build/blocks/speaker/index.js:139
-#: build/blocks/speaker/index.js:161
-#: build/blocks/talk/index.js:239
-#: build/blocks/talk/index.js:244
-#: build/blocks/talk/index.js:328
-#: build/blocks/talk/index.js:350
-#: build/blocks/talk/index.js:372
+#: build/blocks/speaker/index.js:1
+#: build/blocks/talk/index.js:1
+#: src/blocks/speaker/edit.js:139
+#: src/blocks/speaker/edit.js:161
+#: src/blocks/talk/edit.js:239
+#: src/blocks/talk/edit.js:244
+#: src/blocks/talk/edit.js:328
+#: src/blocks/talk/edit.js:350
+#: src/blocks/talk/edit.js:372
 msgid "Remove"
 msgstr ""
 
-#: build/blocks/speaker/index.js:208
-#: build/blocks/speaker/index.js:153
+#: build/blocks/speaker/index.js:1
+#: src/blocks/speaker/edit.js:153
 msgid "Selected Speakers"
 msgstr ""
 
-#: build/blocks/talk/index.js:171
-#: build/blocks/talk/index.js:116
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:116
 msgid "Start-End"
 msgstr ""
 
-#: build/blocks/talk/index.js:177
-#: build/blocks/talk/index.js:395
-#: build/blocks/talk/index.js:118
-#: build/blocks/talk/index.js:289
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:118
+#: src/blocks/talk/edit.js:289
 msgid "Title"
 msgstr ""
 
-#: build/blocks/talk/index.js:186
-#: build/blocks/talk/index.js:121
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:121
 msgid "Available Places"
 msgstr ""
 
-#: build/blocks/talk/index.js:273
-#: build/blocks/talk/index.js:193
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:193
 msgid "Table"
 msgstr ""
 
-#: build/blocks/talk/index.js:276
-#: build/blocks/talk/index.js:194
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:194
 msgid "Short"
 msgstr ""
 
-#: build/blocks/talk/index.js:282
-#: build/blocks/talk/index.js:201
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:201
 msgid "Columns"
 msgstr ""
 
-#: build/blocks/talk/index.js:289
-#: build/blocks/talk/index.js:206
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:206
 msgid "Selected Columns"
 msgstr ""
 
-#: build/blocks/talk/index.js:302
-#: build/blocks/talk/index.js:317
-#: build/blocks/talk/index.js:217
-#: build/blocks/talk/index.js:222
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:217
+#: src/blocks/talk/edit.js:222
 msgid "Up"
 msgstr ""
 
-#: build/blocks/talk/index.js:325
-#: build/blocks/talk/index.js:340
-#: build/blocks/talk/index.js:228
-#: build/blocks/talk/index.js:233
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:228
+#: src/blocks/talk/edit.js:233
 msgid "Down"
 msgstr ""
 
-#: build/blocks/talk/index.js:373
-#: build/blocks/talk/index.js:261
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:261
 msgid "Show Talk Image"
 msgstr ""
 
-#: build/blocks/talk/index.js:380
-#: build/blocks/talk/index.js:271
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:271
 msgid "Show Speaker Organisation"
 msgstr ""
 
-#: build/blocks/talk/index.js:386
-#: build/blocks/talk/index.js:284
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:284
 msgid "Order By"
 msgstr ""
 
-#: build/blocks/talk/index.js:406
-#: build/blocks/talk/index.js:298
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:298
 msgid "ascending"
 msgstr ""
 
-#: build/blocks/talk/index.js:409
-#: build/blocks/talk/index.js:299
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:299
 msgid "descending"
 msgstr ""
 
-#: build/blocks/talk/index.js:415
-#: build/blocks/talk/index.js:305
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:305
 msgid "Select Talks"
 msgstr ""
 
-#: build/blocks/talk/index.js:421
-#: build/blocks/talk/index.js:311
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:311
 msgid "How many talks do you want to show? Enter -1 for all talks."
 msgstr ""
 
-#: build/blocks/talk/index.js:445
-#: build/blocks/talk/index.js:337
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:337
 msgid "Tags"
 msgstr ""
 
-#: build/blocks/talk/index.js:452
-#: build/blocks/talk/index.js:342
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:342
 msgid "Selected Tags"
 msgstr ""
 
-#: build/blocks/talk/index.js:474
-#: build/blocks/talk/index.js:364
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:364
 msgid "Selected Talks"
 msgstr ""
 
-#: build/blocks/talk/index.js:493
-#: build/blocks/talk/index.js:385
+#: build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:385
 msgid "Only show talks of one day."
 msgstr ""
 
 #: build/blocks/speaker/block.json
+#: src/blocks/speaker/block.json
 msgctxt "block title"
 msgid "RRZE Events Speaker"
 msgstr ""
 
 #: build/blocks/speaker/block.json
+#: src/blocks/speaker/block.json
 msgctxt "block description"
 msgid "RRZE Events Speaker"
 msgstr ""
 
 #: build/blocks/talk/block.json
+#: src/blocks/talk/block.json
 msgctxt "block title"
 msgid "RRZE Events Talk"
 msgstr ""
 
 #: build/blocks/talk/block.json
+#: src/blocks/talk/block.json
 msgctxt "block description"
 msgid "RRZE Events Talk"
 msgstr ""

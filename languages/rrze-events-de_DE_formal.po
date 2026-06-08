@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: RRZE Events\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-16 14:22+0000\n"
-"PO-Revision-Date: 2025-02-26 13:20+0000\n"
+"PO-Revision-Date: 2026-06-08 12:50+0000\n"
 "Last-Translator: Barbara Bothe\n"
 "Language-Team: Deutsch (Sie)\n"
 "Language: de_DE_formal\n"
@@ -75,8 +75,8 @@ msgstr "Alle Referenten"
 msgid "All Talks"
 msgstr "Alle Vorträge"
 
-#: build/blocks/talk/index.js:406 build/blocks/talk/index.js:298
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:298
+#: src/blocks/talk/edit.js:1
 msgid "ascending"
 msgstr "aufsteigend"
 
@@ -84,36 +84,36 @@ msgstr "aufsteigend"
 msgid "Available"
 msgstr "Verfügbar"
 
-#: includes/Utils.php:300
+#: includes/Utils.php:303
 msgid "available"
 msgstr "verfügbar"
 
-#: build/blocks/talk/index.js:186 build/blocks/talk/index.js:121
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:121
+#: src/blocks/talk/edit.js:1
 msgid "Available Places"
 msgstr "Verfügbare Plätze"
 
-#: build/blocks/speaker/block.json
+#: build/blocks/speaker/block.json src/blocks/speaker/block.json
 msgctxt "block description"
 msgid "RRZE Events Speaker"
 msgstr "RRZE Events: Referent"
 
-#: build/blocks/talk/block.json
+#: build/blocks/talk/block.json src/blocks/talk/block.json
 msgctxt "block description"
 msgid "RRZE Events Talk"
 msgstr "RRZE Events: Vorträge"
 
-#: build/blocks/speaker/block.json
+#: build/blocks/speaker/block.json src/blocks/speaker/block.json
 msgctxt "block title"
 msgid "RRZE Events Speaker"
 msgstr "RRZE Events: Referent"
 
-#: build/blocks/talk/block.json
+#: build/blocks/talk/block.json src/blocks/talk/block.json
 msgctxt "block title"
 msgid "RRZE Events Talk"
 msgstr "RRZE Events: Vorträge"
 
-#: includes/CPT/Speaker.php:128 includes/Utils.php:101
+#: includes/CPT/Speaker.php:128 includes/Utils.php:104
 msgid "Blog"
 msgstr "Blog"
 
@@ -129,31 +129,30 @@ msgstr "Nach Titel"
 msgid "Call For Papers"
 msgstr "Call For Papers"
 
-#: build/blocks/speaker/index.js:176 build/blocks/talk/index.js:423
-#: build/blocks/speaker/index.js:126 build/blocks/talk/index.js:315
-#: src/blocks/speaker/edit.js src/blocks/talk/edit.js
+#: build/blocks/speaker/index.js:1 build/blocks/talk/index.js:1
+#: src/blocks/speaker/edit.js:126 src/blocks/talk/edit.js:315
+#: src/blocks/speaker/edit.js:1 src/blocks/talk/edit.js:1
 msgid "Categories"
 msgstr "Kategorien"
 
 #: includes/CPT/Talk.php:110 includes/Settings.php:174
-#: build/blocks/talk/index.js:189 build/blocks/talk/index.js:398
-#: build/blocks/talk/index.js:122 build/blocks/talk/index.js:290
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:122
+#: src/blocks/talk/edit.js:290 src/blocks/talk/edit.js:1
 msgid "Code"
 msgstr "Kurzbezeichnung"
 
-#: build/blocks/talk/index.js:282 build/blocks/talk/index.js:201
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:201
+#: src/blocks/talk/edit.js:1
 msgid "Columns"
 msgstr "Spalten"
 
-#: includes/Utils.php:185
+#: includes/Utils.php:188
 msgid "Contact"
 msgstr "Kontakt"
 
-#: build/blocks/speaker/index.js:170 build/blocks/talk/index.js:417
-#: build/blocks/speaker/index.js:118 build/blocks/talk/index.js:307
-#: src/blocks/speaker/edit.js src/blocks/talk/edit.js
+#: build/blocks/speaker/index.js:1 build/blocks/talk/index.js:1
+#: src/blocks/speaker/edit.js:118 src/blocks/talk/edit.js:307
+#: src/blocks/speaker/edit.js:1 src/blocks/talk/edit.js:1
 msgid "Count"
 msgstr "Anzahl"
 
@@ -162,10 +161,9 @@ msgid "Course Nr"
 msgstr "Kursnr."
 
 #: includes/CPT/Talk.php:116 includes/Shortcodes/Talk.php:210
-#: includes/Utils.php:266 includes/Utils.php:267 build/blocks/talk/index.js:162
-#: build/blocks/talk/index.js:389 build/blocks/talk/index.js:489
-#: build/blocks/talk/index.js:113 build/blocks/talk/index.js:287
-#: build/blocks/talk/index.js:381 src/blocks/talk/edit.js
+#: includes/Utils.php:269 includes/Utils.php:270 build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:113 src/blocks/talk/edit.js:287
+#: src/blocks/talk/edit.js:381 src/blocks/talk/edit.js:1
 msgid "Date"
 msgstr "Datum"
 
@@ -174,14 +172,13 @@ msgctxt "Date format"
 msgid "Y-m-d"
 msgstr "d.m.Y"
 
-#: build/blocks/talk/index.js:409 build/blocks/talk/index.js:299
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:299
+#: src/blocks/talk/edit.js:1
 msgid "descending"
 msgstr "absteigend"
 
-#: build/blocks/talk/index.js:325 build/blocks/talk/index.js:340
-#: build/blocks/talk/index.js:228 build/blocks/talk/index.js:233
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:228
+#: src/blocks/talk/edit.js:233 src/blocks/talk/edit.js:1
 msgid "Down"
 msgstr "Nach unten"
 
@@ -199,7 +196,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: includes/CPT/Speaker.php:116 includes/Utils.php:99
+#: includes/CPT/Speaker.php:116 includes/Utils.php:102
 msgid "Email"
 msgstr "E-Mail"
 
@@ -207,8 +204,8 @@ msgstr "E-Mail"
 msgid "End"
 msgstr "Ende"
 
-#: includes/CPT/Talk.php:144 build/blocks/talk/index.js:168
-#: build/blocks/talk/index.js:115 src/blocks/talk/edit.js
+#: includes/CPT/Talk.php:144 build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:115 src/blocks/talk/edit.js:1
 msgid "End Time"
 msgstr "Ende"
 
@@ -232,8 +229,8 @@ msgstr "Events Einstellungen"
 msgid "Firma / Organisation"
 msgstr "Firma / Organisation"
 
-#: build/blocks/speaker/index.js:162 build/blocks/speaker/index.js:111
-#: src/blocks/speaker/edit.js
+#: build/blocks/speaker/index.js:1 src/blocks/speaker/edit.js:111
+#: src/blocks/speaker/edit.js:1
 msgid "First Name"
 msgstr "Vorname"
 
@@ -249,19 +246,19 @@ msgstr "Allgemein"
 msgid "Go to Plugin page"
 msgstr "Zur Plugin-Seite"
 
-#: build/blocks/speaker/index.js:148 build/blocks/talk/index.js:270
-#: build/blocks/speaker/index.js:101 build/blocks/talk/index.js:192
-#: src/blocks/speaker/edit.js src/blocks/talk/edit.js
+#: build/blocks/speaker/index.js:1 build/blocks/talk/index.js:1
+#: src/blocks/speaker/edit.js:101 src/blocks/talk/edit.js:192
+#: src/blocks/speaker/edit.js:1 src/blocks/talk/edit.js:1
 msgid "Grid"
 msgstr "Kacheln"
 
-#: build/blocks/speaker/index.js:174 build/blocks/speaker/index.js:122
-#: src/blocks/speaker/edit.js
+#: build/blocks/speaker/index.js:1 src/blocks/speaker/edit.js:122
+#: src/blocks/speaker/edit.js:1
 msgid "How many speakers do you want to show? Enter -1 for all speakers."
 msgstr "Wie viele Referenten sollen angezeigt werden? -1 für alle Referenten."
 
-#: build/blocks/talk/index.js:421 build/blocks/talk/index.js:311
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:311
+#: src/blocks/talk/edit.js:1
 msgid "How many talks do you want to show? Enter -1 for all talks."
 msgstr "Wie viele Vorträge möchten Sie anzeigen? -1 für alle Vorträge"
 
@@ -287,27 +284,26 @@ msgstr "Infos"
 msgid "Labels"
 msgstr "Bezeichnungen"
 
-#: build/blocks/speaker/index.js:159 build/blocks/speaker/index.js:110
-#: src/blocks/speaker/edit.js
+#: build/blocks/speaker/index.js:1 src/blocks/speaker/edit.js:110
+#: src/blocks/speaker/edit.js:1
 msgid "Last Name"
 msgstr "Nachname"
 
-#: build/blocks/speaker/index.js:143 build/blocks/speaker/index.js:145
-#: build/blocks/talk/index.js:265 build/blocks/talk/index.js:267
-#: build/blocks/speaker/index.js:96 build/blocks/speaker/index.js:98
-#: build/blocks/talk/index.js:187 build/blocks/talk/index.js:189
-#: src/blocks/speaker/edit.js src/blocks/talk/edit.js
+#: build/blocks/speaker/index.js:1 build/blocks/talk/index.js:1
+#: src/blocks/speaker/edit.js:96 src/blocks/speaker/edit.js:98
+#: src/blocks/talk/edit.js:187 src/blocks/talk/edit.js:189
+#: src/blocks/speaker/edit.js:1 src/blocks/talk/edit.js:1
 msgid "Layout"
 msgstr "Design"
 
-#: build/blocks/speaker/index.js:151 build/blocks/speaker/index.js:102
-#: src/blocks/speaker/edit.js
+#: build/blocks/speaker/index.js:1 src/blocks/speaker/edit.js:102
+#: src/blocks/speaker/edit.js:1
 msgid "List"
 msgstr "Liste"
 
 #: includes/CPT/Talk.php:158 includes/Shortcodes/Talk.php:216
-#: includes/Utils.php:281 includes/Utils.php:283 build/blocks/talk/index.js:174
-#: build/blocks/talk/index.js:117 src/blocks/talk/edit.js
+#: includes/Utils.php:284 includes/Utils.php:286 build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:117 src/blocks/talk/edit.js:1
 msgid "Location"
 msgstr "Ort/Raum"
 
@@ -352,19 +348,19 @@ msgstr "Keine Auswahl"
 msgid "Offer waiting list for fully booked talks"
 msgstr "Warteliste für ausgebuchte Vorträge anbieten"
 
-#: build/blocks/talk/index.js:493 build/blocks/talk/index.js:385
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:385
+#: src/blocks/talk/edit.js:1
 msgid "Only show talks of one day."
 msgstr "Nur Vorträge eines Tages anzeigen"
 
-#: build/blocks/speaker/index.js:156 build/blocks/talk/index.js:403
-#: build/blocks/speaker/index.js:107 build/blocks/talk/index.js:295
-#: src/blocks/speaker/edit.js src/blocks/talk/edit.js
+#: build/blocks/speaker/index.js:1 build/blocks/talk/index.js:1
+#: src/blocks/speaker/edit.js:107 src/blocks/talk/edit.js:295
+#: src/blocks/speaker/edit.js:1 src/blocks/talk/edit.js:1
 msgid "Order"
 msgstr "Reihenfolge"
 
-#: build/blocks/talk/index.js:386 build/blocks/talk/index.js:284
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:284
+#: src/blocks/talk/edit.js:1
 msgid "Order By"
 msgstr "Sortieren nach"
 
@@ -377,10 +373,10 @@ msgstr ""
 msgid "Parent Item:"
 msgstr "Übergeordneter Eintrag:"
 
-#: includes/Shortcodes/Talk.php:218 includes/Utils.php:293
-#: includes/Utils.php:295 includes/Utils.php:297 includes/Utils.php:308
-#: includes/Utils.php:311 build/blocks/talk/index.js:183
-#: build/blocks/talk/index.js:120 src/blocks/talk/edit.js
+#: includes/Shortcodes/Talk.php:218 includes/Utils.php:296
+#: includes/Utils.php:298 includes/Utils.php:300 includes/Utils.php:311
+#: includes/Utils.php:314 build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:120 src/blocks/talk/edit.js:1
 msgid "Participants"
 msgstr "Teilnehmer"
 
@@ -431,14 +427,12 @@ msgstr "Mehr zu"
 msgid "rectangle"
 msgstr "rechteckig"
 
-#: build/blocks/speaker/index.js:194 build/blocks/speaker/index.js:218
-#: build/blocks/talk/index.js:348 build/blocks/talk/index.js:361
-#: build/blocks/talk/index.js:439 build/blocks/talk/index.js:461
-#: build/blocks/talk/index.js:483 build/blocks/speaker/index.js:139
-#: build/blocks/speaker/index.js:161 build/blocks/talk/index.js:239
-#: build/blocks/talk/index.js:244 build/blocks/talk/index.js:328
-#: build/blocks/talk/index.js:350 build/blocks/talk/index.js:372
-#: src/blocks/speaker/edit.js src/blocks/talk/edit.js
+#: build/blocks/speaker/index.js:1 build/blocks/talk/index.js:1
+#: src/blocks/speaker/edit.js:139 src/blocks/speaker/edit.js:161
+#: src/blocks/talk/edit.js:239 src/blocks/talk/edit.js:244
+#: src/blocks/talk/edit.js:328 src/blocks/talk/edit.js:350
+#: src/blocks/talk/edit.js:372 src/blocks/speaker/edit.js:1
+#: src/blocks/talk/edit.js:1
 msgid "Remove"
 msgstr "Entfernen"
 
@@ -446,6 +440,10 @@ msgstr "Entfernen"
 #| msgid "round"
 msgid "rounded"
 msgstr "rund"
+
+#: rrze-events.php:240
+msgid "RRZE"
+msgstr "RRZE"
 
 #. Plugin Name of the plugin
 #: rrze-events.php includes/Settings.php:61
@@ -465,10 +463,6 @@ msgstr ""
 "Daten zu Referenten und Vorträgen werden automatisch aus FAU-Events in das "
 "Plugin importiert."
 
-#: rrze-events.php:226
-msgid "RRZE Plugins"
-msgstr "RRZE-Plugins"
-
 #. Author of the plugin
 #: rrze-events.php
 msgid "RRZE Webteam"
@@ -482,39 +476,39 @@ msgstr "Nach Referenten suchen"
 msgid "Search Talk"
 msgstr "Nach Vorträgen suchen"
 
-#: build/blocks/speaker/index.js:168 build/blocks/speaker/index.js:116
-#: src/blocks/speaker/edit.js
+#: build/blocks/speaker/index.js:1 src/blocks/speaker/edit.js:116
+#: src/blocks/speaker/edit.js:1
 msgid "Select Speakers"
 msgstr "Referenten auswählen"
 
-#: build/blocks/talk/index.js:415 build/blocks/talk/index.js:305
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:305
+#: src/blocks/talk/edit.js:1
 msgid "Select Talks"
 msgstr "Vorträge auswählen"
 
-#: build/blocks/speaker/index.js:184 build/blocks/talk/index.js:430
-#: build/blocks/speaker/index.js:131 build/blocks/talk/index.js:320
-#: src/blocks/speaker/edit.js src/blocks/talk/edit.js
+#: build/blocks/speaker/index.js:1 build/blocks/talk/index.js:1
+#: src/blocks/speaker/edit.js:131 src/blocks/talk/edit.js:320
+#: src/blocks/speaker/edit.js:1 src/blocks/talk/edit.js:1
 msgid "Selected Categories"
 msgstr "Kategorien auswählen"
 
-#: build/blocks/talk/index.js:289 build/blocks/talk/index.js:206
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:206
+#: src/blocks/talk/edit.js:1
 msgid "Selected Columns"
 msgstr "Ausgewählte Spalten"
 
-#: build/blocks/speaker/index.js:208 build/blocks/speaker/index.js:153
-#: src/blocks/speaker/edit.js
+#: build/blocks/speaker/index.js:1 src/blocks/speaker/edit.js:153
+#: src/blocks/speaker/edit.js:1
 msgid "Selected Speakers"
 msgstr "Ausgewählte Referenten"
 
-#: build/blocks/talk/index.js:452 build/blocks/talk/index.js:342
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:342
+#: src/blocks/talk/edit.js:1
 msgid "Selected Tags"
 msgstr "Ausgewählte Schlagwörter"
 
-#: build/blocks/talk/index.js:474 build/blocks/talk/index.js:364
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:364
+#: src/blocks/talk/edit.js:1
 msgid "Selected Talks"
 msgstr "Ausgewählte Referenten"
 
@@ -522,8 +516,8 @@ msgstr "Ausgewählte Referenten"
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: build/blocks/talk/index.js:276 build/blocks/talk/index.js:194
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:194
+#: src/blocks/talk/edit.js:1
 msgid "Short"
 msgstr "Kurz"
 
@@ -531,28 +525,28 @@ msgstr "Kurz"
 msgid "Show link icons in speaker single view"
 msgstr "Link-Icons auf der Referentenseite anzeigen"
 
-#: build/blocks/talk/index.js:380 build/blocks/talk/index.js:271
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:271
+#: src/blocks/talk/edit.js:1
 msgid "Show Speaker Organisation"
 msgstr "Firma des Referenten anzeigen"
 
-#: build/blocks/talk/index.js:373 build/blocks/talk/index.js:261
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:261
+#: src/blocks/talk/edit.js:1
 msgid "Show Talk Image"
 msgstr "Bild des Vortrags anzeigen"
 
-#: includes/Utils.php:311
+#: includes/Utils.php:314
 msgid "Slides"
 msgstr "Vortragsfolien"
 
-#: includes/CPT/Speaker.php:134 includes/Utils.php:102
+#: includes/CPT/Speaker.php:134 includes/Utils.php:105
 msgid "Social Media"
 msgstr "Soziale Medien"
 
 #: config/defaults.php:24 includes/CPT/Speaker.php:45 includes/Settings.php:164
-#: includes/Utils.php:244 templates/content/content-single-talk.php:23
-#: build/blocks/talk/index.js:180 build/blocks/talk/index.js:119
-#: src/blocks/talk/edit.js
+#: includes/Utils.php:247 templates/content/content-single-talk.php:23
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:119
+#: src/blocks/talk/edit.js:1
 msgid "Speaker"
 msgid_plural "Speakers"
 msgstr[0] "Referent"
@@ -612,9 +606,8 @@ msgstr "Referent(en)"
 
 #: config/defaults.php:25 includes/CPT/Speaker.php:32 includes/Settings.php:171
 #: templates/themes/fau/archive-speaker.php:27
-#: templates/themes/fau/archive-speaker.php:29
-#: build/blocks/speaker/index.js:200 build/blocks/speaker/index.js:148
-#: src/blocks/speaker/edit.js
+#: templates/themes/fau/archive-speaker.php:29 build/blocks/speaker/index.js:1
+#: src/blocks/speaker/edit.js:148 src/blocks/speaker/edit.js:1
 msgid "Speakers"
 msgstr "Referenten"
 
@@ -622,24 +615,24 @@ msgstr "Referenten"
 msgid "Start"
 msgstr "Start"
 
-#: includes/CPT/Talk.php:130 build/blocks/talk/index.js:165
-#: build/blocks/talk/index.js:392 build/blocks/talk/index.js:114
-#: build/blocks/talk/index.js:288 src/blocks/talk/edit.js
+#: includes/CPT/Talk.php:130 build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:114 src/blocks/talk/edit.js:288
+#: src/blocks/talk/edit.js:1
 msgid "Start Time"
 msgstr "Start"
 
-#: build/blocks/talk/index.js:171 build/blocks/talk/index.js:116
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:116
+#: src/blocks/talk/edit.js:1
 msgid "Start-End"
 msgstr "Start-Ende"
 
-#: build/blocks/talk/index.js:273 build/blocks/talk/index.js:193
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:193
+#: src/blocks/talk/edit.js:1
 msgid "Table"
 msgstr "Tabelle"
 
-#: build/blocks/talk/index.js:445 build/blocks/talk/index.js:337
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:337
+#: src/blocks/talk/edit.js:1
 msgid "Tags"
 msgstr "Schlagwörter"
 
@@ -677,8 +670,8 @@ msgstr "Vortrag: Titel"
 
 #: config/defaults.php:23 includes/CPT/Talk.php:32 includes/Settings.php:157
 #: templates/themes/fau/archive-talk.php:27
-#: templates/themes/fau/archive-talk.php:29 build/blocks/talk/index.js:467
-#: build/blocks/talk/index.js:359 src/blocks/talk/edit.js
+#: templates/themes/fau/archive-talk.php:29 build/blocks/talk/index.js:1
+#: src/blocks/talk/edit.js:359 src/blocks/talk/edit.js:1
 msgid "Talks"
 msgstr "Vorträge"
 
@@ -740,20 +733,18 @@ msgstr ""
 "Auf dem Server läuft WordPress Version %1$s. Das Plugin benötigt mindestens "
 "WordPress Version %2$s."
 
-#: includes/Shortcodes/Talk.php:215 includes/Utils.php:269
-#: includes/Utils.php:271
+#: includes/Shortcodes/Talk.php:215 includes/Utils.php:272
+#: includes/Utils.php:274
 msgid "Time"
 msgstr "Zeit"
 
-#: build/blocks/talk/index.js:177 build/blocks/talk/index.js:395
-#: build/blocks/talk/index.js:118 build/blocks/talk/index.js:289
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:118
+#: src/blocks/talk/edit.js:289 src/blocks/talk/edit.js:1
 msgid "Title"
 msgstr "Titel"
 
-#: build/blocks/talk/index.js:302 build/blocks/talk/index.js:317
-#: build/blocks/talk/index.js:217 build/blocks/talk/index.js:222
-#: src/blocks/talk/edit.js
+#: build/blocks/talk/index.js:1 src/blocks/talk/edit.js:217
+#: src/blocks/talk/edit.js:222 src/blocks/talk/edit.js:1
 msgid "Up"
 msgstr "Nach oben"
 
@@ -765,7 +756,7 @@ msgstr "Aktualisieren"
 msgid "Used for icons etc."
 msgstr "Wird für Icons etc. verwendet."
 
-#: includes/Utils.php:308
+#: includes/Utils.php:311
 msgid "Video"
 msgstr "Video"
 
@@ -785,6 +776,6 @@ msgstr "Vortrag ansehen"
 msgid "Waiting List"
 msgstr "Warteliste"
 
-#: includes/CPT/Speaker.php:122 includes/Utils.php:100
+#: includes/CPT/Speaker.php:122 includes/Utils.php:103
 msgid "Website"
 msgstr "Website"
