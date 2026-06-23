@@ -38,10 +38,7 @@ class Talk {
         } elseif ((isset($atts['category'])) && ( strlen(trim($atts['category'])) > 0)) {
             $cats = explode(',', $atts['category']);
             $cats = array_map('trim',$cats);
-            $args = array(
-                'post_type' => 'talk',
-                'relation' => 'AND',
-            );
+            $args['tax_query']['relation'] = 'AND';
             foreach ($cats as $_c) {
                 $args['tax_query'][] = array(
                     'taxonomy' => 'talk_category',
@@ -54,10 +51,7 @@ class Talk {
         if ((isset($atts['tag'])) && ( strlen(trim($atts['tag'])) > 0)) {
             $tags = explode(',', $atts['tag']);
             $tags = array_map('trim',$tags);
-            $args = array(
-                'post_type' => 'talk',
-                'relation' => 'AND',
-            );
+            $args['tax_query']['relation'] = 'AND';
             foreach ($tags as $_t) {
                 $args['tax_query'][] = array(
                     'taxonomy' => 'talk_tag',

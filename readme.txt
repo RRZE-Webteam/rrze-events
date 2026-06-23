@@ -1,7 +1,7 @@
 === RRZE Events ===
 Tags:              event, talk, speaker
 Tested up to:      6.7
-Stable tag:        1.0.5
+Stable tag:        1.0.6
 License:           GPL-3.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 
