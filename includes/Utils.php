@@ -80,8 +80,9 @@ class Utils {
         $output = '';
 
         if (!empty($talks)) {
-            $labels = Settings::getOption('rrze-events-label-settings');
-            $output .= "<$heading>" . $labels['label-talk-plural'] . "</$heading>";
+            $labelSettings = Settings::getOption('rrze-events-label-settings');
+            $title_talks = !empty($labelSettings['label-talk-plural']) ? $labelSettings['label-talk-plural'] : __('Talks', 'rrze-events');
+            $output .= "<$heading>" . $title_talks . "</$heading>";
             $output .= "<ul>";
             foreach ($talks as $talk) {
                 $output .= "<li><a href='" . get_post_permalink($talk->ID) . "'>";

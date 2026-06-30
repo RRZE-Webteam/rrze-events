@@ -9,6 +9,7 @@ $meta = get_post_meta($id);
 $talkCategories = get_the_terms($id, 'talk_category');
 $talkTags = get_the_terms($id, 'talk_tag');
 $speakerSettings = Settings::getOption('rrze-events-speaker-settings');
+$labelSettings = Settings::getOption('rrze-events-label-settings');
 ?>
 
 <div class="rrze-talk" itemscope itemtype="https://schema.org/Event">
@@ -19,8 +20,13 @@ $speakerSettings = Settings::getOption('rrze-events-speaker-settings');
     <?php
     $speakers = Utils::getMeta($meta, 'talk_speakers');
     if ($speakers != '') {
+        if (count($speakers) > 1) {
+            $title_speakers = !empty($labelSettings['label-speaker-plural']) ? $labelSettings['label-speaker-plural'] : __('Speakers', 'rrze-events');
+        } else {
+            $title_speakers = !empty($labelSettings['label-speaker']) ? $labelSettings['label-speaker'] : __('Speaker', 'rrze-events');
+        }
         echo '<div class="talk-speaker">';
-        echo '<h2>' . (esc_html(_n('Speaker', 'Speakers', count($speakers), 'rrze-events'))) . '</h2>';
+        echo '<h2>' . (esc_html($title_speakers)) . '</h2>';
         foreach ($speakers as $speakerID) {
             $organisation = get_post_meta($speakerID, 'speaker_organisation', TRUE);
             $cssClass = 'talk-speaker-thumbnail';
@@ -55,7 +61,7 @@ $speakerSettings = Settings::getOption('rrze-events-speaker-settings');
         if (has_post_thumbnail() && !post_password_required()) {
             $cssClass = 'talk-thumbnail';
             echo '<div class="post-image">'
-                . get_the_post_thumbnail($post->ID, 'medium', ['class' => $cssClass])
+                . get_the_post_thumbnail($id, 'medium', ['class' => $cssClass])
                 . '</div>';
         }
         ?>
@@ -65,12 +71,11 @@ $speakerSettings = Settings::getOption('rrze-events-speaker-settings');
         </div>
 
         <?php
-        if ($talkCategories && $talkTags) {
-            echo '<div class="talk-taxonomies">'
-                . '<h2>' . esc_html__('More about&hellip;', 'rrze-events') . '</h2>';
+        if ($talkCategories || $talkTags) {
+            echo '<div class="talk-taxonomies">';
             if ($talkCategories) {
                 echo '<div class="talk-categories">';
-                echo get_the_term_list( $post->ID, 'talk_category', '<ul><li>','</li><li>', '</li></ul>');
+                echo get_the_term_list( $id, 'talk_category', '<ul><li>','</li><li>', '</li></ul>');
                 echo '</div>';
             }
 
@@ -79,8 +84,8 @@ $speakerSettings = Settings::getOption('rrze-events-speaker-settings');
                 $accentColor = $settings['accent-color'];
                 echo '<div class="talk-tags">';
                 echo do_shortcode('[icon icon="solid tag" color="' . $accentColor . '"]')
-                    . '<span class="sr-only">' . esc_html('Tags', 'rrze-events') . ': </span>'
-                    . get_the_term_list( $post->ID, 'talk_tag', '<ul><li>','</li><li>', '</li></ul>');
+                    . '<span class="sr-only">' . esc_html__('Tags', 'rrze-events') . ': </span>'
+                    . get_the_term_list( $id, 'talk_tag', '<ul><li>','</li><li>', '</li></ul>');
                 echo '</div>';
             }
             echo '</div>';

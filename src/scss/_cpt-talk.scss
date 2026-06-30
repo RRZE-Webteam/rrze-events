@@ -86,7 +86,7 @@
                 margin: 0 0 30px;
             }
             @media (min-width: 1400px) {
-                padding: 20px 30px 30px;
+                padding: 20px 20px 30px;
             }
             h2 {
                 margin-top: 0;
@@ -169,6 +169,7 @@
             margin-bottom: 1em;
             ul {
                 margin: 0;
+                padding: 0;
                 li {
                     list-style-type: none;
                     display: inline-block;
@@ -199,6 +200,7 @@
             ul {
                 display: inline;
                 margin: 0;
+                padding: 0;
                 li {
                     list-style-type: none;
                     display: inline-block;

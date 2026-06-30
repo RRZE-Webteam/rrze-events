@@ -89,7 +89,7 @@ class Speaker {
         $args = [
             'labels'            => $labels,
             'public'            => true,
-            'hierarchical'      => true,
+            'hierarchical'      => false,
             'show_admin_column' => true,
             'show_in_rest'      => true,
             'rewrite'           => ['slug' => 'speaker-tags', 'with_front' => false],
