@@ -33,6 +33,21 @@
                 }
             }
         }
+        .talk-categories {
+            ul {
+                li {
+                    a {
+                        background-color: var(--FAU-Col-FAU-Blau-12_5, #d3dcf2);
+                        color: #000;
+                        padding-right: 7px;
+                        padding-left: 7px;
+                        &:hover, &:focus, &:active {
+                            background-color: var(--FAU-Col-FAU-Blau-15, #c0cbda);
+                        }
+                    }
+                }
+            }
+        }
     }
     &.single-speaker {
         #maintop,

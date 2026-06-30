@@ -6,6 +6,8 @@ use RRZE\Events\Utils;
 $id = get_the_ID();
 $meta = get_post_meta($id);
 $speakerSettings = Settings::getOption('rrze-events-speaker-settings');
+$speakerCategories = get_the_terms($id, 'speaker_category');
+$speakerTags = get_the_terms($id, 'speaker_tag');
 ?>
 
 <div class="rrze-speaker" itemscope itemtype="https://schema.org/Person">
@@ -50,10 +52,21 @@ $speakerSettings = Settings::getOption('rrze-events-speaker-settings');
                 }
             } ?>
 
-            <?php if (isset($speakerSettings['show-categories']) && $speakerSettings['show-categories'] == 'on' && get_the_terms($post->ID, 'speaker_category') !== false) : ?>
-                <div class="speaker-categories">
-                    <?php print get_the_term_list( $post->ID, 'speaker_category', '<ul><li>','</li><li>', '</li></ul>'); ?>
-                </div><!-- end .entry-cats -->
+            <?php if (isset($speakerSettings['show-categories']) && $speakerSettings['show-categories'] == 'on') :
+                if ($speakerCategories) { ?>
+                    <div class="speaker-categories">
+                        <?php print get_the_term_list( $id, 'speaker_category', '<ul><li>','</li><li>', '</li></ul>'); ?>
+                    </div><!-- end .entry-cats -->
+                <?php } ?>
+                <?php if ($speakerTags) {
+                    $settings = Settings::getOption('rrze-events-settings');
+                    $accentColor = $settings['accent-color']; ?>
+                    <div class="speaker-tags">
+                    <?php print do_shortcode('[icon icon="solid tag" color="' . $accentColor . '"]')
+                        . '<span class="sr-only">' . esc_html__('Tags', 'rrze-events') . ': </span>'
+                        . get_the_term_list( $id, 'speaker_tag', '<ul><li>','</li><li>', '</li></ul>'); ?>
+                    </div><!-- end .entry-tags -->
+                <?php } ?>
             <?php endif; ?>
 
         </div>
