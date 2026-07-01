@@ -6,7 +6,7 @@ $attributes['category'] = isset($attributes['selectedCategories']) ? implode(','
 $attributes['tag'] = isset($attributes['selectedTags']) ? implode(',',$attributes['selectedTags']) : '';
 $attributes['id'] = isset($attributes['selectedTalks']) ? implode(',',$attributes['selectedTalks']) : '';
 if (isset($attributes['orderBy']) && $attributes['orderBy'] == 'date') {
-    $attributes['orderby'] = $attributes['orderBy'] .','  . ($attributes['orderType'] ?? 'ASC') . 'start' .','  . ($attributes['orderType'] ?? 'ASC');
+    $attributes['orderby'] = $attributes['orderBy'] . ','  . ($attributes['orderType'] ?? 'ASC') . ',' . 'start' .','  . ($attributes['orderType'] ?? 'ASC');
 } else {
     $attributes['orderby'] = ($attributes['orderBy'] ?? 'date') . ',' . ($attributes['orderType'] ?? 'ASC');
 }
