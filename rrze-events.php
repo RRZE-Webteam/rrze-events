@@ -4,7 +4,7 @@
 Plugin Name:     RRZE Events
 Plugin URI:      https://github.com/RRZE-Webteam/rrze-events
 Description:     Manage and display talks and speakers
-Version:         1.0.7
+Version:         1.0.8
 Author:          RRZE Webteam
 Author URI:      https://blogs.fau.de/webworking/
 License:         GNU General Public License v3.0
